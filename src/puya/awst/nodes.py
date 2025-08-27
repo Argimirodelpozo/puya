@@ -913,19 +913,30 @@ class TupleExpression(Expression):
 
     items: Sequence[Expression] = attrs.field(converter=tuple[Expression, ...])
     wtype: wtypes.WTuple = attrs.field()
+    name_ord: Sequence[str] | None = attrs.field(default = None)
 
     @classmethod
-    def from_items(cls, items: Sequence[Expression], location: SourceLocation) -> typing.Self:
+    def from_items(
+        cls,
+        items: Sequence[Expression],
+        location: SourceLocation,
+        assignment_ord: Sequence[str] | None = None,
+    ) -> typing.Self:
         return cls(
             items=items,
             wtype=wtypes.WTuple(types=(i.wtype for i in items), source_location=location),
             source_location=location,
+            name_ord=assignment_ord,
         )
 
     @wtype.validator
     def _wtype_validator(self, _attribute: object, wtype: wtypes.WTuple) -> None:
-        if tuple(it.wtype for it in self.items) != wtype.types:
-            raise CodeError("Tuple type mismatch", self.source_location)
+        if not self.name_ord:
+            if tuple(it.wtype for it in self.items) != wtype.types:
+                raise CodeError("Tuple type mismatch", self.source_location)
+        else:
+            if any(it.wtype != wtype.fields[name] for it, name in zip(self.items, self.name_ord)):
+                raise CodeError("Tuple type mismatch", self.source_location)
 
     def accept(self, visitor: ExpressionVisitor[T]) -> T:
         return visitor.visit_tuple_expression(self)

@@ -495,7 +495,11 @@ class ToCodeVisitor(
             items = ", ".join(
                 [
                     f"{name}={item.accept(self)}"
-                    for name, item in zip(expr.wtype.names, expr.items, strict=True)
+                    for name, item in zip(
+                        expr.wtype.names if not expr.name_ord else expr.name_ord,
+                        expr.items,
+                        strict=True,
+                    )
                 ]
             )
         else:

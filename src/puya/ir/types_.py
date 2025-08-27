@@ -183,7 +183,7 @@ class TupleIRType:
     def arity(self) -> int:
         return sum(e.arity for e in self.elements)
 
-    def build_item_names(self, base_name: str) -> list[str]:
+    def build_item_names(self, base_name: str, ord: Sequence[str] | None = None) -> list[str]:
         result = list[str]()
         if self.fields is None:
             for idx, typ in enumerate(self.elements):
@@ -193,7 +193,8 @@ class TupleIRType:
                 else:
                     result.append(sub_name)
         else:
-            for fname, typ in zip(self.fields, self.elements, strict=True):
+            field_order = ord if ord else self.fields
+            for fname, typ in zip(field_order, self.elements, strict=True):
                 sub_name = f"{base_name}.{fname}"
                 if isinstance(typ, TupleIRType):
                     result.extend(typ.build_item_names(sub_name))

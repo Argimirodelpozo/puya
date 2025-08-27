@@ -35,6 +35,9 @@ def handle_assignment_expr(
         value=expr_values,
         is_nested_update=False,
         assignment_location=assignment_location,
+        named_tuple_assignment_order=value.name_ord
+        if isinstance(value, awst_nodes.TupleExpression)
+        else None,
     )
 
 
@@ -45,6 +48,7 @@ def handle_assignment(
     assignment_location: SourceLocation,
     *,
     is_nested_update: bool,
+    named_tuple_assignment_order: Sequence[str] | None = None,
 ) -> Sequence[ir.Value]:
     source = multi_value_to_values(value)
     match target:
@@ -81,7 +85,7 @@ def handle_assignment(
         case awst_nodes.VarExpression(name=base_name, source_location=var_loc, wtype=var_type):
             ir_type = types.wtype_to_ir_type(var_type, var_loc, allow_tuple=True)
             if isinstance(ir_type, types.TupleIRType):
-                exploded_names = ir_type.build_item_names(base_name)
+                exploded_names = ir_type.build_item_names(base_name, named_tuple_assignment_order)
             else:
                 exploded_names = [base_name]
             for exploded_name in exploded_names:
