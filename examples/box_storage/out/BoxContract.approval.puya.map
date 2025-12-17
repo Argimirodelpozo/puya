@@ -3,7 +3,7 @@
   "sources": [
     "../contract.py"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -23077,41 +23077,32 @@
       "stack_in": [],
       "op": "pushbytes \"\"",
       "stack_out": [
-        "box%array_length%1#0"
-      ]
-    },
-    "2660": {
-      "op": "dup",
-      "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0"
       ]
     },
-    "2661": {
+    "2660": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "defined_out": [
         "\"dynamic_arr_struct\""
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2662": {
+    "2661": {
       "op": "intc_3 // 0",
       "defined_out": [
         "\"dynamic_arr_struct\"",
         "0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "\"dynamic_arr_struct\"",
         "0"
       ]
     },
-    "2663": {
+    "2662": {
       "op": "intc_2 // 8",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -23119,49 +23110,45 @@
         "8"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "\"dynamic_arr_struct\"",
         "0",
         "8"
       ]
     },
-    "2664": {
+    "2663": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "box%box_extract%0#0"
       ]
     },
-    "2665": {
+    "2664": {
       "op": "btoi",
       "defined_out": [
         "values%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0"
       ]
     },
-    "2666": {
+    "2665": {
       "op": "dup",
       "defined_out": [
         "values%0#0",
         "values%0#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%0#0 (copy)"
       ]
     },
-    "2667": {
+    "2666": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -23169,45 +23156,41 @@
         "values%0#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%0#0 (copy)",
         "1"
       ]
     },
-    "2668": {
+    "2667": {
       "op": "==",
       "defined_out": [
         "tmp%0#1",
         "values%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "tmp%0#1"
       ]
     },
-    "2669": {
+    "2668": {
       "error": "expected 1",
       "op": "assert // expected 1",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0"
       ]
     },
-    "2670": {
+    "2669": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2671": {
+    "2670": {
       "op": "pushint 10",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -23215,17 +23198,15 @@
         "values%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "\"dynamic_arr_struct\"",
         "10"
       ]
     },
-    "2673": {
+    "2672": {
       "op": "intc_2 // 8",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "\"dynamic_arr_struct\"",
@@ -23233,33 +23214,31 @@
         "8"
       ]
     },
-    "2674": {
+    "2673": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%1#0",
         "values%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "box%box_extract%1#0"
       ]
     },
-    "2675": {
+    "2674": {
       "op": "btoi",
       "defined_out": [
         "values%0#0",
         "values%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%1#0"
       ]
     },
-    "2676": {
+    "2675": {
       "op": "dup",
       "defined_out": [
         "values%0#0",
@@ -23267,14 +23246,13 @@
         "values%1#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%1#0",
         "values%1#0 (copy)"
       ]
     },
-    "2677": {
+    "2676": {
       "op": "intc_0 // 2",
       "defined_out": [
         "2",
@@ -23283,7 +23261,6 @@
         "values%1#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%1#0",
@@ -23291,7 +23268,7 @@
         "2"
       ]
     },
-    "2678": {
+    "2677": {
       "op": "==",
       "defined_out": [
         "tmp%1#1",
@@ -23299,40 +23276,58 @@
         "values%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%1#0",
         "tmp%1#1"
       ]
     },
-    "2679": {
+    "2678": {
       "error": "expected 2",
       "op": "assert // expected 2",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "values%0#0",
         "values%1#0"
       ]
     },
-    "2680": {
+    "2679": {
       "op": "+",
       "defined_out": [
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0"
       ]
     },
-    "2681": {
-      "op": "bytec_0 // \"dynamic_arr_struct\"",
+    "2680": {
+      "op": "intc_3 // 0",
+      "defined_out": [
+        "item_index_internal%0#0",
+        "total#0"
+      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "2681": {
+      "block": "sum_dynamic_arr_struct_for_header@2",
+      "stack_in": [
+        "item_index_internal%1#0",
+        "total#0",
+        "item_index_internal%0#0"
+      ],
+      "op": "bytec_0 // \"dynamic_arr_struct\"",
+      "defined_out": [
+        "\"dynamic_arr_struct\""
+      ],
+      "stack_out": [
+        "item_index_internal%1#0",
+        "total#0",
+        "item_index_internal%0#0",
         "\"dynamic_arr_struct\""
       ]
     },
@@ -23340,23 +23335,27 @@
       "op": "pushint 20",
       "defined_out": [
         "\"dynamic_arr_struct\"",
-        "20",
-        "total#0"
+        "20"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
+        "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "20"
       ]
     },
     "2684": {
       "op": "intc_0 // 2",
+      "defined_out": [
+        "\"dynamic_arr_struct\"",
+        "2",
+        "20"
+      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
+        "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "20",
         "2"
@@ -23365,374 +23364,268 @@
     "2685": {
       "op": "box_extract",
       "defined_out": [
-        "box%box_extract%4#0",
-        "total#0"
+        "box%box_extract%4#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
+        "item_index_internal%0#0",
         "box%box_extract%4#0"
       ]
     },
     "2686": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%0#0",
-        "total#0"
+        "box%array_length%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
+        "item_index_internal%0#0",
         "box%array_length%0#0"
       ]
     },
     "2687": {
-      "op": "intc_3 // 0",
+      "op": "dig 1",
       "defined_out": [
         "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "total#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "2688": {
-      "block": "sum_dynamic_arr_struct_for_header@2",
-      "stack_in": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "op": "dup",
-      "defined_out": [
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
+        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
     "2689": {
-      "op": "dig 2",
+      "op": ">",
       "defined_out": [
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0",
-        "box%array_length%0#0"
-      ]
-    },
-    "2691": {
-      "op": "<",
-      "defined_out": [
-        "box%array_length%0#0",
         "continue_looping%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "2692": {
+    "2690": {
       "op": "bz sum_dynamic_arr_struct_after_for@5",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2695": {
+    "2693": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2696": {
+    "2694": {
       "op": "pushint 20",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "20",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "20"
       ]
     },
-    "2698": {
+    "2696": {
       "op": "intc_0 // 2",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "2",
-        "20",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "20",
         "2"
       ]
     },
-    "2699": {
+    "2697": {
       "op": "box_extract",
       "defined_out": [
-        "box%array_length%0#0",
         "box%box_extract%5#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%box_extract%5#0"
       ]
     },
-    "2700": {
+    "2698": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%0#0",
         "box%btoi%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%0#0"
       ]
     },
-    "2701": {
+    "2699": {
       "op": "dig 1",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2703": {
+    "2701": {
       "op": "dup"
     },
-    "2704": {
+    "2702": {
       "op": "uncover 2",
       "defined_out": [
-        "box%array_length%0#0",
         "box%btoi%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)",
         "box%btoi%0#0"
       ]
     },
-    "2706": {
+    "2704": {
       "op": "<",
       "defined_out": [
-        "box%array_length%0#0",
         "box%index_ok%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%index_ok%0#0"
       ]
     },
-    "2707": {
+    "2705": {
       "error": "index out of bounds",
       "op": "assert // index out of bounds",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2708": {
+    "2706": {
       "op": "dup",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ]
     },
-    "2709": {
+    "2707": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)",
         "8"
       ]
     },
-    "2710": {
+    "2708": {
       "op": "*",
       "defined_out": [
-        "box%array_length%0#0",
         "box%element_offset%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%element_offset%0#0"
       ]
     },
-    "2711": {
+    "2709": {
       "op": "pushint 22",
       "defined_out": [
         "22",
-        "box%array_length%0#0",
         "box%element_offset%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%element_offset%0#0",
         "22"
       ]
     },
-    "2713": {
+    "2711": {
       "op": "+",
       "defined_out": [
-        "box%array_length%0#0",
         "box%offset%6#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%offset%6#0"
       ]
     },
-    "2714": {
+    "2712": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%offset%6#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2715": {
+    "2713": {
       "op": "swap",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "box%offset%6#0"
       ]
     },
-    "2716": {
+    "2714": {
       "op": "intc_2 // 8",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
@@ -23740,141 +23633,146 @@
         "8"
       ]
     },
-    "2717": {
+    "2715": {
       "op": "box_extract",
       "defined_out": [
-        "box%array_length%0#0",
         "box%box_extract%6#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%box_extract%6#0"
       ]
     },
-    "2718": {
+    "2716": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "val#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "val#0"
       ]
     },
-    "2719": {
-      "op": "dig 4",
+    "2717": {
+      "op": "dig 3",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0",
         "val#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "val#0",
         "total#0"
       ]
     },
-    "2721": {
+    "2719": {
       "op": "+",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "2722": {
-      "op": "bury 4",
+    "2720": {
+      "op": "bury 3",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2724": {
+    "2722": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "2725": {
+    "2723": {
       "op": "+",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2726": {
+    "2724": {
       "op": "bury 1",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2728": {
+    "2726": {
       "op": "b sum_dynamic_arr_struct_for_header@2"
     },
-    "2731": {
+    "2729": {
       "block": "sum_dynamic_arr_struct_after_for@5",
       "stack_in": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
+        "item_index_internal%0#0"
+      ],
+      "op": "intc_3 // 0",
+      "defined_out": [
+        "item_index_internal%1#0"
+      ],
+      "stack_out": [
+        "item_index_internal%1#0",
+        "total#0",
+        "item_index_internal%0#0",
+        "item_index_internal%1#0"
+      ]
+    },
+    "2730": {
+      "op": "bury 3",
+      "defined_out": [
+        "item_index_internal%1#0"
+      ],
+      "stack_out": [
+        "item_index_internal%1#0",
+        "total#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "2732": {
+      "block": "sum_dynamic_arr_struct_for_header@6",
+      "stack_in": [
+        "item_index_internal%1#0",
+        "total#0",
         "item_index_internal%0#0"
       ],
       "op": "bytec_0 // \"dynamic_arr_struct\"",
@@ -23882,31 +23780,27 @@
         "\"dynamic_arr_struct\""
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2732": {
+    "2733": {
       "op": "pushint 18",
       "defined_out": [
         "\"dynamic_arr_struct\"",
         "18"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "18"
       ]
     },
-    "2734": {
+    "2735": {
       "op": "intc_0 // 2",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -23914,387 +23808,255 @@
         "2"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "18",
         "2"
       ]
     },
-    "2735": {
+    "2736": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%7#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%box_extract%7#0"
       ]
     },
-    "2736": {
+    "2737": {
       "op": "btoi",
       "defined_out": [
         "box%btoi%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%1#0"
       ]
     },
-    "2737": {
+    "2738": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%1#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2738": {
+    "2739": {
       "op": "swap",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "box%btoi%1#0"
       ]
     },
-    "2739": {
+    "2740": {
       "op": "intc_0 // 2",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "box%btoi%1#0",
         "2"
       ]
     },
-    "2740": {
+    "2741": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%8#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%box_extract%8#0"
       ]
     },
-    "2741": {
+    "2742": {
       "op": "btoi",
       "defined_out": [
         "box%array_length%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%array_length%1#0"
       ]
     },
-    "2742": {
-      "op": "bury 5",
-      "defined_out": [
-        "box%array_length%1#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "2744": {
-      "op": "intc_3 // 0",
+    "2743": {
+      "op": "dig 3",
       "defined_out": [
         "box%array_length%1#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
+        "box%array_length%1#0",
         "item_index_internal%1#0"
       ]
     },
     "2745": {
-      "op": "bury 4",
+      "op": ">",
       "defined_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "2747": {
-      "block": "sum_dynamic_arr_struct_for_header@6",
-      "stack_in": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "op": "dig 3",
-      "defined_out": [
-        "item_index_internal%1#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%1#0"
-      ]
-    },
-    "2749": {
-      "op": "dig 5",
-      "defined_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0"
-      ],
-      "stack_out": [
-        "box%array_length%1#0",
-        "item_index_internal%1#0",
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%1#0",
-        "box%array_length%1#0"
-      ]
-    },
-    "2751": {
-      "op": "<",
-      "defined_out": [
-        "box%array_length%1#0",
         "continue_looping%1#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%1#0"
       ]
     },
-    "2752": {
+    "2746": {
       "op": "bz sum_dynamic_arr_struct_after_for@9",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2755": {
+    "2749": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "box%array_length%1#0",
-        "item_index_internal%1#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2756": {
+    "2750": {
       "op": "pushint 18",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "18",
-        "box%array_length%1#0",
-        "item_index_internal%1#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "18"
       ]
     },
-    "2758": {
+    "2752": {
       "op": "intc_0 // 2",
-      "defined_out": [
-        "\"dynamic_arr_struct\"",
-        "18",
-        "2",
-        "box%array_length%1#0",
-        "item_index_internal%1#0"
-      ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "\"dynamic_arr_struct\"",
         "18",
         "2"
       ]
     },
-    "2759": {
+    "2753": {
       "op": "box_extract",
       "defined_out": [
-        "box%array_length%1#0",
         "box%box_extract%9#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%box_extract%9#0"
       ]
     },
-    "2760": {
+    "2754": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%1#0",
         "box%btoi%2#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%2#0"
       ]
     },
-    "2761": {
+    "2755": {
       "op": "intc_0 // 2",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%btoi%2#0",
         "2"
       ]
     },
-    "2762": {
+    "2756": {
       "op": "+",
       "defined_out": [
         "box%add%3#0",
-        "box%array_length%1#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%add%3#0"
       ]
     },
-    "2763": {
-      "op": "dig 4",
+    "2757": {
+      "op": "dig 3",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%add%3#0",
         "item_index_internal%1#0"
       ]
     },
-    "2765": {
+    "2759": {
       "op": "dup",
       "defined_out": [
         "box%add%3#0",
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "item_index_internal%1#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "box%add%3#0",
         "item_index_internal%1#0 (copy)",
         "item_index_internal%1#0 (copy)"
       ]
     },
-    "2766": {
+    "2760": {
       "op": "cover 2",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%add%3#0",
         "item_index_internal%1#0 (copy)"
       ]
     },
-    "2768": {
+    "2762": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
         "box%add%3#0",
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "item_index_internal%1#0 (copy)"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%add%3#0",
@@ -24302,75 +24064,63 @@
         "8"
       ]
     },
-    "2769": {
+    "2763": {
       "op": "*",
       "defined_out": [
         "box%add%3#0",
-        "box%array_length%1#0",
         "box%element_offset%1#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%add%3#0",
         "box%element_offset%1#0"
       ]
     },
-    "2770": {
+    "2764": {
       "op": "+",
       "defined_out": [
-        "box%array_length%1#0",
         "box%offset%9#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%offset%9#0"
       ]
     },
-    "2771": {
+    "2765": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%offset%9#0",
         "\"dynamic_arr_struct\""
       ]
     },
-    "2772": {
+    "2766": {
       "op": "swap",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "\"dynamic_arr_struct\"",
         "box%offset%9#0"
       ]
     },
-    "2773": {
+    "2767": {
       "op": "intc_2 // 8",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "\"dynamic_arr_struct\"",
@@ -24378,172 +24128,144 @@
         "8"
       ]
     },
-    "2774": {
+    "2768": {
       "op": "box_extract",
       "defined_out": [
-        "box%array_length%1#0",
         "box%box_extract%10#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "box%box_extract%10#0"
       ]
     },
-    "2775": {
+    "2769": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "val#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "val#0"
       ]
     },
-    "2776": {
-      "op": "dig 4",
+    "2770": {
+      "op": "dig 3",
       "defined_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
         "val#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "val#0",
         "total#0"
       ]
     },
-    "2778": {
+    "2772": {
       "op": "+",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "total#0"
       ]
     },
-    "2779": {
-      "op": "bury 4",
+    "2773": {
+      "op": "bury 3",
       "defined_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0"
       ]
     },
-    "2781": {
+    "2775": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "1"
       ]
     },
-    "2782": {
+    "2776": {
       "op": "+",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0"
       ]
     },
-    "2783": {
-      "op": "bury 4",
+    "2777": {
+      "op": "bury 3",
       "defined_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2785": {
+    "2779": {
       "op": "b sum_dynamic_arr_struct_for_header@6"
     },
-    "2788": {
+    "2782": {
       "block": "sum_dynamic_arr_struct_after_for@9",
       "stack_in": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 2",
+      "op": "dig 1",
       "defined_out": [
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "2790": {
+    "2784": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2791": {
+    "2785": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -24551,78 +24273,66 @@
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%val_as_bytes%0#0",
         "0x151f7c75"
       ]
     },
-    "2792": {
+    "2786": {
       "op": "swap",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2793": {
+    "2787": {
       "op": "concat",
       "defined_out": [
         "tmp%2#0",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "tmp%2#0"
       ]
     },
-    "2794": {
+    "2788": {
       "op": "log",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2795": {
+    "2789": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
         "total#0"
       ],
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "2796": {
+    "2790": {
       "op": "return",
       "stack_out": [
-        "box%array_length%1#0",
         "item_index_internal%1#0",
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "2797": {
+    "2791": {
       "subroutine": "examples.box_storage.contract.BoxContract.set_bool[routing]",
       "params": {},
       "block": "set_bool",
@@ -24635,7 +24345,7 @@
         "tmp%0#0"
       ]
     },
-    "2800": {
+    "2794": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -24646,7 +24356,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "2801": {
+    "2795": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -24657,7 +24367,7 @@
         "len%0#0"
       ]
     },
-    "2802": {
+    "2796": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -24670,7 +24380,7 @@
         "8"
       ]
     },
-    "2803": {
+    "2797": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -24681,14 +24391,14 @@
         "eq%0#0"
       ]
     },
-    "2804": {
+    "2798": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "2805": {
+    "2799": {
       "op": "btoi",
       "defined_out": [
         "index#0"
@@ -24697,7 +24407,7 @@
         "index#0"
       ]
     },
-    "2806": {
+    "2800": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "index#0",
@@ -24708,7 +24418,7 @@
         "tmp%2#0"
       ]
     },
-    "2809": {
+    "2803": {
       "op": "dup",
       "defined_out": [
         "index#0",
@@ -24721,7 +24431,7 @@
         "tmp%2#0 (copy)"
       ]
     },
-    "2810": {
+    "2804": {
       "op": "len",
       "defined_out": [
         "index#0",
@@ -24734,7 +24444,7 @@
         "len%1#0"
       ]
     },
-    "2811": {
+    "2805": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -24749,7 +24459,7 @@
         "1"
       ]
     },
-    "2812": {
+    "2806": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -24762,7 +24472,7 @@
         "eq%1#0"
       ]
     },
-    "2813": {
+    "2807": {
       "error": "invalid number of bytes for arc4.bool",
       "op": "assert // invalid number of bytes for arc4.bool",
       "stack_out": [
@@ -24770,7 +24480,7 @@
         "tmp%2#0"
       ]
     },
-    "2814": {
+    "2808": {
       "op": "intc_3 // 0",
       "defined_out": [
         "0",
@@ -24783,7 +24493,7 @@
         "0"
       ]
     },
-    "2815": {
+    "2809": {
       "op": "getbit",
       "defined_out": [
         "index#0",
@@ -24794,7 +24504,7 @@
         "value#0"
       ]
     },
-    "2816": {
+    "2810": {
       "op": "dig 1",
       "defined_out": [
         "index#0",
@@ -24807,7 +24517,7 @@
         "index#0 (copy)"
       ]
     },
-    "2818": {
+    "2812": {
       "op": "intc_2 // 8",
       "stack_out": [
         "index#0",
@@ -24816,7 +24526,7 @@
         "8"
       ]
     },
-    "2819": {
+    "2813": {
       "op": "/",
       "defined_out": [
         "box%element_byte_offset%0#0",
@@ -24829,7 +24539,7 @@
         "box%element_byte_offset%0#0"
       ]
     },
-    "2820": {
+    "2814": {
       "op": "uncover 2",
       "stack_out": [
         "value#0",
@@ -24837,7 +24547,7 @@
         "index#0"
       ]
     },
-    "2822": {
+    "2816": {
       "op": "intc_2 // 8",
       "stack_out": [
         "value#0",
@@ -24846,7 +24556,7 @@
         "8"
       ]
     },
-    "2823": {
+    "2817": {
       "op": "%",
       "defined_out": [
         "box%element_bit_offset%0#0",
@@ -24859,7 +24569,7 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "2824": {
+    "2818": {
       "op": "bytec 10 // \"too_many_bools\"",
       "defined_out": [
         "\"too_many_bools\"",
@@ -24874,7 +24584,7 @@
         "\"too_many_bools\""
       ]
     },
-    "2826": {
+    "2820": {
       "op": "dig 2",
       "defined_out": [
         "\"too_many_bools\"",
@@ -24891,7 +24601,7 @@
         "box%element_byte_offset%0#0 (copy)"
       ]
     },
-    "2828": {
+    "2822": {
       "op": "intc_1 // 1",
       "stack_out": [
         "value#0",
@@ -24902,7 +24612,7 @@
         "1"
       ]
     },
-    "2829": {
+    "2823": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -24917,7 +24627,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "2830": {
+    "2824": {
       "op": "dig 1",
       "defined_out": [
         "box%box_extract%0#0",
@@ -24934,7 +24644,7 @@
         "box%element_bit_offset%0#0 (copy)"
       ]
     },
-    "2832": {
+    "2826": {
       "op": "intc_2 // 8",
       "stack_out": [
         "value#0",
@@ -24945,7 +24655,7 @@
         "8"
       ]
     },
-    "2833": {
+    "2827": {
       "op": "<",
       "defined_out": [
         "aggregate%lt%0#0",
@@ -24962,7 +24672,7 @@
         "aggregate%lt%0#0"
       ]
     },
-    "2834": {
+    "2828": {
       "error": "index access is out of bounds",
       "op": "assert // index access is out of bounds",
       "stack_out": [
@@ -24972,7 +24682,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "2835": {
+    "2829": {
       "op": "swap",
       "stack_out": [
         "value#0",
@@ -24981,7 +24691,7 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "2836": {
+    "2830": {
       "op": "uncover 3",
       "stack_out": [
         "box%element_byte_offset%0#0",
@@ -24990,7 +24700,7 @@
         "value#0"
       ]
     },
-    "2838": {
+    "2832": {
       "op": "setbit",
       "defined_out": [
         "aggregate%updated_target%0#0",
@@ -25001,7 +24711,7 @@
         "aggregate%updated_target%0#0"
       ]
     },
-    "2839": {
+    "2833": {
       "op": "bytec 10 // \"too_many_bools\"",
       "stack_out": [
         "box%element_byte_offset%0#0",
@@ -25009,7 +24719,7 @@
         "\"too_many_bools\""
       ]
     },
-    "2841": {
+    "2835": {
       "op": "cover 2",
       "stack_out": [
         "\"too_many_bools\"",
@@ -25017,21 +24727,21 @@
         "aggregate%updated_target%0#0"
       ]
     },
-    "2843": {
+    "2837": {
       "op": "box_replace",
       "stack_out": []
     },
-    "2844": {
+    "2838": {
       "op": "intc_1 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "2845": {
+    "2839": {
       "op": "return",
       "stack_out": []
     },
-    "2846": {
+    "2840": {
       "subroutine": "examples.box_storage.contract.BoxContract.sum_bools[routing]",
       "params": {},
       "block": "sum_bools",
@@ -25044,7 +24754,7 @@
         "tmp%0#0"
       ]
     },
-    "2849": {
+    "2843": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -25055,7 +24765,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "2850": {
+    "2844": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -25066,7 +24776,7 @@
         "len%0#0"
       ]
     },
-    "2851": {
+    "2845": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -25079,7 +24789,7 @@
         "8"
       ]
     },
-    "2852": {
+    "2846": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -25090,14 +24800,14 @@
         "eq%0#0"
       ]
     },
-    "2853": {
+    "2847": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "2854": {
+    "2848": {
       "op": "btoi",
       "defined_out": [
         "stop_at_total#0"
@@ -25106,10 +24816,10 @@
         "stop_at_total#0"
       ]
     },
-    "2855": {
+    "2849": {
       "op": "intc_3 // 0"
     },
-    "2856": {
+    "2850": {
       "op": "bytec 10 // \"too_many_bools\"",
       "defined_out": [
         "\"too_many_bools\"",
@@ -25122,7 +24832,7 @@
         "\"too_many_bools\""
       ]
     },
-    "2858": {
+    "2852": {
       "op": "box_len",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -25137,7 +24847,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "2859": {
+    "2853": {
       "op": "bury 1",
       "stack_out": [
         "stop_at_total#0",
@@ -25145,7 +24855,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "2861": {
+    "2855": {
       "error": "check self.too_many_bools exists",
       "op": "assert // check self.too_many_bools exists",
       "stack_out": [
@@ -25153,7 +24863,7 @@
         "total#0"
       ]
     },
-    "2862": {
+    "2856": {
       "op": "intc_3 // 0",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25166,7 +24876,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2863": {
+    "2857": {
       "block": "sum_bools_for_header@2",
       "stack_in": [
         "stop_at_total#0",
@@ -25184,7 +24894,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2864": {
+    "2858": {
       "op": "pushint 33000",
       "defined_out": [
         "33000",
@@ -25198,7 +24908,7 @@
         "33000"
       ]
     },
-    "2868": {
+    "2862": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
@@ -25211,7 +24921,7 @@
         "continue_looping%0#0"
       ]
     },
-    "2869": {
+    "2863": {
       "op": "bz sum_bools_after_for@9",
       "stack_out": [
         "stop_at_total#0",
@@ -25219,7 +24929,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2872": {
+    "2866": {
       "op": "dupn 2",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25233,7 +24943,7 @@
         "item_index_internal%0#0 (copy)"
       ]
     },
-    "2874": {
+    "2868": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -25249,7 +24959,7 @@
         "8"
       ]
     },
-    "2875": {
+    "2869": {
       "op": "/",
       "defined_out": [
         "box%element_byte_offset%0#0",
@@ -25263,7 +24973,7 @@
         "box%element_byte_offset%0#0"
       ]
     },
-    "2876": {
+    "2870": {
       "op": "swap",
       "stack_out": [
         "stop_at_total#0",
@@ -25273,7 +24983,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2877": {
+    "2871": {
       "op": "intc_2 // 8",
       "stack_out": [
         "stop_at_total#0",
@@ -25284,7 +24994,7 @@
         "8"
       ]
     },
-    "2878": {
+    "2872": {
       "op": "%",
       "defined_out": [
         "box%element_bit_offset%0#0",
@@ -25299,7 +25009,7 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "2879": {
+    "2873": {
       "op": "bytec 10 // \"too_many_bools\"",
       "defined_out": [
         "\"too_many_bools\"",
@@ -25316,7 +25026,7 @@
         "\"too_many_bools\""
       ]
     },
-    "2881": {
+    "2875": {
       "op": "uncover 2",
       "stack_out": [
         "stop_at_total#0",
@@ -25327,7 +25037,7 @@
         "box%element_byte_offset%0#0"
       ]
     },
-    "2883": {
+    "2877": {
       "op": "intc_1 // 1",
       "defined_out": [
         "\"too_many_bools\"",
@@ -25346,7 +25056,7 @@
         "1"
       ]
     },
-    "2884": {
+    "2878": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -25361,7 +25071,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "2885": {
+    "2879": {
       "op": "swap",
       "stack_out": [
         "stop_at_total#0",
@@ -25371,7 +25081,7 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "2886": {
+    "2880": {
       "op": "getbit",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25384,7 +25094,7 @@
         "value#0"
       ]
     },
-    "2887": {
+    "2881": {
       "op": "bz sum_bools_after_if_else@5",
       "stack_out": [
         "stop_at_total#0",
@@ -25392,7 +25102,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2890": {
+    "2884": {
       "op": "dig 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25405,7 +25115,7 @@
         "total#0"
       ]
     },
-    "2892": {
+    "2886": {
       "op": "intc_1 // 1",
       "stack_out": [
         "stop_at_total#0",
@@ -25415,7 +25125,7 @@
         "1"
       ]
     },
-    "2893": {
+    "2887": {
       "op": "+",
       "stack_out": [
         "stop_at_total#0",
@@ -25424,7 +25134,7 @@
         "total#0"
       ]
     },
-    "2894": {
+    "2888": {
       "op": "bury 2",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25436,7 +25146,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2896": {
+    "2890": {
       "block": "sum_bools_after_if_else@5",
       "stack_in": [
         "stop_at_total#0",
@@ -25454,7 +25164,7 @@
         "total#0"
       ]
     },
-    "2898": {
+    "2892": {
       "op": "dig 3",
       "defined_out": [
         "stop_at_total#0",
@@ -25468,7 +25178,7 @@
         "stop_at_total#0"
       ]
     },
-    "2900": {
+    "2894": {
       "op": "==",
       "defined_out": [
         "stop_at_total#0",
@@ -25482,7 +25192,7 @@
         "tmp%1#1"
       ]
     },
-    "2901": {
+    "2895": {
       "op": "bnz sum_bools_after_for@9",
       "stack_out": [
         "stop_at_total#0",
@@ -25490,7 +25200,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2904": {
+    "2898": {
       "op": "dup",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25504,7 +25214,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2905": {
+    "2899": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -25520,7 +25230,7 @@
         "1"
       ]
     },
-    "2906": {
+    "2900": {
       "op": "+",
       "stack_out": [
         "stop_at_total#0",
@@ -25529,7 +25239,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2907": {
+    "2901": {
       "op": "bury 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -25542,10 +25252,10 @@
         "item_index_internal%0#0"
       ]
     },
-    "2909": {
+    "2903": {
       "op": "b sum_bools_for_header@2"
     },
-    "2912": {
+    "2906": {
       "block": "sum_bools_after_for@9",
       "stack_in": [
         "stop_at_total#0",
@@ -25563,7 +25273,7 @@
         "total#0"
       ]
     },
-    "2914": {
+    "2908": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -25576,7 +25286,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2915": {
+    "2909": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -25591,7 +25301,7 @@
         "0x151f7c75"
       ]
     },
-    "2916": {
+    "2910": {
       "op": "swap",
       "stack_out": [
         "stop_at_total#0",
@@ -25601,7 +25311,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2917": {
+    "2911": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0",
@@ -25614,7 +25324,7 @@
         "tmp%4#0"
       ]
     },
-    "2918": {
+    "2912": {
       "op": "log",
       "stack_out": [
         "stop_at_total#0",
@@ -25622,7 +25332,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2919": {
+    "2913": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -25635,7 +25345,7 @@
         "1"
       ]
     },
-    "2920": {
+    "2914": {
       "op": "return",
       "stack_out": [
         "stop_at_total#0",
@@ -25643,7 +25353,7 @@
         "item_index_internal%0#0"
       ]
     },
-    "2921": {
+    "2915": {
       "subroutine": "examples.box_storage.contract.BoxContract.create_dynamic_box[routing]",
       "params": {},
       "block": "create_dynamic_box",
@@ -25656,7 +25366,7 @@
         "\"dynamic_box\""
       ]
     },
-    "2922": {
+    "2916": {
       "op": "box_del",
       "defined_out": [
         "{box_del}"
@@ -25665,17 +25375,17 @@
         "{box_del}"
       ]
     },
-    "2923": {
+    "2917": {
       "op": "pop",
       "stack_out": []
     },
-    "2924": {
+    "2918": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "\"dynamic_box\""
       ]
     },
-    "2925": {
+    "2919": {
       "op": "pushbytes 0x0000",
       "defined_out": [
         "\"dynamic_box\"",
@@ -25686,11 +25396,11 @@
         "0x0000"
       ]
     },
-    "2929": {
+    "2923": {
       "op": "box_put",
       "stack_out": []
     },
-    "2930": {
+    "2924": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -25699,11 +25409,11 @@
         "1"
       ]
     },
-    "2931": {
+    "2925": {
       "op": "return",
       "stack_out": []
     },
-    "2932": {
+    "2926": {
       "subroutine": "examples.box_storage.contract.BoxContract.append_dynamic_box[routing]",
       "params": {},
       "block": "append_dynamic_box",
@@ -25716,7 +25426,7 @@
         "tmp%0#0"
       ]
     },
-    "2935": {
+    "2929": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -25727,7 +25437,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "2936": {
+    "2930": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -25738,7 +25448,7 @@
         "len%0#0"
       ]
     },
-    "2937": {
+    "2931": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -25751,7 +25461,7 @@
         "8"
       ]
     },
-    "2938": {
+    "2932": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -25762,14 +25472,14 @@
         "eq%0#0"
       ]
     },
-    "2939": {
+    "2933": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "2940": {
+    "2934": {
       "op": "btoi",
       "defined_out": [
         "times#0"
@@ -25778,7 +25488,7 @@
         "times#0"
       ]
     },
-    "2941": {
+    "2935": {
       "op": "dup",
       "defined_out": [
         "times#0"
@@ -25788,7 +25498,7 @@
         "times#0"
       ]
     },
-    "2942": {
+    "2936": {
       "op": "bytec_2 // \"dynamic_box\"",
       "defined_out": [
         "\"dynamic_box\"",
@@ -25800,7 +25510,7 @@
         "\"dynamic_box\""
       ]
     },
-    "2943": {
+    "2937": {
       "op": "intc_3 // 0",
       "stack_out": [
         "times#0",
@@ -25809,7 +25519,7 @@
         "0"
       ]
     },
-    "2944": {
+    "2938": {
       "op": "intc_0 // 2",
       "defined_out": [
         "\"dynamic_box\"",
@@ -25825,7 +25535,7 @@
         "2"
       ]
     },
-    "2945": {
+    "2939": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -25837,7 +25547,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "2946": {
+    "2940": {
       "op": "btoi",
       "defined_out": [
         "arr_len#0",
@@ -25849,10 +25559,10 @@
         "arr_len#0"
       ]
     },
-    "2947": {
+    "2941": {
       "op": "dup"
     },
-    "2948": {
+    "2942": {
       "op": "uncover 2",
       "defined_out": [
         "arr_len#0",
@@ -25865,7 +25575,7 @@
         "times#0"
       ]
     },
-    "2950": {
+    "2944": {
       "op": "+",
       "defined_out": [
         "arr_len#0",
@@ -25878,7 +25588,7 @@
         "tmp%1#1"
       ]
     },
-    "2951": {
+    "2945": {
       "op": "intc_2 // 8",
       "stack_out": [
         "times#0",
@@ -25887,7 +25597,7 @@
         "8"
       ]
     },
-    "2952": {
+    "2946": {
       "op": "*",
       "defined_out": [
         "arr_len#0",
@@ -25900,7 +25610,7 @@
         "tmp%2#1"
       ]
     },
-    "2953": {
+    "2947": {
       "op": "intc_0 // 2",
       "stack_out": [
         "times#0",
@@ -25909,7 +25619,7 @@
         "2"
       ]
     },
-    "2954": {
+    "2948": {
       "op": "+",
       "defined_out": [
         "arr_len#0",
@@ -25922,7 +25632,7 @@
         "tmp%3#1"
       ]
     },
-    "2955": {
+    "2949": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "times#0",
@@ -25931,7 +25641,7 @@
         "\"dynamic_box\""
       ]
     },
-    "2956": {
+    "2950": {
       "op": "swap",
       "stack_out": [
         "times#0",
@@ -25940,14 +25650,14 @@
         "tmp%3#1"
       ]
     },
-    "2957": {
+    "2951": {
       "op": "box_resize",
       "stack_out": [
         "times#0",
         "arr_len#0"
       ]
     },
-    "2958": {
+    "2952": {
       "op": "intc_3 // 0",
       "defined_out": [
         "arr_len#0",
@@ -25960,7 +25670,7 @@
         "i#0"
       ]
     },
-    "2959": {
+    "2953": {
       "block": "append_dynamic_box_for_header@2",
       "stack_in": [
         "times#0",
@@ -25978,7 +25688,7 @@
         "i#0"
       ]
     },
-    "2960": {
+    "2954": {
       "op": "dig 3",
       "defined_out": [
         "i#0",
@@ -25992,7 +25702,7 @@
         "times#0"
       ]
     },
-    "2962": {
+    "2956": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
@@ -26006,7 +25716,7 @@
         "continue_looping%0#0"
       ]
     },
-    "2963": {
+    "2957": {
       "op": "bz append_dynamic_box_after_for@5",
       "stack_out": [
         "times#0",
@@ -26014,7 +25724,7 @@
         "i#0"
       ]
     },
-    "2966": {
+    "2960": {
       "op": "dupn 2",
       "defined_out": [
         "i#0",
@@ -26029,7 +25739,7 @@
         "i#0 (copy)"
       ]
     },
-    "2968": {
+    "2962": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26044,7 +25754,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2969": {
+    "2963": {
       "op": "dig 3",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26061,7 +25771,7 @@
         "arr_len#0"
       ]
     },
-    "2971": {
+    "2965": {
       "op": "dup",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26080,7 +25790,7 @@
         "arr_len#0 (copy)"
       ]
     },
-    "2972": {
+    "2966": {
       "op": "cover 2",
       "stack_out": [
         "times#0",
@@ -26092,7 +25802,7 @@
         "arr_len#0 (copy)"
       ]
     },
-    "2974": {
+    "2968": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -26113,7 +25823,7 @@
         "8"
       ]
     },
-    "2975": {
+    "2969": {
       "op": "*",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26132,7 +25842,7 @@
         "box%element_offset%0#0"
       ]
     },
-    "2976": {
+    "2970": {
       "op": "intc_0 // 2",
       "defined_out": [
         "2",
@@ -26153,7 +25863,7 @@
         "2"
       ]
     },
-    "2977": {
+    "2971": {
       "op": "+",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26172,7 +25882,7 @@
         "box%offset%2#0"
       ]
     },
-    "2978": {
+    "2972": {
       "op": "bytec_2 // \"dynamic_box\"",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26193,7 +25903,7 @@
         "\"dynamic_box\""
       ]
     },
-    "2979": {
+    "2973": {
       "op": "swap",
       "stack_out": [
         "times#0",
@@ -26206,7 +25916,7 @@
         "box%offset%2#0"
       ]
     },
-    "2980": {
+    "2974": {
       "op": "uncover 2",
       "stack_out": [
         "times#0",
@@ -26219,7 +25929,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "2982": {
+    "2976": {
       "op": "box_replace",
       "stack_out": [
         "times#0",
@@ -26229,7 +25939,7 @@
         "arr_len#0"
       ]
     },
-    "2983": {
+    "2977": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -26246,7 +25956,7 @@
         "1"
       ]
     },
-    "2984": {
+    "2978": {
       "op": "+",
       "stack_out": [
         "times#0",
@@ -26256,7 +25966,7 @@
         "arr_len#0"
       ]
     },
-    "2985": {
+    "2979": {
       "op": "bury 3",
       "defined_out": [
         "arr_len#0",
@@ -26270,7 +25980,7 @@
         "i#0"
       ]
     },
-    "2987": {
+    "2981": {
       "op": "intc_1 // 1",
       "stack_out": [
         "times#0",
@@ -26280,7 +25990,7 @@
         "1"
       ]
     },
-    "2988": {
+    "2982": {
       "op": "+",
       "stack_out": [
         "times#0",
@@ -26289,7 +25999,7 @@
         "i#0"
       ]
     },
-    "2989": {
+    "2983": {
       "op": "bury 1",
       "defined_out": [
         "arr_len#0",
@@ -26302,10 +26012,10 @@
         "i#0"
       ]
     },
-    "2991": {
+    "2985": {
       "op": "b append_dynamic_box_for_header@2"
     },
-    "2994": {
+    "2988": {
       "block": "append_dynamic_box_after_for@5",
       "stack_in": [
         "times#0",
@@ -26323,7 +26033,7 @@
         "arr_len#0"
       ]
     },
-    "2996": {
+    "2990": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%1#0",
@@ -26336,7 +26046,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "2997": {
+    "2991": {
       "op": "dup",
       "defined_out": [
         "aggregate%val_as_bytes%1#0",
@@ -26351,7 +26061,7 @@
         "aggregate%val_as_bytes%1#0 (copy)"
       ]
     },
-    "2998": {
+    "2992": {
       "op": "bitlen",
       "defined_out": [
         "aggregate%bitlen%0#0",
@@ -26366,7 +26076,7 @@
         "aggregate%bitlen%0#0"
       ]
     },
-    "2999": {
+    "2993": {
       "op": "pushint 16",
       "defined_out": [
         "16",
@@ -26383,7 +26093,7 @@
         "16"
       ]
     },
-    "3001": {
+    "2995": {
       "op": "<=",
       "defined_out": [
         "aggregate%no_overflow%0#0",
@@ -26398,7 +26108,7 @@
         "aggregate%no_overflow%0#0"
       ]
     },
-    "3002": {
+    "2996": {
       "error": "overflow",
       "op": "assert // overflow",
       "stack_out": [
@@ -26408,7 +26118,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "3003": {
+    "2997": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%uint16%0#0",
@@ -26421,7 +26131,7 @@
         "aggregate%uint16%0#0"
       ]
     },
-    "3006": {
+    "3000": {
       "op": "bytec_2 // \"dynamic_box\"",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26436,7 +26146,7 @@
         "\"dynamic_box\""
       ]
     },
-    "3007": {
+    "3001": {
       "op": "intc_3 // 0",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26453,7 +26163,7 @@
         "0"
       ]
     },
-    "3008": {
+    "3002": {
       "op": "uncover 2",
       "stack_out": [
         "times#0",
@@ -26464,7 +26174,7 @@
         "aggregate%uint16%0#0"
       ]
     },
-    "3010": {
+    "3004": {
       "op": "box_replace",
       "stack_out": [
         "times#0",
@@ -26472,7 +26182,7 @@
         "i#0"
       ]
     },
-    "3011": {
+    "3005": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "times#0",
@@ -26481,7 +26191,7 @@
         "\"dynamic_box\""
       ]
     },
-    "3012": {
+    "3006": {
       "op": "intc_3 // 0",
       "stack_out": [
         "times#0",
@@ -26491,7 +26201,7 @@
         "0"
       ]
     },
-    "3013": {
+    "3007": {
       "op": "intc_0 // 2",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26508,7 +26218,7 @@
         "2"
       ]
     },
-    "3014": {
+    "3008": {
       "op": "box_extract",
       "defined_out": [
         "arr_len#0",
@@ -26521,7 +26231,7 @@
         "box%box_extract%1#0"
       ]
     },
-    "3015": {
+    "3009": {
       "op": "btoi",
       "defined_out": [
         "arr_len#0",
@@ -26534,7 +26244,7 @@
         "box%array_length%0#0"
       ]
     },
-    "3016": {
+    "3010": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%2#0",
@@ -26547,7 +26257,7 @@
         "aggregate%val_as_bytes%2#0"
       ]
     },
-    "3017": {
+    "3011": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -26562,7 +26272,7 @@
         "0x151f7c75"
       ]
     },
-    "3018": {
+    "3012": {
       "op": "swap",
       "stack_out": [
         "times#0",
@@ -26572,7 +26282,7 @@
         "aggregate%val_as_bytes%2#0"
       ]
     },
-    "3019": {
+    "3013": {
       "op": "concat",
       "defined_out": [
         "arr_len#0",
@@ -26585,7 +26295,7 @@
         "tmp%4#0"
       ]
     },
-    "3020": {
+    "3014": {
       "op": "log",
       "stack_out": [
         "times#0",
@@ -26593,7 +26303,7 @@
         "i#0"
       ]
     },
-    "3021": {
+    "3015": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -26606,7 +26316,7 @@
         "1"
       ]
     },
-    "3022": {
+    "3016": {
       "op": "return",
       "stack_out": [
         "times#0",
@@ -26614,7 +26324,7 @@
         "i#0"
       ]
     },
-    "3023": {
+    "3017": {
       "subroutine": "examples.box_storage.contract.BoxContract.pop_dynamic_box[routing]",
       "params": {},
       "block": "pop_dynamic_box",
@@ -26627,7 +26337,7 @@
         "tmp%0#0"
       ]
     },
-    "3026": {
+    "3020": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -26638,7 +26348,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3027": {
+    "3021": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -26649,7 +26359,7 @@
         "len%0#0"
       ]
     },
-    "3028": {
+    "3022": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -26662,7 +26372,7 @@
         "8"
       ]
     },
-    "3029": {
+    "3023": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -26673,14 +26383,14 @@
         "eq%0#0"
       ]
     },
-    "3030": {
+    "3024": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3031": {
+    "3025": {
       "op": "btoi",
       "defined_out": [
         "times#0"
@@ -26689,7 +26399,7 @@
         "times#0"
       ]
     },
-    "3032": {
+    "3026": {
       "op": "bytec_2 // \"dynamic_box\"",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26700,7 +26410,7 @@
         "\"dynamic_box\""
       ]
     },
-    "3033": {
+    "3027": {
       "op": "intc_3 // 0",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26713,7 +26423,7 @@
         "0"
       ]
     },
-    "3034": {
+    "3028": {
       "op": "intc_0 // 2",
       "defined_out": [
         "\"dynamic_box\"",
@@ -26728,7 +26438,7 @@
         "2"
       ]
     },
-    "3035": {
+    "3029": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -26739,7 +26449,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "3036": {
+    "3030": {
       "op": "btoi",
       "defined_out": [
         "times#0",
@@ -26750,14 +26460,14 @@
         "tmp%0#1"
       ]
     },
-    "3037": {
+    "3031": {
       "op": "swap",
       "stack_out": [
         "tmp%0#1",
         "times#0"
       ]
     },
-    "3038": {
+    "3032": {
       "op": "-",
       "defined_out": [
         "arr_len#0"
@@ -26766,7 +26476,7 @@
         "arr_len#0"
       ]
     },
-    "3039": {
+    "3033": {
       "op": "dup",
       "defined_out": [
         "arr_len#0",
@@ -26777,7 +26487,7 @@
         "arr_len#0 (copy)"
       ]
     },
-    "3040": {
+    "3034": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26788,7 +26498,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "3041": {
+    "3035": {
       "op": "dup",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -26801,7 +26511,7 @@
         "aggregate%val_as_bytes%0#0 (copy)"
       ]
     },
-    "3042": {
+    "3036": {
       "op": "bitlen",
       "defined_out": [
         "aggregate%bitlen%0#0",
@@ -26814,7 +26524,7 @@
         "aggregate%bitlen%0#0"
       ]
     },
-    "3043": {
+    "3037": {
       "op": "pushint 16",
       "defined_out": [
         "16",
@@ -26829,7 +26539,7 @@
         "16"
       ]
     },
-    "3045": {
+    "3039": {
       "op": "<=",
       "defined_out": [
         "aggregate%no_overflow%0#0",
@@ -26842,7 +26552,7 @@
         "aggregate%no_overflow%0#0"
       ]
     },
-    "3046": {
+    "3040": {
       "error": "overflow",
       "op": "assert // overflow",
       "stack_out": [
@@ -26850,7 +26560,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "3047": {
+    "3041": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%uint16%0#0",
@@ -26861,7 +26571,7 @@
         "aggregate%uint16%0#0"
       ]
     },
-    "3050": {
+    "3044": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "arr_len#0",
@@ -26869,7 +26579,7 @@
         "\"dynamic_box\""
       ]
     },
-    "3051": {
+    "3045": {
       "op": "intc_3 // 0",
       "stack_out": [
         "arr_len#0",
@@ -26878,7 +26588,7 @@
         "0"
       ]
     },
-    "3052": {
+    "3046": {
       "op": "uncover 2",
       "stack_out": [
         "arr_len#0",
@@ -26887,20 +26597,20 @@
         "aggregate%uint16%0#0"
       ]
     },
-    "3054": {
+    "3048": {
       "op": "box_replace",
       "stack_out": [
         "arr_len#0"
       ]
     },
-    "3055": {
+    "3049": {
       "op": "intc_2 // 8",
       "stack_out": [
         "arr_len#0",
         "8"
       ]
     },
-    "3056": {
+    "3050": {
       "op": "*",
       "defined_out": [
         "tmp%3#1"
@@ -26909,14 +26619,14 @@
         "tmp%3#1"
       ]
     },
-    "3057": {
+    "3051": {
       "op": "intc_0 // 2",
       "stack_out": [
         "tmp%3#1",
         "2"
       ]
     },
-    "3058": {
+    "3052": {
       "op": "+",
       "defined_out": [
         "tmp%4#1"
@@ -26925,38 +26635,38 @@
         "tmp%4#1"
       ]
     },
-    "3059": {
+    "3053": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "tmp%4#1",
         "\"dynamic_box\""
       ]
     },
-    "3060": {
+    "3054": {
       "op": "swap",
       "stack_out": [
         "\"dynamic_box\"",
         "tmp%4#1"
       ]
     },
-    "3061": {
+    "3055": {
       "op": "box_resize",
       "stack_out": []
     },
-    "3062": {
+    "3056": {
       "op": "bytec_2 // \"dynamic_box\"",
       "stack_out": [
         "\"dynamic_box\""
       ]
     },
-    "3063": {
+    "3057": {
       "op": "intc_3 // 0",
       "stack_out": [
         "\"dynamic_box\"",
         "0"
       ]
     },
-    "3064": {
+    "3058": {
       "op": "intc_0 // 2",
       "stack_out": [
         "\"dynamic_box\"",
@@ -26964,7 +26674,7 @@
         "2"
       ]
     },
-    "3065": {
+    "3059": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%1#0"
@@ -26973,7 +26683,7 @@
         "box%box_extract%1#0"
       ]
     },
-    "3066": {
+    "3060": {
       "op": "btoi",
       "defined_out": [
         "box%array_length%0#0"
@@ -26982,7 +26692,7 @@
         "box%array_length%0#0"
       ]
     },
-    "3067": {
+    "3061": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%1#0"
@@ -26991,7 +26701,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "3068": {
+    "3062": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -27002,14 +26712,14 @@
         "0x151f7c75"
       ]
     },
-    "3069": {
+    "3063": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "3070": {
+    "3064": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0"
@@ -27018,11 +26728,11 @@
         "tmp%4#0"
       ]
     },
-    "3071": {
+    "3065": {
       "op": "log",
       "stack_out": []
     },
-    "3072": {
+    "3066": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -27031,239 +26741,214 @@
         "1"
       ]
     },
-    "3073": {
+    "3067": {
       "op": "return",
       "stack_out": []
     },
-    "3074": {
+    "3068": {
       "subroutine": "examples.box_storage.contract.BoxContract.sum_dynamic_box[routing]",
       "params": {},
       "block": "sum_dynamic_box",
       "stack_in": [],
       "op": "intc_3 // 0"
     },
-    "3075": {
-      "op": "bytec_2 // \"dynamic_box\""
-    },
-    "3076": {
-      "op": "intc_3 // 0"
-    },
-    "3077": {
-      "op": "intc_0 // 2",
+    "3069": {
+      "op": "dup",
       "defined_out": [
-        "\"dynamic_box\"",
-        "0",
-        "2",
+        "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
         "total#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "3070": {
+      "block": "sum_dynamic_box_for_header@2",
+      "stack_in": [
+        "total#0",
+        "item_index_internal%0#0"
+      ],
+      "op": "bytec_2 // \"dynamic_box\"",
+      "defined_out": [
+        "\"dynamic_box\""
+      ],
+      "stack_out": [
+        "total#0",
+        "item_index_internal%0#0",
+        "\"dynamic_box\""
+      ]
+    },
+    "3071": {
+      "op": "intc_3 // 0",
+      "defined_out": [
+        "\"dynamic_box\"",
+        "0"
+      ],
+      "stack_out": [
+        "total#0",
+        "item_index_internal%0#0",
+        "\"dynamic_box\"",
+        "0"
+      ]
+    },
+    "3072": {
+      "op": "intc_0 // 2",
+      "defined_out": [
+        "\"dynamic_box\"",
+        "0",
+        "2"
+      ],
+      "stack_out": [
+        "total#0",
+        "item_index_internal%0#0",
         "\"dynamic_box\"",
         "0",
         "2"
       ]
     },
-    "3078": {
+    "3073": {
       "op": "box_extract",
       "defined_out": [
-        "box%box_extract%0#0",
-        "total#0"
+        "box%box_extract%0#0"
       ],
       "stack_out": [
         "total#0",
+        "item_index_internal%0#0",
         "box%box_extract%0#0"
       ]
     },
-    "3079": {
+    "3074": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%0#0",
-        "total#0"
-      ],
-      "stack_out": [
-        "total#0",
         "box%array_length%0#0"
-      ]
-    },
-    "3080": {
-      "op": "intc_3 // 0",
-      "defined_out": [
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "total#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "3081": {
-      "block": "sum_dynamic_box_for_header@2",
-      "stack_in": [
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "op": "dup",
-      "defined_out": [
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "3082": {
-      "op": "dig 2",
-      "defined_out": [
-        "box%array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "total#0",
-        "box%array_length%0#0",
-        "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%array_length%0#0"
       ]
     },
-    "3084": {
-      "op": "<",
+    "3075": {
+      "op": "dig 1",
       "defined_out": [
         "box%array_length%0#0",
+        "item_index_internal%0#0"
+      ],
+      "stack_out": [
+        "total#0",
+        "item_index_internal%0#0",
+        "box%array_length%0#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "3077": {
+      "op": ">",
+      "defined_out": [
         "continue_looping%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "3085": {
+    "3078": {
       "op": "bz sum_dynamic_box_after_for@5",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3088": {
+    "3081": {
       "op": "dupn 2",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ]
     },
-    "3090": {
+    "3083": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0 (copy)",
         "8"
       ]
     },
-    "3091": {
+    "3084": {
       "op": "*",
       "defined_out": [
-        "box%array_length%0#0",
         "box%element_offset%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%element_offset%0#0"
       ]
     },
-    "3092": {
+    "3085": {
       "op": "intc_0 // 2",
-      "defined_out": [
-        "2",
-        "box%array_length%0#0",
-        "box%element_offset%0#0",
-        "item_index_internal%0#0"
-      ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%element_offset%0#0",
         "2"
       ]
     },
-    "3093": {
+    "3086": {
       "op": "+",
       "defined_out": [
-        "box%array_length%0#0",
         "box%offset%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%offset%0#0"
       ]
     },
-    "3094": {
+    "3087": {
       "op": "bytec_2 // \"dynamic_box\"",
-      "defined_out": [
-        "\"dynamic_box\"",
-        "box%array_length%0#0",
-        "box%offset%0#0",
-        "item_index_internal%0#0"
-      ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%offset%0#0",
         "\"dynamic_box\""
       ]
     },
-    "3095": {
+    "3088": {
       "op": "swap",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "\"dynamic_box\"",
         "box%offset%0#0"
       ]
     },
-    "3096": {
+    "3089": {
       "op": "intc_2 // 8",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "\"dynamic_box\"",
@@ -27271,137 +26956,121 @@
         "8"
       ]
     },
-    "3097": {
+    "3090": {
       "op": "box_extract",
       "defined_out": [
-        "box%array_length%0#0",
         "box%box_extract%1#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "box%box_extract%1#0"
       ]
     },
-    "3098": {
+    "3091": {
       "op": "btoi",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "val#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "val#0"
       ]
     },
-    "3099": {
-      "op": "dig 4",
+    "3092": {
+      "op": "dig 3",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0",
         "val#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "val#0",
         "total#0"
       ]
     },
-    "3101": {
+    "3094": {
       "op": "+",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "3102": {
-      "op": "bury 4",
+    "3095": {
+      "op": "bury 3",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3104": {
+    "3097": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "3105": {
+    "3098": {
       "op": "+",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3106": {
+    "3099": {
       "op": "bury 1",
       "defined_out": [
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3108": {
+    "3101": {
       "op": "b sum_dynamic_box_for_header@2"
     },
-    "3111": {
+    "3104": {
       "block": "sum_dynamic_box_after_for@5",
       "stack_in": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 2",
+      "op": "dig 1",
       "defined_out": [
         "total#0"
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "3113": {
+    "3106": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -27409,12 +27078,11 @@
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "3114": {
+    "3107": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -27423,23 +27091,21 @@
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%val_as_bytes%0#0",
         "0x151f7c75"
       ]
     },
-    "3115": {
+    "3108": {
       "op": "swap",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "3116": {
+    "3109": {
       "op": "concat",
       "defined_out": [
         "tmp%2#0",
@@ -27447,20 +27113,18 @@
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "tmp%2#0"
       ]
     },
-    "3117": {
+    "3110": {
       "op": "log",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3118": {
+    "3111": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -27468,20 +27132,18 @@
       ],
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "3119": {
+    "3112": {
       "op": "return",
       "stack_out": [
         "total#0",
-        "box%array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "3120": {
+    "3113": {
       "subroutine": "examples.box_storage.contract.BoxContract.write_dynamic_box[routing]",
       "params": {},
       "block": "write_dynamic_box",
@@ -27494,7 +27156,7 @@
         "tmp%0#0"
       ]
     },
-    "3123": {
+    "3116": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -27505,7 +27167,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3124": {
+    "3117": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -27516,7 +27178,7 @@
         "len%0#0"
       ]
     },
-    "3125": {
+    "3118": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -27529,7 +27191,7 @@
         "8"
       ]
     },
-    "3126": {
+    "3119": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -27540,14 +27202,14 @@
         "eq%0#0"
       ]
     },
-    "3127": {
+    "3120": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3128": {
+    "3121": {
       "op": "btoi",
       "defined_out": [
         "index#0"
@@ -27556,7 +27218,7 @@
         "index#0"
       ]
     },
-    "3129": {
+    "3122": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "index#0",
@@ -27567,7 +27229,7 @@
         "tmp%2#0"
       ]
     },
-    "3132": {
+    "3125": {
       "op": "dup",
       "defined_out": [
         "index#0",
@@ -27580,7 +27242,7 @@
         "tmp%2#0 (copy)"
       ]
     },
-    "3133": {
+    "3126": {
       "op": "len",
       "defined_out": [
         "index#0",
@@ -27593,7 +27255,7 @@
         "len%1#0"
       ]
     },
-    "3134": {
+    "3127": {
       "op": "intc_2 // 8",
       "stack_out": [
         "index#0",
@@ -27602,7 +27264,7 @@
         "8"
       ]
     },
-    "3135": {
+    "3128": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -27615,7 +27277,7 @@
         "eq%1#0"
       ]
     },
-    "3136": {
+    "3129": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -27623,14 +27285,14 @@
         "tmp%2#0"
       ]
     },
-    "3137": {
+    "3130": {
       "op": "swap",
       "stack_out": [
         "tmp%2#0",
         "index#0"
       ]
     },
-    "3138": {
+    "3131": {
       "op": "intc_2 // 8",
       "stack_out": [
         "tmp%2#0",
@@ -27638,7 +27300,7 @@
         "8"
       ]
     },
-    "3139": {
+    "3132": {
       "op": "*",
       "defined_out": [
         "box%element_offset%0#0",
@@ -27649,7 +27311,7 @@
         "box%element_offset%0#0"
       ]
     },
-    "3140": {
+    "3133": {
       "op": "intc_0 // 2",
       "defined_out": [
         "2",
@@ -27662,7 +27324,7 @@
         "2"
       ]
     },
-    "3141": {
+    "3134": {
       "op": "+",
       "defined_out": [
         "box%offset%0#0",
@@ -27673,7 +27335,7 @@
         "box%offset%0#0"
       ]
     },
-    "3142": {
+    "3135": {
       "op": "bytec_2 // \"dynamic_box\"",
       "defined_out": [
         "\"dynamic_box\"",
@@ -27686,7 +27348,7 @@
         "\"dynamic_box\""
       ]
     },
-    "3143": {
+    "3136": {
       "op": "swap",
       "stack_out": [
         "tmp%2#0",
@@ -27694,7 +27356,7 @@
         "box%offset%0#0"
       ]
     },
-    "3144": {
+    "3137": {
       "op": "uncover 2",
       "stack_out": [
         "\"dynamic_box\"",
@@ -27702,11 +27364,11 @@
         "tmp%2#0"
       ]
     },
-    "3146": {
+    "3139": {
       "op": "box_replace",
       "stack_out": []
     },
-    "3147": {
+    "3140": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -27715,11 +27377,11 @@
         "1"
       ]
     },
-    "3148": {
+    "3141": {
       "op": "return",
       "stack_out": []
     },
-    "3149": {
+    "3142": {
       "subroutine": "examples.box_storage.contract.BoxContract.write_dynamic_arr_struct[routing]",
       "params": {},
       "block": "write_dynamic_arr_struct",
@@ -27732,7 +27394,7 @@
         "tmp%0#0"
       ]
     },
-    "3152": {
+    "3145": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -27743,7 +27405,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3153": {
+    "3146": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -27754,7 +27416,7 @@
         "len%0#0"
       ]
     },
-    "3154": {
+    "3147": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -27767,7 +27429,7 @@
         "8"
       ]
     },
-    "3155": {
+    "3148": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -27778,14 +27440,14 @@
         "eq%0#0"
       ]
     },
-    "3156": {
+    "3149": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3157": {
+    "3150": {
       "op": "btoi",
       "defined_out": [
         "index#0"
@@ -27794,7 +27456,7 @@
         "index#0"
       ]
     },
-    "3158": {
+    "3151": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "index#0",
@@ -27805,7 +27467,7 @@
         "tmp%2#0"
       ]
     },
-    "3161": {
+    "3154": {
       "op": "dup",
       "defined_out": [
         "index#0",
@@ -27818,7 +27480,7 @@
         "tmp%2#0 (copy)"
       ]
     },
-    "3162": {
+    "3155": {
       "op": "len",
       "defined_out": [
         "index#0",
@@ -27831,7 +27493,7 @@
         "len%1#0"
       ]
     },
-    "3163": {
+    "3156": {
       "op": "intc_2 // 8",
       "stack_out": [
         "index#0",
@@ -27840,7 +27502,7 @@
         "8"
       ]
     },
-    "3164": {
+    "3157": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -27853,7 +27515,7 @@
         "eq%1#0"
       ]
     },
-    "3165": {
+    "3158": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -27861,7 +27523,7 @@
         "tmp%2#0"
       ]
     },
-    "3166": {
+    "3159": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -27874,7 +27536,7 @@
         "\"dynamic_arr_struct\""
       ]
     },
-    "3167": {
+    "3160": {
       "op": "pushint 20",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -27889,7 +27551,7 @@
         "20"
       ]
     },
-    "3169": {
+    "3162": {
       "op": "intc_0 // 2",
       "defined_out": [
         "\"dynamic_arr_struct\"",
@@ -27906,7 +27568,7 @@
         "2"
       ]
     },
-    "3170": {
+    "3163": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -27919,7 +27581,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "3171": {
+    "3164": {
       "op": "btoi",
       "defined_out": [
         "box%btoi%0#0",
@@ -27932,7 +27594,7 @@
         "box%btoi%0#0"
       ]
     },
-    "3172": {
+    "3165": {
       "op": "dig 2",
       "defined_out": [
         "box%btoi%0#0",
@@ -27947,7 +27609,7 @@
         "index#0 (copy)"
       ]
     },
-    "3174": {
+    "3167": {
       "op": ">",
       "defined_out": [
         "box%index_ok%0#0",
@@ -27960,7 +27622,7 @@
         "box%index_ok%0#0"
       ]
     },
-    "3175": {
+    "3168": {
       "error": "index out of bounds",
       "op": "assert // index out of bounds",
       "stack_out": [
@@ -27968,14 +27630,14 @@
         "tmp%2#0"
       ]
     },
-    "3176": {
+    "3169": {
       "op": "swap",
       "stack_out": [
         "tmp%2#0",
         "index#0"
       ]
     },
-    "3177": {
+    "3170": {
       "op": "intc_2 // 8",
       "stack_out": [
         "tmp%2#0",
@@ -27983,7 +27645,7 @@
         "8"
       ]
     },
-    "3178": {
+    "3171": {
       "op": "*",
       "defined_out": [
         "box%element_offset%0#0",
@@ -27994,7 +27656,7 @@
         "box%element_offset%0#0"
       ]
     },
-    "3179": {
+    "3172": {
       "op": "pushint 22",
       "defined_out": [
         "22",
@@ -28007,7 +27669,7 @@
         "22"
       ]
     },
-    "3181": {
+    "3174": {
       "op": "+",
       "defined_out": [
         "box%offset%1#0",
@@ -28018,7 +27680,7 @@
         "box%offset%1#0"
       ]
     },
-    "3182": {
+    "3175": {
       "op": "bytec_0 // \"dynamic_arr_struct\"",
       "stack_out": [
         "tmp%2#0",
@@ -28026,7 +27688,7 @@
         "\"dynamic_arr_struct\""
       ]
     },
-    "3183": {
+    "3176": {
       "op": "swap",
       "stack_out": [
         "tmp%2#0",
@@ -28034,7 +27696,7 @@
         "box%offset%1#0"
       ]
     },
-    "3184": {
+    "3177": {
       "op": "uncover 2",
       "stack_out": [
         "\"dynamic_arr_struct\"",
@@ -28042,11 +27704,11 @@
         "tmp%2#0"
       ]
     },
-    "3186": {
+    "3179": {
       "op": "box_replace",
       "stack_out": []
     },
-    "3187": {
+    "3180": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -28055,11 +27717,11 @@
         "1"
       ]
     },
-    "3188": {
+    "3181": {
       "op": "return",
       "stack_out": []
     },
-    "3189": {
+    "3182": {
       "subroutine": "examples.box_storage.contract.BoxContract.slice_box[routing]",
       "params": {},
       "block": "slice_box",
@@ -28072,7 +27734,7 @@
         "\"0\""
       ]
     },
-    "3191": {
+    "3184": {
       "op": "box_del",
       "defined_out": [
         "{box_del}"
@@ -28081,17 +27743,17 @@
         "{box_del}"
       ]
     },
-    "3192": {
+    "3185": {
       "op": "pop",
       "stack_out": []
     },
-    "3193": {
+    "3186": {
       "op": "bytec 15 // \"0\"",
       "stack_out": [
         "\"0\""
       ]
     },
-    "3195": {
+    "3188": {
       "op": "pushbytes 0x54657374696e672074657374696e6720313233",
       "defined_out": [
         "\"0\"",
@@ -28102,17 +27764,17 @@
         "0x54657374696e672074657374696e6720313233"
       ]
     },
-    "3216": {
+    "3209": {
       "op": "box_put",
       "stack_out": []
     },
-    "3217": {
+    "3210": {
       "op": "bytec 15 // \"0\"",
       "stack_out": [
         "\"0\""
       ]
     },
-    "3219": {
+    "3212": {
       "op": "intc_3 // 0",
       "defined_out": [
         "\"0\"",
@@ -28123,7 +27785,7 @@
         "0"
       ]
     },
-    "3220": {
+    "3213": {
       "op": "pushint 7",
       "defined_out": [
         "\"0\"",
@@ -28136,7 +27798,7 @@
         "7"
       ]
     },
-    "3222": {
+    "3215": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0"
@@ -28145,7 +27807,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "3223": {
+    "3216": {
       "op": "pushbytes 0x54657374696e67",
       "defined_out": [
         "0x54657374696e67",
@@ -28156,7 +27818,7 @@
         "0x54657374696e67"
       ]
     },
-    "3232": {
+    "3225": {
       "op": "==",
       "defined_out": [
         "tmp%1#0"
@@ -28165,11 +27827,11 @@
         "tmp%1#0"
       ]
     },
-    "3233": {
+    "3226": {
       "op": "assert",
       "stack_out": []
     },
-    "3234": {
+    "3227": {
       "op": "bytec 4 // 0x424f585f43",
       "defined_out": [
         "0x424f585f43"
@@ -28178,23 +27840,23 @@
         "0x424f585f43"
       ]
     },
-    "3236": {
+    "3229": {
       "op": "box_del",
       "stack_out": [
         "{box_del}"
       ]
     },
-    "3237": {
+    "3230": {
       "op": "pop",
       "stack_out": []
     },
-    "3238": {
+    "3231": {
       "op": "bytec 4 // 0x424f585f43",
       "stack_out": [
         "0x424f585f43"
       ]
     },
-    "3240": {
+    "3233": {
       "op": "pushbytes 0x000548656c6c6f",
       "defined_out": [
         "0x000548656c6c6f",
@@ -28205,17 +27867,17 @@
         "0x000548656c6c6f"
       ]
     },
-    "3249": {
+    "3242": {
       "op": "box_put",
       "stack_out": []
     },
-    "3250": {
+    "3243": {
       "op": "bytec 4 // 0x424f585f43",
       "stack_out": [
         "0x424f585f43"
       ]
     },
-    "3252": {
+    "3245": {
       "op": "intc_0 // 2",
       "defined_out": [
         "0x424f585f43",
@@ -28226,7 +27888,7 @@
         "2"
       ]
     },
-    "3253": {
+    "3246": {
       "op": "pushint 5",
       "defined_out": [
         "0x424f585f43",
@@ -28239,7 +27901,7 @@
         "5"
       ]
     },
-    "3255": {
+    "3248": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%1#0"
@@ -28248,7 +27910,7 @@
         "box%box_extract%1#0"
       ]
     },
-    "3256": {
+    "3249": {
       "op": "pushbytes 0x48656c6c6f",
       "defined_out": [
         "0x48656c6c6f",
@@ -28259,7 +27921,7 @@
         "0x48656c6c6f"
       ]
     },
-    "3263": {
+    "3256": {
       "op": "==",
       "defined_out": [
         "tmp%4#0"
@@ -28268,11 +27930,11 @@
         "tmp%4#0"
       ]
     },
-    "3264": {
+    "3257": {
       "op": "assert",
       "stack_out": []
     },
-    "3265": {
+    "3258": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -28281,11 +27943,11 @@
         "1"
       ]
     },
-    "3266": {
+    "3259": {
       "op": "return",
       "stack_out": []
     },
-    "3267": {
+    "3260": {
       "subroutine": "examples.box_storage.contract.BoxContract.test_box_ref[routing]",
       "params": {},
       "block": "test_box_ref",
@@ -28298,7 +27960,7 @@
         "\"blob\""
       ]
     },
-    "3269": {
+    "3262": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -28309,13 +27971,13 @@
         "maybe_exists%0#0"
       ]
     },
-    "3270": {
+    "3263": {
       "op": "bury 1",
       "stack_out": [
         "maybe_exists%0#0"
       ]
     },
-    "3272": {
+    "3265": {
       "op": "!",
       "defined_out": [
         "tmp%0#0"
@@ -28324,18 +27986,18 @@
         "tmp%0#0"
       ]
     },
-    "3273": {
+    "3266": {
       "error": "no data",
       "op": "assert // no data",
       "stack_out": []
     },
-    "3274": {
+    "3267": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "\"blob\""
       ]
     },
-    "3276": {
+    "3269": {
       "op": "pushint 32",
       "defined_out": [
         "\"blob\"",
@@ -28346,7 +28008,7 @@
         "32"
       ]
     },
-    "3278": {
+    "3271": {
       "op": "box_create",
       "defined_out": [
         "tmp%4#0"
@@ -28355,11 +28017,11 @@
         "tmp%4#0"
       ]
     },
-    "3279": {
+    "3272": {
       "op": "assert",
       "stack_out": []
     },
-    "3280": {
+    "3273": {
       "op": "txn Sender",
       "defined_out": [
         "sender_bytes#0"
@@ -28368,7 +28030,7 @@
         "sender_bytes#0"
       ]
     },
-    "3282": {
+    "3275": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "app_address#0",
@@ -28379,7 +28041,7 @@
         "app_address#0"
       ]
     },
-    "3284": {
+    "3277": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28387,7 +28049,7 @@
         "\"blob\""
       ]
     },
-    "3286": {
+    "3279": {
       "op": "intc_3 // 0",
       "defined_out": [
         "\"blob\"",
@@ -28402,7 +28064,7 @@
         "0"
       ]
     },
-    "3287": {
+    "3280": {
       "op": "dig 3",
       "defined_out": [
         "\"blob\"",
@@ -28419,14 +28081,14 @@
         "sender_bytes#0 (copy)"
       ]
     },
-    "3289": {
+    "3282": {
       "op": "box_replace",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3290": {
+    "3283": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28434,7 +28096,7 @@
         "\"blob\""
       ]
     },
-    "3292": {
+    "3285": {
       "op": "pushint 8000",
       "defined_out": [
         "\"blob\"",
@@ -28449,14 +28111,14 @@
         "8000"
       ]
     },
-    "3295": {
+    "3288": {
       "op": "box_resize",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3296": {
+    "3289": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28464,7 +28126,7 @@
         "\"blob\""
       ]
     },
-    "3298": {
+    "3291": {
       "op": "intc_3 // 0",
       "stack_out": [
         "sender_bytes#0",
@@ -28473,7 +28135,7 @@
         "0"
       ]
     },
-    "3299": {
+    "3292": {
       "op": "dup",
       "stack_out": [
         "sender_bytes#0",
@@ -28483,7 +28145,7 @@
         "0"
       ]
     },
-    "3300": {
+    "3293": {
       "op": "dig 3",
       "defined_out": [
         "\"blob\"",
@@ -28501,14 +28163,14 @@
         "app_address#0 (copy)"
       ]
     },
-    "3302": {
+    "3295": {
       "op": "box_splice",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3303": {
+    "3296": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28516,7 +28178,7 @@
         "\"blob\""
       ]
     },
-    "3305": {
+    "3298": {
       "op": "pushint 64",
       "defined_out": [
         "\"blob\"",
@@ -28531,7 +28193,7 @@
         "64"
       ]
     },
-    "3307": {
+    "3300": {
       "op": "bytec 16 // 0x68656c6c6f",
       "defined_out": [
         "\"blob\"",
@@ -28548,14 +28210,14 @@
         "0x68656c6c6f"
       ]
     },
-    "3309": {
+    "3302": {
       "op": "box_replace",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3310": {
+    "3303": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28563,7 +28225,7 @@
         "\"blob\""
       ]
     },
-    "3312": {
+    "3305": {
       "op": "intc_3 // 0",
       "stack_out": [
         "sender_bytes#0",
@@ -28572,7 +28234,7 @@
         "0"
       ]
     },
-    "3313": {
+    "3306": {
       "op": "pushint 69",
       "defined_out": [
         "\"blob\"",
@@ -28589,7 +28251,7 @@
         "69"
       ]
     },
-    "3315": {
+    "3308": {
       "op": "box_extract",
       "defined_out": [
         "app_address#0",
@@ -28602,7 +28264,7 @@
         "prefix#0"
       ]
     },
-    "3316": {
+    "3309": {
       "op": "dig 1",
       "stack_out": [
         "sender_bytes#0",
@@ -28611,7 +28273,7 @@
         "app_address#0 (copy)"
       ]
     },
-    "3318": {
+    "3311": {
       "op": "dig 3",
       "stack_out": [
         "sender_bytes#0",
@@ -28621,7 +28283,7 @@
         "sender_bytes#0 (copy)"
       ]
     },
-    "3320": {
+    "3313": {
       "op": "concat",
       "defined_out": [
         "app_address#0",
@@ -28636,7 +28298,7 @@
         "tmp%10#0"
       ]
     },
-    "3321": {
+    "3314": {
       "op": "bytec 16 // 0x68656c6c6f",
       "stack_out": [
         "sender_bytes#0",
@@ -28646,7 +28308,7 @@
         "0x68656c6c6f"
       ]
     },
-    "3323": {
+    "3316": {
       "op": "concat",
       "defined_out": [
         "app_address#0",
@@ -28661,7 +28323,7 @@
         "tmp%11#0"
       ]
     },
-    "3324": {
+    "3317": {
       "op": "==",
       "defined_out": [
         "app_address#0",
@@ -28674,14 +28336,14 @@
         "tmp%12#0"
       ]
     },
-    "3325": {
+    "3318": {
       "op": "assert",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3326": {
+    "3319": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28689,7 +28351,7 @@
         "\"blob\""
       ]
     },
-    "3328": {
+    "3321": {
       "op": "box_del",
       "defined_out": [
         "app_address#0",
@@ -28702,14 +28364,14 @@
         "{box_del}"
       ]
     },
-    "3329": {
+    "3322": {
       "op": "pop",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3330": {
+    "3323": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "sender_bytes#0",
@@ -28717,7 +28379,7 @@
         "\"blob\""
       ]
     },
-    "3332": {
+    "3325": {
       "op": "box_get",
       "defined_out": [
         "app_address#0",
@@ -28732,7 +28394,7 @@
         "exists#0"
       ]
     },
-    "3333": {
+    "3326": {
       "op": "dup",
       "defined_out": [
         "app_address#0",
@@ -28749,7 +28411,7 @@
         "exists#0 (copy)"
       ]
     },
-    "3334": {
+    "3327": {
       "op": "!",
       "defined_out": [
         "app_address#0",
@@ -28766,7 +28428,7 @@
         "tmp%14#0"
       ]
     },
-    "3335": {
+    "3328": {
       "op": "assert",
       "stack_out": [
         "sender_bytes#0",
@@ -28775,7 +28437,7 @@
         "exists#0"
       ]
     },
-    "3336": {
+    "3329": {
       "op": "dig 1",
       "defined_out": [
         "app_address#0",
@@ -28792,7 +28454,7 @@
         "value#0 (copy)"
       ]
     },
-    "3338": {
+    "3331": {
       "op": "pushbytes 0x",
       "defined_out": [
         "0x",
@@ -28811,7 +28473,7 @@
         "0x"
       ]
     },
-    "3340": {
+    "3333": {
       "op": "==",
       "defined_out": [
         "app_address#0",
@@ -28828,7 +28490,7 @@
         "tmp%15#0"
       ]
     },
-    "3341": {
+    "3334": {
       "op": "assert",
       "stack_out": [
         "sender_bytes#0",
@@ -28837,7 +28499,7 @@
         "exists#0"
       ]
     },
-    "3342": {
+    "3335": {
       "op": "dig 3",
       "stack_out": [
         "sender_bytes#0",
@@ -28847,7 +28509,7 @@
         "sender_bytes#0 (copy)"
       ]
     },
-    "3344": {
+    "3337": {
       "op": "cover 2",
       "stack_out": [
         "sender_bytes#0",
@@ -28857,7 +28519,7 @@
         "exists#0"
       ]
     },
-    "3346": {
+    "3339": {
       "op": "select",
       "defined_out": [
         "app_address#0",
@@ -28870,7 +28532,7 @@
         "state_get%0#0"
       ]
     },
-    "3347": {
+    "3340": {
       "op": "dig 2",
       "stack_out": [
         "sender_bytes#0",
@@ -28879,7 +28541,7 @@
         "sender_bytes#0 (copy)"
       ]
     },
-    "3349": {
+    "3342": {
       "op": "==",
       "defined_out": [
         "app_address#0",
@@ -28892,14 +28554,14 @@
         "tmp%16#0"
       ]
     },
-    "3350": {
+    "3343": {
       "op": "assert",
       "stack_out": [
         "sender_bytes#0",
         "app_address#0"
       ]
     },
-    "3351": {
+    "3344": {
       "op": "concat",
       "defined_out": [
         "tmp%17#0"
@@ -28908,51 +28570,51 @@
         "tmp%17#0"
       ]
     },
-    "3352": {
+    "3345": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "tmp%17#0",
         "\"blob\""
       ]
     },
-    "3354": {
+    "3347": {
       "op": "box_del",
       "stack_out": [
         "tmp%17#0",
         "{box_del}"
       ]
     },
-    "3355": {
+    "3348": {
       "op": "pop",
       "stack_out": [
         "tmp%17#0"
       ]
     },
-    "3356": {
+    "3349": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "tmp%17#0",
         "\"blob\""
       ]
     },
-    "3358": {
+    "3351": {
       "op": "swap",
       "stack_out": [
         "\"blob\"",
         "tmp%17#0"
       ]
     },
-    "3359": {
+    "3352": {
       "op": "box_put",
       "stack_out": []
     },
-    "3360": {
+    "3353": {
       "op": "bytec 5 // \"blob\"",
       "stack_out": [
         "\"blob\""
       ]
     },
-    "3362": {
+    "3355": {
       "op": "box_len",
       "defined_out": [
         "_%5#0",
@@ -28963,20 +28625,20 @@
         "maybe_exists%7#0"
       ]
     },
-    "3363": {
+    "3356": {
       "op": "pop",
       "stack_out": [
         "_%5#0"
       ]
     },
-    "3364": {
+    "3357": {
       "op": "pushint 64",
       "stack_out": [
         "_%5#0",
         "64"
       ]
     },
-    "3366": {
+    "3359": {
       "op": "==",
       "defined_out": [
         "tmp%18#0"
@@ -28985,11 +28647,11 @@
         "tmp%18#0"
       ]
     },
-    "3367": {
+    "3360": {
       "op": "assert",
       "stack_out": []
     },
-    "3368": {
+    "3361": {
       "op": "bytec 19 // \"box_ref\"",
       "defined_out": [
         "\"box_ref\""
@@ -28998,14 +28660,14 @@
         "\"box_ref\""
       ]
     },
-    "3370": {
+    "3363": {
       "op": "pushint 32",
       "stack_out": [
         "\"box_ref\"",
         "32"
       ]
     },
-    "3372": {
+    "3365": {
       "op": "box_create",
       "defined_out": [
         "{box_create}"
@@ -29014,27 +28676,27 @@
         "{box_create}"
       ]
     },
-    "3373": {
+    "3366": {
       "op": "pop",
       "stack_out": []
     },
-    "3374": {
+    "3367": {
       "op": "bytec 19 // \"box_ref\"",
       "stack_out": [
         "\"box_ref\""
       ]
     },
-    "3376": {
+    "3369": {
       "op": "box_del",
       "stack_out": [
         "{box_del}"
       ]
     },
-    "3377": {
+    "3370": {
       "op": "pop",
       "stack_out": []
     },
-    "3378": {
+    "3371": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -29043,11 +28705,11 @@
         "1"
       ]
     },
-    "3379": {
+    "3372": {
       "op": "return",
       "stack_out": []
     },
-    "3380": {
+    "3373": {
       "subroutine": "examples.box_storage.contract.BoxContract.box_map_test[routing]",
       "params": {},
       "block": "box_map_test",
@@ -29060,7 +28722,7 @@
         "0"
       ]
     },
-    "3381": {
+    "3374": {
       "op": "itob",
       "defined_out": [
         "box_0#0"
@@ -29069,7 +28731,7 @@
         "box_0#0"
       ]
     },
-    "3382": {
+    "3375": {
       "op": "dup",
       "defined_out": [
         "box_0#0",
@@ -29080,7 +28742,7 @@
         "box_0#0 (copy)"
       ]
     },
-    "3383": {
+    "3376": {
       "op": "box_del",
       "defined_out": [
         "box_0#0",
@@ -29091,13 +28753,13 @@
         "{box_del}"
       ]
     },
-    "3384": {
+    "3377": {
       "op": "pop",
       "stack_out": [
         "box_0#0"
       ]
     },
-    "3385": {
+    "3378": {
       "op": "pushbytes \"Hmmmmm\"",
       "defined_out": [
         "\"Hmmmmm\"",
@@ -29108,11 +28770,11 @@
         "\"Hmmmmm\""
       ]
     },
-    "3393": {
+    "3386": {
       "op": "box_put",
       "stack_out": []
     },
-    "3394": {
+    "3387": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -29121,7 +28783,7 @@
         "1"
       ]
     },
-    "3395": {
+    "3388": {
       "op": "itob",
       "defined_out": [
         "encoded_value%5#0"
@@ -29130,7 +28792,7 @@
         "encoded_value%5#0"
       ]
     },
-    "3396": {
+    "3389": {
       "op": "dup",
       "defined_out": [
         "encoded_value%5#0",
@@ -29141,7 +28803,7 @@
         "encoded_value%5#0 (copy)"
       ]
     },
-    "3397": {
+    "3390": {
       "op": "box_get",
       "defined_out": [
         "encoded_value%5#0",
@@ -29154,7 +28816,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "3398": {
+    "3391": {
       "op": "bytec 20 // \"default\"",
       "defined_out": [
         "\"default\"",
@@ -29169,7 +28831,7 @@
         "\"default\""
       ]
     },
-    "3400": {
+    "3393": {
       "op": "cover 2",
       "stack_out": [
         "encoded_value%5#0",
@@ -29178,7 +28840,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "3402": {
+    "3395": {
       "op": "select",
       "defined_out": [
         "encoded_value%5#0",
@@ -29189,7 +28851,7 @@
         "state_get%0#0"
       ]
     },
-    "3403": {
+    "3396": {
       "op": "bytec 20 // \"default\"",
       "stack_out": [
         "encoded_value%5#0",
@@ -29197,7 +28859,7 @@
         "\"default\""
       ]
     },
-    "3405": {
+    "3398": {
       "op": "==",
       "defined_out": [
         "encoded_value%5#0",
@@ -29208,20 +28870,20 @@
         "tmp%7#0"
       ]
     },
-    "3406": {
+    "3399": {
       "op": "assert",
       "stack_out": [
         "encoded_value%5#0"
       ]
     },
-    "3407": {
+    "3400": {
       "op": "dup",
       "stack_out": [
         "encoded_value%5#0",
         "encoded_value%5#0 (copy)"
       ]
     },
-    "3408": {
+    "3401": {
       "op": "box_len",
       "defined_out": [
         "encoded_value%5#0",
@@ -29234,14 +28896,14 @@
         "exists#0"
       ]
     },
-    "3409": {
+    "3402": {
       "op": "bury 1",
       "stack_out": [
         "encoded_value%5#0",
         "exists#0"
       ]
     },
-    "3411": {
+    "3404": {
       "op": "!",
       "defined_out": [
         "encoded_value%5#0",
@@ -29252,40 +28914,40 @@
         "tmp%8#0"
       ]
     },
-    "3412": {
+    "3405": {
       "op": "assert",
       "stack_out": [
         "encoded_value%5#0"
       ]
     },
-    "3413": {
+    "3406": {
       "op": "dup",
       "stack_out": [
         "encoded_value%5#0",
         "encoded_value%5#0 (copy)"
       ]
     },
-    "3414": {
+    "3407": {
       "op": "box_del",
       "stack_out": [
         "encoded_value%5#0",
         "{box_del}"
       ]
     },
-    "3415": {
+    "3408": {
       "op": "pop",
       "stack_out": [
         "encoded_value%5#0"
       ]
     },
-    "3416": {
+    "3409": {
       "op": "dup",
       "stack_out": [
         "encoded_value%5#0",
         "encoded_value%5#0 (copy)"
       ]
     },
-    "3417": {
+    "3410": {
       "op": "bytec 16 // \"hello\"",
       "defined_out": [
         "\"hello\"",
@@ -29298,33 +28960,33 @@
         "\"hello\""
       ]
     },
-    "3419": {
+    "3412": {
       "op": "box_put",
       "stack_out": [
         "encoded_value%5#0"
       ]
     },
-    "3420": {
+    "3413": {
       "op": "box_del",
       "stack_out": [
         "{box_del}"
       ]
     },
-    "3421": {
+    "3414": {
       "op": "pop",
       "stack_out": []
     },
-    "3422": {
+    "3415": {
       "op": "intc_1 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "3423": {
+    "3416": {
       "op": "return",
       "stack_out": []
     },
-    "3424": {
+    "3417": {
       "subroutine": "examples.box_storage.contract.BoxContract.box_map_set[routing]",
       "params": {},
       "block": "box_map_set",
@@ -29337,7 +28999,7 @@
         "tmp%0#0"
       ]
     },
-    "3427": {
+    "3420": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -29348,7 +29010,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3428": {
+    "3421": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -29359,7 +29021,7 @@
         "len%0#0"
       ]
     },
-    "3429": {
+    "3422": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -29372,7 +29034,7 @@
         "8"
       ]
     },
-    "3430": {
+    "3423": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -29383,14 +29045,14 @@
         "eq%0#0"
       ]
     },
-    "3431": {
+    "3424": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3432": {
+    "3425": {
       "op": "btoi",
       "defined_out": [
         "key#0"
@@ -29399,7 +29061,7 @@
         "key#0"
       ]
     },
-    "3433": {
+    "3426": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "key#0",
@@ -29410,7 +29072,7 @@
         "tmp%2#0"
       ]
     },
-    "3436": {
+    "3429": {
       "op": "dup",
       "defined_out": [
         "key#0",
@@ -29423,7 +29085,7 @@
         "tmp%2#0 (copy)"
       ]
     },
-    "3437": {
+    "3430": {
       "op": "intc_3 // 0",
       "defined_out": [
         "0",
@@ -29438,7 +29100,7 @@
         "0"
       ]
     },
-    "3438": {
+    "3431": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -29452,7 +29114,7 @@
         "aggregate%array_length%0#0"
       ]
     },
-    "3439": {
+    "3432": {
       "op": "intc_0 // 2",
       "defined_out": [
         "2",
@@ -29467,7 +29129,7 @@
         "2"
       ]
     },
-    "3440": {
+    "3433": {
       "op": "+",
       "defined_out": [
         "add%0#0",
@@ -29480,7 +29142,7 @@
         "add%0#0"
       ]
     },
-    "3441": {
+    "3434": {
       "op": "dig 1",
       "stack_out": [
         "key#0",
@@ -29489,7 +29151,7 @@
         "tmp%2#0 (copy)"
       ]
     },
-    "3443": {
+    "3436": {
       "op": "len",
       "defined_out": [
         "add%0#0",
@@ -29504,7 +29166,7 @@
         "len%1#0"
       ]
     },
-    "3444": {
+    "3437": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -29517,7 +29179,7 @@
         "eq%1#0"
       ]
     },
-    "3445": {
+    "3438": {
       "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "stack_out": [
@@ -29525,7 +29187,7 @@
         "tmp%2#0"
       ]
     },
-    "3446": {
+    "3439": {
       "op": "extract 2 0",
       "defined_out": [
         "key#0",
@@ -29536,14 +29198,14 @@
         "value#0"
       ]
     },
-    "3449": {
+    "3442": {
       "op": "swap",
       "stack_out": [
         "value#0",
         "key#0"
       ]
     },
-    "3450": {
+    "3443": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0",
@@ -29554,7 +29216,7 @@
         "encoded_value%0#0"
       ]
     },
-    "3451": {
+    "3444": {
       "op": "dup",
       "defined_out": [
         "encoded_value%0#0",
@@ -29567,7 +29229,7 @@
         "encoded_value%0#0 (copy)"
       ]
     },
-    "3452": {
+    "3445": {
       "op": "box_del",
       "defined_out": [
         "encoded_value%0#0",
@@ -29580,25 +29242,25 @@
         "{box_del}"
       ]
     },
-    "3453": {
+    "3446": {
       "op": "pop",
       "stack_out": [
         "value#0",
         "encoded_value%0#0"
       ]
     },
-    "3454": {
+    "3447": {
       "op": "swap",
       "stack_out": [
         "encoded_value%0#0",
         "value#0"
       ]
     },
-    "3455": {
+    "3448": {
       "op": "box_put",
       "stack_out": []
     },
-    "3456": {
+    "3449": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -29607,11 +29269,11 @@
         "1"
       ]
     },
-    "3457": {
+    "3450": {
       "op": "return",
       "stack_out": []
     },
-    "3458": {
+    "3451": {
       "subroutine": "examples.box_storage.contract.BoxContract.box_map_get[routing]",
       "params": {},
       "block": "box_map_get",
@@ -29624,7 +29286,7 @@
         "tmp%0#0"
       ]
     },
-    "3461": {
+    "3454": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -29635,7 +29297,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3462": {
+    "3455": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -29646,7 +29308,7 @@
         "len%0#0"
       ]
     },
-    "3463": {
+    "3456": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -29659,7 +29321,7 @@
         "8"
       ]
     },
-    "3464": {
+    "3457": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -29670,14 +29332,14 @@
         "eq%0#0"
       ]
     },
-    "3465": {
+    "3458": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3466": {
+    "3459": {
       "op": "btoi",
       "defined_out": [
         "key#0"
@@ -29686,7 +29348,7 @@
         "key#0"
       ]
     },
-    "3467": {
+    "3460": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0"
@@ -29695,7 +29357,7 @@
         "encoded_value%0#0"
       ]
     },
-    "3468": {
+    "3461": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -29706,14 +29368,14 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "3469": {
+    "3462": {
       "error": "check self.box_map entry exists",
       "op": "assert // check self.box_map entry exists",
       "stack_out": [
         "aggregate%box_get%0#0"
       ]
     },
-    "3470": {
+    "3463": {
       "op": "dup",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -29724,7 +29386,7 @@
         "aggregate%box_get%0#0 (copy)"
       ]
     },
-    "3471": {
+    "3464": {
       "op": "len",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -29735,7 +29397,7 @@
         "aggregate%length%0#0"
       ]
     },
-    "3472": {
+    "3465": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%0#0",
@@ -29746,7 +29408,7 @@
         "aggregate%as_bytes%0#0"
       ]
     },
-    "3473": {
+    "3466": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -29757,14 +29419,14 @@
         "aggregate%length_uint16%0#0"
       ]
     },
-    "3476": {
+    "3469": {
       "op": "swap",
       "stack_out": [
         "aggregate%length_uint16%0#0",
         "aggregate%box_get%0#0"
       ]
     },
-    "3477": {
+    "3470": {
       "op": "concat",
       "defined_out": [
         "aggregate%encoded_value%0#0"
@@ -29773,7 +29435,7 @@
         "aggregate%encoded_value%0#0"
       ]
     },
-    "3478": {
+    "3471": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -29784,14 +29446,14 @@
         "0x151f7c75"
       ]
     },
-    "3479": {
+    "3472": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%encoded_value%0#0"
       ]
     },
-    "3480": {
+    "3473": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0"
@@ -29800,11 +29462,11 @@
         "tmp%4#0"
       ]
     },
-    "3481": {
+    "3474": {
       "op": "log",
       "stack_out": []
     },
-    "3482": {
+    "3475": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -29813,11 +29475,11 @@
         "1"
       ]
     },
-    "3483": {
+    "3476": {
       "op": "return",
       "stack_out": []
     },
-    "3484": {
+    "3477": {
       "subroutine": "examples.box_storage.contract.BoxContract.box_map_del[routing]",
       "params": {},
       "block": "box_map_del",
@@ -29830,7 +29492,7 @@
         "tmp%0#0"
       ]
     },
-    "3487": {
+    "3480": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -29841,7 +29503,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3488": {
+    "3481": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -29852,7 +29514,7 @@
         "len%0#0"
       ]
     },
-    "3489": {
+    "3482": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -29865,7 +29527,7 @@
         "8"
       ]
     },
-    "3490": {
+    "3483": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -29876,14 +29538,14 @@
         "eq%0#0"
       ]
     },
-    "3491": {
+    "3484": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3492": {
+    "3485": {
       "op": "btoi",
       "defined_out": [
         "key#0"
@@ -29892,7 +29554,7 @@
         "key#0"
       ]
     },
-    "3493": {
+    "3486": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0"
@@ -29901,7 +29563,7 @@
         "encoded_value%0#0"
       ]
     },
-    "3494": {
+    "3487": {
       "op": "box_del",
       "defined_out": [
         "{box_del}"
@@ -29910,11 +29572,11 @@
         "{box_del}"
       ]
     },
-    "3495": {
+    "3488": {
       "op": "pop",
       "stack_out": []
     },
-    "3496": {
+    "3489": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -29923,11 +29585,11 @@
         "1"
       ]
     },
-    "3497": {
+    "3490": {
       "op": "return",
       "stack_out": []
     },
-    "3498": {
+    "3491": {
       "subroutine": "examples.box_storage.contract.BoxContract.box_map_exists[routing]",
       "params": {},
       "block": "box_map_exists",
@@ -29940,7 +29602,7 @@
         "tmp%0#0"
       ]
     },
-    "3501": {
+    "3494": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -29951,7 +29613,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "3502": {
+    "3495": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -29962,7 +29624,7 @@
         "len%0#0"
       ]
     },
-    "3503": {
+    "3496": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -29975,7 +29637,7 @@
         "8"
       ]
     },
-    "3504": {
+    "3497": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -29986,14 +29648,14 @@
         "eq%0#0"
       ]
     },
-    "3505": {
+    "3498": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "3506": {
+    "3499": {
       "op": "btoi",
       "defined_out": [
         "key#0"
@@ -30002,7 +29664,7 @@
         "key#0"
       ]
     },
-    "3507": {
+    "3500": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0"
@@ -30011,7 +29673,7 @@
         "encoded_value%0#0"
       ]
     },
-    "3508": {
+    "3501": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -30022,13 +29684,13 @@
         "maybe_exists%0#0"
       ]
     },
-    "3509": {
+    "3502": {
       "op": "bury 1",
       "stack_out": [
         "maybe_exists%0#0"
       ]
     },
-    "3511": {
+    "3504": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -30039,7 +29701,7 @@
         "0x00"
       ]
     },
-    "3514": {
+    "3507": {
       "op": "intc_3 // 0",
       "defined_out": [
         "0",
@@ -30052,7 +29714,7 @@
         "0"
       ]
     },
-    "3515": {
+    "3508": {
       "op": "uncover 2",
       "stack_out": [
         "0x00",
@@ -30060,7 +29722,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "3517": {
+    "3510": {
       "op": "setbit",
       "defined_out": [
         "aggregate%encoded_bool%0#0"
@@ -30069,7 +29731,7 @@
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "3518": {
+    "3511": {
       "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -30080,14 +29742,14 @@
         "0x151f7c75"
       ]
     },
-    "3519": {
+    "3512": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "3520": {
+    "3513": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0"
@@ -30096,11 +29758,11 @@
         "tmp%4#0"
       ]
     },
-    "3521": {
+    "3514": {
       "op": "log",
       "stack_out": []
     },
-    "3522": {
+    "3515": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -30109,7 +29771,7 @@
         "1"
       ]
     },
-    "3523": {
+    "3516": {
       "op": "return",
       "stack_out": []
     }

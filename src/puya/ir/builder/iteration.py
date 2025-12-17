@@ -12,7 +12,7 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.builder import sequence
 from puya.ir.builder._utils import assign, assign_temp
 from puya.ir.context import IRFunctionBuildContext
-from puya.ir.encodings import wtype_to_encoding
+from puya.ir.encodings import ArrayEncoding, wtype_to_encoding
 from puya.ir.models import (
     ConditionalBranch,
     GotoNth,
@@ -214,10 +214,15 @@ def handle_for_in_loop(context: IRFunctionBuildContext, statement: awst_nodes.Fo
                 "array_length",
             )
 
+            # def _get_value_at_index(index : Value) -> ValueProvider:
+            #     return sequence.read_aggregate_index_and_decode(context, iterable_wtype, 
+            #                                              [array], [index], loc, check_bounds=False)
+
             _iterate_indexable(
                 context,
                 loop_body=statement.loop_body,
                 indexable_size=indexable_size,
+                # get_value_at_index=_get_value_at_index,
                 # TODO: consider when array is a register and needs refreshing
                 get_value_at_index=lambda index: sequence.read_aggregate_index_and_decode(
                     context, iterable_wtype, [array], [index], loc, check_bounds=False
@@ -226,6 +231,8 @@ def handle_for_in_loop(context: IRFunctionBuildContext, statement: awst_nodes.Fo
                 statement_loc=statement.source_location,
                 reverse_index=reverse_index,
                 reverse_items=reverse_items,
+                array = array,
+                array_encoding = array_encoding
             )
         case _:
             raise InternalError("Unsupported ForInLoop sequence", statement.source_location)
@@ -517,6 +524,8 @@ def _iterate_indexable(
     get_value_at_index: Callable[[Value], ValueProvider],
     reverse_items: bool,
     reverse_index: bool,
+    array: Value | None = None,
+    array_encoding: ArrayEncoding | None = None
 ) -> None:
     body = context.block_builder.mkblock(loop_body, "for_body")
     header, footer, next_block = context.block_builder.mkblocks(
@@ -539,6 +548,15 @@ def _iterate_indexable(
 
     with context.block_builder.activate_open_block(header):
         current_index_internal = _refresh_mutated_variable(context, index_internal)
+        if array and array_encoding:
+            (indexable_size,) = context.visitor.materialise_value_provider(
+                sequence.get_length(
+                    array_encoding,
+                    array,
+                    statement_loc,
+                ),
+                "array_length",
+                )
         if not (reverse_items or reverse_index):
             continue_looping = assign_intrinsic_op(
                 context,
@@ -592,6 +610,7 @@ def _iterate_indexable(
                     args=[current_index_internal, 1],
                     source_location=None,
                 )
+            # _refresh_mutated_variable(context, reverse_index_internal), 1]
             context.block_builder.goto(header)
 
     context.block_builder.activate_block(next_block)

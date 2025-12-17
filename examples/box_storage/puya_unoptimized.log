@@ -1867,6 +1867,7 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable reverse_index_internal%0#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -2077,6 +2078,8 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable reverse_index_internal%0#0
 debug: Removing unused variable reverse_index_internal%1#0
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -2129,6 +2132,7 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable reverse_index_internal%0#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -2198,6 +2202,7 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable reverse_index_internal%0#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -4837,7 +4842,7 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable storage_value%0#0
-debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%1#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -4978,7 +4983,7 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable storage_value%0#0
-debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%1#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -9198,10 +9203,6 @@ debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[77]: 'v-load tuple_item%3#0' with 'l-load tuple_item%3#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[83]: 'l-store-copy tmp%2#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[85]: 'v-load tmp%2#0' with 'l-load tmp%2#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[95]: 'l-store-copy box%box_extract%4#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[97]: 'v-load box%box_extract%4#0' with 'l-load box%box_extract%4#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[99]: 'l-store-copy box%array_length%0#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[101]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[3]: 'l-store-copy box%offset%0#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[6]: 'v-load box%offset%0#0' with 'l-load box%offset%0#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[28]: 'l-store-copy box%offset%1#0 0'
@@ -9212,12 +9213,18 @@ debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[73]: 'v-load box%offset%3#0' with 'l-load box%offset%3#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[83]: 'l-store-copy values%3#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[86]: 'v-load values%3#0' with 'l-load values%3#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[95]: 'l-store-copy box%offset%4#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[98]: 'v-load box%offset%4#0' with 'l-load box%offset%4#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[66]: 'l-store-copy values%2#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_block@0.ops[86]: 'v-load values%2#0' with 'l-load values%2#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[8]: 'l-store-copy box%box_extract%4#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[10]: 'v-load box%box_extract%4#0' with 'l-load box%box_extract%4#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[12]: 'l-store-copy box%array_length%0#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[14]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[19]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[21]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[3]: 'l-store-copy box%offset%4#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[6]: 'v-load box%offset%4#0' with 'l-load box%offset%4#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[16]: 'l-store-copy array_length%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@1.ops[19]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[8]: 'l-store-copy box%box_extract%5#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[10]: 'v-load box%box_extract%5#0' with 'l-load box%box_extract%5#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[16]: 'l-store-copy box%index_ok%0#0 0'
@@ -9246,20 +9253,22 @@ debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[28]: 'v-load item_index_internal%0#0' with 'l-load item_index_internal%0#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[7]: 'l-store-copy box%offset%5#0 1'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@2.ops[24]: 'v-load box%offset%5#0' with 'l-load box%offset%5#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[8]: 'l-store-copy box%box_extract%7#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[10]: 'v-load box%box_extract%7#0' with 'l-load box%box_extract%7#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[21]: 'l-store-copy box%box_extract%8#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[23]: 'v-load box%box_extract%8#0' with 'l-load box%box_extract%8#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[25]: 'l-store-copy box%array_length%1#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[27]: 'v-load box%array_length%1#0' with 'l-load box%array_length%1#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[3]: 'l-store-copy box%add%1#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[6]: 'v-load box%add%1#0' with 'l-load box%add%1#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[13]: 'l-store-copy box%btoi%1#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[16]: 'v-load box%btoi%1#0' with 'l-load box%btoi%1#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[18]: 'l-store-copy box%offset%7#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_after_for@4.ops[21]: 'v-load box%offset%7#0' with 'l-load box%offset%7#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[3]: 'l-store-copy continue_looping%1#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[5]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[8]: 'l-store-copy box%box_extract%7#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[10]: 'v-load box%box_extract%7#0' with 'l-load box%box_extract%7#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[21]: 'l-store-copy box%box_extract%8#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[23]: 'v-load box%box_extract%8#0' with 'l-load box%box_extract%8#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[25]: 'l-store-copy box%array_length%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[27]: 'v-load box%array_length%1#0' with 'l-load box%array_length%1#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[32]: 'l-store-copy continue_looping%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[34]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[3]: 'l-store-copy box%add%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[6]: 'v-load box%add%1#0' with 'l-load box%add%1#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[13]: 'l-store-copy box%btoi%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[16]: 'v-load box%btoi%1#0' with 'l-load box%btoi%1#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[18]: 'l-store-copy box%offset%7#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[21]: 'v-load box%offset%7#0' with 'l-load box%offset%7#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[31]: 'l-store-copy array_length%3#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_header@5.ops[34]: 'v-load array_length%3#0' with 'l-load array_length%3#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@6.ops[8]: 'l-store-copy box%box_extract%9#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@6.ops[10]: 'v-load box%box_extract%9#0' with 'l-load box%box_extract%9#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct_for_body@6.ops[16]: 'l-store-copy box%offset%8#0 0'
@@ -9444,12 +9453,14 @@ debug: Inserted examples.box_storage.contract.BoxContract.pop_dynamic_box_block@
 debug: Replaced examples.box_storage.contract.BoxContract.pop_dynamic_box_block@0.ops[42]: 'v-load aggregate%val_as_bytes%0#0' with 'l-load aggregate%val_as_bytes%0#0'
 debug: Inserted examples.box_storage.contract.BoxContract.pop_dynamic_box_block@0.ops[27]: 'l-store-copy arr_len#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.pop_dynamic_box_block@0.ops[64]: 'v-load arr_len#0' with 'l-load arr_len#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_block@0.ops[6]: 'l-store-copy box%box_extract%0#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_block@0.ops[8]: 'v-load box%box_extract%0#0' with 'l-load box%box_extract%0#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_block@0.ops[10]: 'l-store-copy box%array_length%0#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_block@0.ops[12]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
-debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[4]: 'l-store-copy box%box_extract%0#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[6]: 'v-load box%box_extract%0#0' with 'l-load box%box_extract%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[8]: 'l-store-copy box%array_length%0#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[10]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[15]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[17]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[11]: 'l-store-copy array_length%1#0 0'
+debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_header@1.ops[14]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_body@2.ops[16]: 'l-store-copy box%box_extract%1#0 0'
 debug: Replaced examples.box_storage.contract.BoxContract.sum_dynamic_box_for_body@2.ops[18]: 'v-load box%box_extract%1#0' with 'l-load box%box_extract%1#0'
 debug: Inserted examples.box_storage.contract.BoxContract.sum_dynamic_box_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -9872,14 +9883,14 @@ debug: examples.box_storage.contract.BoxContract.append_dynamic_arr_struct f-sta
 debug: examples.box_storage.contract.BoxContract.append_dynamic_arr_struct f-stack on first store: ['arr_len#0', 'arr_size#0', 'arr2_index#1']
 debug: examples.box_storage.contract.BoxContract.pop_dynamic_arr_struct f-stack entry: ['arr2_index#1', 'index#0', 'tmp%0#0', 'tmp%3#0', 'tmp%7#0', 'tmp%9#0']
 debug: examples.box_storage.contract.BoxContract.pop_dynamic_arr_struct f-stack on first store: ['arr_len#0', 'arr2_len#0', 'arr_size#0']
-debug: examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct f-stack entry: ['array_length%1#0', 'item_index_internal%1#0']
-debug: examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct f-stack on first store: ['total#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct f-stack entry: ['item_index_internal%1#0']
+debug: examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct f-stack on first store: ['total#0', 'item_index_internal%0#0']
 debug: examples.box_storage.contract.BoxContract.sum_bools f-stack entry: ['total#3']
 debug: examples.box_storage.contract.BoxContract.sum_bools f-stack on first store: ['total#0', 'aggregate%box_get%0#0', 'item_index_internal%0#0']
 debug: examples.box_storage.contract.BoxContract.append_dynamic_box f-stack entry: []
 debug: examples.box_storage.contract.BoxContract.append_dynamic_box f-stack on first store: ['arr_len#0', 'value_internal%0#0']
 debug: examples.box_storage.contract.BoxContract.sum_dynamic_box f-stack entry: []
-debug: examples.box_storage.contract.BoxContract.sum_dynamic_box f-stack on first store: ['total#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: examples.box_storage.contract.BoxContract.sum_dynamic_box f-stack on first store: ['total#0', 'item_index_internal%0#0']
 debug: examples.box_storage.contract.BoxContract.slice_box f-stack entry: []
 debug: examples.box_storage.contract.BoxContract.slice_box f-stack on first store: ['box%_%0#0', 'box%_%1#0']
 debug: examples.box_storage.contract.BoxContract.test_box_ref f-stack entry: []

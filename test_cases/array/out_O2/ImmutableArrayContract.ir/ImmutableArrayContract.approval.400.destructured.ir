@@ -660,10 +660,10 @@ main algopy.arc4.ARC4Contract.approval_program:
         goto block@117
     block@122: // after_for_L263
         let totals#0: Encoded(len+uint64[]) = 0x0000
-        let aggregate%array_length%55#0: uint64 = (extract_uint16 arr#0 0u) // on error: invalid array length header
         let item_index_internal%0#0: uint64 = 0u
         goto block@123
     block@123: // for_header_L271
+        let aggregate%array_length%55#0: uint64 = (extract_uint16 arr#0 0u) // on error: invalid array length header
         let continue_looping%2#0: bool = (< item_index_internal%0#0 aggregate%array_length%55#0)
         goto continue_looping%2#0 ? block@124 : block@125
     block@124: // for_body_L272
@@ -675,10 +675,10 @@ main algopy.arc4.ARC4Contract.approval_program:
         let aggregate%item_head_tail_length%0#0: uint64 = (+ aggregate%item_length_in_bytes%0#0 2u)
         let inner_arr#0: Encoded(len+uint64[]) = (extract3 aggregate%array_head_and_tail%6#0 aggregate%item_offset%6#0 aggregate%item_head_tail_length%0#0)
         let total#0: uint64 = 0u
-        let aggregate%array_length%56#0: uint64 = (extract_uint16 inner_arr#0 0u) // on error: invalid array length header
         let item_index_internal%0#9: uint64 = 0u
         goto block@172
     block@172: // for_header_L520
+        let aggregate%array_length%56#0: uint64 = (extract_uint16 inner_arr#0 0u) // on error: invalid array length header
         let continue_looping%0#0: bool = (< item_index_internal%0#9 aggregate%array_length%56#0)
         goto continue_looping%0#0 ? block@173 : block@174
     block@173: // for_body_L521

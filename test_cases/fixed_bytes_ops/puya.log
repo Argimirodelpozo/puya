@@ -1379,6 +1379,7 @@ debug: Removing unused variable from_bytes_less#0
 debug: Removing unused variable reinterpret_bytes[2]%0#1
 debug: Removing unused variable from_bytes_more#0
 debug: Removing unused variable empty#0
+debug: Removing unused variable array_length%0#0
 debug: Removing unused variable x#0
 debug: Removing unused variable y#0
 debug: Removing unused variable x#1
@@ -2319,6 +2320,7 @@ debug: Removing unused variable from_bytes_less#0
 debug: Removing unused variable reinterpret_bytes[2]%0#0
 debug: Removing unused variable from_bytes_more#0
 debug: Removing unused variable empty#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Simplified (== 2u 2u) to 1u
 debug: Simplified (== 2u 2u) to 1u
@@ -3170,7 +3172,7 @@ debug: selected v#0 from equivalence set
 debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
-debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%1#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References

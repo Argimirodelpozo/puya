@@ -958,13 +958,13 @@ subroutine examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct[rout
         let tmp%1#1: bool = (== values%1#0 2u)
         (assert tmp%1#1) // expected 2
         let total#0: uint64 = (+ values%0#0 values%1#0)
-        let box%box_extract%4#0: bytes = (box_extract "dynamic_arr_struct" 20u 2u)
-        let box%array_length%0#0: uint64 = (btoi box%box_extract%4#0)
         let item_index_internal%0#0: uint64 = 0u
         goto block@2
     block@2: // for_header_L328
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@3)
         let total#1: uint64 = φ(total#0 <- block@0, total#2 <- block@3)
+        let box%box_extract%4#0: bytes = (box_extract "dynamic_arr_struct" 20u 2u)
+        let box%array_length%0#0: uint64 = (btoi box%box_extract%4#0)
         let continue_looping%0#0: bool = (< item_index_internal%0#1 box%array_length%0#0)
         goto continue_looping%0#0 ? block@3 : block@5
     block@3: // for_body_L329
@@ -980,15 +980,15 @@ subroutine examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct[rout
         let item_index_internal%0#2: uint64 = (+ item_index_internal%0#1 1u)
         goto block@2
     block@5: // after_for_L328
-        let box%box_extract%7#0: bytes = (box_extract "dynamic_arr_struct" 18u 2u)
-        let box%btoi%1#0: uint64 = (btoi box%box_extract%7#0)
-        let box%box_extract%8#0: bytes = (box_extract "dynamic_arr_struct" box%btoi%1#0 2u)
-        let box%array_length%1#0: uint64 = (btoi box%box_extract%8#0)
         let item_index_internal%1#0: uint64 = 0u
         goto block@6
     block@6: // for_header_L330
         let item_index_internal%1#1: uint64 = φ(item_index_internal%1#0 <- block@5, item_index_internal%1#2 <- block@7)
         let total#3: uint64 = φ(total#1 <- block@5, total#4 <- block@7)
+        let box%box_extract%7#0: bytes = (box_extract "dynamic_arr_struct" 18u 2u)
+        let box%btoi%1#0: uint64 = (btoi box%box_extract%7#0)
+        let box%box_extract%8#0: bytes = (box_extract "dynamic_arr_struct" box%btoi%1#0 2u)
+        let box%array_length%1#0: uint64 = (btoi box%box_extract%8#0)
         let continue_looping%1#0: bool = (< item_index_internal%1#1 box%array_length%1#0)
         goto continue_looping%1#0 ? block@7 : block@9
     block@7: // for_body_L331
@@ -1148,13 +1148,13 @@ subroutine examples.box_storage.contract.BoxContract.pop_dynamic_box[routing]() 
 subroutine examples.box_storage.contract.BoxContract.sum_dynamic_box[routing]() -> void:
     block@0: // L386
         let total#0: uint64 = 0u
-        let box%box_extract%0#0: bytes = (box_extract "dynamic_box" 0u 2u)
-        let box%array_length%0#0: uint64 = (btoi box%box_extract%0#0)
         let item_index_internal%0#0: uint64 = 0u
         goto block@2
     block@2: // for_header_L389
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@3)
         let total#1: uint64 = φ(total#0 <- block@0, total#2 <- block@3)
+        let box%box_extract%0#0: bytes = (box_extract "dynamic_box" 0u 2u)
+        let box%array_length%0#0: uint64 = (btoi box%box_extract%0#0)
         let continue_looping%0#0: bool = (< item_index_internal%0#1 box%array_length%0#0)
         goto continue_looping%0#0 ? block@3 : block@5
     block@3: // for_body_L390

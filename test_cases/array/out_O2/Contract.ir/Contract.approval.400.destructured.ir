@@ -374,7 +374,10 @@ main algopy.arc4.ARC4Contract.approval_program:
         let item_index_internal%0#0: uint64 = 0u
         goto block@36
     block@36: // for_header_L149
-        let continue_looping%1#0: bool = (< item_index_internal%0#0 aggregate%array_len%30#0)
+        let aggregate%slot_contents%31#0: Encoded(uint64[]) = load(local.3)
+        let aggregate%bytes_len%31#0: uint64 = (len aggregate%slot_contents%31#0)
+        let aggregate%array_len%31#0: uint64 = (/ aggregate%bytes_len%31#0 8u)
+        let continue_looping%1#0: bool = (< item_index_internal%0#0 aggregate%array_len%31#0)
         goto continue_looping%1#0 ? block@37 : block@38
     block@37: // for_body_L150
         let slot_contents%1#0: Encoded(uint64[]) = load(local.3)
@@ -386,13 +389,13 @@ main algopy.arc4.ARC4Contract.approval_program:
         let last#0: uint64 = value#0
         goto block@36
     block@38: // after_for_L149
-        let aggregate%slot_contents%32#0: Encoded(uint64[]) = load(local.3)
-        let aggregate%bytes_len%32#0: uint64 = (len aggregate%slot_contents%32#0)
-        let aggregate%array_len%32#0: uint64 = (/ aggregate%bytes_len%32#0 8u)
         let item_index_internal%1#0: uint64 = 0u
         let idx#0: uint64 = item_index_internal%1#0
         goto block@39
     block@39: // for_header_L154
+        let aggregate%slot_contents%32#0: Encoded(uint64[]) = load(local.3)
+        let aggregate%bytes_len%32#0: uint64 = (len aggregate%slot_contents%32#0)
+        let aggregate%array_len%32#0: uint64 = (/ aggregate%bytes_len%32#0 8u)
         let continue_looping%2#0: bool = (< idx#0 aggregate%array_len%32#0)
         goto continue_looping%2#0 ? block@40 : block@41
     block@40: // for_body_L155
@@ -495,12 +498,12 @@ main algopy.arc4.ARC4Contract.approval_program:
         let tmp%6#1: uint64 = (- aggregate%array_len%34#0 1u)
         test_cases.array.uint64.quicksort_window(rnd#0, 0u, tmp%6#1)
         let last#0: uint64 = 0u
-        let aggregate%slot_contents%36#0: Encoded(uint64[]) = load(rnd#0)
-        let aggregate%bytes_len%36#0: uint64 = (len aggregate%slot_contents%36#0)
-        let aggregate%array_len%36#0: uint64 = (/ aggregate%bytes_len%36#0 8u)
         let item_index_internal%1#0: uint64 = 0u
         goto block@28
     block@28: // for_header_L187
+        let aggregate%slot_contents%36#0: Encoded(uint64[]) = load(rnd#0)
+        let aggregate%bytes_len%36#0: uint64 = (len aggregate%slot_contents%36#0)
+        let aggregate%array_len%36#0: uint64 = (/ aggregate%bytes_len%36#0 8u)
         let continue_looping%1#0: bool = (< item_index_internal%1#0 aggregate%array_len%36#0)
         goto continue_looping%1#0 ? block@29 : block@7
     block@29: // for_body_L188

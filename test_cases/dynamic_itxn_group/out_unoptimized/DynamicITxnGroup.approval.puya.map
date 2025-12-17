@@ -3,7 +3,7 @@
   "sources": [
     "../contract.py"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAcA;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;;;AAAA;;;;;;AAAA;;;;;;AAAA;;AAAA;;;;;;AAAA;;;;;;;;;AAAA;AAwBK;;;;;;AAvBA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;;;AAAA;AAAA;;;;AAuBA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;;;AAAA;AAAA;AAvBA;;;;;;AAIU;;AAAA;;AAAkB;;AAAlB;AAAP;AAEO;;AAAA;AAAA;AAAA;AAAA;AAAP;AACgB;;AAAA;;AAAgB;;AAAA;AAAA;AAAhB;AAAhB;AAEA;AAAoC;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAU;AAAV;AAAA;AAAA;AAAA;;;;;AAApC;;;AAAA;;;AAEmB;;AAAA;AAAA;AAAV;AAAjB;AAAwB;;;;AAAxB;;AAAA;;AAAA;AAAA;;;AAAA;;;AAAY;;AACO;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACP;AAAoB;;AAAA;;;;;;AAApB;;;AAAA;;;;;;AAFK;;AAAA;AAAA;AAAA;;;;;AAIT;AACW;;AAAuB;;;;;AADlC;;;;AAAA;;;AAIA;AAA4B;;;AAA5B;;;;AAAA;;;AAEA;;AAEH;;;;;;;;;AAIU;;AAAA;;AAAkB;;AAAlB;AAAP;AAEO;;AAAA;AAAA;AAAA;AAAA;AAAP;AACgB;;AAAA;;AAAgB;;AAAA;AAAA;AAAhB;AAEL;AACnB;;AAAA;AAAA;;;;;AAAA;;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACyC;;AAAA;;AAAgB;;AAC7C;;AAAA;;;AAAA;;;AAAA;;;;;;;;;;;;AADS;;;AAAA;;;AAEE;AAAX;;;;;;;;;;;;;;AADA;;;;AAGJ;AACW;;AAAuB;;;;;AADlC;;;;AAAA;;;AAIA;AAA4B;;;AAA5B;;;;AAAA;;;AAEA;",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAcA;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;;;AAAA;;;;;;AAAA;;;;;;AAAA;;AAAA;;;;;;AAAA;;;;;;;;;AAAA;AAwBK;;;;;;AAvBA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;;;AAAA;AAAA;;;;AAuBA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;;;AAAA;AAAA;AAvBA;;;;;;AAIU;;AAAA;;AAAkB;;AAAlB;AAAP;AAEO;;AAAA;AAAA;AAAA;AAAA;AAAP;AACgB;;AAAA;;AAAgB;;AAAA;AAAA;AAAhB;AAAhB;AAEA;AAAoC;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAU;AAAV;AAAA;AAAA;AAAA;;;;;AAApC;;;AAAA;;;AAEmB;;AAAA;AAAA;AAAV;AAAjB;AAAwB;;;;AAAxB;;AAAA;;AAAA;AAAA;;;AAAA;;;AAAY;;AACO;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACP;AAAoB;;AAAA;;;;;;AAApB;;;AAAA;;;;;;AAFK;;AAAA;AAAA;AAAA;;;;;AAIT;AACW;;AAAuB;;;;;AADlC;;;;AAAA;;;AAIA;AAA4B;;;AAA5B;;;;AAAA;;;AAEA;;AAEH;;;;;;;;;AAIU;;AAAA;;AAAkB;;AAAlB;AAAP;AAEO;;AAAA;AAAA;AAAA;AAAA;AAAP;AACgB;;AAAA;;AAAgB;;AAAA;AAAA;AAAhB;AAEL;;;;;AACnB;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACyC;;AAAA;;AAAgB;;AAC7C;;AAAA;;;AAAA;;;AAAA;;;;;;;;;;;;AADS;;;AAAA;;;AAEE;AAAX;;;;;;;;;;;;;;AADA;;;;AAGJ;AACW;;AAAuB;;;;;AADlC;;;;AAAA;;;AAIA;AAA4B;;;AAA5B;;;;AAAA;;;AAEA;",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -2272,39 +2272,6 @@
       ]
     },
     "396": {
-      "op": "frame_dig -3",
-      "stack_out": [
-        "my_txn%%param_Receiver_idx_0#0",
-        "my_txn%%param_Amount_idx_0#0",
-        "share#0",
-        "is_first#0",
-        "addresses#0 (copy)"
-      ]
-    },
-    "398": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "my_txn%%param_Receiver_idx_0#0",
-        "my_txn%%param_Amount_idx_0#0",
-        "share#0",
-        "is_first#0",
-        "addresses#0 (copy)",
-        "0"
-      ]
-    },
-    "399": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [],
-      "stack_out": [
-        "my_txn%%param_Receiver_idx_0#0",
-        "my_txn%%param_Amount_idx_0#0",
-        "share#0",
-        "is_first#0",
-        "array_length%0#0"
-      ]
-    },
-    "400": {
       "op": "intc_0 // 0",
       "defined_out": [],
       "stack_out": [
@@ -2312,25 +2279,69 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "401": {
+    "397": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1"
     },
-    "404": {
+    "400": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "frame_dig 5",
+      "op": "frame_dig -3",
       "defined_out": [
+        "addresses#0 (copy)"
+      ],
+      "stack_out": [
+        "my_txn%%param_Receiver_idx_0#0",
+        "my_txn%%param_Amount_idx_0#0",
+        "share#0",
+        "is_first#0",
+        "item_index_internal%0#0",
+        "addresses#0 (copy)"
+      ]
+    },
+    "402": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "addresses#0 (copy)"
+      ],
+      "stack_out": [
+        "my_txn%%param_Receiver_idx_0#0",
+        "my_txn%%param_Amount_idx_0#0",
+        "share#0",
+        "is_first#0",
+        "item_index_internal%0#0",
+        "addresses#0 (copy)",
+        "0"
+      ]
+    },
+    "403": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%1#0"
+      ],
+      "stack_out": [
+        "my_txn%%param_Receiver_idx_0#0",
+        "my_txn%%param_Amount_idx_0#0",
+        "share#0",
+        "is_first#0",
+        "item_index_internal%0#0",
+        "array_length%1#0"
+      ]
+    },
+    "404": {
+      "op": "frame_dig 4",
+      "defined_out": [
+        "array_length%1#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
@@ -2338,32 +2349,14 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
+        "array_length%1#0",
         "item_index_internal%0#0"
       ]
     },
     "406": {
-      "op": "frame_dig 4",
+      "op": ">",
       "defined_out": [
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "my_txn%%param_Receiver_idx_0#0",
-        "my_txn%%param_Amount_idx_0#0",
-        "share#0",
-        "is_first#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0",
-        "array_length%0#0"
-      ]
-    },
-    "408": {
-      "op": "<",
-      "defined_out": [
-        "array_length%0#0",
         "continue_looping%0#0",
         "item_index_internal%0#0"
       ],
@@ -2372,33 +2365,30 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "409": {
+    "407": {
       "op": "bz test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_after_for@7",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "412": {
+    "410": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_body@2"
     },
-    "415": {
+    "413": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_body@2",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig -3",
@@ -2410,12 +2400,11 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "addresses#0 (copy)"
       ]
     },
-    "417": {
+    "415": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%0#0"
@@ -2425,25 +2414,23 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0"
       ]
     },
-    "418": {
+    "416": {
       "op": "frame_dig -3",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "addresses#0 (copy)"
       ]
     },
-    "420": {
+    "418": {
       "op": "intc_3 // 2",
       "defined_out": [
         "2",
@@ -2455,28 +2442,26 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "addresses#0 (copy)",
         "2"
       ]
     },
-    "421": {
+    "419": {
       "op": "uncover 2",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "addresses#0 (copy)",
         "2",
         "aggregate%total_length%0#0"
       ]
     },
-    "423": {
+    "421": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%0#0"
@@ -2486,13 +2471,12 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "424": {
-      "op": "frame_dig 5",
+    "422": {
+      "op": "frame_dig 4",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
@@ -2502,13 +2486,12 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "426": {
+    "424": {
       "op": "intc_2 // 32",
       "defined_out": [
         "32",
@@ -2520,14 +2503,13 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0",
         "32"
       ]
     },
-    "427": {
+    "425": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -2539,27 +2521,25 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "428": {
+    "426": {
       "op": "intc_2 // 32",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0",
         "32"
       ]
     },
-    "429": {
+    "427": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -2571,12 +2551,11 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "addr#0"
       ]
     },
-    "430": {
+    "428": {
       "op": "frame_dig 2",
       "defined_out": [
         "addr#0",
@@ -2588,13 +2567,12 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "addr#0",
         "share#0"
       ]
     },
-    "432": {
+    "430": {
       "op": "frame_bury 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -2606,12 +2584,11 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "reinterpret_account%0#0"
       ]
     },
-    "434": {
+    "432": {
       "op": "frame_bury 0",
       "defined_out": [
         "item_index_internal%0#0",
@@ -2622,11 +2599,10 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "436": {
+    "434": {
       "op": "frame_dig 3",
       "defined_out": [
         "is_first#0",
@@ -2638,48 +2614,44 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "is_first#0"
       ]
     },
-    "438": {
+    "436": {
       "op": "bz test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_itxn_next@4",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "441": {
+    "439": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_itxn_begins@3"
     },
-    "444": {
+    "442": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_itxn_begins@3",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "itxn_begin"
     },
-    "445": {
+    "443": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_after_itxn_begin_next@5"
     },
-    "448": {
+    "446": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_after_itxn_begin_next@5",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 0",
@@ -2691,23 +2663,21 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "my_txn%%param_Receiver_idx_0#0"
       ]
     },
-    "450": {
+    "448": {
       "op": "itxn_field Receiver",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "452": {
+    "450": {
       "op": "frame_dig 1",
       "defined_out": [
         "my_txn%%param_Amount_idx_0#0",
@@ -2718,23 +2688,21 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "my_txn%%param_Amount_idx_0#0"
       ]
     },
-    "454": {
+    "452": {
       "op": "itxn_field Amount",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "456": {
+    "454": {
       "op": "intc_1 // pay",
       "defined_out": [
         "my_txn%%param_Amount_idx_0#0",
@@ -2746,23 +2714,21 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "pay"
       ]
     },
-    "457": {
+    "455": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "459": {
+    "457": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -2774,35 +2740,32 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "460": {
+    "458": {
       "op": "itxn_field Fee",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "462": {
+    "460": {
       "op": "intc_0 // 0",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "463": {
+    "461": {
       "op": "frame_bury 3",
       "defined_out": [
         "my_txn%%param_Amount_idx_0#0",
@@ -2813,24 +2776,22 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "465": {
+    "463": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_footer@6"
     },
-    "468": {
+    "466": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_footer@6",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "frame_dig 5",
+      "op": "frame_dig 4",
       "defined_out": [
         "item_index_internal%0#0"
       ],
@@ -2839,12 +2800,11 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "470": {
+    "468": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -2855,26 +2815,24 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "471": {
+    "469": {
       "op": "+",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "472": {
-      "op": "frame_bury 5",
+    "470": {
+      "op": "frame_bury 4",
       "defined_out": [
         "item_index_internal%0#0"
       ],
@@ -2883,41 +2841,38 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "474": {
+    "472": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1"
     },
-    "477": {
+    "475": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_itxn_next@4",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "itxn_next"
     },
-    "478": {
+    "476": {
       "op": "b test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_after_itxn_begin_next@5"
     },
-    "481": {
+    "479": {
       "block": "test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_after_for@7",
       "stack_in": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "itxn_next"
     },
-    "482": {
+    "480": {
       "op": "frame_dig -1",
       "defined_out": [
         "inner_txn_params%0%%param_ApplicationID_idx_0#0"
@@ -2927,12 +2882,11 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_ApplicationID_idx_0#0"
       ]
     },
-    "484": {
+    "482": {
       "op": "bytec_0 // method \"verify()void\"",
       "defined_out": [
         "Method(verify()void)",
@@ -2943,36 +2897,33 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_ApplicationID_idx_0#0",
         "Method(verify()void)"
       ]
     },
-    "485": {
+    "483": {
       "op": "itxn_field ApplicationArgs",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_ApplicationID_idx_0#0"
       ]
     },
-    "487": {
+    "485": {
       "op": "itxn_field ApplicationID",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "489": {
+    "487": {
       "op": "pushint 6 // appl",
       "defined_out": [
         "appl"
@@ -2982,23 +2933,21 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "appl"
       ]
     },
-    "491": {
+    "489": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "493": {
+    "491": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0"
@@ -3008,26 +2957,24 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "494": {
+    "492": {
       "op": "itxn_field Fee",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "496": {
+    "494": {
       "op": "itxn_next"
     },
-    "497": {
+    "495": {
       "op": "bytec_1 // \"abc\"",
       "defined_out": [
         "\"abc\""
@@ -3037,23 +2984,21 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "\"abc\""
       ]
     },
-    "498": {
+    "496": {
       "op": "itxn_field ConfigAssetName",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "500": {
+    "498": {
       "op": "pushint 3 // acfg",
       "defined_out": [
         "acfg"
@@ -3063,49 +3008,45 @@
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "acfg"
       ]
     },
-    "502": {
+    "500": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "504": {
+    "502": {
       "op": "intc_0 // 0",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "505": {
+    "503": {
       "op": "itxn_field Fee",
       "stack_out": [
         "my_txn%%param_Receiver_idx_0#0",
         "my_txn%%param_Amount_idx_0#0",
         "share#0",
         "is_first#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "507": {
+    "505": {
       "op": "itxn_submit"
     },
-    "508": {
+    "506": {
       "retsub": true,
       "op": "retsub"
     }

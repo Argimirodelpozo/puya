@@ -3,7 +3,7 @@
   "sources": [
     "../voting.py"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -4156,53 +4156,6 @@
       ]
     },
     "867": {
-      "op": "swap",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0"
-      ]
-    },
-    "868": {
-      "op": "dup",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0",
-        "maybe_value%5#0 (copy)"
-      ]
-    },
-    "869": {
-      "op": "uncover 2",
-      "defined_out": [
-        "current_index#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0",
-        "note#0"
-      ],
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "maybe_value%5#0",
-        "maybe_exists%6#0"
-      ]
-    },
-    "871": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
@@ -4212,48 +4165,12 @@
         "tmp%18#0",
         "note#0",
         "current_index#0",
-        "maybe_value%5#0",
         "maybe_value%5#0"
       ]
     },
-    "872": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "maybe_value%5#0",
-        "0"
-      ]
-    },
-    "873": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "aggregate%array_length%0#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "note#0"
-      ],
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0"
-      ]
-    },
-    "874": {
+    "868": {
       "op": "intc_0 // 0",
       "defined_out": [
-        "aggregate%array_length%0#0",
         "current_index#0",
         "maybe_value%5#0",
         "note#0",
@@ -4267,11 +4184,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "875": {
+    "869": {
       "block": "close_for_header@2",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -4281,12 +4197,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
-      "op": "dup",
+      "op": "dig 1",
       "defined_out": [
-        "question_index#0"
+        "maybe_value%5#0"
       ],
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4296,16 +4211,15 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
-        "question_index#0"
+        "maybe_value%5#0"
       ]
     },
-    "876": {
-      "op": "dig 2",
+    "871": {
+      "op": "intc_0 // 0",
       "defined_out": [
-        "aggregate%array_length%0#0",
-        "question_index#0"
+        "0",
+        "maybe_value%5#0"
       ],
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4315,17 +4229,35 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
+        "maybe_value%5#0",
+        "0"
+      ]
+    },
+    "872": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
         "question_index#0",
         "aggregate%array_length%0#0"
       ]
     },
-    "878": {
-      "op": "<",
+    "873": {
+      "op": "dig 1",
       "defined_out": [
         "aggregate%array_length%0#0",
-        "continue_looping%0#0",
+        "maybe_value%5#0",
         "question_index#0"
       ],
       "stack_out": [
@@ -4336,12 +4268,31 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
+        "question_index#0",
         "aggregate%array_length%0#0",
+        "question_index#0"
+      ]
+    },
+    "875": {
+      "op": ">",
+      "defined_out": [
+        "continue_looping%0#0",
+        "maybe_value%5#0",
+        "question_index#0"
+      ],
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
         "question_index#0",
         "continue_looping%0#0"
       ]
     },
-    "879": {
+    "876": {
       "op": "bz close_after_for@15",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4351,89 +4302,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "882": {
-      "op": "dig 2",
-      "defined_out": [
-        "aggregate%array_length%0#0",
-        "maybe_value%5#0",
-        "question_index#0"
-      ],
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "maybe_value%5#0"
-      ]
-    },
-    "884": {
-      "op": "extract 2 0",
-      "defined_out": [
-        "aggregate%array_length%0#0",
-        "aggregate%array_trimmed%0#0",
-        "maybe_value%5#0",
-        "question_index#0"
-      ],
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "aggregate%array_trimmed%0#0"
-      ]
-    },
-    "887": {
-      "op": "dup",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "aggregate%array_trimmed%0#0",
-        "aggregate%array_trimmed%0#0"
-      ]
-    },
-    "888": {
-      "op": "bury 10",
-      "defined_out": [
-        "aggregate%array_length%0#0",
-        "aggregate%array_trimmed%0#0",
-        "maybe_value%5#0",
-        "question_index#0"
-      ],
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "aggregate%array_trimmed%0#0"
-      ]
-    },
-    "890": {
+    "879": {
       "op": "dig 1",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4443,16 +4315,81 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
+        "question_index#0",
+        "maybe_value%5#0"
+      ]
+    },
+    "881": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "aggregate%array_trimmed%0#0",
+        "maybe_value%5#0",
+        "question_index#0"
+      ],
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "question_index#0",
+        "aggregate%array_trimmed%0#0"
+      ]
+    },
+    "884": {
+      "op": "dup",
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "question_index#0",
+        "aggregate%array_trimmed%0#0",
+        "aggregate%array_trimmed%0#0"
+      ]
+    },
+    "885": {
+      "op": "bury 9",
+      "defined_out": [
+        "aggregate%array_trimmed%0#0",
+        "maybe_value%5#0",
+        "question_index#0"
+      ],
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "question_index#0",
+        "aggregate%array_trimmed%0#0"
+      ]
+    },
+    "887": {
+      "op": "dig 1",
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0",
         "question_index#0"
       ]
     },
-    "892": {
+    "889": {
       "op": "dup",
       "defined_out": [
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "question_index#0",
@@ -4466,14 +4403,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0",
         "question_index#0 (copy)",
         "question_index#0 (copy)"
       ]
     },
-    "893": {
+    "890": {
       "op": "cover 2",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4483,18 +4419,16 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0",
         "question_index#0 (copy)"
       ]
     },
-    "895": {
+    "892": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "question_index#0",
@@ -4508,7 +4442,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0",
@@ -4516,11 +4449,10 @@
         "1"
       ]
     },
-    "896": {
+    "893": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "question_index#0",
@@ -4534,16 +4466,14 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0",
         "question_options#0"
       ]
     },
-    "897": {
-      "op": "bury 9",
+    "894": {
+      "op": "bury 8",
       "defined_out": [
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "question_index#0",
@@ -4557,12 +4487,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0"
       ]
     },
-    "899": {
+    "896": {
       "op": "bz close_after_if_else@5",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4572,14 +4501,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "902": {
-      "op": "dig 4",
+    "899": {
+      "op": "dig 3",
       "defined_out": [
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "note#0",
@@ -4594,16 +4521,14 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "904": {
+    "901": {
       "op": "pushbytes \",\"",
       "defined_out": [
         "\",\"",
-        "aggregate%array_length%0#0",
         "aggregate%array_trimmed%0#0",
         "maybe_value%5#0",
         "note#0",
@@ -4618,13 +4543,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "\",\""
       ]
     },
-    "907": {
+    "904": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4634,13 +4558,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "908": {
-      "op": "bury 5",
+    "905": {
+      "op": "bury 4",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
         "question_options#0",
@@ -4649,11 +4572,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "910": {
+    "907": {
       "block": "close_after_if_else@5",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -4663,10 +4585,9 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
-      "op": "dig 7",
+      "op": "dig 6",
       "defined_out": [
         "question_options#0"
       ],
@@ -4678,12 +4599,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_options#0"
       ]
     },
-    "912": {
+    "909": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -4697,13 +4617,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_options#0",
         "0x00"
       ]
     },
-    "915": {
+    "912": {
       "op": "b>",
       "defined_out": [
         "question_options#0",
@@ -4717,12 +4636,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "tmp%16#0"
       ]
     },
-    "916": {
+    "913": {
       "op": "bz close_after_if_else@13",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4732,12 +4650,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "919": {
-      "op": "dig 4",
+    "916": {
+      "op": "dig 3",
       "defined_out": [
         "note#0",
         "question_options#0"
@@ -4750,12 +4667,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "921": {
+    "918": {
       "op": "pushbytes \"[\"",
       "defined_out": [
         "\"[\"",
@@ -4770,13 +4686,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "\"[\""
       ]
     },
-    "924": {
+    "921": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -4786,13 +4701,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "925": {
-      "op": "bury 5",
+    "922": {
+      "op": "bury 4",
       "defined_out": [
         "note#0",
         "question_options#0"
@@ -4805,12 +4719,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "927": {
-      "op": "dig 8",
+    "924": {
+      "op": "dig 7",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "note#0",
@@ -4824,12 +4737,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "929": {
+    "926": {
       "op": "dig 1",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -4845,13 +4757,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "aggregate%array_trimmed%0#0",
         "question_index#0"
       ]
     },
-    "931": {
+    "928": {
       "op": "getbyte",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -4868,13 +4779,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "tmp%18#0"
       ]
     },
-    "932": {
-      "op": "bury 6",
+    "929": {
+      "op": "bury 5",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "note#0",
@@ -4890,11 +4800,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "934": {
+    "931": {
       "op": "intc_0 // 0",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -4912,13 +4821,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0"
       ]
     },
-    "935": {
-      "op": "bury 7",
+    "932": {
+      "op": "bury 6",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "note#0",
@@ -4935,11 +4843,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "937": {
+    "934": {
       "block": "close_for_header@7",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -4949,10 +4856,9 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
-      "op": "dig 6",
+      "op": "dig 5",
       "defined_out": [
         "option_index#0"
       ],
@@ -4964,13 +4870,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0"
       ]
     },
-    "939": {
-      "op": "dig 6",
+    "936": {
+      "op": "dig 5",
       "defined_out": [
         "option_index#0",
         "tmp%18#0"
@@ -4983,13 +4888,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0",
         "tmp%18#0"
       ]
     },
-    "941": {
+    "938": {
       "op": "<",
       "defined_out": [
         "continue_looping%1#0",
@@ -5004,12 +4908,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "continue_looping%1#0"
       ]
     },
-    "942": {
+    "939": {
       "op": "bz close_after_for@12",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5019,12 +4922,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "945": {
-      "op": "dig 6",
+    "942": {
+      "op": "dig 5",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
         "question_options#0",
@@ -5033,12 +4935,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0"
       ]
     },
-    "947": {
+    "944": {
       "op": "bz close_after_if_else@10",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5048,12 +4949,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "950": {
-      "op": "dig 4",
+    "947": {
+      "op": "dig 3",
       "defined_out": [
         "note#0",
         "option_index#0",
@@ -5067,12 +4967,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "952": {
+    "949": {
       "op": "pushbytes \",\"",
       "defined_out": [
         "\",\"",
@@ -5088,13 +4987,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "\",\""
       ]
     },
-    "955": {
+    "952": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5104,13 +5002,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "956": {
-      "op": "bury 5",
+    "953": {
+      "op": "bury 4",
       "defined_out": [
         "note#0",
         "option_index#0",
@@ -5124,11 +5021,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "958": {
+    "955": {
       "block": "close_after_if_else@10",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -5138,7 +5034,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
       "op": "bytec_3 // \"V\"",
@@ -5153,13 +5048,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "\"V\""
       ]
     },
-    "959": {
-      "op": "dig 4",
+    "956": {
+      "op": "dig 3",
       "defined_out": [
         "\"V\"",
         "current_index#0"
@@ -5172,13 +5066,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "\"V\"",
         "current_index#0"
       ]
     },
-    "961": {
+    "958": {
       "op": "dup",
       "defined_out": [
         "\"V\"",
@@ -5193,14 +5086,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "\"V\"",
         "current_index#0 (copy)",
         "current_index#0 (copy)"
       ]
     },
-    "962": {
+    "959": {
       "op": "cover 2",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5210,14 +5102,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "\"V\"",
         "current_index#0 (copy)"
       ]
     },
-    "964": {
+    "961": {
       "op": "intc_3 // 8",
       "defined_out": [
         "\"V\"",
@@ -5233,7 +5124,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "\"V\"",
@@ -5241,7 +5131,7 @@
         "8"
       ]
     },
-    "965": {
+    "962": {
       "op": "box_extract",
       "defined_out": [
         "current_index#0",
@@ -5255,13 +5145,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "tmp%0#1"
       ]
     },
-    "966": {
+    "963": {
       "op": "btoi",
       "defined_out": [
         "current_index#0",
@@ -5275,13 +5164,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "votes_for_option#0"
       ]
     },
-    "967": {
+    "964": {
       "callsub": "examples.voting.voting.itoa",
       "op": "callsub itoa",
       "defined_out": [
@@ -5296,14 +5184,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "tmp%22#0"
       ]
     },
-    "970": {
-      "op": "dig 6",
+    "967": {
+      "op": "dig 5",
       "defined_out": [
         "current_index#0",
         "note#0",
@@ -5317,14 +5204,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "tmp%22#0",
         "note#0"
       ]
     },
-    "972": {
+    "969": {
       "op": "swap",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5334,14 +5220,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "note#0",
         "tmp%22#0"
       ]
     },
-    "973": {
+    "970": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5351,14 +5236,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "note#0"
       ]
     },
-    "974": {
-      "op": "bury 6",
+    "971": {
+      "op": "bury 5",
       "defined_out": [
         "current_index#0",
         "note#0"
@@ -5371,12 +5255,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0"
       ]
     },
-    "976": {
+    "973": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -5391,13 +5274,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0",
         "1"
       ]
     },
-    "977": {
+    "974": {
       "op": "+",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5407,13 +5289,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "current_index#0"
       ]
     },
-    "978": {
-      "op": "bury 4",
+    "975": {
+      "op": "bury 3",
       "defined_out": [
         "current_index#0",
         "note#0"
@@ -5426,12 +5307,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "980": {
-      "op": "dig 6",
+    "977": {
+      "op": "dig 5",
       "defined_out": [
         "current_index#0",
         "note#0",
@@ -5445,12 +5325,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0"
       ]
     },
-    "982": {
+    "979": {
       "op": "intc_1 // 1",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5460,13 +5339,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0",
         "1"
       ]
     },
-    "983": {
+    "980": {
       "op": "+",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5476,13 +5354,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "option_index#0"
       ]
     },
-    "984": {
-      "op": "bury 7",
+    "981": {
+      "op": "bury 6",
       "defined_out": [
         "current_index#0",
         "note#0",
@@ -5496,14 +5373,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "986": {
+    "983": {
       "op": "b close_for_header@7"
     },
-    "989": {
+    "986": {
       "block": "close_after_for@12",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -5513,10 +5389,9 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
-      "op": "dig 4",
+      "op": "dig 3",
       "defined_out": [
         "note#0"
       ],
@@ -5528,12 +5403,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "991": {
+    "988": {
       "op": "pushbytes \"]\"",
       "defined_out": [
         "\"]\"",
@@ -5547,13 +5421,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "\"]\""
       ]
     },
-    "994": {
+    "991": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5563,13 +5436,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "995": {
-      "op": "bury 5",
+    "992": {
+      "op": "bury 4",
       "defined_out": [
         "note#0"
       ],
@@ -5581,11 +5453,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "997": {
+    "994": {
       "block": "close_after_if_else@13",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -5595,7 +5466,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
       "op": "dup",
@@ -5610,12 +5480,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0"
       ]
     },
-    "998": {
+    "995": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -5629,13 +5498,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0",
         "1"
       ]
     },
-    "999": {
+    "996": {
       "op": "+",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5645,12 +5513,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "question_index#0"
       ]
     },
-    "1000": {
+    "997": {
       "op": "bury 1",
       "defined_out": [
         "question_index#0"
@@ -5663,14 +5530,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "1002": {
+    "999": {
       "op": "b close_for_header@2"
     },
-    "1005": {
+    "1002": {
       "block": "close_after_for@15",
       "stack_in": [
         "aggregate%array_trimmed%0#0",
@@ -5680,10 +5546,9 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ],
-      "op": "dig 4",
+      "op": "dig 3",
       "defined_out": [
         "note#0"
       ],
@@ -5695,12 +5560,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "1007": {
+    "1004": {
       "op": "pushbytes \"]}}\"",
       "defined_out": [
         "\"]}}\"",
@@ -5714,13 +5578,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "\"]}}\""
       ]
     },
-    "1012": {
+    "1009": {
       "op": "concat",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5730,15 +5593,14 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0"
       ]
     },
-    "1013": {
+    "1010": {
       "op": "itxn_begin"
     },
-    "1014": {
+    "1011": {
       "op": "global MinTxnFee",
       "defined_out": [
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5752,13 +5614,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1016": {
+    "1013": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -5773,14 +5634,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "0"
       ]
     },
-    "1017": {
+    "1014": {
       "op": "bytec 4 // \"vote_id\"",
       "defined_out": [
         "\"vote_id\"",
@@ -5796,7 +5656,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5804,7 +5663,7 @@
         "\"vote_id\""
       ]
     },
-    "1019": {
+    "1016": {
       "op": "app_global_get_ex",
       "defined_out": [
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5820,7 +5679,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5828,7 +5686,7 @@
         "maybe_exists%7#0"
       ]
     },
-    "1020": {
+    "1017": {
       "error": "check self.vote_id exists",
       "op": "assert // check self.vote_id exists",
       "stack_out": [
@@ -5839,14 +5697,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "maybe_value%6#0"
       ]
     },
-    "1021": {
+    "1018": {
       "op": "pushbytes \"[VOTE RESULT] \"",
       "defined_out": [
         "\"[VOTE RESULT] \"",
@@ -5862,7 +5719,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5870,7 +5726,7 @@
         "\"[VOTE RESULT] \""
       ]
     },
-    "1037": {
+    "1034": {
       "op": "swap",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5880,7 +5736,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5888,7 +5743,7 @@
         "maybe_value%6#0"
       ]
     },
-    "1038": {
+    "1035": {
       "op": "concat",
       "defined_out": [
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -5903,14 +5758,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1039": {
+    "1036": {
       "op": "intc_0 // 0",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -5920,7 +5774,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5928,7 +5781,7 @@
         "0"
       ]
     },
-    "1040": {
+    "1037": {
       "op": "bytec 13 // \"nft_image_url\"",
       "defined_out": [
         "\"nft_image_url\"",
@@ -5945,7 +5798,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5954,7 +5806,7 @@
         "\"nft_image_url\""
       ]
     },
-    "1042": {
+    "1039": {
       "op": "app_global_get_ex",
       "defined_out": [
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -5971,7 +5823,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5980,7 +5831,7 @@
         "maybe_exists%8#0"
       ]
     },
-    "1043": {
+    "1040": {
       "error": "check self.nft_image_url exists",
       "op": "assert // check self.nft_image_url exists",
       "stack_out": [
@@ -5991,7 +5842,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -5999,7 +5849,7 @@
         "maybe_value%7#0"
       ]
     },
-    "1044": {
+    "1041": {
       "op": "uncover 3",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6009,7 +5859,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -6017,7 +5866,7 @@
         "note#0"
       ]
     },
-    "1046": {
+    "1043": {
       "op": "itxn_field Note",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6027,14 +5876,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
         "maybe_value%7#0"
       ]
     },
-    "1048": {
+    "1045": {
       "op": "itxn_field ConfigAssetURL",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6044,13 +5892,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1050": {
+    "1047": {
       "op": "pushbytes \"VOTERSLT\"",
       "defined_out": [
         "\"VOTERSLT\"",
@@ -6066,14 +5913,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
         "\"VOTERSLT\""
       ]
     },
-    "1060": {
+    "1057": {
       "op": "itxn_field ConfigAssetUnitName",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6083,13 +5929,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1062": {
+    "1059": {
       "op": "itxn_field ConfigAssetName",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6099,7 +5944,35 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
+        "question_index#0",
+        "inner_txn_params%0%%param_Fee_idx_0#0"
+      ]
+    },
+    "1061": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "question_index#0",
+        "inner_txn_params%0%%param_Fee_idx_0#0",
+        "0"
+      ]
+    },
+    "1062": {
+      "op": "itxn_field ConfigAssetDefaultFrozen",
+      "stack_out": [
+        "aggregate%array_trimmed%0#0",
+        "question_options#0",
+        "option_index#0",
+        "tmp%18#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
@@ -6114,44 +5987,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "0"
       ]
     },
     "1065": {
-      "op": "itxn_field ConfigAssetDefaultFrozen",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "inner_txn_params%0%%param_Fee_idx_0#0"
-      ]
-    },
-    "1067": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "aggregate%array_trimmed%0#0",
-        "question_options#0",
-        "option_index#0",
-        "tmp%18#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "aggregate%array_length%0#0",
-        "question_index#0",
-        "inner_txn_params%0%%param_Fee_idx_0#0",
-        "0"
-      ]
-    },
-    "1068": {
       "op": "itxn_field ConfigAssetDecimals",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6161,12 +6002,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1070": {
+    "1067": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -6181,13 +6021,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "1"
       ]
     },
-    "1071": {
+    "1068": {
       "op": "itxn_field ConfigAssetTotal",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6197,12 +6036,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1073": {
+    "1070": {
       "op": "pushint 3 // acfg",
       "defined_out": [
         "acfg",
@@ -6217,13 +6055,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "acfg"
       ]
     },
-    "1075": {
+    "1072": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6233,12 +6070,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1077": {
+    "1074": {
       "op": "itxn_field Fee",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6248,14 +6084,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "1079": {
+    "1076": {
       "op": "itxn_submit"
     },
-    "1080": {
+    "1077": {
       "op": "pushbytes \"nft_asset_id\"",
       "defined_out": [
         "\"nft_asset_id\"",
@@ -6269,12 +6104,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "\"nft_asset_id\""
       ]
     },
-    "1094": {
+    "1091": {
       "op": "itxn CreatedAssetID",
       "defined_out": [
         "\"nft_asset_id\"",
@@ -6289,13 +6123,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "\"nft_asset_id\"",
         "tmp%27#0"
       ]
     },
-    "1096": {
+    "1093": {
       "op": "app_global_put",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6305,11 +6138,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "1097": {
+    "1094": {
       "op": "intc_1 // 1",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6319,12 +6151,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0",
         "1"
       ]
     },
-    "1098": {
+    "1095": {
       "op": "return",
       "stack_out": [
         "aggregate%array_trimmed%0#0",
@@ -6334,11 +6165,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "aggregate%array_length%0#0",
         "question_index#0"
       ]
     },
-    "1099": {
+    "1096": {
       "subroutine": "examples.voting.voting.VotingRoundApp.get_preconditions[routing]",
       "params": {},
       "block": "get_preconditions",
@@ -6351,7 +6181,7 @@
         "tmp%0#0"
       ]
     },
-    "1102": {
+    "1099": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -6362,7 +6192,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "1103": {
+    "1100": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -6375,7 +6205,7 @@
         "0"
       ]
     },
-    "1104": {
+    "1101": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -6387,7 +6217,7 @@
         "aggregate%array_length%0#0"
       ]
     },
-    "1105": {
+    "1102": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -6400,7 +6230,7 @@
         "2"
       ]
     },
-    "1106": {
+    "1103": {
       "op": "+",
       "defined_out": [
         "add%0#0",
@@ -6411,7 +6241,7 @@
         "add%0#0"
       ]
     },
-    "1107": {
+    "1104": {
       "op": "dig 1",
       "stack_out": [
         "tmp%0#0",
@@ -6419,7 +6249,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "1109": {
+    "1106": {
       "op": "len",
       "defined_out": [
         "add%0#0",
@@ -6432,7 +6262,7 @@
         "len%0#0"
       ]
     },
-    "1110": {
+    "1107": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -6443,14 +6273,14 @@
         "eq%0#0"
       ]
     },
-    "1111": {
+    "1108": {
       "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "1112": {
+    "1109": {
       "op": "extract 2 0",
       "defined_out": [
         "signature#0"
@@ -6459,7 +6289,7 @@
         "signature#0"
       ]
     },
-    "1115": {
+    "1112": {
       "callsub": "examples.voting.voting.VotingRoundApp.voting_open",
       "op": "callsub voting_open",
       "defined_out": [
@@ -6471,7 +6301,7 @@
         "tmp%0#1"
       ]
     },
-    "1118": {
+    "1115": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6482,14 +6312,14 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "1119": {
+    "1116": {
       "op": "swap",
       "stack_out": [
         "aggregate%val_as_bytes%0#0",
         "signature#0"
       ]
     },
-    "1120": {
+    "1117": {
       "callsub": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "op": "callsub allowed_to_vote",
       "defined_out": [
@@ -6501,7 +6331,7 @@
         "tmp%2#1"
       ]
     },
-    "1123": {
+    "1120": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6512,7 +6342,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "1124": {
+    "1121": {
       "op": "txn Sender",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6525,7 +6355,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1126": {
+    "1123": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -6540,7 +6370,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1127": {
+    "1124": {
       "op": "bury 1",
       "stack_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6548,7 +6378,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1129": {
+    "1126": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6561,7 +6391,7 @@
         "aggregate%val_as_bytes%2#0"
       ]
     },
-    "1130": {
+    "1127": {
       "op": "global LatestTimestamp",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6576,7 +6406,7 @@
         "tmp%6#0"
       ]
     },
-    "1132": {
+    "1129": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -6591,7 +6421,7 @@
         "aggregate%val_as_bytes%3#0"
       ]
     },
-    "1133": {
+    "1130": {
       "op": "uncover 3",
       "stack_out": [
         "aggregate%val_as_bytes%1#0",
@@ -6600,7 +6430,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "1135": {
+    "1132": {
       "op": "uncover 3",
       "stack_out": [
         "aggregate%val_as_bytes%2#0",
@@ -6609,7 +6439,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "1137": {
+    "1134": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -6622,7 +6452,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "1138": {
+    "1135": {
       "op": "uncover 2",
       "stack_out": [
         "aggregate%val_as_bytes%3#0",
@@ -6630,7 +6460,7 @@
         "aggregate%val_as_bytes%2#0"
       ]
     },
-    "1140": {
+    "1137": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%2#0",
@@ -6641,14 +6471,14 @@
         "aggregate%head%2#0"
       ]
     },
-    "1141": {
+    "1138": {
       "op": "swap",
       "stack_out": [
         "aggregate%head%2#0",
         "aggregate%val_as_bytes%3#0"
       ]
     },
-    "1142": {
+    "1139": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%3#0"
@@ -6657,7 +6487,7 @@
         "aggregate%head%3#0"
       ]
     },
-    "1143": {
+    "1140": {
       "op": "pushbytes 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -6668,14 +6498,14 @@
         "0x151f7c75"
       ]
     },
-    "1149": {
+    "1146": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%head%3#0"
       ]
     },
-    "1150": {
+    "1147": {
       "op": "concat",
       "defined_out": [
         "tmp%3#0"
@@ -6684,11 +6514,11 @@
         "tmp%3#0"
       ]
     },
-    "1151": {
+    "1148": {
       "op": "log",
       "stack_out": []
     },
-    "1152": {
+    "1149": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -6697,11 +6527,11 @@
         "1"
       ]
     },
-    "1153": {
+    "1150": {
       "op": "return",
       "stack_out": []
     },
-    "1154": {
+    "1151": {
       "subroutine": "examples.voting.voting.VotingRoundApp.vote[routing]",
       "params": {},
       "block": "vote",
@@ -6714,7 +6544,7 @@
         "tmp%0#0"
       ]
     },
-    "1156": {
+    "1153": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -6725,7 +6555,7 @@
         "1"
       ]
     },
-    "1157": {
+    "1154": {
       "op": "-",
       "defined_out": [
         "fund_min_bal_req#0"
@@ -6734,7 +6564,7 @@
         "fund_min_bal_req#0"
       ]
     },
-    "1158": {
+    "1155": {
       "op": "dup",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6745,7 +6575,7 @@
         "fund_min_bal_req#0 (copy)"
       ]
     },
-    "1159": {
+    "1156": {
       "op": "gtxns TypeEnum",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6756,7 +6586,7 @@
         "gtxn_type%0#0"
       ]
     },
-    "1161": {
+    "1158": {
       "op": "intc_1 // pay",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6769,7 +6599,7 @@
         "pay"
       ]
     },
-    "1162": {
+    "1159": {
       "op": "==",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6780,14 +6610,14 @@
         "gtxn_type_matches%0#0"
       ]
     },
-    "1163": {
+    "1160": {
       "error": "transaction type is pay",
       "op": "assert // transaction type is pay",
       "stack_out": [
         "fund_min_bal_req#0"
       ]
     },
-    "1164": {
+    "1161": {
       "op": "txna ApplicationArgs 1",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6798,7 +6628,7 @@
         "tmp%1#0"
       ]
     },
-    "1167": {
+    "1164": {
       "op": "dup",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6811,7 +6641,7 @@
         "tmp%1#0 (copy)"
       ]
     },
-    "1168": {
+    "1165": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -6826,7 +6656,7 @@
         "0"
       ]
     },
-    "1169": {
+    "1166": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -6840,7 +6670,7 @@
         "aggregate%array_length%0#0"
       ]
     },
-    "1170": {
+    "1167": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -6855,7 +6685,7 @@
         "2"
       ]
     },
-    "1171": {
+    "1168": {
       "op": "+",
       "defined_out": [
         "add%0#0",
@@ -6868,7 +6698,7 @@
         "add%0#0"
       ]
     },
-    "1172": {
+    "1169": {
       "op": "dig 1",
       "stack_out": [
         "fund_min_bal_req#0",
@@ -6877,7 +6707,7 @@
         "tmp%1#0 (copy)"
       ]
     },
-    "1174": {
+    "1171": {
       "op": "len",
       "defined_out": [
         "add%0#0",
@@ -6892,7 +6722,7 @@
         "len%0#0"
       ]
     },
-    "1175": {
+    "1172": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -6905,7 +6735,7 @@
         "eq%0#0"
       ]
     },
-    "1176": {
+    "1173": {
       "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "stack_out": [
@@ -6913,7 +6743,7 @@
         "tmp%1#0"
       ]
     },
-    "1177": {
+    "1174": {
       "op": "extract 2 0",
       "defined_out": [
         "fund_min_bal_req#0",
@@ -6924,10 +6754,10 @@
         "signature#0"
       ]
     },
-    "1180": {
+    "1177": {
       "op": "txna ApplicationArgs 2"
     },
-    "1183": {
+    "1180": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -6941,7 +6771,7 @@
         "answer_ids#0"
       ]
     },
-    "1184": {
+    "1181": {
       "op": "cover 3",
       "defined_out": [
         "answer_ids#0",
@@ -6955,7 +6785,7 @@
         "answer_ids#0"
       ]
     },
-    "1186": {
+    "1183": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -6971,7 +6801,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1187": {
+    "1184": {
       "op": "intc_0 // 0",
       "stack_out": [
         "answer_ids#0",
@@ -6982,7 +6812,7 @@
         "0"
       ]
     },
-    "1188": {
+    "1185": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -6999,7 +6829,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1189": {
+    "1186": {
       "op": "dup",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7017,7 +6847,7 @@
         "aggregate%array_length%1#0 (copy)"
       ]
     },
-    "1190": {
+    "1187": {
       "op": "intc_2 // 2",
       "stack_out": [
         "answer_ids#0",
@@ -7029,7 +6859,7 @@
         "2"
       ]
     },
-    "1191": {
+    "1188": {
       "op": "+",
       "defined_out": [
         "add%1#0",
@@ -7047,7 +6877,7 @@
         "add%1#0"
       ]
     },
-    "1192": {
+    "1189": {
       "op": "uncover 2",
       "stack_out": [
         "answer_ids#0",
@@ -7058,7 +6888,7 @@
         "answer_ids#0"
       ]
     },
-    "1194": {
+    "1191": {
       "op": "len",
       "defined_out": [
         "add%1#0",
@@ -7077,7 +6907,7 @@
         "len%1#0"
       ]
     },
-    "1195": {
+    "1192": {
       "op": "==",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7094,7 +6924,7 @@
         "eq%1#0"
       ]
     },
-    "1196": {
+    "1193": {
       "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "stack_out": [
@@ -7104,7 +6934,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1197": {
+    "1194": {
       "op": "pushint 7700",
       "defined_out": [
         "7700",
@@ -7121,7 +6951,7 @@
         "7700"
       ]
     },
-    "1200": {
+    "1197": {
       "op": "intc_0 // 0",
       "stack_out": [
         "answer_ids#0",
@@ -7132,7 +6962,7 @@
         "0"
       ]
     },
-    "1201": {
+    "1198": {
       "callsub": "_puya_lib.util.ensure_budget",
       "op": "callsub ensure_budget",
       "stack_out": [
@@ -7142,7 +6972,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1204": {
+    "1201": {
       "op": "swap",
       "stack_out": [
         "answer_ids#0",
@@ -7151,7 +6981,7 @@
         "signature#0"
       ]
     },
-    "1205": {
+    "1202": {
       "callsub": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "op": "callsub allowed_to_vote",
       "defined_out": [
@@ -7167,7 +6997,7 @@
         "tmp%0#1"
       ]
     },
-    "1208": {
+    "1205": {
       "error": "Not allowed to vote",
       "op": "assert // Not allowed to vote",
       "stack_out": [
@@ -7176,7 +7006,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1209": {
+    "1206": {
       "callsub": "examples.voting.voting.VotingRoundApp.voting_open",
       "op": "callsub voting_open",
       "defined_out": [
@@ -7192,7 +7022,7 @@
         "tmp%1#1"
       ]
     },
-    "1212": {
+    "1209": {
       "error": "Voting not open",
       "op": "assert // Voting not open",
       "stack_out": [
@@ -7201,7 +7031,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1213": {
+    "1210": {
       "op": "txn Sender",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7216,7 +7046,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1215": {
+    "1212": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -7233,7 +7063,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1216": {
+    "1213": {
       "op": "bury 1",
       "stack_out": [
         "answer_ids#0",
@@ -7242,7 +7072,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1218": {
+    "1215": {
       "op": "!",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7257,7 +7087,7 @@
         "tmp%3#1"
       ]
     },
-    "1219": {
+    "1216": {
       "error": "Already voted",
       "op": "assert // Already voted",
       "stack_out": [
@@ -7266,7 +7096,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1220": {
+    "1217": {
       "op": "intc_0 // 0",
       "stack_out": [
         "answer_ids#0",
@@ -7275,7 +7105,7 @@
         "0"
       ]
     },
-    "1221": {
+    "1218": {
       "op": "bytec_2 // \"option_counts\"",
       "defined_out": [
         "\"option_counts\"",
@@ -7292,7 +7122,7 @@
         "\"option_counts\""
       ]
     },
-    "1222": {
+    "1219": {
       "op": "app_global_get_ex",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7309,7 +7139,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1223": {
+    "1220": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
@@ -7319,7 +7149,7 @@
         "maybe_value%0#0"
       ]
     },
-    "1224": {
+    "1221": {
       "op": "intc_0 // 0",
       "stack_out": [
         "answer_ids#0",
@@ -7329,7 +7159,7 @@
         "0"
       ]
     },
-    "1225": {
+    "1222": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -7345,7 +7175,7 @@
         "questions_count#0"
       ]
     },
-    "1226": {
+    "1223": {
       "op": "dup",
       "stack_out": [
         "answer_ids#0",
@@ -7355,7 +7185,7 @@
         "questions_count#0"
       ]
     },
-    "1227": {
+    "1224": {
       "op": "cover 3",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7371,7 +7201,7 @@
         "questions_count#0"
       ]
     },
-    "1229": {
+    "1226": {
       "op": "dig 1",
       "stack_out": [
         "answer_ids#0",
@@ -7382,7 +7212,7 @@
         "aggregate%array_length%1#0 (copy)"
       ]
     },
-    "1231": {
+    "1228": {
       "op": "==",
       "defined_out": [
         "aggregate%array_length%1#0",
@@ -7399,7 +7229,7 @@
         "tmp%6#0"
       ]
     },
-    "1232": {
+    "1229": {
       "error": "Number of answers incorrect",
       "op": "assert // Number of answers incorrect",
       "stack_out": [
@@ -7409,7 +7239,7 @@
         "aggregate%array_length%1#0"
       ]
     },
-    "1233": {
+    "1230": {
       "op": "pushint 34",
       "defined_out": [
         "34",
@@ -7426,7 +7256,7 @@
         "34"
       ]
     },
-    "1235": {
+    "1232": {
       "op": "+",
       "defined_out": [
         "answer_ids#0",
@@ -7441,7 +7271,7 @@
         "tmp%9#0"
       ]
     },
-    "1236": {
+    "1233": {
       "op": "pushint 400",
       "defined_out": [
         "400",
@@ -7458,7 +7288,7 @@
         "400"
       ]
     },
-    "1239": {
+    "1236": {
       "op": "*",
       "defined_out": [
         "answer_ids#0",
@@ -7473,7 +7303,7 @@
         "tmp%10#0"
       ]
     },
-    "1240": {
+    "1237": {
       "op": "pushint 2500",
       "defined_out": [
         "2500",
@@ -7490,7 +7320,7 @@
         "2500"
       ]
     },
-    "1243": {
+    "1240": {
       "op": "+",
       "defined_out": [
         "answer_ids#0",
@@ -7505,7 +7335,7 @@
         "min_bal_req#0"
       ]
     },
-    "1244": {
+    "1241": {
       "op": "dig 1",
       "stack_out": [
         "answer_ids#0",
@@ -7515,7 +7345,7 @@
         "fund_min_bal_req#0 (copy)"
       ]
     },
-    "1246": {
+    "1243": {
       "op": "gtxns Receiver",
       "defined_out": [
         "answer_ids#0",
@@ -7532,7 +7362,7 @@
         "tmp%12#0"
       ]
     },
-    "1248": {
+    "1245": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "answer_ids#0",
@@ -7551,7 +7381,7 @@
         "tmp%13#0"
       ]
     },
-    "1250": {
+    "1247": {
       "op": "==",
       "defined_out": [
         "answer_ids#0",
@@ -7568,7 +7398,7 @@
         "tmp%14#0"
       ]
     },
-    "1251": {
+    "1248": {
       "error": "Payment must be to app address",
       "op": "assert // Payment must be to app address",
       "stack_out": [
@@ -7578,7 +7408,7 @@
         "min_bal_req#0"
       ]
     },
-    "1252": {
+    "1249": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -7595,7 +7425,7 @@
         "min_bal_req#0 (copy)"
       ]
     },
-    "1253": {
+    "1250": {
       "op": "itob",
       "defined_out": [
         "answer_ids#0",
@@ -7612,7 +7442,7 @@
         "tmp%15#0"
       ]
     },
-    "1254": {
+    "1251": {
       "op": "log",
       "stack_out": [
         "answer_ids#0",
@@ -7621,7 +7451,7 @@
         "min_bal_req#0"
       ]
     },
-    "1255": {
+    "1252": {
       "op": "swap",
       "stack_out": [
         "answer_ids#0",
@@ -7630,7 +7460,7 @@
         "fund_min_bal_req#0"
       ]
     },
-    "1256": {
+    "1253": {
       "op": "gtxns Amount",
       "defined_out": [
         "answer_ids#0",
@@ -7645,7 +7475,7 @@
         "tmp%16#0"
       ]
     },
-    "1258": {
+    "1255": {
       "op": "==",
       "defined_out": [
         "answer_ids#0",
@@ -7658,7 +7488,7 @@
         "tmp%17#0"
       ]
     },
-    "1259": {
+    "1256": {
       "error": "Payment must be the exact min balance",
       "op": "assert // Payment must be the exact min balance",
       "stack_out": [
@@ -7666,10 +7496,10 @@
         "questions_count#0"
       ]
     },
-    "1260": {
+    "1257": {
       "op": "intc_0 // 0"
     },
-    "1261": {
+    "1258": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -7684,7 +7514,7 @@
         "question_index#0"
       ]
     },
-    "1262": {
+    "1259": {
       "block": "vote_for_header@2",
       "stack_in": [
         "answer_ids#0",
@@ -7704,7 +7534,7 @@
         "question_index#0"
       ]
     },
-    "1263": {
+    "1260": {
       "op": "dig 3",
       "defined_out": [
         "question_index#0",
@@ -7719,7 +7549,7 @@
         "questions_count#0"
       ]
     },
-    "1265": {
+    "1262": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
@@ -7734,7 +7564,7 @@
         "continue_looping%0#0"
       ]
     },
-    "1266": {
+    "1263": {
       "op": "bz vote_after_for@5",
       "stack_out": [
         "answer_ids#0",
@@ -7743,7 +7573,7 @@
         "question_index#0"
       ]
     },
-    "1269": {
+    "1266": {
       "op": "dig 3",
       "defined_out": [
         "answer_ids#0",
@@ -7758,7 +7588,7 @@
         "answer_ids#0"
       ]
     },
-    "1271": {
+    "1268": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -7775,7 +7605,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1272": {
+    "1269": {
       "op": "extract 2 0",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -7792,7 +7622,7 @@
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "1275": {
+    "1272": {
       "op": "dig 2",
       "stack_out": [
         "answer_ids#0",
@@ -7804,7 +7634,7 @@
         "question_index#0"
       ]
     },
-    "1277": {
+    "1274": {
       "op": "dup",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -7824,7 +7654,7 @@
         "question_index#0 (copy)"
       ]
     },
-    "1278": {
+    "1275": {
       "op": "cover 2",
       "stack_out": [
         "answer_ids#0",
@@ -7837,7 +7667,7 @@
         "question_index#0 (copy)"
       ]
     },
-    "1280": {
+    "1277": {
       "op": "getbyte",
       "defined_out": [
         "answer_ids#0",
@@ -7855,7 +7685,7 @@
         "answer_option_index#0"
       ]
     },
-    "1281": {
+    "1278": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -7875,7 +7705,7 @@
         "0"
       ]
     },
-    "1282": {
+    "1279": {
       "op": "bytec_2 // \"option_counts\"",
       "defined_out": [
         "\"option_counts\"",
@@ -7897,7 +7727,7 @@
         "\"option_counts\""
       ]
     },
-    "1283": {
+    "1280": {
       "op": "app_global_get_ex",
       "defined_out": [
         "answer_ids#0",
@@ -7919,7 +7749,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "1284": {
+    "1281": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
@@ -7933,7 +7763,7 @@
         "maybe_value%1#0"
       ]
     },
-    "1285": {
+    "1282": {
       "op": "extract 2 0",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
@@ -7953,7 +7783,7 @@
         "aggregate%array_trimmed%1#0"
       ]
     },
-    "1288": {
+    "1285": {
       "op": "dig 2",
       "stack_out": [
         "answer_ids#0",
@@ -7967,7 +7797,7 @@
         "question_index#0 (copy)"
       ]
     },
-    "1290": {
+    "1287": {
       "op": "getbyte",
       "defined_out": [
         "answer_ids#0",
@@ -7987,7 +7817,7 @@
         "options_count#0"
       ]
     },
-    "1291": {
+    "1288": {
       "op": "dup2",
       "defined_out": [
         "answer_ids#0",
@@ -8011,7 +7841,7 @@
         "options_count#0 (copy)"
       ]
     },
-    "1292": {
+    "1289": {
       "op": "<",
       "defined_out": [
         "answer_ids#0",
@@ -8033,7 +7863,7 @@
         "tmp%20#0"
       ]
     },
-    "1293": {
+    "1290": {
       "error": "Answer option index invalid",
       "op": "assert // Answer option index invalid",
       "stack_out": [
@@ -8047,7 +7877,7 @@
         "options_count#0"
       ]
     },
-    "1294": {
+    "1291": {
       "op": "dig 5",
       "defined_out": [
         "answer_ids#0",
@@ -8069,7 +7899,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1296": {
+    "1293": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -8093,7 +7923,7 @@
         "cumulative_offset#0 (copy)"
       ]
     },
-    "1297": {
+    "1294": {
       "op": "cover 2",
       "stack_out": [
         "answer_ids#0",
@@ -8108,7 +7938,7 @@
         "cumulative_offset#0 (copy)"
       ]
     },
-    "1299": {
+    "1296": {
       "op": "uncover 3",
       "stack_out": [
         "answer_ids#0",
@@ -8123,7 +7953,7 @@
         "answer_option_index#0"
       ]
     },
-    "1301": {
+    "1298": {
       "op": "+",
       "defined_out": [
         "answer_ids#0",
@@ -8145,7 +7975,7 @@
         "index#0"
       ]
     },
-    "1302": {
+    "1299": {
       "op": "bytec_3 // \"V\"",
       "defined_out": [
         "\"V\"",
@@ -8169,7 +7999,7 @@
         "\"V\""
       ]
     },
-    "1303": {
+    "1300": {
       "op": "dig 1",
       "defined_out": [
         "\"V\"",
@@ -8195,7 +8025,7 @@
         "index#0 (copy)"
       ]
     },
-    "1305": {
+    "1302": {
       "op": "intc_3 // 8",
       "defined_out": [
         "\"V\"",
@@ -8223,7 +8053,7 @@
         "8"
       ]
     },
-    "1306": {
+    "1303": {
       "op": "box_extract",
       "defined_out": [
         "answer_ids#0",
@@ -8247,7 +8077,7 @@
         "tmp%0#2"
       ]
     },
-    "1307": {
+    "1304": {
       "op": "btoi",
       "defined_out": [
         "answer_ids#0",
@@ -8271,7 +8101,7 @@
         "current_vote#0"
       ]
     },
-    "1308": {
+    "1305": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -8297,7 +8127,7 @@
         "1"
       ]
     },
-    "1309": {
+    "1306": {
       "op": "+",
       "defined_out": [
         "answer_ids#0",
@@ -8321,7 +8151,7 @@
         "tmp%1#2"
       ]
     },
-    "1310": {
+    "1307": {
       "op": "itob",
       "defined_out": [
         "answer_ids#0",
@@ -8345,7 +8175,7 @@
         "tmp%2#2"
       ]
     },
-    "1311": {
+    "1308": {
       "op": "bytec_3 // \"V\"",
       "stack_out": [
         "answer_ids#0",
@@ -8361,7 +8191,7 @@
         "\"V\""
       ]
     },
-    "1312": {
+    "1309": {
       "op": "cover 2",
       "stack_out": [
         "answer_ids#0",
@@ -8377,7 +8207,7 @@
         "tmp%2#2"
       ]
     },
-    "1314": {
+    "1311": {
       "op": "box_replace",
       "stack_out": [
         "answer_ids#0",
@@ -8390,7 +8220,7 @@
         "options_count#0"
       ]
     },
-    "1315": {
+    "1312": {
       "op": "+",
       "stack_out": [
         "answer_ids#0",
@@ -8402,7 +8232,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1316": {
+    "1313": {
       "op": "bury 4",
       "defined_out": [
         "answer_ids#0",
@@ -8419,7 +8249,7 @@
         "question_index#0"
       ]
     },
-    "1318": {
+    "1315": {
       "op": "txn Sender",
       "defined_out": [
         "answer_ids#0",
@@ -8438,7 +8268,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1320": {
+    "1317": {
       "op": "dup",
       "defined_out": [
         "answer_ids#0",
@@ -8459,7 +8289,7 @@
         "materialized_values%0#0 (copy)"
       ]
     },
-    "1321": {
+    "1318": {
       "op": "box_del",
       "defined_out": [
         "answer_ids#0",
@@ -8480,7 +8310,7 @@
         "{box_del}"
       ]
     },
-    "1322": {
+    "1319": {
       "op": "pop",
       "stack_out": [
         "answer_ids#0",
@@ -8492,7 +8322,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1323": {
+    "1320": {
       "op": "uncover 2",
       "stack_out": [
         "answer_ids#0",
@@ -8504,7 +8334,7 @@
         "answer_ids#0"
       ]
     },
-    "1325": {
+    "1322": {
       "op": "box_put",
       "stack_out": [
         "answer_ids#0",
@@ -8514,7 +8344,7 @@
         "question_index#0"
       ]
     },
-    "1326": {
+    "1323": {
       "op": "intc_0 // 0",
       "stack_out": [
         "answer_ids#0",
@@ -8525,7 +8355,7 @@
         "0"
       ]
     },
-    "1327": {
+    "1324": {
       "op": "bytec_1 // \"voter_count\"",
       "defined_out": [
         "\"voter_count\"",
@@ -8545,7 +8375,7 @@
         "\"voter_count\""
       ]
     },
-    "1328": {
+    "1325": {
       "op": "app_global_get_ex",
       "defined_out": [
         "answer_ids#0",
@@ -8565,7 +8395,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "1329": {
+    "1326": {
       "error": "check self.voter_count exists",
       "op": "assert // check self.voter_count exists",
       "stack_out": [
@@ -8577,7 +8407,7 @@
         "maybe_value%2#0"
       ]
     },
-    "1330": {
+    "1327": {
       "op": "intc_1 // 1",
       "stack_out": [
         "answer_ids#0",
@@ -8589,7 +8419,7 @@
         "1"
       ]
     },
-    "1331": {
+    "1328": {
       "op": "+",
       "defined_out": [
         "answer_ids#0",
@@ -8607,7 +8437,7 @@
         "tmp%23#0"
       ]
     },
-    "1332": {
+    "1329": {
       "op": "bytec_1 // \"voter_count\"",
       "stack_out": [
         "answer_ids#0",
@@ -8619,7 +8449,7 @@
         "\"voter_count\""
       ]
     },
-    "1333": {
+    "1330": {
       "op": "swap",
       "stack_out": [
         "answer_ids#0",
@@ -8631,7 +8461,7 @@
         "tmp%23#0"
       ]
     },
-    "1334": {
+    "1331": {
       "op": "app_global_put",
       "stack_out": [
         "answer_ids#0",
@@ -8641,7 +8471,7 @@
         "question_index#0"
       ]
     },
-    "1335": {
+    "1332": {
       "op": "intc_1 // 1",
       "stack_out": [
         "answer_ids#0",
@@ -8652,7 +8482,7 @@
         "1"
       ]
     },
-    "1336": {
+    "1333": {
       "op": "+",
       "stack_out": [
         "answer_ids#0",
@@ -8662,7 +8492,7 @@
         "question_index#0"
       ]
     },
-    "1337": {
+    "1334": {
       "op": "bury 1",
       "defined_out": [
         "answer_ids#0",
@@ -8677,10 +8507,10 @@
         "question_index#0"
       ]
     },
-    "1339": {
+    "1336": {
       "op": "b vote_for_header@2"
     },
-    "1342": {
+    "1339": {
       "block": "vote_after_for@5",
       "stack_in": [
         "answer_ids#0",
@@ -8700,7 +8530,7 @@
         "1"
       ]
     },
-    "1343": {
+    "1340": {
       "op": "return",
       "stack_out": [
         "answer_ids#0",
@@ -8709,20 +8539,20 @@
         "question_index#0"
       ]
     },
-    "1344": {
+    "1341": {
       "subroutine": "examples.voting.voting.VotingRoundApp.voting_open",
       "params": {},
       "block": "voting_open",
       "stack_in": [],
       "op": "proto 0 1"
     },
-    "1347": {
+    "1344": {
       "op": "pushbytes \"\"",
       "stack_out": [
         "awst_tmp%0#0"
       ]
     },
-    "1349": {
+    "1346": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0"
@@ -8732,7 +8562,7 @@
         "0"
       ]
     },
-    "1350": {
+    "1347": {
       "op": "bytec_0 // \"is_bootstrapped\"",
       "defined_out": [
         "\"is_bootstrapped\"",
@@ -8744,7 +8574,7 @@
         "\"is_bootstrapped\""
       ]
     },
-    "1351": {
+    "1348": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -8756,7 +8586,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1352": {
+    "1349": {
       "error": "check self.is_bootstrapped exists",
       "op": "assert // check self.is_bootstrapped exists",
       "stack_out": [
@@ -8764,20 +8594,20 @@
         "maybe_value%0#0"
       ]
     },
-    "1353": {
+    "1350": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "awst_tmp%0#0"
       ]
     },
-    "1356": {
+    "1353": {
       "op": "intc_0 // 0",
       "stack_out": [
         "awst_tmp%0#0",
         "0"
       ]
     },
-    "1357": {
+    "1354": {
       "op": "bytec 5 // \"close_time\"",
       "defined_out": [
         "\"close_time\"",
@@ -8789,7 +8619,7 @@
         "\"close_time\""
       ]
     },
-    "1359": {
+    "1356": {
       "op": "app_global_get_ex",
       "defined_out": [
         "_%0#0",
@@ -8801,27 +8631,27 @@
         "maybe_exists%1#0"
       ]
     },
-    "1360": {
+    "1357": {
       "op": "bury 1",
       "stack_out": [
         "awst_tmp%0#0",
         "maybe_exists%1#0"
       ]
     },
-    "1362": {
+    "1359": {
       "op": "bnz voting_open_bool_false@5",
       "stack_out": [
         "awst_tmp%0#0"
       ]
     },
-    "1365": {
+    "1362": {
       "op": "intc_0 // 0",
       "stack_out": [
         "awst_tmp%0#0",
         "0"
       ]
     },
-    "1366": {
+    "1363": {
       "op": "bytec 10 // \"start_time\"",
       "defined_out": [
         "\"start_time\"",
@@ -8833,7 +8663,7 @@
         "\"start_time\""
       ]
     },
-    "1368": {
+    "1365": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%2#0",
@@ -8845,7 +8675,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "1369": {
+    "1366": {
       "error": "check self.start_time exists",
       "op": "assert // check self.start_time exists",
       "stack_out": [
@@ -8853,10 +8683,10 @@
         "maybe_value%1#0"
       ]
     },
-    "1370": {
+    "1367": {
       "op": "global LatestTimestamp"
     },
-    "1372": {
+    "1369": {
       "op": "dup",
       "defined_out": [
         "awst_tmp%0#0",
@@ -8869,7 +8699,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1373": {
+    "1370": {
       "op": "frame_bury 0",
       "defined_out": [
         "awst_tmp%0#0",
@@ -8881,7 +8711,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1375": {
+    "1372": {
       "op": "<=",
       "defined_out": [
         "awst_tmp%0#0",
@@ -8892,20 +8722,20 @@
         "tmp%0#0"
       ]
     },
-    "1376": {
+    "1373": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "awst_tmp%0#0"
       ]
     },
-    "1379": {
+    "1376": {
       "op": "intc_0 // 0",
       "stack_out": [
         "awst_tmp%0#0",
         "0"
       ]
     },
-    "1380": {
+    "1377": {
       "op": "bytec 11 // \"end_time\"",
       "defined_out": [
         "\"end_time\"",
@@ -8918,7 +8748,7 @@
         "\"end_time\""
       ]
     },
-    "1382": {
+    "1379": {
       "op": "app_global_get_ex",
       "defined_out": [
         "awst_tmp%0#0",
@@ -8931,7 +8761,7 @@
         "maybe_exists%3#0"
       ]
     },
-    "1383": {
+    "1380": {
       "error": "check self.end_time exists",
       "op": "assert // check self.end_time exists",
       "stack_out": [
@@ -8939,7 +8769,7 @@
         "maybe_value%2#0"
       ]
     },
-    "1384": {
+    "1381": {
       "op": "frame_dig 0",
       "stack_out": [
         "awst_tmp%0#0",
@@ -8947,7 +8777,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1386": {
+    "1383": {
       "op": ">=",
       "defined_out": [
         "awst_tmp%0#0",
@@ -8958,13 +8788,13 @@
         "tmp%1#0"
       ]
     },
-    "1387": {
+    "1384": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "awst_tmp%0#0"
       ]
     },
-    "1390": {
+    "1387": {
       "op": "intc_1 // 1",
       "defined_out": [
         "and_result%0#0",
@@ -8975,7 +8805,7 @@
         "and_result%0#0"
       ]
     },
-    "1391": {
+    "1388": {
       "block": "voting_open_bool_merge@6",
       "stack_in": [
         "awst_tmp%0#0",
@@ -8986,11 +8816,11 @@
         "and_result%0#0"
       ]
     },
-    "1392": {
+    "1389": {
       "retsub": true,
       "op": "retsub"
     },
-    "1393": {
+    "1390": {
       "block": "voting_open_bool_false@5",
       "stack_in": [
         "awst_tmp%0#0"
@@ -9004,10 +8834,10 @@
         "and_result%0#0"
       ]
     },
-    "1394": {
+    "1391": {
       "op": "b voting_open_bool_merge@6"
     },
-    "1397": {
+    "1394": {
       "subroutine": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "params": {
         "signature#0": "bytes"
@@ -9016,7 +8846,7 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "1400": {
+    "1397": {
       "op": "pushint 2000",
       "defined_out": [
         "2000"
@@ -9025,7 +8855,7 @@
         "2000"
       ]
     },
-    "1403": {
+    "1400": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -9036,12 +8866,12 @@
         "0"
       ]
     },
-    "1404": {
+    "1401": {
       "callsub": "_puya_lib.util.ensure_budget",
       "op": "callsub ensure_budget",
       "stack_out": []
     },
-    "1407": {
+    "1404": {
       "op": "txn Sender",
       "defined_out": [
         "tmp%0#0"
@@ -9050,14 +8880,14 @@
         "tmp%0#0"
       ]
     },
-    "1409": {
+    "1406": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%0#0",
         "0"
       ]
     },
-    "1410": {
+    "1407": {
       "op": "bytec 8 // \"snapshot_public_key\"",
       "defined_out": [
         "\"snapshot_public_key\"",
@@ -9070,7 +8900,7 @@
         "\"snapshot_public_key\""
       ]
     },
-    "1412": {
+    "1409": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -9083,7 +8913,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1413": {
+    "1410": {
       "error": "check self.snapshot_public_key exists",
       "op": "assert // check self.snapshot_public_key exists",
       "stack_out": [
@@ -9091,10 +8921,10 @@
         "maybe_value%0#0"
       ]
     },
-    "1414": {
+    "1411": {
       "op": "frame_dig -1"
     },
-    "1416": {
+    "1413": {
       "op": "swap",
       "defined_out": [
         "maybe_value%0#0",
@@ -9107,7 +8937,7 @@
         "maybe_value%0#0"
       ]
     },
-    "1417": {
+    "1414": {
       "op": "ed25519verify_bare",
       "defined_out": [
         "tmp%1#0"
@@ -9116,7 +8946,7 @@
         "tmp%1#0"
       ]
     },
-    "1418": {
+    "1415": {
       "retsub": true,
       "op": "retsub"
     }

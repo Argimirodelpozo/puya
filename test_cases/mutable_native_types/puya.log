@@ -2490,6 +2490,7 @@ debug: selected total#3 from equivalence set
 debug: Copy propagation made 3 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -5208,7 +5209,7 @@ debug: Optimizer: Perform Subroutine Inlining
 debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
-debug: Found equivalence set: aggregate%array_length%0#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%0#0, array_length%1#0
 debug: selected aggregate%array_length%0#0 from equivalence set
 debug: Found equivalence set: aggregate%extract%0#0, tuple_item%0#0
 debug: selected aggregate%extract%0#0 from equivalence set
@@ -7547,8 +7548,10 @@ debug: Inserted main___algopy_default_create@22.ops[11]: 'l-store-copy tmp%10#0 
 debug: Replaced main___algopy_default_create@22.ops[14]: 'v-load tmp%10#0' with 'l-load tmp%10#0'
 debug: Inserted main___algopy_default_create@22.ops[5]: 'l-store-copy tmp%8#0 0'
 debug: Replaced main___algopy_default_create@22.ops[14]: 'v-load tmp%8#0' with 'l-load tmp%8#0'
-debug: Inserted sum_frozen_arr_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced sum_frozen_arr_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted sum_frozen_arr_for_header@1.ops[7]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced sum_frozen_arr_for_header@1.ops[9]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted sum_frozen_arr_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%0#0 0'
+debug: Replaced sum_frozen_arr_for_header@1.ops[6]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
 debug: Inserted sum_frozen_arr_for_body@2.ops[11]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced sum_frozen_arr_for_body@2.ops[13]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted sum_frozen_arr_for_body@2.ops[6]: 'l-store-copy aggregate%bytes_offset%0#0 0'
@@ -8087,7 +8090,7 @@ debug: Allocated 1 variable/s to x-stack: tmp%1#0
 debug: shared x-stack for test_match_struct_switch_case_0@2 -> test_match_struct_after_inlined_test_cases.mutable_native_types.contract.Contract.test_match_struct@4: tmp%1#0
 debug: shared x-stack for test_match_struct_switch_case_default@3 -> test_match_struct_after_inlined_test_cases.mutable_native_types.contract.Contract.test_match_struct@4: tmp%1#0
 debug: test_cases.mutable_native_types.contract.sum_frozen_arr f-stack entry: []
-debug: test_cases.mutable_native_types.contract.sum_frozen_arr f-stack on first store: ['total#0', 'aggregate%array_length%0#0', 'item_index_internal%0#0']
+debug: test_cases.mutable_native_types.contract.sum_frozen_arr f-stack on first store: ['total#0', 'item_index_internal%0#0']
 debug: test_cases.mutable_native_types.contract.Contract.test_arr[routing] f-stack entry: []
 debug: test_cases.mutable_native_types.contract.Contract.test_arr[routing] f-stack on first store: ['fixed_struct#0', 'arr2#1', '_i#0']
 debug: optimizing TEAL subroutine ops algopy.arc4.ARC4Contract.approval_program() -> uint64:
@@ -13131,6 +13134,7 @@ debug: selected tup#0 from equivalence set
 debug: Copy propagation made 4 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -13164,6 +13168,7 @@ debug: selected tup#0 from equivalence set
 debug: Copy propagation made 3 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -13590,6 +13595,7 @@ debug: selected tup#0 from equivalence set
 debug: Copy propagation made 1 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -13617,6 +13623,7 @@ debug: selected tup#0 from equivalence set
 debug: Copy propagation made 1 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -15531,7 +15538,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Found equivalence set: aggregate%array_length%0#0, length%0#0
 debug: selected aggregate%array_length%0#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%1#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%1#0, array_length%1#0
 debug: selected aggregate%array_length%1#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%0#0, tup#0
 debug: selected tup#0 from equivalence set
@@ -15569,7 +15576,7 @@ debug: selected tup#0 from equivalence set
 debug: Copy propagation made 1 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
-debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%1#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -17602,6 +17609,7 @@ debug: selected tup.b#0 from equivalence set
 debug: Copy propagation made 5 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -17637,6 +17645,7 @@ debug: selected tup.b#0 from equivalence set
 debug: Copy propagation made 4 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -18055,6 +18064,7 @@ debug: selected tup.b#0 from equivalence set
 debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -18084,6 +18094,7 @@ debug: selected tup.b#0 from equivalence set
 debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -19993,7 +20004,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Found equivalence set: aggregate%array_length%0#0, length%0#0
 debug: selected aggregate%array_length%0#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%1#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%1#0, array_length%1#0
 debug: selected aggregate%array_length%1#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%0#0, array_item%0#0
 debug: selected aggregate%encoded_element%0#0 from equivalence set
@@ -20043,7 +20054,7 @@ debug: selected tup.b#0 from equivalence set
 debug: Copy propagation made 4 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
-debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%1#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Simplified (btoi aggregate%extract%0#0) to (extract_uint64 aggregate%encoded_element%0#0 0u)
 debug: Simplified (btoi aggregate%extract%1#0) to (extract_uint64 aggregate%encoded_element%0#0 8u)

@@ -3499,6 +3499,11 @@ subroutine sum_dynamic_arr_struct:
         v-load values%1#0                                                                              values%0#0,values%1#0
         +                                                                                              total#0
         v-store total#0
+        int 0                                                                                          0
+        v-store item_index_internal%0#0
+        b sum_dynamic_arr_struct_for_header@2
+
+    sum_dynamic_arr_struct_for_header@2:
         // box_storage/contract.py:328
         // for val in self.dynamic_arr_struct.value.arr:
         byte "dynamic_arr_struct"                                                                      "dynamic_arr_struct"
@@ -3509,13 +3514,6 @@ subroutine sum_dynamic_arr_struct:
         v-load box%box_extract%4#0                                                                     box%box_extract%4#0
         btoi                                                                                           box%array_length%0#0
         v-store box%array_length%0#0
-        int 0                                                                                          0
-        v-store item_index_internal%0#0
-        b sum_dynamic_arr_struct_for_header@2
-
-    sum_dynamic_arr_struct_for_header@2:
-        // box_storage/contract.py:328
-        // for val in self.dynamic_arr_struct.value.arr:
         v-load item_index_internal%0#0                                                                 item_index_internal%0#0
         v-load box%array_length%0#0                                                                    item_index_internal%0#0,box%array_length%0#0
         <                                                                                              continue_looping%0#0
@@ -3569,6 +3567,11 @@ subroutine sum_dynamic_arr_struct:
         b sum_dynamic_arr_struct_for_header@2
 
     sum_dynamic_arr_struct_after_for@5:
+        int 0                                                                                          0
+        v-store item_index_internal%1#0
+        b sum_dynamic_arr_struct_for_header@6
+
+    sum_dynamic_arr_struct_for_header@6:
         // box_storage/contract.py:330
         // for val in self.dynamic_arr_struct.value.arr2:
         byte "dynamic_arr_struct"                                                                      "dynamic_arr_struct"
@@ -3587,13 +3590,6 @@ subroutine sum_dynamic_arr_struct:
         v-load box%box_extract%8#0                                                                     box%box_extract%8#0
         btoi                                                                                           box%array_length%1#0
         v-store box%array_length%1#0
-        int 0                                                                                          0
-        v-store item_index_internal%1#0
-        b sum_dynamic_arr_struct_for_header@6
-
-    sum_dynamic_arr_struct_for_header@6:
-        // box_storage/contract.py:330
-        // for val in self.dynamic_arr_struct.value.arr2:
         v-load item_index_internal%1#0                                                                 item_index_internal%1#0
         v-load box%array_length%1#0                                                                    item_index_internal%1#0,box%array_length%1#0
         <                                                                                              continue_looping%1#0
@@ -4119,6 +4115,11 @@ subroutine sum_dynamic_box:
         // total = UInt64()
         int 0                                                                                          0
         v-store total#0
+        int 0                                                                                          0
+        v-store item_index_internal%0#0
+        b sum_dynamic_box_for_header@2
+
+    sum_dynamic_box_for_header@2:
         // box_storage/contract.py:389
         // for val in self.dynamic_box.value:
         byte "dynamic_box"                                                                             "dynamic_box"
@@ -4129,13 +4130,6 @@ subroutine sum_dynamic_box:
         v-load box%box_extract%0#0                                                                     box%box_extract%0#0
         btoi                                                                                           box%array_length%0#0
         v-store box%array_length%0#0
-        int 0                                                                                          0
-        v-store item_index_internal%0#0
-        b sum_dynamic_box_for_header@2
-
-    sum_dynamic_box_for_header@2:
-        // box_storage/contract.py:389
-        // for val in self.dynamic_box.value:
         v-load item_index_internal%0#0                                                                 item_index_internal%0#0
         v-load box%array_length%0#0                                                                    item_index_internal%0#0,box%array_length%0#0
         <                                                                                              continue_looping%0#0

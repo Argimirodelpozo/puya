@@ -882,6 +882,7 @@ debug: Removing unused variable inner_txn_params%0%%Applications_length#0
 debug: Removing unused variable inner_txn_params%0%%ApprovalProgramPages_length#0
 debug: Removing unused variable inner_txn_params%0%%ClearStateProgramPages_length#0
 debug: Removing unused variable inner_txn_params%0%%RejectVersion_length#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -929,6 +930,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable option_counts%is_original#0
 debug: Removing unused variable reverse_index_internal%0#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -1902,8 +1904,6 @@ debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[99]: 'l-
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[101]: 'v-load tmp%12#0' with 'l-load tmp%12#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[104]: 'l-store-copy tmp%13#0 0'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[106]: 'v-load tmp%13#0' with 'l-load tmp%13#0'
-debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[120]: 'l-store-copy aggregate%array_length%0#0 0'
-debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[122]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[6]: 'l-store-copy maybe_exists%0#0 1'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[9]: 'v-load maybe_exists%0#0' with 'l-load maybe_exists%0#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[16]: 'l-store-copy tmp%1#0 0'
@@ -1928,8 +1928,6 @@ debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[77]: 'l-
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[81]: 'v-load maybe_value%3#0' with 'l-load maybe_value%3#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[99]: 'l-store-copy maybe_value%4#0 1'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[103]: 'v-load maybe_value%4#0' with 'l-load maybe_value%4#0'
-debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[126]: 'l-store-copy maybe_value%5#0 1'
-debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[130]: 'v-load maybe_value%5#0' with 'l-load maybe_value%5#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[26]: 'l-store-copy maybe_value%0#0 1'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[31]: 'v-load maybe_value%0#0' with 'l-load maybe_value%0#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[44]: 'l-store-copy maybe_value%1#0 1'
@@ -1944,8 +1942,12 @@ debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[76]: 'l-
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[91]: 'v-load tmp%7#0' with 'l-load tmp%7#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_block@0.ops[99]: 'l-store-copy tmp%10#0 0'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_block@0.ops[114]: 'v-load tmp%10#0' with 'l-load tmp%10#0'
-debug: Inserted examples.voting.voting.VotingRoundApp.close_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced examples.voting.voting.VotingRoundApp.close_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.voting.voting.VotingRoundApp.close_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%0#0 0'
+debug: Replaced examples.voting.voting.VotingRoundApp.close_for_header@1.ops[5]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
+debug: Inserted examples.voting.voting.VotingRoundApp.close_for_header@1.ops[10]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced examples.voting.voting.VotingRoundApp.close_for_header@1.ops[12]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted examples.voting.voting.VotingRoundApp.close_for_header@1.ops[6]: 'l-store-copy array_length%1#0 0'
+debug: Replaced examples.voting.voting.VotingRoundApp.close_for_header@1.ops[9]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_for_body@2.ops[16]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced examples.voting.voting.VotingRoundApp.close_for_body@2.ops[18]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted examples.voting.voting.VotingRoundApp.close_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -2218,10 +2220,12 @@ debug: Inserted store_option_counts_block@0.ops[23]: 'l-store-copy tmp%2#0 0'
 debug: Replaced store_option_counts_block@0.ops[25]: 'v-load tmp%2#0' with 'l-load tmp%2#0'
 debug: Inserted store_option_counts_block@0.ops[28]: 'l-store-copy tmp%3#0 0'
 debug: Replaced store_option_counts_block@0.ops[30]: 'v-load tmp%3#0' with 'l-load tmp%3#0'
-debug: Inserted store_option_counts_block@0.ops[37]: 'l-store-copy aggregate%array_length%2#0 0'
-debug: Replaced store_option_counts_block@0.ops[39]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
-debug: Inserted store_option_counts_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced store_option_counts_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted store_option_counts_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%2#0 0'
+debug: Replaced store_option_counts_for_header@1.ops[5]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
+debug: Inserted store_option_counts_for_header@1.ops[10]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced store_option_counts_for_header@1.ops[12]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted store_option_counts_for_header@1.ops[6]: 'l-store-copy array_length%1#0 0'
+debug: Replaced store_option_counts_for_header@1.ops[9]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted store_option_counts_for_body@2.ops[16]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced store_option_counts_for_body@2.ops[18]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted store_option_counts_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -2269,7 +2273,7 @@ debug: examples.voting.voting.itoa f-stack on first store: ['radix#0']
 debug: examples.voting.voting.VotingRoundApp.create f-stack entry: []
 debug: examples.voting.voting.VotingRoundApp.create f-stack on first store: ['store_option_counts%0#0']
 debug: examples.voting.voting.VotingRoundApp.close f-stack entry: ['note#3', 'question_options#0', 'current_index#6', 'tmp%18#0', 'value_internal%0#0']
-debug: examples.voting.voting.VotingRoundApp.close f-stack on first store: ['_%0#0', 'note#0', 'current_index#0', 'maybe_value%5#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: examples.voting.voting.VotingRoundApp.close f-stack on first store: ['_%0#0', 'note#0', 'current_index#0', 'maybe_value%5#0', 'item_index_internal%0#0']
 debug: examples.voting.voting.VotingRoundApp.vote f-stack entry: []
 debug: examples.voting.voting.VotingRoundApp.vote f-stack on first store: ['questions_count#0', 'cumulative_offset#0', 'value_internal%0#0']
 debug: examples.voting.voting.VotingRoundApp.voting_open f-stack entry: ['_%0#0', 'and_result%0#0', 'awst_tmp%0#0']
@@ -2277,7 +2281,7 @@ debug: examples.voting.voting.VotingRoundApp.voting_open f-stack on first store:
 debug: examples.voting.voting.VotingRoundApp.already_voted f-stack entry: []
 debug: examples.voting.voting.VotingRoundApp.already_voted f-stack on first store: ['_%0#0']
 debug: examples.voting.voting.VotingRoundApp.store_option_counts f-stack entry: []
-debug: examples.voting.voting.VotingRoundApp.store_option_counts f-stack on first store: ['option_counts%out#0', 'total_options#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: examples.voting.voting.VotingRoundApp.store_option_counts f-stack on first store: ['option_counts%out#0', 'total_options#0', 'item_index_internal%0#0']
 debug: optimizing TEAL subroutine ops algopy.arc4.ARC4Contract.approval_program() -> uint64:
 debug: optimizing TEAL subroutine ops _puya_lib.util.ensure_budget(required_budget: uint64, fee_source: uint64) -> void:
 voting/voting.py:249:2 debug: optimizing TEAL subroutine ops examples.voting.voting.itoa(i: uint64) -> bytes:

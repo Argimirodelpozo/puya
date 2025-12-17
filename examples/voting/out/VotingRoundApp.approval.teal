@@ -604,86 +604,83 @@ close:
     dup
     bytec_2 // "option_counts"
     app_global_get_ex
-    swap
-    dup
-    uncover 2
     assert // check self.option_counts exists
-    intc_0 // 0
-    extract_uint16 // on error: invalid array length header
     intc_0 // 0
 
 close_for_header@2:
     // voting/voting.py:132
     // for question_index, question_options in uenumerate(self.option_counts):
-    dup
-    dig 2
-    <
+    dig 1
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    dig 1
+    >
     bz close_after_for@15
-    dig 2
+    dig 1
     extract 2 0
     dup
-    bury 10
+    bury 9
     dig 1
     dup
     cover 2
     intc_1 // 1
     extract3 // on error: index access is out of bounds
-    bury 9
+    bury 8
     // voting/voting.py:133
     // if question_index > 0:
     bz close_after_if_else@5
     // voting/voting.py:134
     // note += ","
-    dig 4
+    dig 3
     pushbytes ","
     concat
-    bury 5
+    bury 4
 
 close_after_if_else@5:
     // voting/voting.py:135
     // if question_options > 0:
-    dig 7
+    dig 6
     pushbytes 0x00
     b>
     bz close_after_if_else@13
     // voting/voting.py:136
     // note += "["
-    dig 4
+    dig 3
     pushbytes "["
     concat
-    bury 5
+    bury 4
     // voting/voting.py:137
     // for option_index in urange(question_options.as_uint64()):
-    dig 8
+    dig 7
     dig 1
     getbyte
-    bury 6
+    bury 5
     intc_0 // 0
-    bury 7
+    bury 6
 
 close_for_header@7:
     // voting/voting.py:137
     // for option_index in urange(question_options.as_uint64()):
-    dig 6
-    dig 6
+    dig 5
+    dig 5
     <
     bz close_after_for@12
     // voting/voting.py:138
     // if option_index > 0:
-    dig 6
+    dig 5
     bz close_after_if_else@10
     // voting/voting.py:139
     // note += ","
-    dig 4
+    dig 3
     pushbytes ","
     concat
-    bury 5
+    bury 4
 
 close_after_if_else@10:
     // voting/voting.py:241
     // return op.btoi(self.tally_box.extract(index, VOTE_COUNT_BYTES))
     bytec_3 // "V"
-    dig 4
+    dig 3
     dup
     cover 2
     intc_3 // 8
@@ -692,30 +689,30 @@ close_after_if_else@10:
     // voting/voting.py:141
     // note += itoa(votes_for_option)
     callsub itoa
-    dig 6
+    dig 5
     swap
     concat
-    bury 6
+    bury 5
     // voting/voting.py:142
     // current_index += 1
     intc_1 // 1
     +
-    bury 4
+    bury 3
     // voting/voting.py:137
     // for option_index in urange(question_options.as_uint64()):
-    dig 6
+    dig 5
     intc_1 // 1
     +
-    bury 7
+    bury 6
     b close_for_header@7
 
 close_after_for@12:
     // voting/voting.py:143
     // note += "]"
-    dig 4
+    dig 3
     pushbytes "]"
     concat
-    bury 5
+    bury 4
 
 close_after_if_else@13:
     dup
@@ -727,7 +724,7 @@ close_after_if_else@13:
 close_after_for@15:
     // voting/voting.py:144
     // note += "]}}"
-    dig 4
+    dig 3
     pushbytes "]}}"
     concat
     // voting/voting.py:146-156

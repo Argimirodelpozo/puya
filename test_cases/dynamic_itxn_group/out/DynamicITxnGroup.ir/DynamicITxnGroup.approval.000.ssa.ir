@@ -393,7 +393,8 @@ subroutine test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply(a
     block@1: // for_header_L49
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@6)
         let is_first#1: bool = φ(is_first#0 <- block@0, is_first#2 <- block@6)
-        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(addresses#0)
+        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@7
     block@2: // for_body_L50
         let array_item%0#0: Encoded(uint8[32]) = extract_value(addresses#0, item_index_internal%0#1)

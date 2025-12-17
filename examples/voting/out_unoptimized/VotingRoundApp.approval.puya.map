@@ -3,7 +3,7 @@
   "sources": [
     "../voting.py"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -4770,79 +4770,6 @@
       ]
     },
     "1081": {
-      "op": "cover 1",
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0"
-      ]
-    },
-    "1083": {
-      "op": "dup",
-      "defined_out": [
-        "_%0#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0 (copy)"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0 (copy)",
-        "maybe_value%5#0 (copy)"
-      ]
-    },
-    "1084": {
-      "op": "cover 2",
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0 (copy)"
-      ]
-    },
-    "1086": {
-      "op": "cover 2",
-      "defined_out": [
-        "_%0#0",
-        "maybe_exists%6#0",
-        "maybe_value%5#0"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "maybe_value%5#0",
-        "maybe_exists%6#0"
-      ]
-    },
-    "1088": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
@@ -4854,11 +4781,10 @@
         "_%0#0",
         "note#0",
         "current_index#0",
-        "maybe_value%5#0",
         "maybe_value%5#0"
       ]
     },
-    "1089": {
+    "1082": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -4870,50 +4796,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "maybe_value%5#0",
-        "0"
-      ]
-    },
-    "1090": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "_%0#0",
-        "maybe_value%5#0"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0"
-      ]
-    },
-    "1091": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1092": {
+    "1083": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_header@1"
     },
-    "1095": {
+    "1086": {
       "block": "examples.voting.voting.VotingRoundApp.close_for_header@1",
       "stack_in": [
         "note#3",
@@ -4925,104 +4814,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "op": "frame_dig 10",
-      "defined_out": [
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "1097": {
-      "op": "frame_dig 9",
-      "defined_out": [
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0",
-        "array_length%0#0"
-      ]
-    },
-    "1099": {
-      "op": "<",
-      "defined_out": [
-        "array_length%0#0",
-        "continue_looping%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "continue_looping%0#0"
-      ]
-    },
-    "1100": {
-      "op": "bz examples.voting.voting.VotingRoundApp.close_after_for@14",
-      "stack_out": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "1103": {
-      "op": "b examples.voting.voting.VotingRoundApp.close_for_body@2"
-    },
-    "1106": {
-      "block": "examples.voting.voting.VotingRoundApp.close_for_body@2",
-      "stack_in": [
-        "note#3",
-        "question_options#0",
-        "current_index#6",
-        "tmp%18#0",
-        "value_internal%0#0",
-        "_%0#0",
-        "note#0",
-        "current_index#0",
-        "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 8",
@@ -5039,12 +4830,146 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "maybe_value%5#0"
       ]
     },
-    "1108": {
+    "1088": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0",
+        "maybe_value%5#0",
+        "0"
+      ]
+    },
+    "1089": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%1#0",
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0",
+        "array_length%1#0"
+      ]
+    },
+    "1090": {
+      "op": "frame_dig 9",
+      "defined_out": [
+        "array_length%1#0",
+        "item_index_internal%0#0",
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0",
+        "array_length%1#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "1092": {
+      "op": ">",
+      "defined_out": [
+        "continue_looping%0#0",
+        "item_index_internal%0#0",
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0",
+        "continue_looping%0#0"
+      ]
+    },
+    "1093": {
+      "op": "bz examples.voting.voting.VotingRoundApp.close_after_for@14",
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "1096": {
+      "op": "b examples.voting.voting.VotingRoundApp.close_for_body@2"
+    },
+    "1099": {
+      "block": "examples.voting.voting.VotingRoundApp.close_for_body@2",
+      "stack_in": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0"
+      ],
+      "op": "frame_dig 8",
+      "defined_out": [
+        "maybe_value%5#0"
+      ],
+      "stack_out": [
+        "note#3",
+        "question_options#0",
+        "current_index#6",
+        "tmp%18#0",
+        "value_internal%0#0",
+        "_%0#0",
+        "note#0",
+        "current_index#0",
+        "maybe_value%5#0",
+        "item_index_internal%0#0",
+        "maybe_value%5#0"
+      ]
+    },
+    "1101": {
       "op": "dup",
       "defined_out": [
         "maybe_value%5#0",
@@ -5060,13 +4985,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "maybe_value%5#0",
         "maybe_value%5#0 (copy)"
       ]
     },
-    "1109": {
+    "1102": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%0#0",
@@ -5082,13 +5006,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "maybe_value%5#0",
         "aggregate%total_length%0#0"
       ]
     },
-    "1110": {
+    "1103": {
       "op": "cover 1",
       "stack_out": [
         "note#3",
@@ -5100,13 +5023,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "maybe_value%5#0"
       ]
     },
-    "1112": {
+    "1105": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -5123,14 +5045,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "maybe_value%5#0",
         "2"
       ]
     },
-    "1113": {
+    "1106": {
       "op": "uncover 2",
       "stack_out": [
         "note#3",
@@ -5142,14 +5063,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "maybe_value%5#0",
         "2",
         "aggregate%total_length%0#0"
       ]
     },
-    "1115": {
+    "1108": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -5165,13 +5085,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "1116": {
-      "op": "frame_dig 10",
+    "1109": {
+      "op": "frame_dig 9",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0",
@@ -5187,13 +5106,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1118": {
+    "1111": {
       "op": "dup",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -5211,14 +5129,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0 (copy)",
         "item_index_internal%0#0 (copy)"
       ]
     },
-    "1119": {
+    "1112": {
       "op": "cover 2",
       "stack_out": [
         "note#3",
@@ -5230,14 +5147,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0 (copy)"
       ]
     },
-    "1121": {
+    "1114": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -5256,7 +5172,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
@@ -5264,7 +5179,7 @@
         "1"
       ]
     },
-    "1122": {
+    "1115": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -5282,14 +5197,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "1123": {
+    "1116": {
       "op": "intc_1 // 1",
       "stack_out": [
         "note#3",
@@ -5301,7 +5215,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
@@ -5309,7 +5222,7 @@
         "1"
       ]
     },
-    "1124": {
+    "1117": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -5327,13 +5240,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "array_item%0#0"
       ]
     },
-    "1125": {
+    "1118": {
       "op": "frame_bury 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -5350,12 +5262,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "question_index#0"
       ]
     },
-    "1127": {
+    "1120": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -5367,13 +5278,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "question_index#0",
         "0"
       ]
     },
-    "1128": {
+    "1121": {
       "op": ">",
       "defined_out": [
         "item_index_internal%0#0",
@@ -5390,12 +5300,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%14#0"
       ]
     },
-    "1129": {
+    "1122": {
       "op": "frame_dig 6",
       "defined_out": [
         "item_index_internal%0#0",
@@ -5413,13 +5322,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%14#0",
         "note#0"
       ]
     },
-    "1131": {
+    "1124": {
       "op": "frame_bury 0",
       "defined_out": [
         "item_index_internal%0#0",
@@ -5437,12 +5345,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%14#0"
       ]
     },
-    "1133": {
+    "1126": {
       "op": "bz examples.voting.voting.VotingRoundApp.close_after_if_else@4",
       "stack_out": [
         "note#3",
@@ -5454,14 +5361,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1136": {
+    "1129": {
       "op": "b examples.voting.voting.VotingRoundApp.close_if_body@3"
     },
-    "1139": {
+    "1132": {
       "block": "examples.voting.voting.VotingRoundApp.close_if_body@3",
       "stack_in": [
         "note#3",
@@ -5473,7 +5379,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 6",
@@ -5490,12 +5395,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1141": {
+    "1134": {
       "op": "pushbytes \",\"",
       "defined_out": [
         "\",\"",
@@ -5511,13 +5415,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0",
         "\",\""
       ]
     },
-    "1144": {
+    "1137": {
       "op": "concat",
       "defined_out": [
         "note#0"
@@ -5532,12 +5435,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1145": {
+    "1138": {
       "op": "frame_bury 0",
       "defined_out": [
         "note#0"
@@ -5552,14 +5454,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1147": {
+    "1140": {
       "op": "b examples.voting.voting.VotingRoundApp.close_after_if_else@4"
     },
-    "1150": {
+    "1143": {
       "block": "examples.voting.voting.VotingRoundApp.close_after_if_else@4",
       "stack_in": [
         "note#3",
@@ -5571,7 +5472,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -5589,12 +5489,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "reinterpret_biguint%0#0"
       ]
     },
-    "1152": {
+    "1145": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -5611,13 +5510,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "reinterpret_biguint%0#0",
         "0x00"
       ]
     },
-    "1155": {
+    "1148": {
       "op": "b>",
       "defined_out": [
         "question_options#0",
@@ -5633,12 +5531,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%16#0"
       ]
     },
-    "1156": {
+    "1149": {
       "op": "frame_dig 7",
       "defined_out": [
         "current_index#0",
@@ -5655,13 +5552,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%16#0",
         "current_index#0"
       ]
     },
-    "1158": {
+    "1151": {
       "op": "frame_bury 2",
       "defined_out": [
         "current_index#0",
@@ -5678,12 +5574,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%16#0"
       ]
     },
-    "1160": {
+    "1153": {
       "op": "frame_dig 0",
       "defined_out": [
         "current_index#0",
@@ -5701,13 +5596,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%16#0",
         "note#3"
       ]
     },
-    "1162": {
+    "1155": {
       "op": "frame_bury 6",
       "defined_out": [
         "current_index#0",
@@ -5725,12 +5619,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%16#0"
       ]
     },
-    "1164": {
+    "1157": {
       "op": "bz examples.voting.voting.VotingRoundApp.close_after_if_else@12",
       "stack_out": [
         "note#3",
@@ -5742,14 +5635,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1167": {
+    "1160": {
       "op": "b examples.voting.voting.VotingRoundApp.close_if_body@5"
     },
-    "1170": {
+    "1163": {
       "block": "examples.voting.voting.VotingRoundApp.close_if_body@5",
       "stack_in": [
         "note#3",
@@ -5761,7 +5653,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 0",
@@ -5778,12 +5669,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#3"
       ]
     },
-    "1172": {
+    "1165": {
       "op": "pushbytes \"[\"",
       "defined_out": [
         "\"[\"",
@@ -5799,13 +5689,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#3",
         "\"[\""
       ]
     },
-    "1175": {
+    "1168": {
       "op": "concat",
       "defined_out": [
         "note#3",
@@ -5821,12 +5710,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%17#0"
       ]
     },
-    "1176": {
+    "1169": {
       "op": "frame_bury 6",
       "defined_out": [
         "note#3"
@@ -5841,11 +5729,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1178": {
+    "1171": {
       "op": "frame_dig 1",
       "defined_out": [
         "note#3",
@@ -5861,12 +5748,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "question_options#0"
       ]
     },
-    "1180": {
+    "1173": {
       "op": "btoi",
       "defined_out": [
         "note#3",
@@ -5883,12 +5769,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%18#0"
       ]
     },
-    "1181": {
+    "1174": {
       "op": "frame_bury 3",
       "defined_out": [
         "note#3",
@@ -5905,11 +5790,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1183": {
+    "1176": {
       "op": "intc_1 // 1",
       "stack_out": [
         "note#3",
@@ -5921,12 +5805,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "1184": {
+    "1177": {
       "error": "Step cannot be zero",
       "op": "assert // Step cannot be zero",
       "stack_out": [
@@ -5939,11 +5822,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1185": {
+    "1178": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -5955,12 +5837,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "1186": {
+    "1179": {
       "op": "frame_bury 4",
       "defined_out": [
         "note#3",
@@ -5977,14 +5858,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1188": {
+    "1181": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_header@6"
     },
-    "1191": {
+    "1184": {
       "block": "examples.voting.voting.VotingRoundApp.close_for_header@6",
       "stack_in": [
         "note#3",
@@ -5996,7 +5876,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 4",
@@ -6013,12 +5892,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "value_internal%0#0"
       ]
     },
-    "1193": {
+    "1186": {
       "op": "frame_dig 3",
       "defined_out": [
         "tmp%18#0",
@@ -6034,13 +5912,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "value_internal%0#0",
         "tmp%18#0"
       ]
     },
-    "1195": {
+    "1188": {
       "op": "<",
       "defined_out": [
         "continue_looping%1#0",
@@ -6057,12 +5934,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%1#0"
       ]
     },
-    "1196": {
+    "1189": {
       "op": "bz examples.voting.voting.VotingRoundApp.close_after_for@11",
       "stack_out": [
         "note#3",
@@ -6074,14 +5950,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1199": {
+    "1192": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_body@7"
     },
-    "1202": {
+    "1195": {
       "block": "examples.voting.voting.VotingRoundApp.close_for_body@7",
       "stack_in": [
         "note#3",
@@ -6093,7 +5968,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 4",
@@ -6111,12 +5985,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "option_index#0"
       ]
     },
-    "1204": {
+    "1197": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -6133,13 +6006,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "option_index#0",
         "0"
       ]
     },
-    "1205": {
+    "1198": {
       "op": ">",
       "defined_out": [
         "tmp%19#0",
@@ -6155,12 +6027,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%19#0"
       ]
     },
-    "1206": {
+    "1199": {
       "op": "frame_dig 6",
       "defined_out": [
         "note#0",
@@ -6177,13 +6048,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%19#0",
         "note#0"
       ]
     },
-    "1208": {
+    "1201": {
       "op": "frame_bury 0",
       "defined_out": [
         "note#0",
@@ -6200,12 +6070,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%19#0"
       ]
     },
-    "1210": {
+    "1203": {
       "op": "bz examples.voting.voting.VotingRoundApp.close_after_if_else@9",
       "stack_out": [
         "note#3",
@@ -6217,14 +6086,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1213": {
+    "1206": {
       "op": "b examples.voting.voting.VotingRoundApp.close_if_body@8"
     },
-    "1216": {
+    "1209": {
       "block": "examples.voting.voting.VotingRoundApp.close_if_body@8",
       "stack_in": [
         "note#3",
@@ -6236,7 +6104,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 6",
@@ -6253,12 +6120,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1218": {
+    "1211": {
       "op": "pushbytes \",\"",
       "defined_out": [
         "\",\"",
@@ -6274,13 +6140,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0",
         "\",\""
       ]
     },
-    "1221": {
+    "1214": {
       "op": "concat",
       "defined_out": [
         "note#0"
@@ -6295,12 +6160,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1222": {
+    "1215": {
       "op": "frame_bury 0",
       "defined_out": [
         "note#0"
@@ -6315,14 +6179,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1224": {
+    "1217": {
       "op": "b examples.voting.voting.VotingRoundApp.close_after_if_else@9"
     },
-    "1227": {
+    "1220": {
       "block": "examples.voting.voting.VotingRoundApp.close_after_if_else@9",
       "stack_in": [
         "note#3",
@@ -6334,7 +6197,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 7",
@@ -6351,12 +6213,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0"
       ]
     },
-    "1229": {
+    "1222": {
       "op": "dup",
       "defined_out": [
         "current_index#0",
@@ -6372,13 +6233,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "current_index#0 (copy)"
       ]
     },
-    "1230": {
+    "1223": {
       "callsub": "examples.voting.voting.VotingRoundApp.get_vote_from_box",
       "op": "callsub get_vote_from_box",
       "defined_out": [
@@ -6395,13 +6255,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "votes_for_option#0"
       ]
     },
-    "1233": {
+    "1226": {
       "callsub": "examples.voting.voting.itoa",
       "op": "callsub itoa",
       "defined_out": [
@@ -6418,13 +6277,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "tmp%22#0"
       ]
     },
-    "1236": {
+    "1229": {
       "op": "frame_dig 0",
       "defined_out": [
         "current_index#0",
@@ -6441,14 +6299,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "tmp%22#0",
         "note#3"
       ]
     },
-    "1238": {
+    "1231": {
       "op": "uncover 1",
       "stack_out": [
         "note#3",
@@ -6460,14 +6317,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "note#3",
         "tmp%22#0"
       ]
     },
-    "1240": {
+    "1233": {
       "op": "concat",
       "defined_out": [
         "current_index#0",
@@ -6484,13 +6340,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "tmp%23#0"
       ]
     },
-    "1241": {
+    "1234": {
       "op": "frame_bury 6",
       "defined_out": [
         "current_index#0",
@@ -6506,12 +6361,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0"
       ]
     },
-    "1243": {
+    "1236": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -6528,13 +6382,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0",
         "1"
       ]
     },
-    "1244": {
+    "1237": {
       "op": "+",
       "defined_out": [
         "current_index#0",
@@ -6551,12 +6404,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%24#0"
       ]
     },
-    "1245": {
+    "1238": {
       "op": "frame_bury 7",
       "defined_out": [
         "current_index#0",
@@ -6572,14 +6424,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1247": {
+    "1240": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_footer@10"
     },
-    "1250": {
+    "1243": {
       "block": "examples.voting.voting.VotingRoundApp.close_for_footer@10",
       "stack_in": [
         "note#3",
@@ -6591,7 +6442,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 4",
@@ -6608,12 +6458,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "value_internal%0#0"
       ]
     },
-    "1252": {
+    "1245": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -6629,13 +6478,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "value_internal%0#0",
         "1"
       ]
     },
-    "1253": {
+    "1246": {
       "op": "+",
       "stack_out": [
         "note#3",
@@ -6647,12 +6495,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "value_internal%0#0"
       ]
     },
-    "1254": {
+    "1247": {
       "op": "frame_bury 4",
       "defined_out": [
         "value_internal%0#0"
@@ -6667,14 +6514,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1256": {
+    "1249": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_header@6"
     },
-    "1259": {
+    "1252": {
       "block": "examples.voting.voting.VotingRoundApp.close_after_for@11",
       "stack_in": [
         "note#3",
@@ -6686,7 +6532,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 6",
@@ -6703,12 +6548,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1261": {
+    "1254": {
       "op": "pushbytes \"]\"",
       "defined_out": [
         "\"]\"",
@@ -6724,13 +6568,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0",
         "\"]\""
       ]
     },
-    "1264": {
+    "1257": {
       "op": "concat",
       "defined_out": [
         "note#0",
@@ -6746,12 +6589,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%25#0"
       ]
     },
-    "1265": {
+    "1258": {
       "op": "frame_bury 6",
       "defined_out": [
         "note#0"
@@ -6766,11 +6608,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1267": {
+    "1260": {
       "op": "frame_dig 7",
       "defined_out": [
         "current_index#0",
@@ -6786,12 +6627,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#0"
       ]
     },
-    "1269": {
+    "1262": {
       "op": "frame_bury 2",
       "defined_out": [
         "current_index#0",
@@ -6807,14 +6647,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1271": {
+    "1264": {
       "op": "b examples.voting.voting.VotingRoundApp.close_after_if_else@12"
     },
-    "1274": {
+    "1267": {
       "block": "examples.voting.voting.VotingRoundApp.close_after_if_else@12",
       "stack_in": [
         "note#3",
@@ -6826,12 +6665,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "b examples.voting.voting.VotingRoundApp.close_for_footer@13"
     },
-    "1277": {
+    "1270": {
       "block": "examples.voting.voting.VotingRoundApp.close_for_footer@13",
       "stack_in": [
         "note#3",
@@ -6843,10 +6681,9 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "frame_dig 10",
+      "op": "frame_dig 9",
       "defined_out": [
         "item_index_internal%0#0"
       ],
@@ -6860,12 +6697,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1279": {
+    "1272": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -6881,13 +6717,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "1280": {
+    "1273": {
       "op": "+",
       "stack_out": [
         "note#3",
@@ -6899,13 +6734,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1281": {
-      "op": "frame_bury 10",
+    "1274": {
+      "op": "frame_bury 9",
       "defined_out": [
         "item_index_internal%0#0"
       ],
@@ -6919,11 +6753,10 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1283": {
+    "1276": {
       "op": "frame_dig 2",
       "defined_out": [
         "current_index#6",
@@ -6939,12 +6772,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "current_index#6"
       ]
     },
-    "1285": {
+    "1278": {
       "op": "frame_bury 7",
       "defined_out": [
         "current_index#6",
@@ -6960,14 +6792,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1287": {
+    "1280": {
       "op": "b examples.voting.voting.VotingRoundApp.close_for_header@1"
     },
-    "1290": {
+    "1283": {
       "block": "examples.voting.voting.VotingRoundApp.close_after_for@14",
       "stack_in": [
         "note#3",
@@ -6979,7 +6810,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 6",
@@ -6996,12 +6826,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1292": {
+    "1285": {
       "op": "pushbytes \"]}}\"",
       "defined_out": [
         "\"]}}\"",
@@ -7017,13 +6846,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0",
         "\"]}}\""
       ]
     },
-    "1297": {
+    "1290": {
       "op": "concat",
       "defined_out": [
         "note#0"
@@ -7038,15 +6866,14 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0"
       ]
     },
-    "1298": {
+    "1291": {
       "op": "itxn_begin"
     },
-    "1299": {
+    "1292": {
       "op": "global MinTxnFee",
       "defined_out": [
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -7062,13 +6889,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "note#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1301": {
+    "1294": {
       "op": "cover 1",
       "stack_out": [
         "note#3",
@@ -7080,13 +6906,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0"
       ]
     },
-    "1303": {
+    "1296": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -7103,14 +6928,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
         "0"
       ]
     },
-    "1304": {
+    "1297": {
       "op": "bytec_3 // \"vote_id\"",
       "defined_out": [
         "\"vote_id\"",
@@ -7128,7 +6952,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7136,7 +6959,7 @@
         "\"vote_id\""
       ]
     },
-    "1305": {
+    "1298": {
       "op": "app_global_get_ex",
       "defined_out": [
         "inner_txn_params%0%%param_Fee_idx_0#0",
@@ -7154,7 +6977,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7162,7 +6984,7 @@
         "maybe_exists%7#0"
       ]
     },
-    "1306": {
+    "1299": {
       "error": "check self.vote_id exists",
       "op": "assert // check self.vote_id exists",
       "stack_out": [
@@ -7175,14 +6997,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
         "maybe_value%6#0"
       ]
     },
-    "1307": {
+    "1300": {
       "op": "pushbytes \"[VOTE RESULT] \"",
       "defined_out": [
         "\"[VOTE RESULT] \"",
@@ -7200,7 +7021,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7208,7 +7028,7 @@
         "\"[VOTE RESULT] \""
       ]
     },
-    "1323": {
+    "1316": {
       "op": "uncover 1",
       "stack_out": [
         "note#3",
@@ -7220,7 +7040,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7228,7 +7047,7 @@
         "maybe_value%6#0"
       ]
     },
-    "1325": {
+    "1318": {
       "op": "concat",
       "defined_out": [
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -7245,14 +7064,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1326": {
+    "1319": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -7264,7 +7082,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7272,7 +7089,7 @@
         "0"
       ]
     },
-    "1327": {
+    "1320": {
       "op": "bytec 14 // \"nft_image_url\"",
       "defined_out": [
         "\"nft_image_url\"",
@@ -7291,7 +7108,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7300,7 +7116,7 @@
         "\"nft_image_url\""
       ]
     },
-    "1329": {
+    "1322": {
       "op": "app_global_get_ex",
       "defined_out": [
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -7319,7 +7135,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7328,7 +7143,7 @@
         "maybe_exists%8#0"
       ]
     },
-    "1330": {
+    "1323": {
       "error": "check self.nft_image_url exists",
       "op": "assert // check self.nft_image_url exists",
       "defined_out": [
@@ -7347,7 +7162,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "note#0",
@@ -7355,7 +7169,7 @@
         "inner_txn_params%0%%param_ConfigAssetURL_idx_0#0"
       ]
     },
-    "1331": {
+    "1324": {
       "op": "uncover 2",
       "defined_out": [
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -7374,7 +7188,6 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
@@ -7382,7 +7195,7 @@
         "inner_txn_params%0%%param_Note_idx_0#0"
       ]
     },
-    "1333": {
+    "1326": {
       "op": "itxn_field Note",
       "stack_out": [
         "note#3",
@@ -7394,14 +7207,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetURL_idx_0#0"
       ]
     },
-    "1335": {
+    "1328": {
       "op": "itxn_field ConfigAssetURL",
       "stack_out": [
         "note#3",
@@ -7413,13 +7225,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1337": {
+    "1330": {
       "op": "pushbytes \"VOTERSLT\"",
       "defined_out": [
         "\"VOTERSLT\"",
@@ -7437,14 +7248,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0",
         "\"VOTERSLT\""
       ]
     },
-    "1347": {
+    "1340": {
       "op": "itxn_field ConfigAssetUnitName",
       "stack_out": [
         "note#3",
@@ -7456,13 +7266,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "inner_txn_params%0%%param_ConfigAssetName_idx_0#0"
       ]
     },
-    "1349": {
+    "1342": {
       "op": "itxn_field ConfigAssetName",
       "stack_out": [
         "note#3",
@@ -7474,12 +7283,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1351": {
+    "1344": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -7491,13 +7299,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "0"
       ]
     },
-    "1352": {
+    "1345": {
       "op": "itxn_field ConfigAssetDefaultFrozen",
       "stack_out": [
         "note#3",
@@ -7509,12 +7316,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1354": {
+    "1347": {
       "op": "intc_0 // 0",
       "stack_out": [
         "note#3",
@@ -7526,13 +7332,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "0"
       ]
     },
-    "1355": {
+    "1348": {
       "op": "itxn_field ConfigAssetDecimals",
       "stack_out": [
         "note#3",
@@ -7544,12 +7349,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1357": {
+    "1350": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -7566,13 +7370,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "1"
       ]
     },
-    "1358": {
+    "1351": {
       "op": "itxn_field ConfigAssetTotal",
       "stack_out": [
         "note#3",
@@ -7584,12 +7387,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1360": {
+    "1353": {
       "op": "pushint 3 // acfg",
       "defined_out": [
         "acfg",
@@ -7606,13 +7408,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0",
         "acfg"
       ]
     },
-    "1362": {
+    "1355": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "note#3",
@@ -7624,12 +7425,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "inner_txn_params%0%%param_Fee_idx_0#0"
       ]
     },
-    "1364": {
+    "1357": {
       "op": "itxn_field Fee",
       "stack_out": [
         "note#3",
@@ -7641,14 +7441,13 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1366": {
+    "1359": {
       "op": "b examples.voting.voting.VotingRoundApp.close_next_txn@15"
     },
-    "1369": {
+    "1362": {
       "block": "examples.voting.voting.VotingRoundApp.close_next_txn@15",
       "stack_in": [
         "note#3",
@@ -7660,12 +7459,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "itxn_submit"
     },
-    "1370": {
+    "1363": {
       "op": "itxn CreatedAssetID",
       "defined_out": [
         "tmp%27#0"
@@ -7680,12 +7478,11 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%27#0"
       ]
     },
-    "1372": {
+    "1365": {
       "op": "pushbytes \"nft_asset_id\"",
       "defined_out": [
         "\"nft_asset_id\"",
@@ -7701,13 +7498,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%27#0",
         "\"nft_asset_id\""
       ]
     },
-    "1386": {
+    "1379": {
       "op": "uncover 1",
       "stack_out": [
         "note#3",
@@ -7719,13 +7515,12 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "\"nft_asset_id\"",
         "tmp%27#0"
       ]
     },
-    "1388": {
+    "1381": {
       "op": "app_global_put",
       "stack_out": [
         "note#3",
@@ -7737,15 +7532,14 @@
         "note#0",
         "current_index#0",
         "maybe_value%5#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1389": {
+    "1382": {
       "retsub": true,
       "op": "retsub"
     },
-    "1390": {
+    "1383": {
       "subroutine": "examples.voting.voting.VotingRoundApp.get_preconditions",
       "params": {
         "signature#0": "bytes"
@@ -7754,10 +7548,10 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "1393": {
+    "1386": {
       "op": "b examples.voting.voting.VotingRoundApp.get_preconditions_block@0"
     },
-    "1396": {
+    "1389": {
       "block": "examples.voting.voting.VotingRoundApp.get_preconditions_block@0",
       "stack_in": [],
       "callsub": "examples.voting.voting.VotingRoundApp.voting_open",
@@ -7769,7 +7563,7 @@
         "tmp%0#0"
       ]
     },
-    "1399": {
+    "1392": {
       "op": "itob",
       "defined_out": [
         "tmp%1#0"
@@ -7778,7 +7572,7 @@
         "tmp%1#0"
       ]
     },
-    "1400": {
+    "1393": {
       "op": "frame_dig -1",
       "defined_out": [
         "signature#0 (copy)",
@@ -7789,7 +7583,7 @@
         "signature#0 (copy)"
       ]
     },
-    "1402": {
+    "1395": {
       "callsub": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "op": "callsub allowed_to_vote",
       "defined_out": [
@@ -7801,7 +7595,7 @@
         "tmp%2#0"
       ]
     },
-    "1405": {
+    "1398": {
       "op": "itob",
       "defined_out": [
         "tmp%1#0",
@@ -7812,7 +7606,7 @@
         "tmp%3#0"
       ]
     },
-    "1406": {
+    "1399": {
       "callsub": "examples.voting.voting.VotingRoundApp.already_voted",
       "op": "callsub already_voted",
       "defined_out": [
@@ -7826,7 +7620,7 @@
         "tmp%4#0"
       ]
     },
-    "1409": {
+    "1402": {
       "op": "itob",
       "defined_out": [
         "tmp%1#0",
@@ -7839,7 +7633,7 @@
         "tmp%5#0"
       ]
     },
-    "1410": {
+    "1403": {
       "op": "global LatestTimestamp",
       "defined_out": [
         "tmp%1#0",
@@ -7854,7 +7648,7 @@
         "tmp%6#0"
       ]
     },
-    "1412": {
+    "1405": {
       "op": "itob",
       "defined_out": [
         "tmp%1#0",
@@ -7869,7 +7663,7 @@
         "tmp%7#0"
       ]
     },
-    "1413": {
+    "1406": {
       "op": "bytec_0 // 0x",
       "defined_out": [
         "0x",
@@ -7886,7 +7680,7 @@
         "0x"
       ]
     },
-    "1414": {
+    "1407": {
       "op": "uncover 4",
       "stack_out": [
         "tmp%3#0",
@@ -7896,7 +7690,7 @@
         "tmp%1#0"
       ]
     },
-    "1416": {
+    "1409": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%0#0",
@@ -7911,7 +7705,7 @@
         "aggregate%head%0#0"
       ]
     },
-    "1417": {
+    "1410": {
       "op": "uncover 3",
       "stack_out": [
         "tmp%5#0",
@@ -7920,7 +7714,7 @@
         "tmp%3#0"
       ]
     },
-    "1419": {
+    "1412": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -7933,7 +7727,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "1420": {
+    "1413": {
       "op": "uncover 2",
       "stack_out": [
         "tmp%7#0",
@@ -7941,7 +7735,7 @@
         "tmp%5#0"
       ]
     },
-    "1422": {
+    "1415": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%2#0",
@@ -7952,14 +7746,14 @@
         "aggregate%head%2#0"
       ]
     },
-    "1423": {
+    "1416": {
       "op": "uncover 1",
       "stack_out": [
         "aggregate%head%2#0",
         "tmp%7#0"
       ]
     },
-    "1425": {
+    "1418": {
       "op": "concat",
       "defined_out": [
         "tmp%8#0"
@@ -7968,11 +7762,11 @@
         "tmp%8#0"
       ]
     },
-    "1426": {
+    "1419": {
       "retsub": true,
       "op": "retsub"
     },
-    "1427": {
+    "1420": {
       "subroutine": "examples.voting.voting.VotingRoundApp.vote",
       "params": {
         "fund_min_bal_req#0": "uint64",
@@ -7983,10 +7777,10 @@
       "stack_in": [],
       "op": "proto 3 0"
     },
-    "1430": {
+    "1423": {
       "op": "b examples.voting.voting.VotingRoundApp.vote_block@0"
     },
-    "1433": {
+    "1426": {
       "block": "examples.voting.voting.VotingRoundApp.vote_block@0",
       "stack_in": [],
       "op": "pushint 7700",
@@ -7997,7 +7791,7 @@
         "7700"
       ]
     },
-    "1436": {
+    "1429": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -8008,12 +7802,12 @@
         "0"
       ]
     },
-    "1437": {
+    "1430": {
       "callsub": "_puya_lib.util.ensure_budget",
       "op": "callsub ensure_budget",
       "stack_out": []
     },
-    "1440": {
+    "1433": {
       "op": "frame_dig -2",
       "defined_out": [
         "signature#0 (copy)"
@@ -8022,7 +7816,7 @@
         "signature#0 (copy)"
       ]
     },
-    "1442": {
+    "1435": {
       "callsub": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "op": "callsub allowed_to_vote",
       "defined_out": [
@@ -8032,12 +7826,12 @@
         "tmp%0#0"
       ]
     },
-    "1445": {
+    "1438": {
       "error": "Not allowed to vote",
       "op": "assert // Not allowed to vote",
       "stack_out": []
     },
-    "1446": {
+    "1439": {
       "callsub": "examples.voting.voting.VotingRoundApp.voting_open",
       "op": "callsub voting_open",
       "defined_out": [
@@ -8047,12 +7841,12 @@
         "tmp%1#0"
       ]
     },
-    "1449": {
+    "1442": {
       "error": "Voting not open",
       "op": "assert // Voting not open",
       "stack_out": []
     },
-    "1450": {
+    "1443": {
       "callsub": "examples.voting.voting.VotingRoundApp.already_voted",
       "op": "callsub already_voted",
       "defined_out": [
@@ -8062,7 +7856,7 @@
         "tmp%2#0"
       ]
     },
-    "1453": {
+    "1446": {
       "op": "!",
       "defined_out": [
         "tmp%3#0"
@@ -8071,18 +7865,18 @@
         "tmp%3#0"
       ]
     },
-    "1454": {
+    "1447": {
       "error": "Already voted",
       "op": "assert // Already voted",
       "stack_out": []
     },
-    "1455": {
+    "1448": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "1456": {
+    "1449": {
       "op": "bytec 4 // \"option_counts\"",
       "defined_out": [
         "\"option_counts\"",
@@ -8093,7 +7887,7 @@
         "\"option_counts\""
       ]
     },
-    "1458": {
+    "1451": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -8104,21 +7898,21 @@
         "maybe_exists%0#0"
       ]
     },
-    "1459": {
+    "1452": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
         "maybe_value%0#0"
       ]
     },
-    "1460": {
+    "1453": {
       "op": "intc_0 // 0",
       "stack_out": [
         "maybe_value%0#0",
         "0"
       ]
     },
-    "1461": {
+    "1454": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -8128,7 +7922,7 @@
         "tmp%4#0"
       ]
     },
-    "1462": {
+    "1455": {
       "op": "dup",
       "defined_out": [
         "questions_count#0"
@@ -8138,7 +7932,7 @@
         "questions_count#0"
       ]
     },
-    "1463": {
+    "1456": {
       "op": "frame_dig -1",
       "defined_out": [
         "answer_ids#0 (copy)",
@@ -8150,7 +7944,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1465": {
+    "1458": {
       "op": "intc_0 // 0",
       "stack_out": [
         "questions_count#0",
@@ -8159,7 +7953,7 @@
         "0"
       ]
     },
-    "1466": {
+    "1459": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -8172,7 +7966,7 @@
         "tmp%5#0"
       ]
     },
-    "1467": {
+    "1460": {
       "op": "==",
       "defined_out": [
         "questions_count#0",
@@ -8183,21 +7977,21 @@
         "tmp%6#0"
       ]
     },
-    "1468": {
+    "1461": {
       "error": "Number of answers incorrect",
       "op": "assert // Number of answers incorrect",
       "stack_out": [
         "questions_count#0"
       ]
     },
-    "1469": {
+    "1462": {
       "op": "frame_dig -1",
       "stack_out": [
         "questions_count#0",
         "answer_ids#0 (copy)"
       ]
     },
-    "1471": {
+    "1464": {
       "op": "intc_0 // 0",
       "stack_out": [
         "questions_count#0",
@@ -8205,7 +7999,7 @@
         "0"
       ]
     },
-    "1472": {
+    "1465": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -8217,7 +8011,7 @@
         "tmp%7#0"
       ]
     },
-    "1473": {
+    "1466": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -8230,7 +8024,7 @@
         "1"
       ]
     },
-    "1474": {
+    "1467": {
       "op": "*",
       "defined_out": [
         "questions_count#0",
@@ -8241,7 +8035,7 @@
         "tmp%8#0"
       ]
     },
-    "1475": {
+    "1468": {
       "op": "pushint 34",
       "defined_out": [
         "34",
@@ -8254,7 +8048,7 @@
         "34"
       ]
     },
-    "1477": {
+    "1470": {
       "op": "+",
       "defined_out": [
         "questions_count#0",
@@ -8265,7 +8059,7 @@
         "tmp%9#0"
       ]
     },
-    "1478": {
+    "1471": {
       "op": "pushint 400",
       "defined_out": [
         "400",
@@ -8278,7 +8072,7 @@
         "400"
       ]
     },
-    "1481": {
+    "1474": {
       "op": "*",
       "defined_out": [
         "questions_count#0",
@@ -8289,7 +8083,7 @@
         "tmp%10#0"
       ]
     },
-    "1482": {
+    "1475": {
       "op": "pushint 2500",
       "defined_out": [
         "2500",
@@ -8302,7 +8096,7 @@
         "2500"
       ]
     },
-    "1485": {
+    "1478": {
       "op": "+",
       "defined_out": [
         "min_bal_req#0",
@@ -8313,7 +8107,7 @@
         "min_bal_req#0"
       ]
     },
-    "1486": {
+    "1479": {
       "op": "frame_dig -3",
       "defined_out": [
         "fund_min_bal_req#0 (copy)",
@@ -8326,7 +8120,7 @@
         "fund_min_bal_req#0 (copy)"
       ]
     },
-    "1488": {
+    "1481": {
       "op": "gtxns Receiver",
       "defined_out": [
         "min_bal_req#0",
@@ -8339,7 +8133,7 @@
         "tmp%12#0"
       ]
     },
-    "1490": {
+    "1483": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "min_bal_req#0",
@@ -8354,7 +8148,7 @@
         "tmp%13#0"
       ]
     },
-    "1492": {
+    "1485": {
       "op": "==",
       "defined_out": [
         "min_bal_req#0",
@@ -8367,7 +8161,7 @@
         "tmp%14#0"
       ]
     },
-    "1493": {
+    "1486": {
       "error": "Payment must be to app address",
       "op": "assert // Payment must be to app address",
       "stack_out": [
@@ -8375,7 +8169,7 @@
         "min_bal_req#0"
       ]
     },
-    "1494": {
+    "1487": {
       "op": "dup",
       "defined_out": [
         "min_bal_req#0",
@@ -8388,7 +8182,7 @@
         "min_bal_req#0 (copy)"
       ]
     },
-    "1495": {
+    "1488": {
       "op": "itob",
       "defined_out": [
         "min_bal_req#0",
@@ -8401,14 +8195,14 @@
         "tmp%15#0"
       ]
     },
-    "1496": {
+    "1489": {
       "op": "log",
       "stack_out": [
         "questions_count#0",
         "min_bal_req#0"
       ]
     },
-    "1497": {
+    "1490": {
       "op": "frame_dig -3",
       "stack_out": [
         "questions_count#0",
@@ -8416,7 +8210,7 @@
         "fund_min_bal_req#0 (copy)"
       ]
     },
-    "1499": {
+    "1492": {
       "op": "gtxns Amount",
       "defined_out": [
         "min_bal_req#0",
@@ -8429,7 +8223,7 @@
         "tmp%16#0"
       ]
     },
-    "1501": {
+    "1494": {
       "op": "==",
       "defined_out": [
         "questions_count#0",
@@ -8440,14 +8234,14 @@
         "tmp%17#0"
       ]
     },
-    "1502": {
+    "1495": {
       "error": "Payment must be the exact min balance",
       "op": "assert // Payment must be the exact min balance",
       "stack_out": [
         "questions_count#0"
       ]
     },
-    "1503": {
+    "1496": {
       "op": "intc_0 // 0",
       "defined_out": [
         "questions_count#0"
@@ -8457,7 +8251,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1504": {
+    "1497": {
       "op": "intc_1 // 1",
       "stack_out": [
         "questions_count#0",
@@ -8465,7 +8259,7 @@
         "1"
       ]
     },
-    "1505": {
+    "1498": {
       "error": "Step cannot be zero",
       "op": "assert // Step cannot be zero",
       "stack_out": [
@@ -8473,7 +8267,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1506": {
+    "1499": {
       "op": "intc_0 // 0",
       "defined_out": [
         "questions_count#0"
@@ -8484,10 +8278,10 @@
         "value_internal%0#0"
       ]
     },
-    "1507": {
+    "1500": {
       "op": "b examples.voting.voting.VotingRoundApp.vote_for_header@1"
     },
-    "1510": {
+    "1503": {
       "block": "examples.voting.voting.VotingRoundApp.vote_for_header@1",
       "stack_in": [
         "questions_count#0",
@@ -8505,7 +8299,7 @@
         "value_internal%0#0"
       ]
     },
-    "1512": {
+    "1505": {
       "op": "frame_dig 0",
       "defined_out": [
         "questions_count#0",
@@ -8519,7 +8313,7 @@
         "questions_count#0"
       ]
     },
-    "1514": {
+    "1507": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
@@ -8533,7 +8327,7 @@
         "continue_looping%0#0"
       ]
     },
-    "1515": {
+    "1508": {
       "op": "bz examples.voting.voting.VotingRoundApp.vote_after_for@4",
       "stack_out": [
         "questions_count#0",
@@ -8541,10 +8335,10 @@
         "value_internal%0#0"
       ]
     },
-    "1518": {
+    "1511": {
       "op": "b examples.voting.voting.VotingRoundApp.vote_for_body@2"
     },
-    "1521": {
+    "1514": {
       "block": "examples.voting.voting.VotingRoundApp.vote_for_body@2",
       "stack_in": [
         "questions_count#0",
@@ -8563,7 +8357,7 @@
         "question_index#0"
       ]
     },
-    "1523": {
+    "1516": {
       "op": "frame_dig -1",
       "defined_out": [
         "answer_ids#0 (copy)",
@@ -8578,7 +8372,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1525": {
+    "1518": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%0#0",
@@ -8593,7 +8387,7 @@
         "aggregate%total_length%0#0"
       ]
     },
-    "1526": {
+    "1519": {
       "op": "frame_dig -1",
       "stack_out": [
         "questions_count#0",
@@ -8604,7 +8398,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1528": {
+    "1521": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -8623,7 +8417,7 @@
         "2"
       ]
     },
-    "1529": {
+    "1522": {
       "op": "uncover 2",
       "stack_out": [
         "questions_count#0",
@@ -8635,7 +8429,7 @@
         "aggregate%total_length%0#0"
       ]
     },
-    "1531": {
+    "1524": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -8650,7 +8444,7 @@
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "1532": {
+    "1525": {
       "op": "dig 1",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -8667,7 +8461,7 @@
         "question_index#0 (copy)"
       ]
     },
-    "1534": {
+    "1527": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -8686,7 +8480,7 @@
         "1"
       ]
     },
-    "1535": {
+    "1528": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -8703,7 +8497,7 @@
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "1536": {
+    "1529": {
       "op": "intc_1 // 1",
       "stack_out": [
         "questions_count#0",
@@ -8715,7 +8509,7 @@
         "1"
       ]
     },
-    "1537": {
+    "1530": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -8731,7 +8525,7 @@
         "array_item%0#0"
       ]
     },
-    "1538": {
+    "1531": {
       "op": "btoi",
       "defined_out": [
         "question_index#0",
@@ -8746,7 +8540,7 @@
         "tmp%18#0"
       ]
     },
-    "1539": {
+    "1532": {
       "op": "cover 1",
       "defined_out": [
         "answer_option_index#0",
@@ -8761,7 +8555,7 @@
         "question_index#0"
       ]
     },
-    "1541": {
+    "1534": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -8778,7 +8572,7 @@
         "0"
       ]
     },
-    "1542": {
+    "1535": {
       "op": "bytec 4 // \"option_counts\"",
       "defined_out": [
         "\"option_counts\"",
@@ -8797,7 +8591,7 @@
         "\"option_counts\""
       ]
     },
-    "1544": {
+    "1537": {
       "op": "app_global_get_ex",
       "defined_out": [
         "answer_option_index#0",
@@ -8816,7 +8610,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "1545": {
+    "1538": {
       "error": "check self.option_counts exists",
       "op": "assert // check self.option_counts exists",
       "stack_out": [
@@ -8828,7 +8622,7 @@
         "maybe_value%1#0"
       ]
     },
-    "1546": {
+    "1539": {
       "op": "dup",
       "defined_out": [
         "answer_option_index#0",
@@ -8847,7 +8641,7 @@
         "maybe_value%1#0 (copy)"
       ]
     },
-    "1547": {
+    "1540": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%1#0",
@@ -8866,7 +8660,7 @@
         "aggregate%total_length%1#0"
       ]
     },
-    "1548": {
+    "1541": {
       "op": "cover 1",
       "stack_out": [
         "questions_count#0",
@@ -8878,7 +8672,7 @@
         "maybe_value%1#0"
       ]
     },
-    "1550": {
+    "1543": {
       "op": "intc_2 // 2",
       "stack_out": [
         "questions_count#0",
@@ -8891,7 +8685,7 @@
         "2"
       ]
     },
-    "1551": {
+    "1544": {
       "op": "uncover 2",
       "stack_out": [
         "questions_count#0",
@@ -8904,7 +8698,7 @@
         "aggregate%total_length%1#0"
       ]
     },
-    "1553": {
+    "1546": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
@@ -8921,7 +8715,7 @@
         "aggregate%array_trimmed%1#0"
       ]
     },
-    "1554": {
+    "1547": {
       "op": "uncover 1",
       "stack_out": [
         "questions_count#0",
@@ -8932,7 +8726,7 @@
         "question_index#0"
       ]
     },
-    "1556": {
+    "1549": {
       "op": "intc_1 // 1",
       "stack_out": [
         "questions_count#0",
@@ -8944,7 +8738,7 @@
         "1"
       ]
     },
-    "1557": {
+    "1550": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
@@ -8961,7 +8755,7 @@
         "aggregate%bytes_offset%1#0"
       ]
     },
-    "1558": {
+    "1551": {
       "op": "intc_1 // 1",
       "stack_out": [
         "questions_count#0",
@@ -8973,7 +8767,7 @@
         "1"
       ]
     },
-    "1559": {
+    "1552": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -8989,7 +8783,7 @@
         "array_item%1#0"
       ]
     },
-    "1560": {
+    "1553": {
       "op": "btoi",
       "defined_out": [
         "answer_option_index#0",
@@ -9004,7 +8798,7 @@
         "options_count#0"
       ]
     },
-    "1561": {
+    "1554": {
       "op": "dup2",
       "defined_out": [
         "answer_option_index#0",
@@ -9023,7 +8817,7 @@
         "options_count#0 (copy)"
       ]
     },
-    "1562": {
+    "1555": {
       "op": "<",
       "defined_out": [
         "answer_option_index#0",
@@ -9040,7 +8834,7 @@
         "tmp%20#0"
       ]
     },
-    "1563": {
+    "1556": {
       "error": "Answer option index invalid",
       "op": "assert // Answer option index invalid",
       "stack_out": [
@@ -9051,7 +8845,7 @@
         "options_count#0"
       ]
     },
-    "1564": {
+    "1557": {
       "op": "frame_dig 1",
       "defined_out": [
         "answer_option_index#0",
@@ -9068,7 +8862,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1566": {
+    "1559": {
       "op": "dup",
       "defined_out": [
         "answer_option_index#0",
@@ -9087,7 +8881,7 @@
         "cumulative_offset#0 (copy)"
       ]
     },
-    "1567": {
+    "1560": {
       "op": "uncover 3",
       "stack_out": [
         "questions_count#0",
@@ -9099,7 +8893,7 @@
         "answer_option_index#0"
       ]
     },
-    "1569": {
+    "1562": {
       "op": "+",
       "defined_out": [
         "cumulative_offset#0",
@@ -9116,7 +8910,7 @@
         "tmp%21#0"
       ]
     },
-    "1570": {
+    "1563": {
       "callsub": "examples.voting.voting.VotingRoundApp.increment_vote_in_box",
       "op": "callsub increment_vote_in_box",
       "stack_out": [
@@ -9127,7 +8921,7 @@
         "cumulative_offset#0"
       ]
     },
-    "1573": {
+    "1566": {
       "op": "+",
       "defined_out": [
         "cumulative_offset#0",
@@ -9141,7 +8935,7 @@
         "tmp%22#0"
       ]
     },
-    "1574": {
+    "1567": {
       "op": "frame_bury 1",
       "defined_out": [
         "cumulative_offset#0",
@@ -9153,7 +8947,7 @@
         "value_internal%0#0"
       ]
     },
-    "1576": {
+    "1569": {
       "op": "txn Sender",
       "defined_out": [
         "cumulative_offset#0",
@@ -9167,7 +8961,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1578": {
+    "1571": {
       "op": "bytec_0 // \"\"",
       "defined_out": [
         "\"\"",
@@ -9183,7 +8977,7 @@
         "\"\""
       ]
     },
-    "1579": {
+    "1572": {
       "op": "uncover 1",
       "stack_out": [
         "questions_count#0",
@@ -9193,7 +8987,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1581": {
+    "1574": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -9207,7 +9001,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "1582": {
+    "1575": {
       "op": "dup",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -9223,7 +9017,7 @@
         "box_prefixed_key%0#0 (copy)"
       ]
     },
-    "1583": {
+    "1576": {
       "op": "box_del",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -9239,7 +9033,7 @@
         "{box_del}"
       ]
     },
-    "1584": {
+    "1577": {
       "op": "pop",
       "stack_out": [
         "questions_count#0",
@@ -9248,7 +9042,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "1585": {
+    "1578": {
       "op": "frame_dig -1",
       "stack_out": [
         "questions_count#0",
@@ -9258,7 +9052,7 @@
         "answer_ids#0 (copy)"
       ]
     },
-    "1587": {
+    "1580": {
       "op": "box_put",
       "stack_out": [
         "questions_count#0",
@@ -9266,7 +9060,7 @@
         "value_internal%0#0"
       ]
     },
-    "1588": {
+    "1581": {
       "op": "intc_0 // 0",
       "stack_out": [
         "questions_count#0",
@@ -9275,7 +9069,7 @@
         "0"
       ]
     },
-    "1589": {
+    "1582": {
       "op": "bytec_2 // \"voter_count\"",
       "defined_out": [
         "\"voter_count\"",
@@ -9291,7 +9085,7 @@
         "\"voter_count\""
       ]
     },
-    "1590": {
+    "1583": {
       "op": "app_global_get_ex",
       "defined_out": [
         "cumulative_offset#0",
@@ -9307,7 +9101,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "1591": {
+    "1584": {
       "error": "check self.voter_count exists",
       "op": "assert // check self.voter_count exists",
       "stack_out": [
@@ -9317,7 +9111,7 @@
         "maybe_value%2#0"
       ]
     },
-    "1592": {
+    "1585": {
       "op": "intc_1 // 1",
       "stack_out": [
         "questions_count#0",
@@ -9327,7 +9121,7 @@
         "1"
       ]
     },
-    "1593": {
+    "1586": {
       "op": "+",
       "defined_out": [
         "cumulative_offset#0",
@@ -9341,7 +9135,7 @@
         "tmp%23#0"
       ]
     },
-    "1594": {
+    "1587": {
       "op": "bytec_2 // \"voter_count\"",
       "stack_out": [
         "questions_count#0",
@@ -9351,7 +9145,7 @@
         "\"voter_count\""
       ]
     },
-    "1595": {
+    "1588": {
       "op": "uncover 1",
       "stack_out": [
         "questions_count#0",
@@ -9361,7 +9155,7 @@
         "tmp%23#0"
       ]
     },
-    "1597": {
+    "1590": {
       "op": "app_global_put",
       "stack_out": [
         "questions_count#0",
@@ -9369,10 +9163,10 @@
         "value_internal%0#0"
       ]
     },
-    "1598": {
+    "1591": {
       "op": "b examples.voting.voting.VotingRoundApp.vote_for_footer@3"
     },
-    "1601": {
+    "1594": {
       "block": "examples.voting.voting.VotingRoundApp.vote_for_footer@3",
       "stack_in": [
         "questions_count#0",
@@ -9390,7 +9184,7 @@
         "value_internal%0#0"
       ]
     },
-    "1603": {
+    "1596": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -9404,7 +9198,7 @@
         "1"
       ]
     },
-    "1604": {
+    "1597": {
       "op": "+",
       "stack_out": [
         "questions_count#0",
@@ -9413,7 +9207,7 @@
         "value_internal%0#0"
       ]
     },
-    "1605": {
+    "1598": {
       "op": "frame_bury 2",
       "defined_out": [
         "value_internal%0#0"
@@ -9424,10 +9218,10 @@
         "value_internal%0#0"
       ]
     },
-    "1607": {
+    "1600": {
       "op": "b examples.voting.voting.VotingRoundApp.vote_for_header@1"
     },
-    "1610": {
+    "1603": {
       "block": "examples.voting.voting.VotingRoundApp.vote_after_for@4",
       "stack_in": [
         "questions_count#0",
@@ -9437,27 +9231,27 @@
       "retsub": true,
       "op": "retsub"
     },
-    "1611": {
+    "1604": {
       "subroutine": "examples.voting.voting.VotingRoundApp.voting_open",
       "params": {},
       "block": "voting_open",
       "stack_in": [],
       "op": "proto 0 1"
     },
-    "1614": {
+    "1607": {
       "op": "bytec_0 // \"\"",
       "stack_out": [
         "_%0#0"
       ]
     },
-    "1615": {
+    "1608": {
       "op": "bytec_0 // \"\"",
       "stack_out": [
         "_%0#0",
         "and_result%0#0"
       ]
     },
-    "1616": {
+    "1609": {
       "op": "bytec_0 // \"\"",
       "stack_out": [
         "_%0#0",
@@ -9465,10 +9259,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1617": {
+    "1610": {
       "op": "b voting_open_block@0"
     },
-    "1620": {
+    "1613": {
       "block": "voting_open_block@0",
       "stack_in": [
         "_%0#0",
@@ -9486,7 +9280,7 @@
         "0"
       ]
     },
-    "1621": {
+    "1614": {
       "op": "bytec_1 // \"is_bootstrapped\"",
       "defined_out": [
         "\"is_bootstrapped\"",
@@ -9500,7 +9294,7 @@
         "\"is_bootstrapped\""
       ]
     },
-    "1622": {
+    "1615": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -9514,7 +9308,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1623": {
+    "1616": {
       "error": "check self.is_bootstrapped exists",
       "op": "assert // check self.is_bootstrapped exists",
       "stack_out": [
@@ -9524,7 +9318,7 @@
         "maybe_value%0#0"
       ]
     },
-    "1624": {
+    "1617": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "_%0#0",
@@ -9532,10 +9326,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1627": {
+    "1620": {
       "op": "b voting_open_and_contd@1"
     },
-    "1630": {
+    "1623": {
       "block": "voting_open_and_contd@1",
       "stack_in": [
         "_%0#0",
@@ -9553,7 +9347,7 @@
         "0"
       ]
     },
-    "1631": {
+    "1624": {
       "op": "bytec 7 // \"close_time\"",
       "defined_out": [
         "\"close_time\"",
@@ -9567,7 +9361,7 @@
         "\"close_time\""
       ]
     },
-    "1633": {
+    "1626": {
       "op": "app_global_get_ex",
       "defined_out": [
         "_%0#0",
@@ -9581,7 +9375,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "1634": {
+    "1627": {
       "op": "cover 1",
       "stack_out": [
         "_%0#0",
@@ -9591,7 +9385,7 @@
         "_%0#0"
       ]
     },
-    "1636": {
+    "1629": {
       "op": "frame_bury 0",
       "defined_out": [
         "_%0#0",
@@ -9604,7 +9398,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "1638": {
+    "1631": {
       "op": "bnz voting_open_bool_false@5",
       "stack_out": [
         "_%0#0",
@@ -9612,10 +9406,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1641": {
+    "1634": {
       "op": "b voting_open_and_contd@2"
     },
-    "1644": {
+    "1637": {
       "block": "voting_open_and_contd@2",
       "stack_in": [
         "_%0#0",
@@ -9633,7 +9427,7 @@
         "0"
       ]
     },
-    "1645": {
+    "1638": {
       "op": "bytec 11 // \"start_time\"",
       "defined_out": [
         "\"start_time\"",
@@ -9647,7 +9441,7 @@
         "\"start_time\""
       ]
     },
-    "1647": {
+    "1640": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%2#0",
@@ -9661,7 +9455,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "1648": {
+    "1641": {
       "error": "check self.start_time exists",
       "op": "assert // check self.start_time exists",
       "stack_out": [
@@ -9671,7 +9465,7 @@
         "maybe_value%1#0"
       ]
     },
-    "1649": {
+    "1642": {
       "op": "global LatestTimestamp",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9685,7 +9479,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1651": {
+    "1644": {
       "op": "dup",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9701,7 +9495,7 @@
         "awst_tmp%0#0 (copy)"
       ]
     },
-    "1652": {
+    "1645": {
       "op": "frame_bury 2",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9715,7 +9509,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1654": {
+    "1647": {
       "op": "<=",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9728,7 +9522,7 @@
         "tmp%0#0"
       ]
     },
-    "1655": {
+    "1648": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "_%0#0",
@@ -9736,10 +9530,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1658": {
+    "1651": {
       "op": "b voting_open_and_contd@3"
     },
-    "1661": {
+    "1654": {
       "block": "voting_open_and_contd@3",
       "stack_in": [
         "_%0#0",
@@ -9757,7 +9551,7 @@
         "0"
       ]
     },
-    "1662": {
+    "1655": {
       "op": "bytec 12 // \"end_time\"",
       "defined_out": [
         "\"end_time\"",
@@ -9771,7 +9565,7 @@
         "\"end_time\""
       ]
     },
-    "1664": {
+    "1657": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%3#0",
@@ -9785,7 +9579,7 @@
         "maybe_exists%3#0"
       ]
     },
-    "1665": {
+    "1658": {
       "error": "check self.end_time exists",
       "op": "assert // check self.end_time exists",
       "stack_out": [
@@ -9795,7 +9589,7 @@
         "maybe_value%2#0"
       ]
     },
-    "1666": {
+    "1659": {
       "op": "frame_dig 2",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9809,7 +9603,7 @@
         "awst_tmp%0#0"
       ]
     },
-    "1668": {
+    "1661": {
       "op": ">=",
       "defined_out": [
         "awst_tmp%0#0",
@@ -9822,7 +9616,7 @@
         "tmp%1#0"
       ]
     },
-    "1669": {
+    "1662": {
       "op": "bz voting_open_bool_false@5",
       "stack_out": [
         "_%0#0",
@@ -9830,10 +9624,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1672": {
+    "1665": {
       "op": "b voting_open_bool_true@4"
     },
-    "1675": {
+    "1668": {
       "block": "voting_open_bool_true@4",
       "stack_in": [
         "_%0#0",
@@ -9851,7 +9645,7 @@
         "1"
       ]
     },
-    "1676": {
+    "1669": {
       "op": "frame_bury 1",
       "defined_out": [],
       "stack_out": [
@@ -9860,10 +9654,10 @@
         "awst_tmp%0#0"
       ]
     },
-    "1678": {
+    "1671": {
       "op": "b voting_open_bool_merge@6"
     },
-    "1681": {
+    "1674": {
       "block": "voting_open_bool_merge@6",
       "stack_in": [
         "_%0#0",
@@ -9881,14 +9675,14 @@
         "and_result%0#0"
       ]
     },
-    "1683": {
+    "1676": {
       "op": "frame_bury 0"
     },
-    "1685": {
+    "1678": {
       "retsub": true,
       "op": "retsub"
     },
-    "1686": {
+    "1679": {
       "block": "voting_open_bool_false@5",
       "stack_in": [
         "_%0#0",
@@ -9906,7 +9700,7 @@
         "0"
       ]
     },
-    "1687": {
+    "1680": {
       "op": "frame_bury 1",
       "defined_out": [],
       "stack_out": [
@@ -9915,20 +9709,20 @@
         "awst_tmp%0#0"
       ]
     },
-    "1689": {
+    "1682": {
       "op": "b voting_open_bool_merge@6"
     },
-    "1692": {
+    "1685": {
       "subroutine": "examples.voting.voting.VotingRoundApp.already_voted",
       "params": {},
       "block": "already_voted",
       "stack_in": [],
       "op": "proto 0 1"
     },
-    "1695": {
+    "1688": {
       "op": "b already_voted_block@0"
     },
-    "1698": {
+    "1691": {
       "block": "already_voted_block@0",
       "stack_in": [],
       "op": "txn Sender",
@@ -9939,7 +9733,7 @@
         "materialized_values%0#0"
       ]
     },
-    "1700": {
+    "1693": {
       "op": "bytec_0 // \"\"",
       "defined_out": [
         "\"\"",
@@ -9950,14 +9744,14 @@
         "\"\""
       ]
     },
-    "1701": {
+    "1694": {
       "op": "uncover 1",
       "stack_out": [
         "\"\"",
         "materialized_values%0#0"
       ]
     },
-    "1703": {
+    "1696": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -9966,7 +9760,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "1704": {
+    "1697": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -9977,14 +9771,14 @@
         "maybe_exists%0#0"
       ]
     },
-    "1705": {
+    "1698": {
       "op": "uncover 1"
     },
-    "1707": {
+    "1700": {
       "retsub": true,
       "op": "retsub"
     },
-    "1708": {
+    "1701": {
       "subroutine": "examples.voting.voting.VotingRoundApp.store_option_counts",
       "params": {
         "option_counts#0": "bytes"
@@ -9993,14 +9787,65 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "1711": {
+    "1704": {
       "op": "b store_option_counts_block@0"
     },
-    "1714": {
+    "1707": {
       "block": "store_option_counts_block@0",
       "stack_in": [],
       "op": "frame_dig -1",
       "defined_out": [],
+      "stack_out": [
+        "option_counts%out#0"
+      ]
+    },
+    "1709": {
+      "op": "frame_dig -1",
+      "stack_out": [
+        "option_counts%out#0",
+        "option_counts#0 (copy)"
+      ]
+    },
+    "1711": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "option_counts%out#0",
+        "option_counts#0 (copy)",
+        "0"
+      ]
+    },
+    "1712": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "option_counts%out#0",
+        "tmp%0#0"
+      ]
+    },
+    "1713": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "option_counts%out#0",
+        "tmp%0#0",
+        "0"
+      ]
+    },
+    "1714": {
+      "op": "!=",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "option_counts%out#0",
+        "tmp%1#0"
+      ]
+    },
+    "1715": {
+      "error": "option_counts should be non-empty",
+      "op": "assert // option_counts should be non-empty",
       "stack_out": [
         "option_counts%out#0"
       ]
@@ -10024,65 +9869,14 @@
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
-        "tmp%0#0"
+        "tmp%2#0"
       ],
       "stack_out": [
         "option_counts%out#0",
-        "tmp%0#0"
+        "tmp%2#0"
       ]
     },
     "1720": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "option_counts%out#0",
-        "tmp%0#0",
-        "0"
-      ]
-    },
-    "1721": {
-      "op": "!=",
-      "defined_out": [
-        "tmp%1#0"
-      ],
-      "stack_out": [
-        "option_counts%out#0",
-        "tmp%1#0"
-      ]
-    },
-    "1722": {
-      "error": "option_counts should be non-empty",
-      "op": "assert // option_counts should be non-empty",
-      "stack_out": [
-        "option_counts%out#0"
-      ]
-    },
-    "1723": {
-      "op": "frame_dig -1",
-      "stack_out": [
-        "option_counts%out#0",
-        "option_counts#0 (copy)"
-      ]
-    },
-    "1725": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "option_counts%out#0",
-        "option_counts#0 (copy)",
-        "0"
-      ]
-    },
-    "1726": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "tmp%2#0"
-      ],
-      "stack_out": [
-        "option_counts%out#0",
-        "tmp%2#0"
-      ]
-    },
-    "1727": {
       "op": "pushint 112",
       "defined_out": [
         "112",
@@ -10094,7 +9888,7 @@
         "112"
       ]
     },
-    "1729": {
+    "1722": {
       "op": "<=",
       "defined_out": [
         "tmp%3#0"
@@ -10104,14 +9898,14 @@
         "tmp%3#0"
       ]
     },
-    "1730": {
+    "1723": {
       "error": "Can't have more than 112 questions",
       "op": "assert // Can't have more than 112 questions",
       "stack_out": [
         "option_counts%out#0"
       ]
     },
-    "1731": {
+    "1724": {
       "op": "intc_0 // 0",
       "defined_out": [],
       "stack_out": [
@@ -10119,114 +9913,106 @@
         "total_options#0"
       ]
     },
-    "1732": {
-      "op": "frame_dig -1",
-      "stack_out": [
-        "option_counts%out#0",
-        "total_options#0",
-        "option_counts#0 (copy)"
-      ]
-    },
-    "1734": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "option_counts%out#0",
-        "total_options#0",
-        "option_counts#0 (copy)",
-        "0"
-      ]
-    },
-    "1735": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [],
-      "stack_out": [
-        "option_counts%out#0",
-        "total_options#0",
-        "array_length%0#0"
-      ]
-    },
-    "1736": {
+    "1725": {
       "op": "intc_0 // 0",
       "defined_out": [],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1737": {
+    "1726": {
       "op": "b store_option_counts_for_header@1"
     },
-    "1740": {
+    "1729": {
       "block": "store_option_counts_for_header@1",
       "stack_in": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "frame_dig 3",
+      "op": "frame_dig -1",
       "defined_out": [
-        "item_index_internal%0#0"
+        "option_counts#0 (copy)"
       ],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
-        "item_index_internal%0#0"
+        "option_counts#0 (copy)"
       ]
     },
-    "1742": {
+    "1731": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "option_counts#0 (copy)"
+      ],
+      "stack_out": [
+        "option_counts%out#0",
+        "total_options#0",
+        "item_index_internal%0#0",
+        "option_counts#0 (copy)",
+        "0"
+      ]
+    },
+    "1732": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%1#0"
+      ],
+      "stack_out": [
+        "option_counts%out#0",
+        "total_options#0",
+        "item_index_internal%0#0",
+        "array_length%1#0"
+      ]
+    },
+    "1733": {
       "op": "frame_dig 2",
       "defined_out": [
-        "array_length%0#0",
+        "array_length%1#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
-        "item_index_internal%0#0",
-        "array_length%0#0"
+        "array_length%1#0",
+        "item_index_internal%0#0"
       ]
     },
-    "1744": {
-      "op": "<",
+    "1735": {
+      "op": ">",
       "defined_out": [
-        "array_length%0#0",
         "continue_looping%0#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "1745": {
+    "1736": {
       "op": "bz store_option_counts_after_for@4",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1748": {
+    "1739": {
       "op": "b store_option_counts_for_body@2"
     },
-    "1751": {
+    "1742": {
       "block": "store_option_counts_for_body@2",
       "stack_in": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig -1",
@@ -10236,12 +10022,11 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "option_counts#0 (copy)"
       ]
     },
-    "1753": {
+    "1744": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%0#0"
@@ -10249,23 +10034,21 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0"
       ]
     },
-    "1754": {
+    "1745": {
       "op": "frame_dig -1",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "option_counts#0 (copy)"
       ]
     },
-    "1756": {
+    "1747": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -10275,26 +10058,24 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "option_counts#0 (copy)",
         "2"
       ]
     },
-    "1757": {
+    "1748": {
       "op": "uncover 2",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "option_counts#0 (copy)",
         "2",
         "aggregate%total_length%0#0"
       ]
     },
-    "1759": {
+    "1750": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%0#0"
@@ -10302,13 +10083,12 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "1760": {
-      "op": "frame_dig 3",
+    "1751": {
+      "op": "frame_dig 2",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
@@ -10316,13 +10096,12 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1762": {
+    "1753": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -10332,14 +10111,13 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "1763": {
+    "1754": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -10349,25 +10127,23 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "1764": {
+    "1755": {
       "op": "intc_1 // 1",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0",
         "1"
       ]
     },
-    "1765": {
+    "1756": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -10377,12 +10153,11 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item#0"
       ]
     },
-    "1766": {
+    "1757": {
       "op": "btoi",
       "defined_out": [
         "item_index_internal%0#0",
@@ -10391,12 +10166,11 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%4#0"
       ]
     },
-    "1767": {
+    "1758": {
       "op": "frame_dig 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -10406,13 +10180,12 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%4#0",
         "total_options#0"
       ]
     },
-    "1769": {
+    "1760": {
       "op": "+",
       "defined_out": [
         "item_index_internal%0#0",
@@ -10422,12 +10195,11 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%5#0"
       ]
     },
-    "1770": {
+    "1761": {
       "op": "frame_bury 1",
       "defined_out": [
         "item_index_internal%0#0",
@@ -10436,34 +10208,31 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1772": {
+    "1763": {
       "op": "b store_option_counts_for_footer@3"
     },
-    "1775": {
+    "1766": {
       "block": "store_option_counts_for_footer@3",
       "stack_in": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "frame_dig 3",
+      "op": "frame_dig 2",
       "defined_out": [
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1777": {
+    "1768": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -10472,43 +10241,39 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "1778": {
+    "1769": {
       "op": "+",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1779": {
-      "op": "frame_bury 3",
+    "1770": {
+      "op": "frame_bury 2",
       "defined_out": [
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "1781": {
+    "1772": {
       "op": "b store_option_counts_for_header@1"
     },
-    "1784": {
+    "1775": {
       "block": "store_option_counts_after_for@4",
       "stack_in": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -10518,12 +10283,11 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0"
       ]
     },
-    "1786": {
+    "1777": {
       "op": "dup",
       "defined_out": [
         "total_options#0",
@@ -10532,13 +10296,12 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "total_options#0 (copy)"
       ]
     },
-    "1787": {
+    "1778": {
       "op": "pushint 128",
       "defined_out": [
         "128",
@@ -10548,14 +10311,13 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "total_options#0 (copy)",
         "128"
       ]
     },
-    "1790": {
+    "1781": {
       "op": "<=",
       "defined_out": [
         "tmp%6#0",
@@ -10564,24 +10326,22 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "tmp%6#0"
       ]
     },
-    "1791": {
+    "1782": {
       "error": "Can't have more than 128 vote options",
       "op": "assert // Can't have more than 128 vote options",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0"
       ]
     },
-    "1792": {
+    "1783": {
       "op": "bytec 4 // \"option_counts\"",
       "defined_out": [
         "\"option_counts\"",
@@ -10590,13 +10350,12 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "\"option_counts\""
       ]
     },
-    "1794": {
+    "1785": {
       "op": "frame_dig -1",
       "defined_out": [
         "\"option_counts\"",
@@ -10606,24 +10365,22 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "\"option_counts\"",
         "option_counts#0 (copy)"
       ]
     },
-    "1796": {
+    "1787": {
       "op": "app_global_put",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0"
       ]
     },
-    "1797": {
+    "1788": {
       "op": "bytec 15 // \"total_options\"",
       "defined_out": [
         "\"total_options\"",
@@ -10632,24 +10389,22 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_options#0",
         "\"total_options\""
       ]
     },
-    "1799": {
+    "1790": {
       "op": "uncover 1",
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "\"total_options\"",
         "total_options#0"
       ]
     },
-    "1801": {
+    "1792": {
       "op": "app_global_put",
       "defined_out": [
         "option_counts%out#0",
@@ -10658,16 +10413,15 @@
       "stack_out": [
         "option_counts%out#0",
         "total_options#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "option_counts%out#0"
       ]
     },
-    "1802": {
+    "1793": {
       "retsub": true,
       "op": "retsub"
     },
-    "1803": {
+    "1794": {
       "subroutine": "examples.voting.voting.VotingRoundApp.allowed_to_vote",
       "params": {
         "signature#0": "bytes"
@@ -10676,10 +10430,10 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "1806": {
+    "1797": {
       "op": "b allowed_to_vote_block@0"
     },
-    "1809": {
+    "1800": {
       "block": "allowed_to_vote_block@0",
       "stack_in": [],
       "op": "pushint 2000",
@@ -10690,7 +10444,7 @@
         "2000"
       ]
     },
-    "1812": {
+    "1803": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -10701,12 +10455,12 @@
         "0"
       ]
     },
-    "1813": {
+    "1804": {
       "callsub": "_puya_lib.util.ensure_budget",
       "op": "callsub ensure_budget",
       "stack_out": []
     },
-    "1816": {
+    "1807": {
       "op": "txn Sender",
       "defined_out": [
         "tmp%0#0"
@@ -10715,14 +10469,14 @@
         "tmp%0#0"
       ]
     },
-    "1818": {
+    "1809": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%0#0",
         "0"
       ]
     },
-    "1819": {
+    "1810": {
       "op": "bytec 9 // \"snapshot_public_key\"",
       "defined_out": [
         "\"snapshot_public_key\"",
@@ -10735,7 +10489,7 @@
         "\"snapshot_public_key\""
       ]
     },
-    "1821": {
+    "1812": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -10748,7 +10502,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "1822": {
+    "1813": {
       "error": "check self.snapshot_public_key exists",
       "op": "assert // check self.snapshot_public_key exists",
       "stack_out": [
@@ -10756,14 +10510,14 @@
         "maybe_value%0#0"
       ]
     },
-    "1823": {
+    "1814": {
       "op": "uncover 1",
       "stack_out": [
         "maybe_value%0#0",
         "tmp%0#0"
       ]
     },
-    "1825": {
+    "1816": {
       "op": "frame_dig -1",
       "defined_out": [
         "maybe_value%0#0",
@@ -10776,7 +10530,7 @@
         "signature#0 (copy)"
       ]
     },
-    "1827": {
+    "1818": {
       "op": "uncover 2",
       "stack_out": [
         "tmp%0#0",
@@ -10784,7 +10538,7 @@
         "maybe_value%0#0"
       ]
     },
-    "1829": {
+    "1820": {
       "op": "ed25519verify_bare",
       "defined_out": [
         "tmp%1#0"
@@ -10793,11 +10547,11 @@
         "tmp%1#0"
       ]
     },
-    "1830": {
+    "1821": {
       "retsub": true,
       "op": "retsub"
     },
-    "1831": {
+    "1822": {
       "subroutine": "examples.voting.voting.VotingRoundApp.get_vote_from_box",
       "params": {
         "index#0": "uint64"
@@ -10806,10 +10560,10 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "1834": {
+    "1825": {
       "op": "b get_vote_from_box_block@0"
     },
-    "1837": {
+    "1828": {
       "block": "get_vote_from_box_block@0",
       "stack_in": [],
       "op": "bytec 6 // \"V\"",
@@ -10820,7 +10574,7 @@
         "\"V\""
       ]
     },
-    "1839": {
+    "1830": {
       "op": "frame_dig -1",
       "defined_out": [
         "\"V\"",
@@ -10831,7 +10585,7 @@
         "index#0 (copy)"
       ]
     },
-    "1841": {
+    "1832": {
       "op": "intc_3 // 8",
       "defined_out": [
         "\"V\"",
@@ -10844,7 +10598,7 @@
         "8"
       ]
     },
-    "1842": {
+    "1833": {
       "op": "box_extract",
       "defined_out": [
         "tmp%0#0"
@@ -10853,7 +10607,7 @@
         "tmp%0#0"
       ]
     },
-    "1843": {
+    "1834": {
       "op": "btoi",
       "defined_out": [
         "tmp%1#0"
@@ -10862,11 +10616,11 @@
         "tmp%1#0"
       ]
     },
-    "1844": {
+    "1835": {
       "retsub": true,
       "op": "retsub"
     },
-    "1845": {
+    "1836": {
       "subroutine": "examples.voting.voting.VotingRoundApp.increment_vote_in_box",
       "params": {
         "index#0": "uint64"
@@ -10875,10 +10629,10 @@
       "stack_in": [],
       "op": "proto 1 0"
     },
-    "1848": {
+    "1839": {
       "op": "b increment_vote_in_box_block@0"
     },
-    "1851": {
+    "1842": {
       "block": "increment_vote_in_box_block@0",
       "stack_in": [],
       "op": "frame_dig -1",
@@ -10889,7 +10643,7 @@
         "index#0 (copy)"
       ]
     },
-    "1853": {
+    "1844": {
       "callsub": "examples.voting.voting.VotingRoundApp.get_vote_from_box",
       "op": "callsub get_vote_from_box",
       "defined_out": [
@@ -10899,7 +10653,7 @@
         "current_vote#0"
       ]
     },
-    "1856": {
+    "1847": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -10910,7 +10664,7 @@
         "1"
       ]
     },
-    "1857": {
+    "1848": {
       "op": "+",
       "defined_out": [
         "tmp%1#0"
@@ -10919,7 +10673,7 @@
         "tmp%1#0"
       ]
     },
-    "1858": {
+    "1849": {
       "op": "itob",
       "defined_out": [
         "tmp%2#0"
@@ -10928,7 +10682,7 @@
         "tmp%2#0"
       ]
     },
-    "1859": {
+    "1850": {
       "op": "bytec 6 // \"V\"",
       "defined_out": [
         "\"V\"",
@@ -10939,7 +10693,7 @@
         "\"V\""
       ]
     },
-    "1861": {
+    "1852": {
       "op": "frame_dig -1",
       "stack_out": [
         "tmp%2#0",
@@ -10947,7 +10701,7 @@
         "index#0 (copy)"
       ]
     },
-    "1863": {
+    "1854": {
       "op": "uncover 2",
       "stack_out": [
         "\"V\"",
@@ -10955,11 +10709,11 @@
         "tmp%2#0"
       ]
     },
-    "1865": {
+    "1856": {
       "op": "box_replace",
       "stack_out": []
     },
-    "1866": {
+    "1857": {
       "retsub": true,
       "op": "retsub"
     }

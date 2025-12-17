@@ -306,12 +306,6 @@ subroutine sum_frozen_arr:
         // total = UInt64(0)
         int 0                                                                                              (𝕡) arr#0 | 0
         v-store total#0                                                                                    (𝕡) arr#0 |
-        // mutable_native_types/contract.py:273
-        // for element in arr:
-        p-load arr#0                                                                                       (𝕡) arr#0 | arr#0 (copy)
-        int 0                                                                                              (𝕡) arr#0 | arr#0 (copy),0
-        extract_uint16 // on error: invalid array length header                                            (𝕡) arr#0 | aggregate%array_length%0#0
-        v-store aggregate%array_length%0#0                                                                 (𝕡) arr#0 |
         int 0                                                                                              (𝕡) arr#0 | 0
         v-store item_index_internal%0#0                                                                    (𝕡) arr#0 |
         b sum_frozen_arr_for_header@1                                                                      (𝕡) arr#0 |
@@ -319,6 +313,10 @@ subroutine sum_frozen_arr:
     sum_frozen_arr_for_header@1:                                                                           (𝕡) arr#0 |
         // mutable_native_types/contract.py:273
         // for element in arr:
+        p-load arr#0                                                                                       (𝕡) arr#0 | arr#0 (copy)
+        int 0                                                                                              (𝕡) arr#0 | arr#0 (copy),0
+        extract_uint16 // on error: invalid array length header                                            (𝕡) arr#0 | aggregate%array_length%0#0
+        v-store aggregate%array_length%0#0                                                                 (𝕡) arr#0 |
         v-load item_index_internal%0#0                                                                     (𝕡) arr#0 | item_index_internal%0#0
         v-load aggregate%array_length%0#0                                                                  (𝕡) arr#0 | item_index_internal%0#0,aggregate%array_length%0#0
         <                                                                                                  (𝕡) arr#0 | continue_looping%0#0

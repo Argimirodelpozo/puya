@@ -1380,6 +1380,7 @@ debug: Removing unused variable inner_txn_params%1%%Applications_length#0
 debug: Removing unused variable inner_txn_params%1%%ApprovalProgramPages_length#0
 debug: Removing unused variable inner_txn_params%1%%ClearStateProgramPages_length#0
 debug: Removing unused variable inner_txn_params%1%%RejectVersion_length#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -1817,8 +1818,6 @@ debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_loo
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[35]: 'v-load aggregate%array_length%1#0' with 'l-load aggregate%array_length%1#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[40]: 'l-store-copy tmp%7#0 0'
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[42]: 'v-load tmp%7#0' with 'l-load tmp%7#0'
-debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[49]: 'l-store-copy aggregate%array_length%2#0 0'
-debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[51]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[4]: 'l-store-copy tmp%1#0 0'
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[7]: 'v-load tmp%1#0' with 'l-load tmp%1#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[37]: 'l-store-copy tmp%6#0 0'
@@ -1827,8 +1826,12 @@ debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_loo
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[7]: 'v-load tmp%0#0' with 'l-load tmp%0#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[31]: 'l-store-copy tmp%5#0 0'
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_block@0.ops[41]: 'v-load tmp%5#0' with 'l-load tmp%5#0'
-debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%2#0 0'
+debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[5]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
+debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[10]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[12]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[6]: 'l-store-copy array_length%1#0 0'
+debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_header@1.ops[9]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_body@2.ops[16]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_body@2.ops[18]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -1848,7 +1851,7 @@ debug: Replaced test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_loo
 debug: test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_firstly f-stack entry: []
 debug: test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_firstly f-stack on first store: ['share#0', 'tmp%8#0', 'value_internal%0#0']
 debug: test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply f-stack entry: ['my_txn%%param_Receiver_idx_0#0', 'my_txn%%param_Amount_idx_0#0']
-debug: test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply f-stack on first store: ['share#0', 'is_first#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply f-stack on first store: ['share#0', 'is_first#0', 'item_index_internal%0#0']
 debug: optimizing TEAL subroutine ops algopy.arc4.ARC4Contract.approval_program() -> uint64:
 dynamic_itxn_group/contract.py:16:6 debug: optimizing TEAL subroutine ops test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_firstly[routing]() -> void:
 dynamic_itxn_group/contract.py:39:6 debug: optimizing TEAL subroutine ops test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply[routing]() -> void:

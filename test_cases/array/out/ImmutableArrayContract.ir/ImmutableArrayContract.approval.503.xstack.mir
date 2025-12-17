@@ -2595,12 +2595,6 @@ subroutine test_nested_array:
         // totals = ImmutableArray[UInt64]()
         byte 0x0000                                                                         0x0000
         v-store totals#0
-        // array/immutable.py:271
-        // for inner_arr in arr:
-        v-load arr#0                                                                        arr#0
-        int 0                                                                               arr#0,0
-        extract_uint16 // on error: invalid array length header                             aggregate%array_length%2#0
-        v-store aggregate%array_length%2#0
         int 0                                                                               0
         v-store item_index_internal%0#0
         b test_nested_array_for_header@14
@@ -2608,8 +2602,11 @@ subroutine test_nested_array:
     test_nested_array_for_header@14:
         // array/immutable.py:271
         // for inner_arr in arr:
-        v-load item_index_internal%0#0                                                      item_index_internal%0#0
-        v-load aggregate%array_length%2#0                                                   item_index_internal%0#0,aggregate%array_length%2#0
+        v-load arr#0                                                                        arr#0
+        int 0                                                                               arr#0,0
+        extract_uint16 // on error: invalid array length header                             aggregate%array_length%2#0
+        v-load item_index_internal%0#0                                                      aggregate%array_length%2#0,item_index_internal%0#0
+        l-load aggregate%array_length%2#0 1                                                 item_index_internal%0#0,aggregate%array_length%2#0
         <                                                                                   continue_looping%2#0
         bz test_nested_array_after_for@17 ; b test_nested_array_for_body@15
 
@@ -2635,18 +2632,11 @@ subroutine test_nested_array:
         l-load aggregate%item_offset%0#0 2                                                  aggregate%item_head_tail_length%0#0,aggregate%array_head_and_tail%0#0,aggregate%item_offset%0#0
         l-load aggregate%item_head_tail_length%0#0 2                                        aggregate%array_head_and_tail%0#0,aggregate%item_offset%0#0,aggregate%item_head_tail_length%0#0
         extract3                                                                            inner_arr#0
-        l-store-copy inner_arr#0 0                                                          inner_arr#0,inner_arr#0 (copy)
-        v-store inner_arr#0                                                                 inner_arr#0
+        v-store inner_arr#0
         // array/immutable.py:519
         // total = UInt64()
-        int 0                                                                               inner_arr#0,0
-        v-store total#0                                                                     inner_arr#0
-        // array/immutable.py:520
-        // for i in arr:
-        l-load inner_arr#0 0                                                                inner_arr#0
-        int 0                                                                               inner_arr#0,0
-        extract_uint16 // on error: invalid array length header                             aggregate%array_length%3#0
-        v-store aggregate%array_length%3#0
+        int 0                                                                               0
+        v-store total#0
         int 0                                                                               0
         v-store item_index_internal%0#3
         b test_nested_array_for_header@19
@@ -2654,8 +2644,11 @@ subroutine test_nested_array:
     test_nested_array_for_header@19:
         // array/immutable.py:520
         // for i in arr:
-        v-load item_index_internal%0#3                                                      item_index_internal%0#3
-        v-load aggregate%array_length%3#0                                                   item_index_internal%0#3,aggregate%array_length%3#0
+        v-load inner_arr#0                                                                  inner_arr#0
+        int 0                                                                               inner_arr#0,0
+        extract_uint16 // on error: invalid array length header                             aggregate%array_length%3#0
+        v-load item_index_internal%0#3                                                      aggregate%array_length%3#0,item_index_internal%0#3
+        l-load aggregate%array_length%3#0 1                                                 item_index_internal%0#3,aggregate%array_length%3#0
         <                                                                                   continue_looping%0#0
         bz test_nested_array_after_for@21 ; b test_nested_array_for_body@20
 

@@ -1481,6 +1481,7 @@ debug: selected addr#0 from equivalence set
 debug: Copy propagation made 12 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Removing unused variable my_txn#0
 debug: Removing unused variable my_txn%%param_Fee_idx_0#0
 debug: Removing unused variable my_txn%%Fee_length#0
@@ -1937,6 +1938,7 @@ debug: selected verifier#0 from equivalence set
 debug: Copy propagation made 5 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Removing unused variable my_txn#0
 debug: Removing unused variable my_txn%%param_Fee_idx_0#0
 debug: Removing unused variable my_txn%%Fee_length#0
@@ -2414,7 +2416,7 @@ debug: Found equivalence set: aggregate%array_length%1#0, tmp%3#1
 debug: selected aggregate%array_length%1#0 from equivalence set
 debug: Found equivalence set: aggregate%array_length%2#0, tmp%6#0
 debug: selected aggregate%array_length%2#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%3#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%3#0, array_length%1#0
 debug: selected aggregate%array_length%3#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%0#0, addr#0
 debug: selected addr#0 from equivalence set

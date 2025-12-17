@@ -3,7 +3,7 @@
   "sources": [
     "../dynamic_bytes.py"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAUgB;AACQ;AAAA;AAAA;;;AAAa;;;AAAb;AAAsB;AAAtB;AAAgC;;;AAAhC;AAAhB;;AACO;;;AAAwB;;;;;AAAxB;AAAP;AACO;AAAuB;;;;;;;AAAvB;AAAP;AAER;AAAA;;;;;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;AAEG;;AAAS;;AAAT;AAAP;AAEiB;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAjB;AAAA;;AACO;AAAA;;;AAAyB;AAAzB;AAAP;AACO;AAAwB;;AAAxB;AAAP;AAER;AAAA;AAAA;;;;;;;;AAAA;;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;;AAE0B;;AAAA;;;AAAb;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAjB;AAAA;;AACO;AAAA;;;AAAyB;AAAzB;AAAP;AACO;AAAwB;;AAAxB;AAAP;AAER;AAAA;AAAA;;;;;;;;AAAA;;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;;AAEG;;AAAS;;AAAT;AAAP;AAEsB;;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAtB;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAA;;AAAA;AACO;AAAwB;;;;;;;;;AAAxB;AAAP;AACO;;;AAAyB;;;;;;;AAAzB;AAAP;AAEkC;;AAAA;AAAA;AAAL;AAAA;;;AAAA;;AAAA;AAAb;AAAA;AAAA;;;AAAA;;AAAA;AAA2C;AAA3C;AAAqD;;;AAArD;AACT;;;AAAwB;;;;;AAAxB;AAAP;AAEqC;;AAAA;AAAA;AAAR;;;AAAA;;;AAAb;;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;;;;;AAAhB;;AACO;;;AAAwB;AAAxB;AAAP;AACO;AAAP;AAFgB;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAUgB;AACQ;AAAA;AAAA;;;AAAa;;;AAAb;AAAsB;AAAtB;AAAgC;;;AAAhC;AAAhB;;AACO;;;AAAwB;;;;;AAAxB;AAAP;AAC8B;;;;;;;AAAvB;AAAP;;;;;AAER;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;AAEG;;AAAS;;AAAT;AAAP;AAEiB;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAjB;AAAA;;AACO;AAAA;;;AAAyB;AAAzB;AAAP;AAC+B;;AAAxB;AAAP;;;;;;;AAER;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;;AAE0B;;AAAA;;;AAAb;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAjB;AAAA;;AACO;AAAA;;;AAAyB;AAAzB;AAAP;AAC+B;;AAAxB;AAAP;;;;;;;AAER;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AACqB;AAAT;;AAAA;AAAA;;;;;;;;;;;;;;AAEG;;AAAS;;AAAT;AAAP;AAEsB;;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAtB;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAA;;AAAA;AACO;AAAwB;;;;;;;;;AAAxB;AAAP;AACO;;;AAAyB;;;;;;;AAAzB;AAAP;AAEkC;;AAAA;AAAA;AAAL;AAAA;;;AAAA;;AAAA;AAAb;AAAA;AAAA;;;AAAA;;AAAA;AAA2C;AAA3C;AAAqD;;;AAArD;AACT;;;AAAwB;;;;;AAAxB;AAAP;AAEqC;;AAAA;AAAA;AAAR;;;AAAA;;;AAAb;;;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;;;;;AAAhB;;AACO;;;AAAwB;AAAxB;AAAP;AACO;AAAP;AAFgB;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -14,7 +14,7 @@
       "op": "intcblock 0 1 2 3"
     },
     "7": {
-      "op": "bytecblock \"\" 0x0304 0x03 0x33 0x00020304 0x616263"
+      "op": "bytecblock 0x0304 0x03 0x33 \"\" 0x00020304 0x616263"
     },
     "26": {
       "op": "intc_0 // 0",
@@ -38,58 +38,33 @@
       ]
     },
     "29": {
-      "op": "bytec_0 // \"\"",
+      "op": "bytec_3 // \"\"",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0"
-      ]
-    },
-    "30": {
-      "op": "bytec_0 // \"\"",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0"
-      ]
-    },
-    "31": {
-      "op": "bytec_0 // \"\"",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0"
       ]
     },
-    "32": {
-      "op": "bytec_0 // \"\"",
+    "30": {
+      "op": "bytec_3 // \"\"",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0"
       ]
     },
-    "33": {
+    "31": {
       "op": "b main_block@0"
     },
-    "36": {
+    "34": {
       "block": "main_block@0",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0"
       ],
@@ -99,14 +74,12 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0"
       ]
     },
-    "37": {
+    "35": {
       "op": "intc_3 // 3",
       "defined_out": [
         "3"
@@ -115,15 +88,13 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "3"
       ]
     },
-    "38": {
+    "36": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%0#0"
@@ -132,15 +103,13 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "aggregate%as_bytes%0#0"
       ]
     },
-    "39": {
+    "37": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%len_u16%0#0"
@@ -149,15 +118,13 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "aggregate%len_u16%0#0"
       ]
     },
-    "42": {
+    "40": {
       "op": "pushbytes 0x02",
       "defined_out": [
         "0x02",
@@ -167,8 +134,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -176,7 +141,7 @@
         "0x02"
       ]
     },
-    "45": {
+    "43": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%0#0"
@@ -185,16 +150,14 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "aggregate%head%0#0"
       ]
     },
-    "46": {
-      "op": "bytec_2 // 0x03",
+    "44": {
+      "op": "bytec_1 // 0x03",
       "defined_out": [
         "0x03",
         "aggregate%head%0#0"
@@ -203,8 +166,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -212,7 +173,7 @@
         "0x03"
       ]
     },
-    "47": {
+    "45": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0"
@@ -221,15 +182,13 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "aggregate%head%1#0"
       ]
     },
-    "48": {
+    "46": {
       "op": "pushbytes 0x01",
       "defined_out": [
         "0x01",
@@ -239,8 +198,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -248,7 +205,7 @@
         "0x01"
       ]
     },
-    "51": {
+    "49": {
       "op": "concat",
       "defined_out": [
         "encoded_array%0#0"
@@ -257,15 +214,13 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "encoded_array%0#0"
       ]
     },
-    "52": {
+    "50": {
       "op": "dupn 2",
       "defined_out": [
         "dynamic_bytes#0",
@@ -275,8 +230,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -285,7 +238,7 @@
         "dynamic_bytes#0 (copy)"
       ]
     },
-    "54": {
+    "52": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes#0",
@@ -295,8 +248,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -305,7 +256,7 @@
         "tmp%0#0"
       ]
     },
-    "57": {
+    "55": {
       "op": "pushbytes 0x020301",
       "defined_out": [
         "0x020301",
@@ -316,8 +267,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -327,7 +276,7 @@
         "0x020301"
       ]
     },
-    "62": {
+    "60": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes#0",
@@ -337,8 +286,6 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -347,14 +294,12 @@
         "tmp%1#0"
       ]
     },
-    "63": {
+    "61": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
@@ -362,45 +307,25 @@
         "dynamic_bytes#0"
       ]
     },
-    "64": {
-      "op": "dup",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "dynamic_bytes#0",
-        "dynamic_bytes#0 (copy)"
-      ]
-    },
-    "65": {
+    "62": {
       "op": "pushbytes 0x0003020301",
       "defined_out": [
         "0x0003020301",
-        "dynamic_bytes#0",
-        "dynamic_bytes#0 (copy)"
+        "dynamic_bytes#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
         "dynamic_bytes#0",
-        "dynamic_bytes#0 (copy)",
         "0x0003020301"
       ]
     },
-    "72": {
+    "69": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes#0",
@@ -410,67 +335,26 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "dynamic_bytes#0",
         "tmp%2#0"
       ]
     },
-    "73": {
+    "70": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
-        "dynamic_bytes#0",
         "dynamic_bytes#0"
       ]
     },
-    "74": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "dynamic_bytes#0",
-        "0"
-      ]
-    },
-    "75": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "dynamic_bytes#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0"
-      ]
-    },
-    "76": {
+    "71": {
       "op": "intc_0 // 0",
       "defined_out": [
         "dynamic_bytes#0"
@@ -479,132 +363,150 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "77": {
+    "72": {
       "op": "b main_for_header@1"
     },
-    "80": {
+    "75": {
       "block": "main_for_header@1",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dup",
+      "op": "dig 1",
       "defined_out": [
+        "dynamic_bytes#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes#0"
+      ]
+    },
+    "77": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "dynamic_bytes#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes#0",
+        "0"
+      ]
+    },
+    "78": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%1#0",
+        "dynamic_bytes#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "array_length%1#0"
+      ]
+    },
+    "79": {
+      "op": "dig 1",
+      "defined_out": [
+        "array_length%1#0",
+        "dynamic_bytes#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
+        "array_length%1#0",
         "item_index_internal%0#0"
       ]
     },
     "81": {
-      "op": "dig 2",
+      "op": ">",
       "defined_out": [
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%0#0",
-        "array_length%0#0"
-      ]
-    },
-    "83": {
-      "op": "<",
-      "defined_out": [
-        "array_length%0#0",
         "continue_looping%0#0",
+        "dynamic_bytes#0",
         "item_index_internal%0#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "84": {
+    "82": {
       "op": "bz main_after_for@4",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "87": {
+    "85": {
       "op": "b main_for_body@2"
     },
-    "90": {
+    "88": {
       "block": "main_for_body@2",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 2",
+      "op": "dig 1",
       "defined_out": [
         "dynamic_bytes#0"
       ],
@@ -612,18 +514,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0"
       ]
     },
-    "92": {
+    "90": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes#0",
@@ -633,19 +532,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0",
         "dynamic_bytes#0 (copy)"
       ]
     },
-    "93": {
+    "91": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%0#0",
@@ -655,37 +551,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0",
         "aggregate%total_length%0#0"
       ]
     },
-    "94": {
+    "92": {
       "op": "cover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "dynamic_bytes#0"
       ]
     },
-    "96": {
+    "94": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -696,39 +586,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%0#0",
         "dynamic_bytes#0",
         "2"
       ]
     },
-    "97": {
+    "95": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0",
         "2",
         "aggregate%total_length%0#0"
       ]
     },
-    "99": {
+    "97": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -738,18 +622,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0"
       ]
     },
-    "100": {
+    "98": {
       "op": "dig 1",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -760,19 +641,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "102": {
+    "100": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -784,20 +662,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "103": {
+    "101": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%0#0",
@@ -809,38 +684,32 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "104": {
+    "102": {
       "op": "intc_1 // 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%0#0",
         "aggregate%bytes_offset%0#0",
         "1"
       ]
     },
-    "105": {
+    "103": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -852,18 +721,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "uint8_item#0"
       ]
     },
-    "106": {
+    "104": {
       "op": "btoi",
       "defined_out": [
         "dynamic_bytes#0",
@@ -874,19 +740,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%3#0"
       ]
     },
-    "107": {
-      "op": "dig 4",
+    "105": {
+      "op": "dig 3",
       "defined_out": [
         "dynamic_bytes#0",
         "item_index_internal%0#0",
@@ -897,19 +760,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%3#0",
         "total#0"
       ]
     },
-    "109": {
+    "107": {
       "op": "+",
       "defined_out": [
         "dynamic_bytes#0",
@@ -921,19 +781,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%4#0"
       ]
     },
-    "110": {
-      "op": "bury 4",
+    "108": {
+      "op": "bury 3",
       "defined_out": [
         "dynamic_bytes#0",
         "item_index_internal%0#0",
@@ -943,32 +800,26 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "112": {
+    "110": {
       "op": "b main_for_footer@3"
     },
-    "115": {
+    "113": {
       "block": "main_for_footer@3",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "dup",
@@ -979,18 +830,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "116": {
+    "114": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -1000,36 +848,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "117": {
+    "115": {
       "op": "+",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "118": {
+    "116": {
       "op": "bury 1",
       "defined_out": [
         "item_index_internal%0#0"
@@ -1038,35 +880,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "120": {
+    "118": {
       "op": "b main_for_header@1"
     },
-    "123": {
+    "121": {
       "block": "main_after_for@4",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 3",
+      "op": "dig 2",
       "defined_out": [
         "total#0"
       ],
@@ -1074,18 +910,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "125": {
+    "123": {
       "op": "pushint 6",
       "defined_out": [
         "6",
@@ -1095,19 +928,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total#0",
         "6"
       ]
     },
-    "127": {
+    "125": {
       "op": "==",
       "defined_out": [
         "tmp%5#0",
@@ -1117,36 +947,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%5#0"
       ]
     },
-    "128": {
+    "126": {
       "error": "Total should be of dynamic_bytes items",
       "op": "assert // Total should be of dynamic_bytes items",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "129": {
-      "op": "bytec_1 // 0x0304",
+    "127": {
+      "op": "bytec_0 // 0x0304",
       "defined_out": [
         "0x0304",
         "total#0"
@@ -1155,18 +979,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0x0304"
       ]
     },
-    "130": {
+    "128": {
       "op": "len",
       "defined_out": [
         "aggregate%length%0#0",
@@ -1176,18 +997,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length%0#0"
       ]
     },
-    "131": {
+    "129": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%1#0",
@@ -1197,18 +1015,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_bytes%1#0"
       ]
     },
-    "132": {
+    "130": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%length_uint16%0#0",
@@ -1218,36 +1033,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%0#0"
       ]
     },
-    "135": {
-      "op": "bytec_1 // 0x0304",
+    "133": {
+      "op": "bytec_0 // 0x0304",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%0#0",
         "0x0304"
       ]
     },
-    "136": {
+    "134": {
       "op": "concat",
       "defined_out": [
         "tmp%6#0",
@@ -1257,18 +1066,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%6#0"
       ]
     },
-    "137": {
+    "135": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1279,20 +1085,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "dynamic_bytes2#0 (copy)"
       ]
     },
-    "138": {
-      "op": "bury 12",
+    "136": {
+      "op": "bury 9",
       "defined_out": [
         "dynamic_bytes2#0",
         "total#0"
@@ -1301,36 +1104,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0"
       ]
     },
-    "140": {
+    "138": {
       "op": "dup",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "dynamic_bytes2#0 (copy)"
       ]
     },
-    "141": {
+    "139": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1341,38 +1138,32 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "tmp%7#0"
       ]
     },
-    "144": {
-      "op": "bytec_1 // 0x0304",
+    "142": {
+      "op": "bytec_0 // 0x0304",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "tmp%7#0",
         "0x0304"
       ]
     },
-    "145": {
+    "143": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1383,79 +1174,50 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "tmp%8#0"
       ]
     },
-    "146": {
+    "144": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0"
       ]
     },
-    "147": {
-      "op": "dup",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "dynamic_bytes2#0",
-        "dynamic_bytes2#0 (copy)"
-      ]
-    },
-    "148": {
+    "145": {
       "op": "bytec 4 // 0x00020304",
       "defined_out": [
         "0x00020304",
         "dynamic_bytes2#0",
-        "dynamic_bytes2#0 (copy)",
         "total#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
-        "dynamic_bytes2#0 (copy)",
         "0x00020304"
       ]
     },
-    "150": {
+    "147": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1466,249 +1228,195 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
-        "dynamic_bytes2#0",
         "tmp%9#0"
       ]
     },
-    "151": {
+    "148": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
+        "item_index_internal%0#0"
+      ]
+    },
+    "149": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
         "item_index_internal%0#0",
-        "dynamic_bytes2#0"
+        "0"
+      ]
+    },
+    "150": {
+      "op": "bury 5",
+      "defined_out": [
+        "dynamic_bytes2#0",
+        "total#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0"
       ]
     },
     "152": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "dynamic_bytes2#0",
-        "0"
-      ]
-    },
-    "153": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "aggregate%array_length%1#0",
-        "dynamic_bytes2#0",
-        "total#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "aggregate%array_length%1#0"
-      ]
-    },
-    "154": {
-      "op": "bury 8",
-      "defined_out": [
-        "dynamic_bytes2#0",
-        "total#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "156": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "0"
-      ]
-    },
-    "157": {
-      "op": "bury 6",
-      "defined_out": [
-        "dynamic_bytes2#0",
-        "total#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "159": {
       "op": "b main_for_header@5"
     },
-    "162": {
+    "155": {
       "block": "main_for_header@5",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
+      "op": "dig 7",
+      "defined_out": [
+        "dynamic_bytes2#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes2#0"
+      ]
+    },
+    "157": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "dynamic_bytes2#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes2#0",
+        "0"
+      ]
+    },
+    "158": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%3#0",
+        "dynamic_bytes2#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "array_length%3#0"
+      ]
+    },
+    "159": {
       "op": "dig 5",
       "defined_out": [
+        "array_length%3#0",
+        "dynamic_bytes2#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
+        "array_length%3#0",
         "item_index_internal%1#0"
       ]
     },
-    "164": {
-      "op": "dig 8",
+    "161": {
+      "op": ">",
       "defined_out": [
-        "array_length%1#0",
-        "item_index_internal%1#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%1#0",
-        "array_length%1#0"
-      ]
-    },
-    "166": {
-      "op": "<",
-      "defined_out": [
-        "array_length%1#0",
         "continue_looping%1#0",
+        "dynamic_bytes2#0",
         "item_index_internal%1#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%1#0"
       ]
     },
-    "167": {
+    "162": {
       "op": "bz main_after_for@8",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "170": {
+    "165": {
       "op": "b main_for_body@6"
     },
-    "173": {
+    "168": {
       "block": "main_for_body@6",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 10",
+      "op": "dig 7",
       "defined_out": [
         "dynamic_bytes2#0"
       ],
@@ -1716,18 +1424,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0"
       ]
     },
-    "175": {
+    "170": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1737,19 +1442,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "dynamic_bytes2#0 (copy)"
       ]
     },
-    "176": {
+    "171": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%1#0",
@@ -1759,37 +1461,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "aggregate%total_length%1#0"
       ]
     },
-    "177": {
+    "172": {
       "op": "cover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%1#0",
         "dynamic_bytes2#0"
       ]
     },
-    "179": {
+    "174": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -1800,39 +1496,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%1#0",
         "dynamic_bytes2#0",
         "2"
       ]
     },
-    "180": {
+    "175": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0",
         "2",
         "aggregate%total_length%1#0"
       ]
     },
-    "182": {
+    "177": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
@@ -1842,19 +1532,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%1#0"
       ]
     },
-    "183": {
-      "op": "dig 6",
+    "178": {
+      "op": "dig 5",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
         "dynamic_bytes2#0",
@@ -1864,19 +1551,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%1#0",
         "item_index_internal%1#0"
       ]
     },
-    "185": {
+    "180": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -1888,20 +1572,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%1#0",
         "item_index_internal%1#0",
         "1"
       ]
     },
-    "186": {
+    "181": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%1#0",
@@ -1913,38 +1594,32 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%1#0",
         "aggregate%bytes_offset%1#0"
       ]
     },
-    "187": {
+    "182": {
       "op": "intc_1 // 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%1#0",
         "aggregate%bytes_offset%1#0",
         "1"
       ]
     },
-    "188": {
+    "183": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -1956,18 +1631,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "uint8_item#0"
       ]
     },
-    "189": {
+    "184": {
       "op": "btoi",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -1978,19 +1650,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%10#0"
       ]
     },
-    "190": {
-      "op": "dig 4",
+    "185": {
+      "op": "dig 3",
       "defined_out": [
         "dynamic_bytes2#0",
         "item_index_internal%1#0",
@@ -2001,19 +1670,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%10#0",
         "total#0"
       ]
     },
-    "192": {
+    "187": {
       "op": "+",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2025,19 +1691,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%11#0"
       ]
     },
-    "193": {
-      "op": "bury 4",
+    "188": {
+      "op": "bury 3",
       "defined_out": [
         "dynamic_bytes2#0",
         "item_index_internal%1#0",
@@ -2047,35 +1710,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "195": {
+    "190": {
       "op": "b main_for_footer@7"
     },
-    "198": {
+    "193": {
       "block": "main_for_footer@7",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 5",
+      "op": "dig 4",
       "defined_out": [
         "item_index_internal%1#0"
       ],
@@ -2083,18 +1740,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0"
       ]
     },
-    "200": {
+    "195": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -2104,37 +1758,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0",
         "1"
       ]
     },
-    "201": {
+    "196": {
       "op": "+",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%1#0"
       ]
     },
-    "202": {
-      "op": "bury 6",
+    "197": {
+      "op": "bury 5",
       "defined_out": [
         "item_index_internal%1#0"
       ],
@@ -2142,35 +1790,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "204": {
+    "199": {
       "op": "b main_for_header@5"
     },
-    "207": {
+    "202": {
       "block": "main_after_for@8",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 10",
+      "op": "dig 7",
       "defined_out": [
         "dynamic_bytes2#0"
       ],
@@ -2178,18 +1820,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes2#0"
       ]
     },
-    "209": {
+    "204": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2199,18 +1838,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%12#0"
       ]
     },
-    "212": {
+    "207": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2221,19 +1857,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%12#0",
         "tmp%12#0 (copy)"
       ]
     },
-    "213": {
+    "208": {
       "op": "len",
       "defined_out": [
         "aggregate%length%1#0",
@@ -2244,19 +1877,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%12#0",
         "aggregate%length%1#0"
       ]
     },
-    "214": {
+    "209": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%2#0",
@@ -2267,19 +1897,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%12#0",
         "aggregate%as_bytes%2#0"
       ]
     },
-    "215": {
+    "210": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%length_uint16%1#0",
@@ -2290,37 +1917,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%12#0",
         "aggregate%length_uint16%1#0"
       ]
     },
-    "218": {
+    "213": {
       "op": "uncover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%1#0",
         "tmp%12#0"
       ]
     },
-    "220": {
+    "215": {
       "op": "concat",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2330,18 +1951,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%13#0"
       ]
     },
-    "221": {
+    "216": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2352,20 +1970,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "dynamic_bytes3#0 (copy)"
       ]
     },
-    "222": {
-      "op": "bury 11",
+    "217": {
+      "op": "bury 8",
       "defined_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0"
@@ -2374,36 +1989,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "224": {
+    "219": {
       "op": "dup",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "dynamic_bytes3#0 (copy)"
       ]
     },
-    "225": {
+    "220": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2414,20 +2023,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "tmp%14#0"
       ]
     },
-    "228": {
-      "op": "bytec_1 // 0x0304",
+    "223": {
+      "op": "bytec_0 // 0x0304",
       "defined_out": [
         "0x0304",
         "dynamic_bytes2#0",
@@ -2438,20 +2044,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "tmp%14#0",
         "0x0304"
       ]
     },
-    "229": {
+    "224": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2462,79 +2065,50 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "tmp%15#0"
       ]
     },
-    "230": {
+    "225": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "231": {
-      "op": "dup",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "dynamic_bytes3#0",
-        "dynamic_bytes3#0 (copy)"
-      ]
-    },
-    "232": {
+    "226": {
       "op": "bytec 4 // 0x00020304",
       "defined_out": [
         "0x00020304",
         "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "dynamic_bytes3#0 (copy)"
+        "dynamic_bytes3#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
-        "dynamic_bytes3#0 (copy)",
         "0x00020304"
       ]
     },
-    "234": {
+    "228": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes2#0",
@@ -2545,115 +2119,43 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
-        "dynamic_bytes3#0",
         "tmp%16#0"
       ]
     },
-    "235": {
+    "229": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "dynamic_bytes3#0"
+        "item_index_internal%0#0"
       ]
     },
-    "236": {
+    "230": {
       "op": "intc_0 // 0",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "dynamic_bytes3#0",
-        "0"
-      ]
-    },
-    "237": {
-      "error": "invalid array length header",
-      "op": "extract_uint16 // on error: invalid array length header",
-      "defined_out": [
-        "aggregate%array_length%2#0",
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "aggregate%array_length%2#0"
-      ]
-    },
-    "238": {
-      "op": "bury 7",
-      "defined_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0"
-      ]
-    },
-    "240": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0"
       ]
     },
-    "241": {
-      "op": "bury 5",
+    "231": {
+      "op": "bury 4",
       "defined_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0"
@@ -2662,132 +2164,150 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "243": {
+    "233": {
       "op": "b main_for_header@9"
     },
-    "246": {
+    "236": {
       "block": "main_for_header@9",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
+      "op": "dig 6",
+      "defined_out": [
+        "dynamic_bytes3#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes3#0"
+      ]
+    },
+    "238": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "dynamic_bytes3#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "dynamic_bytes3#0",
+        "0"
+      ]
+    },
+    "239": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "array_length%5#0",
+        "dynamic_bytes3#0"
+      ],
+      "stack_out": [
+        "dynamic_bytes2#0",
+        "dynamic_bytes3#0",
+        "ternary_result%0#0",
+        "item_index_internal%1#0",
+        "item_index_internal%2#0",
+        "total#0",
+        "dynamic_bytes#0",
+        "item_index_internal%0#0",
+        "array_length%5#0"
+      ]
+    },
+    "240": {
       "op": "dig 4",
       "defined_out": [
+        "array_length%5#0",
+        "dynamic_bytes3#0",
         "item_index_internal%2#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
+        "array_length%5#0",
         "item_index_internal%2#0"
       ]
     },
-    "248": {
-      "op": "dig 7",
+    "242": {
+      "op": ">",
       "defined_out": [
-        "array_length%2#0",
-        "item_index_internal%2#0"
-      ],
-      "stack_out": [
-        "dynamic_bytes2#0",
-        "dynamic_bytes3#0",
-        "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
-        "item_index_internal%1#0",
-        "item_index_internal%2#0",
-        "total#0",
-        "dynamic_bytes#0",
-        "array_length%0#0",
-        "item_index_internal%0#0",
-        "item_index_internal%2#0",
-        "array_length%2#0"
-      ]
-    },
-    "250": {
-      "op": "<",
-      "defined_out": [
-        "array_length%2#0",
         "continue_looping%2#0",
+        "dynamic_bytes3#0",
         "item_index_internal%2#0"
       ],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "continue_looping%2#0"
       ]
     },
-    "251": {
+    "243": {
       "op": "bz main_after_for@12",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "254": {
+    "246": {
       "op": "b main_for_body@10"
     },
-    "257": {
+    "249": {
       "block": "main_for_body@10",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 9",
+      "op": "dig 6",
       "defined_out": [
         "dynamic_bytes3#0"
       ],
@@ -2795,18 +2315,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "259": {
+    "251": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -2816,19 +2333,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "dynamic_bytes3#0 (copy)"
       ]
     },
-    "260": {
+    "252": {
       "op": "len",
       "defined_out": [
         "aggregate%total_length%2#0",
@@ -2838,37 +2352,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "aggregate%total_length%2#0"
       ]
     },
-    "261": {
+    "253": {
       "op": "cover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%2#0",
         "dynamic_bytes3#0"
       ]
     },
-    "263": {
+    "255": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -2879,39 +2387,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%total_length%2#0",
         "dynamic_bytes3#0",
         "2"
       ]
     },
-    "264": {
+    "256": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "2",
         "aggregate%total_length%2#0"
       ]
     },
-    "266": {
+    "258": {
       "op": "substring3",
       "defined_out": [
         "aggregate%array_trimmed%2#0",
@@ -2921,19 +2423,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%2#0"
       ]
     },
-    "267": {
-      "op": "dig 5",
+    "259": {
+      "op": "dig 4",
       "defined_out": [
         "aggregate%array_trimmed%2#0",
         "dynamic_bytes3#0",
@@ -2943,19 +2442,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%2#0",
         "item_index_internal%2#0"
       ]
     },
-    "269": {
+    "261": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -2967,20 +2463,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%2#0",
         "item_index_internal%2#0",
         "1"
       ]
     },
-    "270": {
+    "262": {
       "op": "*",
       "defined_out": [
         "aggregate%array_trimmed%2#0",
@@ -2992,38 +2485,32 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%2#0",
         "aggregate%bytes_offset%2#0"
       ]
     },
-    "271": {
+    "263": {
       "op": "intc_1 // 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%array_trimmed%2#0",
         "aggregate%bytes_offset%2#0",
         "1"
       ]
     },
-    "272": {
+    "264": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -3035,18 +2522,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "uint8_item#0"
       ]
     },
-    "273": {
+    "265": {
       "op": "btoi",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -3057,19 +2541,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%17#0"
       ]
     },
-    "274": {
-      "op": "dig 4",
+    "266": {
+      "op": "dig 3",
       "defined_out": [
         "dynamic_bytes3#0",
         "item_index_internal%2#0",
@@ -3080,19 +2561,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%17#0",
         "total#0"
       ]
     },
-    "276": {
+    "268": {
       "op": "+",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -3104,19 +2582,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%18#0"
       ]
     },
-    "277": {
-      "op": "bury 4",
+    "269": {
+      "op": "bury 3",
       "defined_out": [
         "dynamic_bytes3#0",
         "item_index_internal%2#0",
@@ -3126,35 +2601,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "279": {
+    "271": {
       "op": "b main_for_footer@11"
     },
-    "282": {
+    "274": {
       "block": "main_for_footer@11",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 4",
+      "op": "dig 3",
       "defined_out": [
         "item_index_internal%2#0"
       ],
@@ -3162,18 +2631,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%2#0"
       ]
     },
-    "284": {
+    "276": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -3183,37 +2649,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%2#0",
         "1"
       ]
     },
-    "285": {
+    "277": {
       "op": "+",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "item_index_internal%2#0"
       ]
     },
-    "286": {
-      "op": "bury 5",
+    "278": {
+      "op": "bury 4",
       "defined_out": [
         "item_index_internal%2#0"
       ],
@@ -3221,35 +2681,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "288": {
+    "280": {
       "op": "b main_for_header@9"
     },
-    "291": {
+    "283": {
       "block": "main_after_for@12",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 3",
+      "op": "dig 2",
       "defined_out": [
         "total#0"
       ],
@@ -3257,18 +2711,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total#0"
       ]
     },
-    "293": {
+    "285": {
       "op": "pushint 20",
       "defined_out": [
         "20",
@@ -3278,19 +2729,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total#0",
         "20"
       ]
     },
-    "295": {
+    "287": {
       "op": "==",
       "defined_out": [
         "tmp%19#0",
@@ -3300,35 +2748,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%19#0"
       ]
     },
-    "296": {
+    "288": {
       "error": "Total should now include sum of dynamic_bytes3 items",
       "op": "assert // Total should now include sum of dynamic_bytes3 items",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "297": {
+    "289": {
       "op": "bytec 5 // 0x616263",
       "defined_out": [
         "0x616263",
@@ -3338,18 +2780,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0x616263"
       ]
     },
-    "299": {
+    "291": {
       "op": "len",
       "defined_out": [
         "aggregate%length%2#0",
@@ -3359,18 +2798,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length%2#0"
       ]
     },
-    "300": {
+    "292": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%3#0",
@@ -3380,18 +2816,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_bytes%3#0"
       ]
     },
-    "301": {
+    "293": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%length_uint16%2#0",
@@ -3401,36 +2834,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%2#0"
       ]
     },
-    "304": {
+    "296": {
       "op": "bytec 5 // 0x616263",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%2#0",
         "0x616263"
       ]
     },
-    "306": {
+    "298": {
       "op": "concat",
       "defined_out": [
         "tmp%20#0",
@@ -3440,18 +2867,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%20#0"
       ]
     },
-    "307": {
+    "299": {
       "op": "dup",
       "defined_out": [
         "tmp%20#0",
@@ -3462,19 +2886,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%20#0",
         "tmp%20#0 (copy)"
       ]
     },
-    "308": {
+    "300": {
       "op": "len",
       "defined_out": [
         "tmp%20#0",
@@ -3485,37 +2906,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%20#0",
         "total_length%0#0"
       ]
     },
-    "309": {
+    "301": {
       "op": "cover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_length%0#0",
         "tmp%20#0"
       ]
     },
-    "311": {
+    "303": {
       "op": "intc_2 // 2",
       "defined_out": [
         "2",
@@ -3527,39 +2942,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_length%0#0",
         "tmp%20#0",
         "2"
       ]
     },
-    "312": {
+    "304": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%20#0",
         "2",
         "total_length%0#0"
       ]
     },
-    "314": {
+    "306": {
       "op": "substring3",
       "defined_out": [
         "extract_to_end%0#0",
@@ -3569,19 +2978,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "extract_to_end%0#0"
       ]
     },
-    "315": {
-      "op": "dig 10",
+    "307": {
+      "op": "dig 7",
       "defined_out": [
         "dynamic_bytes3#0",
         "extract_to_end%0#0",
@@ -3591,37 +2997,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "extract_to_end%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "317": {
+    "309": {
       "op": "uncover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "extract_to_end%0#0"
       ]
     },
-    "319": {
+    "311": {
       "error": "max array length exceeded",
       "op": "concat // on error: max array length exceeded",
       "defined_out": [
@@ -3633,18 +3033,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0"
       ]
     },
-    "320": {
+    "312": {
       "op": "dup",
       "defined_out": [
         "concat%0#0",
@@ -3656,19 +3053,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "concat%0#0 (copy)"
       ]
     },
-    "321": {
+    "313": {
       "op": "len",
       "defined_out": [
         "concat%0#0",
@@ -3680,68 +3074,56 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "total_length%1#0"
       ]
     },
-    "322": {
+    "314": {
       "op": "cover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_length%1#0",
         "concat%0#0"
       ]
     },
-    "324": {
+    "316": {
       "op": "dup",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_length%1#0",
         "concat%0#0",
         "concat%0#0 (copy)"
       ]
     },
-    "325": {
+    "317": {
       "op": "intc_2 // 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "total_length%1#0",
         "concat%0#0",
@@ -3749,19 +3131,16 @@
         "2"
       ]
     },
-    "326": {
+    "318": {
       "op": "uncover 3",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "concat%0#0 (copy)",
@@ -3769,7 +3148,7 @@
         "total_length%1#0"
       ]
     },
-    "328": {
+    "320": {
       "op": "substring3",
       "defined_out": [
         "concat%0#0",
@@ -3781,19 +3160,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "extract_to_end%1#0"
       ]
     },
-    "329": {
+    "321": {
       "op": "len",
       "defined_out": [
         "concat%0#0",
@@ -3805,19 +3181,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "len%0#0"
       ]
     },
-    "330": {
+    "322": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -3830,20 +3203,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "len%0#0",
         "1"
       ]
     },
-    "331": {
+    "323": {
       "op": "/",
       "defined_out": [
         "concat%0#0",
@@ -3855,19 +3225,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "div_floor%0#0"
       ]
     },
-    "332": {
+    "324": {
       "op": "itob",
       "defined_out": [
         "as_bytes%0#0",
@@ -3879,19 +3246,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "as_bytes%0#0"
       ]
     },
-    "333": {
+    "325": {
       "op": "extract 6 2",
       "defined_out": [
         "as_u16_bytes%0#0",
@@ -3903,37 +3267,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "as_u16_bytes%0#0"
       ]
     },
-    "336": {
+    "328": {
       "op": "uncover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "as_u16_bytes%0#0",
         "concat%0#0"
       ]
     },
-    "338": {
+    "330": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -3946,39 +3304,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "as_u16_bytes%0#0",
         "concat%0#0",
         "0"
       ]
     },
-    "339": {
+    "331": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "concat%0#0",
         "0",
         "as_u16_bytes%0#0"
       ]
     },
-    "341": {
+    "333": {
       "op": "replace3",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -3988,18 +3340,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "342": {
+    "334": {
       "op": "dup",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4010,19 +3359,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "dynamic_bytes3#0 (copy)"
       ]
     },
-    "343": {
+    "335": {
       "op": "pushbytes 0x00050304616263",
       "defined_out": [
         "0x00050304616263",
@@ -4034,20 +3380,17 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "dynamic_bytes3#0 (copy)",
         "0x00050304616263"
       ]
     },
-    "352": {
+    "344": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4058,36 +3401,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0",
         "tmp%21#0"
       ]
     },
-    "353": {
+    "345": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes3#0"
       ]
     },
-    "354": {
+    "346": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4098,18 +3435,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%22#0"
       ]
     },
-    "357": {
+    "349": {
       "op": "pushbytes 0x0304616263",
       "defined_out": [
         "0x0304616263",
@@ -4121,19 +3455,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%22#0",
         "0x0304616263"
       ]
     },
-    "364": {
+    "356": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4144,34 +3475,28 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%23#0"
       ]
     },
-    "365": {
+    "357": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "366": {
+    "358": {
       "op": "txn NumAppArgs",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4182,36 +3507,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%24#0"
       ]
     },
-    "368": {
+    "360": {
       "op": "intc_0 // 0",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%24#0",
         "0"
       ]
     },
-    "369": {
+    "361": {
       "op": "!=",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4222,19 +3541,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%25#0"
       ]
     },
-    "370": {
-      "op": "bytec_2 // 0x03",
+    "362": {
+      "op": "bytec_1 // 0x03",
       "defined_out": [
         "0x03",
         "dynamic_bytes3#0",
@@ -4245,19 +3561,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%25#0",
         "0x03"
       ]
     },
-    "371": {
+    "363": {
       "op": "pushbytes 0x02",
       "defined_out": [
         "0x02",
@@ -4270,39 +3583,33 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%25#0",
         "0x03",
         "0x02"
       ]
     },
-    "374": {
+    "366": {
       "op": "uncover 2",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0x03",
         "0x02",
         "tmp%25#0"
       ]
     },
-    "376": {
+    "368": {
       "op": "select",
       "defined_out": [
         "dynamic_bytes3#0",
@@ -4313,18 +3620,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "select%0#0"
       ]
     },
-    "377": {
+    "369": {
       "op": "intc_3 // 3",
       "defined_out": [
         "3",
@@ -4336,19 +3640,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "select%0#0",
         "3"
       ]
     },
-    "378": {
+    "370": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%4#0",
@@ -4360,19 +3661,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "select%0#0",
         "aggregate%as_bytes%4#0"
       ]
     },
-    "379": {
+    "371": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%len_u16%1#0",
@@ -4384,37 +3682,31 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "select%0#0",
         "aggregate%len_u16%1#0"
       ]
     },
-    "382": {
+    "374": {
       "op": "uncover 1",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%len_u16%1#0",
         "select%0#0"
       ]
     },
-    "384": {
+    "376": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%3#0",
@@ -4425,36 +3717,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%head%3#0"
       ]
     },
-    "385": {
-      "op": "bytec_2 // 0x03",
+    "377": {
+      "op": "bytec_1 // 0x03",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%head%3#0",
         "0x03"
       ]
     },
-    "386": {
+    "378": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%4#0",
@@ -4465,18 +3751,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%head%4#0"
       ]
     },
-    "387": {
+    "379": {
       "op": "pushbytes 0x01",
       "defined_out": [
         "0x01",
@@ -4488,19 +3771,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%head%4#0",
         "0x01"
       ]
     },
-    "390": {
+    "382": {
       "op": "concat",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4511,18 +3791,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0"
       ]
     },
-    "391": {
+    "383": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4534,18 +3811,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%26#0"
       ]
     },
-    "394": {
+    "386": {
       "op": "pushbytes 0x030301",
       "defined_out": [
         "0x030301",
@@ -4558,19 +3832,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%26#0",
         "0x030301"
       ]
     },
-    "399": {
+    "391": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4582,34 +3853,28 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%27#0"
       ]
     },
-    "400": {
+    "392": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "401": {
+    "393": {
       "op": "txn NumAppArgs",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4621,36 +3886,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%28#0"
       ]
     },
-    "403": {
+    "395": {
       "op": "intc_0 // 0",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%28#0",
         "0"
       ]
     },
-    "404": {
+    "396": {
       "op": "!=",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4662,49 +3921,40 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%29#0"
       ]
     },
-    "405": {
+    "397": {
       "op": "bz main_ternary_false@14",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "408": {
+    "400": {
       "op": "b main_ternary_true@13"
     },
-    "411": {
+    "403": {
       "block": "main_ternary_true@13",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
       "op": "pushbytes 0x32",
@@ -4715,18 +3965,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0x32"
       ]
     },
-    "414": {
+    "406": {
       "op": "len",
       "defined_out": [
         "aggregate%length%3#0"
@@ -4735,18 +3982,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length%3#0"
       ]
     },
-    "415": {
+    "407": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%5#0"
@@ -4755,18 +3999,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_bytes%5#0"
       ]
     },
-    "416": {
+    "408": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%length_uint16%3#0"
@@ -4775,36 +4016,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%3#0"
       ]
     },
-    "419": {
+    "411": {
       "op": "pushbytes 0x32",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%3#0",
         "0x32"
       ]
     },
-    "422": {
+    "414": {
       "op": "concat",
       "defined_out": [
         "aggregate%as_Encoded(len+uint8[])%5#0"
@@ -4813,53 +4048,44 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_Encoded(len+uint8[])%5#0"
       ]
     },
-    "423": {
-      "op": "bury 9",
+    "415": {
+      "op": "bury 6",
       "defined_out": [],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "425": {
+    "417": {
       "op": "b main_ternary_merge@15"
     },
-    "428": {
+    "420": {
       "block": "main_ternary_merge@15",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "dig 8",
+      "op": "dig 5",
       "defined_out": [
         "dynamic_bytes#0",
         "ternary_result%0#0"
@@ -4868,18 +4094,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "dynamic_bytes#0"
       ]
     },
-    "430": {
+    "422": {
       "op": "extract 2 0",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4890,19 +4113,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%30#0"
       ]
     },
-    "433": {
-      "op": "bytec_3 // 0x33",
+    "425": {
+      "op": "bytec_2 // 0x33",
       "defined_out": [
         "0x33",
         "dynamic_bytes#0",
@@ -4913,19 +4133,16 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%30#0",
         "0x33"
       ]
     },
-    "434": {
+    "426": {
       "op": "==",
       "defined_out": [
         "dynamic_bytes#0",
@@ -4936,34 +4153,28 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "tmp%31#0"
       ]
     },
-    "435": {
+    "427": {
       "op": "assert",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "436": {
+    "428": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -4974,49 +4185,40 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "1"
       ]
     },
-    "437": {
+    "429": {
       "op": "return",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "438": {
+    "430": {
       "block": "main_ternary_false@14",
       "stack_in": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ],
-      "op": "bytec_3 // 0x33",
+      "op": "bytec_2 // 0x33",
       "defined_out": [
         "0x33"
       ],
@@ -5024,18 +4226,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "0x33"
       ]
     },
-    "439": {
+    "431": {
       "op": "len",
       "defined_out": [
         "aggregate%length%4#0"
@@ -5044,18 +4243,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length%4#0"
       ]
     },
-    "440": {
+    "432": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%6#0"
@@ -5064,18 +4260,15 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_bytes%6#0"
       ]
     },
-    "441": {
+    "433": {
       "op": "extract 6 2",
       "defined_out": [
         "aggregate%length_uint16%4#0"
@@ -5084,36 +4277,30 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%4#0"
       ]
     },
-    "444": {
-      "op": "bytec_3 // 0x33",
+    "436": {
+      "op": "bytec_2 // 0x33",
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%length_uint16%4#0",
         "0x33"
       ]
     },
-    "445": {
+    "437": {
       "op": "concat",
       "defined_out": [
         "aggregate%as_Encoded(len+uint8[])%6#0"
@@ -5122,35 +4309,29 @@
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0",
         "aggregate%as_Encoded(len+uint8[])%6#0"
       ]
     },
-    "446": {
-      "op": "bury 9",
+    "438": {
+      "op": "bury 6",
       "defined_out": [],
       "stack_out": [
         "dynamic_bytes2#0",
         "dynamic_bytes3#0",
         "ternary_result%0#0",
-        "array_length%1#0",
-        "array_length%2#0",
         "item_index_internal%1#0",
         "item_index_internal%2#0",
         "total#0",
         "dynamic_bytes#0",
-        "array_length%0#0",
         "item_index_internal%0#0"
       ]
     },
-    "448": {
+    "440": {
       "op": "b main_ternary_merge@15"
     }
   }

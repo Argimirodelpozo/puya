@@ -8,7 +8,7 @@ main:
     intc_3 // 0
     dupn 3
     pushbytes ""
-    dupn 19
+    dupn 17
     txn NumAppArgs
     bz main___algopy_default_create@52
     txn OnCompletion
@@ -323,19 +323,17 @@ main_write_dynamic_box_route@39:
 main_sum_dynamic_box_route@38:
     intc_3 // 0
     bury 2
+    intc_3 // 0
+    bury 9
+
+main_for_header@76:
     bytec_3 // "dynamic_box"
     intc_3 // 0
     intc_0 // 2
     box_extract
     btoi
-    bury 15
-    intc_3 // 0
-    bury 9
-
-main_for_header@76:
-    dig 8
-    dig 15
-    <
+    dig 9
+    >
     bz main_after_for@78
     dig 8
     dup
@@ -429,7 +427,7 @@ main_append_dynamic_box_route@36:
     box_extract
     btoi
     dup
-    bury 18
+    bury 16
     +
     intc_2 // 8
     *
@@ -449,7 +447,7 @@ main_for_header@83:
     dig 12
     dup
     itob
-    dig 17
+    dig 15
     dup
     cover 2
     intc_2 // 8
@@ -462,14 +460,14 @@ main_for_header@83:
     box_replace
     intc_1 // 1
     +
-    bury 17
+    bury 15
     intc_1 // 1
     +
     bury 13
     b main_for_header@83
 
 main_after_for@85:
-    dig 15
+    dig 13
     itob
     dup
     bitlen
@@ -642,19 +640,17 @@ main_sum_dynamic_arr_struct_route@30:
     assert // expected 2
     +
     bury 2
+    intc_3 // 0
+    bury 9
+
+main_for_header@105:
     bytec_0 // "dynamic_arr_struct"
     pushint 20
     intc_0 // 2
     box_extract
     btoi
-    bury 15
-    intc_3 // 0
-    bury 9
-
-main_for_header@105:
-    dig 8
-    dig 15
-    <
+    dig 9
+    >
     bz main_after_for@107
     bytec_0 // "dynamic_arr_struct"
     pushint 20
@@ -685,6 +681,10 @@ main_for_header@105:
     b main_for_header@105
 
 main_after_for@107:
+    intc_3 // 0
+    bury 8
+
+main_for_header@108:
     bytec_0 // "dynamic_arr_struct"
     pushint 18
     intc_0 // 2
@@ -695,14 +695,8 @@ main_after_for@107:
     intc_0 // 2
     box_extract
     btoi
-    bury 14
-    intc_3 // 0
-    bury 8
-
-main_for_header@108:
-    dig 7
-    dig 14
-    <
+    dig 8
+    >
     bz main_after_for@110
     bytec_0 // "dynamic_arr_struct"
     pushint 18
@@ -1070,7 +1064,7 @@ main_nested_write_route@28:
 main_set_nested_struct_route@27:
     txna ApplicationArgs 1
     dup
-    bury 22
+    bury 20
     dup
     len
     dup
@@ -1100,25 +1094,25 @@ main_set_nested_struct_route@27:
     intc_3 // 0
     extract_uint16 // on error: invalid array length header
     dup
-    bury 21
+    bury 19
     intc_0 // 2
     *
     bury 8
     extract 2 0
-    bury 24
+    bury 22
     intc_3 // 0
     bury 12
 
 main_for_header@117:
     dig 11
-    dig 19
+    dig 17
     <
     bz main_after_for@119
     dig 11
     dup
     intc_0 // 2
     *
-    dig 25
+    dig 23
     dup
     uncover 2
     extract_uint16 // on error: invalid array encoding
@@ -1149,8 +1143,8 @@ main_after_for@119:
     pushint 40
     +
     dup
-    bury 21
-    dig 21
+    bury 19
+    dig 19
     dup
     cover 2
     pushint 10
@@ -1165,24 +1159,24 @@ main_after_for@119:
     intc_3 // 0
     extract_uint16 // on error: invalid array length header
     dup
-    bury 20
+    bury 18
     intc_0 // 2
     *
     bury 7
     extract 2 0
-    bury 23
+    bury 21
     intc_3 // 0
     bury 11
 
 main_for_header@120:
     dig 10
-    dig 18
+    dig 16
     <
     bz main_after_for@125
     dig 10
     intc_0 // 2
     *
-    dig 23
+    dig 21
     dup
     uncover 2
     extract_uint16 // on error: invalid array encoding
@@ -1208,25 +1202,25 @@ main_for_header@120:
     intc_3 // 0
     extract_uint16 // on error: invalid array length header
     dup
-    bury 19
+    bury 17
     intc_0 // 2
     *
     bury 6
     extract 2 0
-    bury 22
+    bury 20
     intc_3 // 0
     bury 10
 
 main_for_header@122:
     dig 9
-    dig 17
+    dig 15
     <
     bz main_after_for@124
     dig 9
     dup
     intc_0 // 2
     *
-    dig 23
+    dig 21
     dup
     uncover 2
     extract_uint16 // on error: invalid array encoding
@@ -1269,12 +1263,12 @@ main_after_for@125:
     dig 5
     intc_0 // 2
     +
-    dig 20
+    dig 18
     +
     dig 1
     ==
     assert // invalid number of bytes for examples.box_storage.contract.NestedStruct
-    dig 20
+    dig 18
     intc_3 // 0
     extract_uint64
     assert // struct.a is truthy
@@ -1411,7 +1405,7 @@ main_append_dynamic_arr_struct_route@25:
     box_extract
     btoi
     dup
-    bury 18
+    bury 16
     bytec_0 // "dynamic_arr_struct"
     pushint 18
     intc_0 // 2
@@ -1462,7 +1456,7 @@ main_for_header@130:
     dig 12
     dup
     itob
-    dig 17
+    dig 15
     dup
     cover 2
     intc_2 // 8
@@ -1475,14 +1469,14 @@ main_for_header@130:
     box_replace
     intc_1 // 1
     +
-    bury 17
+    bury 15
     intc_1 // 1
     +
     bury 13
     b main_for_header@130
 
 main_after_for@132:
-    dig 15
+    dig 13
     dup
     itob
     dup

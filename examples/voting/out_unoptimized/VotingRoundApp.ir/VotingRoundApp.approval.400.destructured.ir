@@ -310,12 +310,12 @@ subroutine examples.voting.voting.VotingRoundApp.close() -> void:
         let current_index#0: uint64 = 0u
         let (maybe_value%5#0: bytes, maybe_exists%6#0: bool) = (app_global_get_ex 0u "option_counts")
         (assert maybe_exists%6#0) // check self.option_counts exists
-        let aggregate%array_length%0#0: uint64 = (extract_uint16 maybe_value%5#0 0u) // on error: invalid array length header
-        let array_length%0#0: uint64 = aggregate%array_length%0#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L132
-        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%array_length%0#0: uint64 = (extract_uint16 maybe_value%5#0 0u) // on error: invalid array length header
+        let array_length%1#0: uint64 = aggregate%array_length%0#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@14
     block@2: // for_body_L133
         let aggregate%total_length%0#0: uint64 = (len maybe_value%5#0)
@@ -564,12 +564,12 @@ subroutine examples.voting.voting.VotingRoundApp.store_option_counts(option_coun
         let tmp%3#0: bool = (<= tmp%2#0 112u)
         (assert tmp%3#0) // Can't have more than 112 questions
         let total_options#0: uint64 = 0u
-        let aggregate%array_length%2#0: uint64 = (extract_uint16 option_counts#0 0u) // on error: invalid array length header
-        let array_length%0#0: uint64 = aggregate%array_length%2#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L223
-        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%array_length%2#0: uint64 = (extract_uint16 option_counts#0 0u) // on error: invalid array length header
+        let array_length%1#0: uint64 = aggregate%array_length%2#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L224
         let aggregate%total_length%0#0: uint64 = (len option_counts#0)

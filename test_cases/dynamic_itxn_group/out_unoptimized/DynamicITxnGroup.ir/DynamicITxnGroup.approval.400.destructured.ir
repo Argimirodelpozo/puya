@@ -181,12 +181,12 @@ subroutine test_cases.dynamic_itxn_group.contract.DynamicITxnGroup.test_looply(a
         let tmp%7#0: uint64 = (/ tmp%5#0 tmp%6#0)
         let share#0: uint64 = tmp%7#0
         let is_first#0: bool = 1u
-        let aggregate%array_length%2#0: uint64 = (extract_uint16 addresses#0 0u) // on error: invalid array length header
-        let array_length%0#0: uint64 = aggregate%array_length%2#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L49
-        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%array_length%2#0: uint64 = (extract_uint16 addresses#0 0u) // on error: invalid array length header
+        let array_length%1#0: uint64 = aggregate%array_length%2#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@7
     block@2: // for_body_L50
         let aggregate%total_length%0#0: uint64 = (len addresses#0)

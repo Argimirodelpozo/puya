@@ -2569,6 +2569,7 @@ debug: selected total#1 from equivalence set
 debug: Copy propagation made 3 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -3099,8 +3100,8 @@ debug: Found equivalence set: values%4#0, val#0
 debug: selected val#0 from equivalence set
 debug: Found equivalence set: tmp%3#0, total#2
 debug: selected total#2 from equivalence set
-debug: Found equivalence set: array_length%1#0, reverse_index_internal%1#0
-debug: selected array_length%1#0 from equivalence set
+debug: Found equivalence set: array_length%2#0, reverse_index_internal%1#0
+debug: selected array_length%2#0 from equivalence set
 debug: Found equivalence set: values%5#0, val#1
 debug: selected val#1 from equivalence set
 debug: Found equivalence set: tmp%4#0, total#4
@@ -3110,6 +3111,8 @@ debug: selected total#3 from equivalence set
 debug: Copy propagation made 6 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -3232,6 +3235,7 @@ debug: selected total#4 from equivalence set
 debug: Copy propagation made 5 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -3411,6 +3415,7 @@ debug: selected total#1 from equivalence set
 debug: Copy propagation made 3 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -4212,6 +4217,7 @@ debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable required_budget#0
 debug: Removing unused variable fee_source#0
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Simplified (+ 10500u 10u) to 10510u
 debug: Optimizer: Inner Txn Field Replacer
@@ -4706,8 +4712,8 @@ debug: Found equivalence set: values%4#0, val#0
 debug: selected val#0 from equivalence set
 debug: Found equivalence set: tmp%3#0, total#2
 debug: selected total#2 from equivalence set
-debug: Found equivalence set: array_length%1#0, reverse_index_internal%1#0
-debug: selected array_length%1#0 from equivalence set
+debug: Found equivalence set: array_length%2#0, reverse_index_internal%1#0
+debug: selected array_length%2#0 from equivalence set
 debug: Found equivalence set: values%5#0, val#1
 debug: selected val#1 from equivalence set
 debug: Found equivalence set: tmp%4#0, total#4
@@ -4715,6 +4721,8 @@ debug: selected total#4 from equivalence set
 debug: Copy propagation made 5 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -4810,6 +4818,7 @@ debug: selected total#2 from equivalence set
 debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -4955,6 +4964,7 @@ debug: selected total#2 from equivalence set
 debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -5565,11 +5575,11 @@ debug: Found equivalence set: box%box_extract%2#0, tuple_item%2#0
 debug: selected box%box_extract%2#0 from equivalence set
 debug: Found equivalence set: box%box_extract%3#0, tuple_item%3#0
 debug: selected box%box_extract%3#0 from equivalence set
-debug: Found equivalence set: box%array_length%0#3, array_length%0#2
+debug: Found equivalence set: box%array_length%0#3, array_length%1#2
 debug: selected box%array_length%0#3 from equivalence set
 debug: Found equivalence set: box%box_extract%6#0, array_item%0#3
 debug: selected box%box_extract%6#0 from equivalence set
-debug: Found equivalence set: box%array_length%1#0, array_length%1#0
+debug: Found equivalence set: box%array_length%1#0, array_length%3#0
 debug: selected box%array_length%1#0 from equivalence set
 debug: Found equivalence set: box%box_extract%10#0, array_item%1#1
 debug: selected box%box_extract%10#0 from equivalence set
@@ -5581,7 +5591,7 @@ debug: Found equivalence set: box%box_extract%0#3, tuple_item%0#0
 debug: selected box%box_extract%0#3 from equivalence set
 debug: Found equivalence set: box%array_length%0#1, tmp%5#2
 debug: selected box%array_length%0#1 from equivalence set
-debug: Found equivalence set: box%array_length%0#0, array_length%0#0
+debug: Found equivalence set: box%array_length%0#0, array_length%1#0
 debug: selected box%array_length%0#0 from equivalence set
 debug: Found equivalence set: box%box_extract%1#1, array_item%0#1
 debug: selected box%box_extract%1#1 from equivalence set
@@ -7181,11 +7191,11 @@ debug: Found equivalence set: box%box_extract%2#0, tuple_item%2#0
 debug: selected box%box_extract%2#0 from equivalence set
 debug: Found equivalence set: box%box_extract%3#0, tuple_item%3#0
 debug: selected box%box_extract%3#0 from equivalence set
-debug: Found equivalence set: box%array_length%0#0, array_length%0#0
+debug: Found equivalence set: box%array_length%0#0, array_length%1#0
 debug: selected box%array_length%0#0 from equivalence set
 debug: Found equivalence set: box%box_extract%6#0, array_item%0#0
 debug: selected box%box_extract%6#0 from equivalence set
-debug: Found equivalence set: box%array_length%1#0, array_length%1#0
+debug: Found equivalence set: box%array_length%1#0, array_length%3#0
 debug: selected box%array_length%1#0 from equivalence set
 debug: Found equivalence set: box%box_extract%10#0, array_item%1#0
 debug: selected box%box_extract%10#0 from equivalence set
@@ -7399,7 +7409,7 @@ debug: Optimizer: Perform Subroutine Inlining
 debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
-debug: Found equivalence set: box%array_length%0#0, array_length%0#0
+debug: Found equivalence set: box%array_length%0#0, array_length%1#0
 debug: selected box%array_length%0#0 from equivalence set
 debug: Found equivalence set: box%box_extract%1#0, array_item%0#0
 debug: selected box%box_extract%1#0 from equivalence set
@@ -8645,11 +8655,11 @@ debug: selected aggregate%encoded_bool%1#0 from equivalence set
 debug: Copy propagation made 84 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
-debug: Removing unused variable array_length%0#3
+debug: Removing unused variable array_length%1#3
 debug: Removing unused variable aggregate%current_tail_offset%1#0
 debug: Removing unused variable aggregate%current_tail_offset%3#0
 debug: Removing unused variable aggregate%get_bit%1#0
-debug: Removing unused variable array_length%0#1
+debug: Removing unused variable array_length%1#1
 debug: Removing unused variable aggregate%data_length%1#0
 debug: Removing unused variable aggregate%data_length%3#0
 debug: Optimizer: Intrinsic Simplifier
@@ -10756,14 +10766,16 @@ debug: Inserted main_sum_dynamic_arr_struct_route@30.ops[25]: 'l-store-copy valu
 debug: Replaced main_sum_dynamic_arr_struct_route@30.ops[27]: 'v-load values%1#0' with 'l-load values%1#0'
 debug: Inserted main_sum_dynamic_arr_struct_route@30.ops[30]: 'l-store-copy tmp%1#5 0'
 debug: Replaced main_sum_dynamic_arr_struct_route@30.ops[32]: 'v-load tmp%1#5' with 'l-load tmp%1#5'
-debug: Inserted main_sum_dynamic_arr_struct_route@30.ops[42]: 'l-store-copy box%box_extract%4#0 0'
-debug: Replaced main_sum_dynamic_arr_struct_route@30.ops[44]: 'v-load box%box_extract%4#0' with 'l-load box%box_extract%4#0'
 debug: Inserted main_sum_dynamic_arr_struct_route@30.ops[28]: 'l-store-copy values%1#0 0'
 debug: Replaced main_sum_dynamic_arr_struct_route@30.ops[36]: 'v-load values%1#0' with 'l-load values%1#0'
 debug: Inserted main_sum_dynamic_arr_struct_route@30.ops[11]: 'l-store-copy values%0#0 0'
 debug: Replaced main_sum_dynamic_arr_struct_route@30.ops[36]: 'v-load values%0#0' with 'l-load values%0#0'
-debug: Inserted main_for_header@105.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced main_for_header@105.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@105.ops[4]: 'l-store-copy box%box_extract%4#0 0'
+debug: Replaced main_for_header@105.ops[6]: 'v-load box%box_extract%4#0' with 'l-load box%box_extract%4#0'
+debug: Inserted main_for_header@105.ops[12]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced main_for_header@105.ops[14]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@105.ops[8]: 'l-store-copy box%array_length%0#0 0'
+debug: Replaced main_for_header@105.ops[11]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
 debug: Inserted main_for_body@106.ops[4]: 'l-store-copy box%box_extract%5#0 0'
 debug: Replaced main_for_body@106.ops[6]: 'v-load box%box_extract%5#0' with 'l-load box%box_extract%5#0'
 debug: Inserted main_for_body@106.ops[12]: 'l-store-copy box%index_ok%0#0 0'
@@ -10782,14 +10794,16 @@ debug: Inserted main_for_body@106.ops[11]: 'l-store-copy item_index_internal%0#0
 debug: Replaced main_for_body@106.ops[18]: 'v-load item_index_internal%0#0' with 'l-load item_index_internal%0#0'
 debug: Inserted main_for_body@106.ops[19]: 'l-store-copy item_index_internal%0#0 0'
 debug: Replaced main_for_body@106.ops[43]: 'v-load item_index_internal%0#0' with 'l-load item_index_internal%0#0'
-debug: Inserted main_after_for@107.ops[4]: 'l-store-copy box%box_extract%7#0 0'
-debug: Replaced main_after_for@107.ops[6]: 'v-load box%box_extract%7#0' with 'l-load box%box_extract%7#0'
-debug: Inserted main_after_for@107.ops[13]: 'l-store-copy box%box_extract%8#0 0'
-debug: Replaced main_after_for@107.ops[15]: 'v-load box%box_extract%8#0' with 'l-load box%box_extract%8#0'
-debug: Inserted main_after_for@107.ops[8]: 'l-store-copy box%btoi%1#0 0'
-debug: Replaced main_after_for@107.ops[11]: 'v-load box%btoi%1#0' with 'l-load box%btoi%1#0'
-debug: Inserted main_for_header@108.ops[3]: 'l-store-copy continue_looping%1#0 0'
-debug: Replaced main_for_header@108.ops[5]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@108.ops[4]: 'l-store-copy box%box_extract%7#0 0'
+debug: Replaced main_for_header@108.ops[6]: 'v-load box%box_extract%7#0' with 'l-load box%box_extract%7#0'
+debug: Inserted main_for_header@108.ops[13]: 'l-store-copy box%box_extract%8#0 0'
+debug: Replaced main_for_header@108.ops[15]: 'v-load box%box_extract%8#0' with 'l-load box%box_extract%8#0'
+debug: Inserted main_for_header@108.ops[21]: 'l-store-copy continue_looping%1#0 0'
+debug: Replaced main_for_header@108.ops[23]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@108.ops[8]: 'l-store-copy box%btoi%1#0 0'
+debug: Replaced main_for_header@108.ops[11]: 'v-load box%btoi%1#0' with 'l-load box%btoi%1#0'
+debug: Inserted main_for_header@108.ops[18]: 'l-store-copy box%array_length%1#0 0'
+debug: Replaced main_for_header@108.ops[21]: 'v-load box%array_length%1#0' with 'l-load box%array_length%1#0'
 debug: Inserted main_for_body@109.ops[4]: 'l-store-copy box%box_extract%9#0 0'
 debug: Replaced main_for_body@109.ops[6]: 'v-load box%box_extract%9#0' with 'l-load box%box_extract%9#0'
 debug: Inserted main_for_body@109.ops[8]: 'l-store-copy box%btoi%2#0 0'
@@ -10968,10 +10982,12 @@ debug: Inserted main_pop_dynamic_box_route@37.ops[17]: 'l-store-copy times#0 0'
 debug: Replaced main_pop_dynamic_box_route@37.ops[30]: 'v-load times#0' with 'l-load times#0'
 debug: Inserted main_pop_dynamic_box_route@37.ops[35]: 'l-store-copy arr_len#0 0'
 debug: Replaced main_pop_dynamic_box_route@37.ops[59]: 'v-load arr_len#0' with 'l-load arr_len#0'
-debug: Inserted main_sum_dynamic_box_route@38.ops[6]: 'l-store-copy box%box_extract%0#0 0'
-debug: Replaced main_sum_dynamic_box_route@38.ops[8]: 'v-load box%box_extract%0#0' with 'l-load box%box_extract%0#0'
-debug: Inserted main_for_header@76.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced main_for_header@76.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@76.ops[4]: 'l-store-copy box%box_extract%0#0 0'
+debug: Replaced main_for_header@76.ops[6]: 'v-load box%box_extract%0#0' with 'l-load box%box_extract%0#0'
+debug: Inserted main_for_header@76.ops[12]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced main_for_header@76.ops[14]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@76.ops[8]: 'l-store-copy box%array_length%0#0 0'
+debug: Replaced main_for_header@76.ops[11]: 'v-load box%array_length%0#0' with 'l-load box%array_length%0#0'
 debug: Inserted main_for_body@77.ops[12]: 'l-store-copy box%box_extract%1#0 0'
 debug: Replaced main_for_body@77.ops[14]: 'v-load box%box_extract%1#0' with 'l-load box%box_extract%1#0'
 debug: Inserted main_for_body@77.ops[3]: 'l-store-copy box%element_offset%0#0 0'
@@ -11223,7 +11239,7 @@ debug: Replaced main___algopy_default_create@52.ops[14]: 'v-load tmp%10#0' with 
 debug: Inserted main___algopy_default_create@52.ops[5]: 'l-store-copy tmp%8#0 0'
 debug: Replaced main___algopy_default_create@52.ops[14]: 'v-load tmp%8#0' with 'l-load tmp%8#0'
 debug: Found 24 edge set/s for algopy.arc4.ARC4Contract.approval_program
-debug: algopy.arc4.ARC4Contract.approval_program f-stack entry: ['array_data%0#0', 'array_data%1#0', 'array_data%2#0', 'struct#0', 'add%2#0', 'aggregate%array_length%6#0', 'aggregate%array_length%8#0', 'aggregate%array_length%9#0', 'arr_len#0', 'box%array_length%0#0', 'box%array_length%1#0', 'i#0', 'index%0#0', 'index%1#0', 'index%2#0', 'item_index_internal%0#0', 'item_index_internal%1#0', 'num_bytes%0#0', 'num_bytes%2#0', 'num_bytes%3#0', 'stop_at_total#0', 'times#0', 'total#0', 'tuple_len%0#0']
+debug: algopy.arc4.ARC4Contract.approval_program f-stack entry: ['array_data%0#0', 'array_data%1#0', 'array_data%2#0', 'struct#0', 'add%2#0', 'aggregate%array_length%6#0', 'aggregate%array_length%8#0', 'aggregate%array_length%9#0', 'arr_len#0', 'i#0', 'index%0#0', 'index%1#0', 'index%2#0', 'item_index_internal%0#0', 'item_index_internal%1#0', 'num_bytes%0#0', 'num_bytes%2#0', 'num_bytes%3#0', 'stop_at_total#0', 'times#0', 'total#0', 'tuple_len%0#0']
 debug: algopy.arc4.ARC4Contract.approval_program f-stack on first store: []
 debug: optimizing TEAL subroutine ops algopy.arc4.ARC4Contract.approval_program() -> uint64:
 debug: Replaced 'uncover 3; uncover 3; uncover 2' with 'cover 1; cover 3', reducing by 1 ops by search

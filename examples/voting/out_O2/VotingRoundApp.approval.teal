@@ -8,7 +8,7 @@ main:
     intc_0 // 0
     dupn 5
     pushbytes ""
-    dupn 9
+    dupn 8
     txn ApplicationID
     bnz main_after_if_else@2
     bytec_0 // "is_bootstrapped"
@@ -51,7 +51,7 @@ main_vote_route@8:
     extract 2 0
     txna ApplicationArgs 2
     dup
-    bury 18
+    bury 17
     dup
     intc_0 // 0
     extract_uint16 // on error: invalid array length header
@@ -114,7 +114,7 @@ main_for_header@17:
     dig 3
     <
     bz main_after_for@19
-    dig 14
+    dig 13
     dup
     extract 2 0
     dig 5
@@ -259,54 +259,51 @@ main_close_route@6:
     concat
     pushbytes ",\"tallies\":["
     concat
-    bury 13
+    bury 12
     intc_0 // 0
     bury 7
     intc_0 // 0
     bytec_2 // "option_counts"
     app_global_get_ex
     swap
-    dup
-    cover 2
-    bury 16
+    bury 14
     assert // check self.option_counts exists
-    intc_0 // 0
-    extract_uint16 // on error: invalid array length header
-    bury 10
     intc_0 // 0
     bury 4
 
 main_for_header@24:
-    dig 3
-    dig 10
-    <
+    dig 12
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    dig 4
+    >
     bz main_after_for@35
-    dig 13
+    dig 12
     extract 2 0
     dup
-    bury 17
+    bury 16
     dig 4
     dup
     cover 2
     intc_1 // 1
     extract3 // on error: index access is out of bounds
-    bury 12
+    bury 11
     bz main_after_if_else@27
-    dig 12
+    dig 11
     pushbytes ","
     concat
-    bury 13
+    bury 12
 
 main_after_if_else@27:
-    dig 10
+    dig 9
     pushbytes 0x00
     b>
     bz main_after_if_else@34
-    dig 12
+    dig 11
     pushbytes "["
     concat
-    bury 13
-    dig 15
+    bury 12
+    dig 14
     dig 4
     getbyte
     bury 2
@@ -320,10 +317,10 @@ main_for_header@29:
     bz main_after_for@33
     dig 4
     bz main_after_if_else@32
-    dig 12
+    dig 11
     pushbytes ","
     concat
-    bury 13
+    bury 12
 
 main_after_if_else@32:
     bytec_3 // "V"
@@ -334,10 +331,10 @@ main_after_if_else@32:
     box_extract
     btoi
     callsub itoa
-    dig 14
+    dig 13
     swap
     concat
-    bury 14
+    bury 13
     intc_1 // 1
     +
     bury 7
@@ -348,10 +345,10 @@ main_after_if_else@32:
     b main_for_header@29
 
 main_after_for@33:
-    dig 12
+    dig 11
     pushbytes "]"
     concat
-    bury 13
+    bury 12
 
 main_after_if_else@34:
     dig 3
@@ -361,7 +358,7 @@ main_after_if_else@34:
     b main_for_header@24
 
 main_after_for@35:
-    dig 12
+    dig 11
     pushbytes "]}}"
     concat
     itxn_begin
@@ -503,7 +500,7 @@ main_create_route@11:
     btoi
     txna ApplicationArgs 6
     dup
-    bury 18
+    bury 17
     dup
     intc_0 // 0
     extract_uint16 // on error: invalid array length header
@@ -578,7 +575,7 @@ main_for_header@37:
     dig 9
     <
     bz main_after_for@39
-    dig 11
+    dig 10
     extract 2 0
     dig 6
     dup
@@ -598,7 +595,7 @@ main_after_for@39:
     <=
     assert // Can't have more than 128 vote options
     bytec_2 // "option_counts"
-    dig 13
+    dig 12
     app_global_put
     bytec 9 // "total_options"
     swap

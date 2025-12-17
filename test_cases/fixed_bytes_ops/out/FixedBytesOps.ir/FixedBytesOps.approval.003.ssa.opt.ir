@@ -139,12 +139,12 @@ main test_cases.fixed_bytes_ops.contract.FixedBytesOps.approval_program:
         goto block@62
     block@65: // after_for_L541
         let arr#0: Encoded(uint8[4][8]) = (bzero 32u)
-        let array_length%0#0: uint64 = array_len(arr#0)
         let item_index_internal%0#3: uint64 = 0u
         goto block@68
     block@68: // for_header_L579
         let item_index_internal%0#4: uint64 = φ(item_index_internal%0#3 <- block@65, item_index_internal%0#5 <- block@69)
-        let continue_looping%0#1: bool = (< item_index_internal%0#4 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(arr#0)
+        let continue_looping%0#1: bool = (< item_index_internal%0#4 array_length%1#0)
         goto continue_looping%0#1 ? block@69 : block@71
     block@69: // for_body_L580
         let array_item%0#0: Encoded(uint8[4]) = extract_value(arr#0, item_index_internal%0#4)

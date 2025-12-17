@@ -16894,16 +16894,16 @@ debug: Found equivalence set: tmp%4#0, total#2
 debug: selected total#2 from equivalence set
 debug: Found equivalence set: tmp%6#0, dynamic_bytes2#0
 debug: selected dynamic_bytes2#0 from equivalence set
-debug: Found equivalence set: array_length%1#0, reverse_index_internal%1#0
-debug: selected array_length%1#0 from equivalence set
+debug: Found equivalence set: array_length%2#0, reverse_index_internal%1#0
+debug: selected array_length%2#0 from equivalence set
 debug: Found equivalence set: array_item%1#0, uint8_item#1
 debug: selected uint8_item#1 from equivalence set
 debug: Found equivalence set: tmp%11#0, total#4
 debug: selected total#4 from equivalence set
 debug: Found equivalence set: tmp%13#0, dynamic_bytes3#0
 debug: selected dynamic_bytes3#0 from equivalence set
-debug: Found equivalence set: array_length%2#0, reverse_index_internal%2#0
-debug: selected array_length%2#0 from equivalence set
+debug: Found equivalence set: array_length%4#0, reverse_index_internal%2#0
+debug: selected array_length%4#0 from equivalence set
 debug: Found equivalence set: array_item%2#0, uint8_item#2
 debug: selected uint8_item#2 from equivalence set
 debug: Found equivalence set: tmp%18#0, total#6
@@ -16917,6 +16917,9 @@ debug: selected dynamic_bytes#2 from equivalence set
 debug: Copy propagation made 12 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
+debug: Removing unused variable array_length%4#0
 debug: Optimizer: Intrinsic Simplifier
 debug: Simplified (substring3 tmp%20#0 2u total_length%0#0) to ((extract 2 0) tmp%20#0)
 debug: Simplified (substring3 concat%0#0 2u total_length%1#0) to ((extract 2 0) concat%0#0)
@@ -17071,17 +17074,17 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Found equivalence set: aggregate%head%2#0, aggregate%as_Encoded(len+uint8[])%0#0, dynamic_bytes#0
 debug: selected dynamic_bytes#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%0#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%0#0, array_length%1#0
 debug: selected aggregate%array_length%0#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%0#0, uint8_item#0
 debug: selected uint8_item#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_value%0#0, aggregate%as_Encoded(len+uint8[])%1#0, dynamic_bytes2#0
 debug: selected dynamic_bytes2#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%1#0, array_length%1#0
+debug: Found equivalence set: aggregate%array_length%1#0, array_length%3#0
 debug: selected aggregate%array_length%1#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%1#0, uint8_item#1
 debug: selected uint8_item#1 from equivalence set
-debug: Found equivalence set: aggregate%array_length%2#0, array_length%2#0
+debug: Found equivalence set: aggregate%array_length%2#0, array_length%5#0
 debug: selected aggregate%array_length%2#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%2#0, uint8_item#2
 debug: selected uint8_item#2 from equivalence set
@@ -18582,16 +18585,16 @@ debug: Found equivalence set: tmp%1#0, total#2
 debug: selected total#2 from equivalence set
 debug: Found equivalence set: encoded_array%1#0, aliased_dynamic#0
 debug: selected aliased_dynamic#0 from equivalence set
-debug: Found equivalence set: array_length%1#0, reverse_index_internal%1#0
-debug: selected array_length%1#0 from equivalence set
+debug: Found equivalence set: array_length%2#0, reverse_index_internal%1#0
+debug: selected array_length%2#0 from equivalence set
 debug: Found equivalence set: array_item%1#0, uint16_item#0
 debug: selected uint16_item#0 from equivalence set
 debug: Found equivalence set: tmp%4#0, total#4
 debug: selected total#4 from equivalence set
 debug: Found equivalence set: encoded_array%2#0, dynamic_string_array#0
 debug: selected dynamic_string_array#0 from equivalence set
-debug: Found equivalence set: array_length%2#0, reverse_index_internal%2#0
-debug: selected array_length%2#0 from equivalence set
+debug: Found equivalence set: array_length%4#0, reverse_index_internal%2#0
+debug: selected array_length%4#0 from equivalence set
 debug: Found equivalence set: array_item%3#0, string_item#0
 debug: selected string_item#0 from equivalence set
 debug: Found equivalence set: item_index_internal%2#1, index#0
@@ -18602,14 +18605,14 @@ debug: Found equivalence set: tmp%16#0, result#3
 debug: selected result#3 from equivalence set
 debug: Found equivalence set: encoded_array%3#0, static_uint32_array#0
 debug: selected static_uint32_array#0 from equivalence set
-debug: Found equivalence set: array_length%3#0, reverse_index_internal%3#0
-debug: selected array_length%3#0 from equivalence set
+debug: Found equivalence set: array_length%6#0, reverse_index_internal%3#0
+debug: selected array_length%6#0 from equivalence set
 debug: Found equivalence set: array_item%4#0, uint32_item#0
 debug: selected uint32_item#0 from equivalence set
 debug: Found equivalence set: tmp%19#0, total#6
 debug: selected total#6 from equivalence set
-debug: Found equivalence set: array_length%4#0, reverse_index_internal%4#0
-debug: selected array_length%4#0 from equivalence set
+debug: Found equivalence set: array_length%8#0, reverse_index_internal%4#0
+debug: selected array_length%8#0 from equivalence set
 debug: Found equivalence set: array_item%5#0, uint8_item#1
 debug: selected uint8_item#1 from equivalence set
 debug: Found equivalence set: tmp%22#0, uint8_total#2
@@ -18620,8 +18623,8 @@ debug: Found equivalence set: encoded_array%4#0, aliased_static#0
 debug: selected aliased_static#0 from equivalence set
 debug: Found equivalence set: encoded_array%5#0, static_string_array#0
 debug: selected static_string_array#0 from equivalence set
-debug: Found equivalence set: array_length%5#0, reverse_index_internal%5#0
-debug: selected array_length%5#0 from equivalence set
+debug: Found equivalence set: array_length%10#0, reverse_index_internal%5#0
+debug: selected array_length%10#0 from equivalence set
 debug: Found equivalence set: array_item%8#0, string_item#1
 debug: selected string_item#1 from equivalence set
 debug: Found equivalence set: item_index_internal%5#1, index#2
@@ -18632,8 +18635,8 @@ debug: Found equivalence set: tmp%36#0, result#8
 debug: selected result#8 from equivalence set
 debug: Found equivalence set: updated_array%0#0, static_string_array#3
 debug: selected static_string_array#3 from equivalence set
-debug: Found equivalence set: array_length%6#0, reverse_index_internal%6#0
-debug: selected array_length%6#0 from equivalence set
+debug: Found equivalence set: array_length%12#0, reverse_index_internal%6#0
+debug: selected array_length%12#0 from equivalence set
 debug: Found equivalence set: array_item%9#0, string_item#2
 debug: selected string_item#2 from equivalence set
 debug: Found equivalence set: tmp%41#0, result#12
@@ -18641,9 +18644,16 @@ debug: selected result#12 from equivalence set
 debug: Copy propagation made 32 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
+debug: Removing unused variable array_length%4#0
+debug: Removing unused variable array_length%6#0
 debug: Removing unused variable reinterpret_Encoded(uint8[4])%0#0
 debug: Removing unused variable static_uint8_array#0
+debug: Removing unused variable array_length%8#0
 debug: Removing unused variable index#1
+debug: Removing unused variable array_length%10#0
+debug: Removing unused variable array_length%12#0
 debug: Removing unused variable commitment_args_concat#0
 debug: Removing unused variable reinterpret_Encoded(uint8[32])%0#0
 debug: Optimizer: Intrinsic Simplifier
@@ -19311,13 +19321,13 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Found equivalence set: aggregate%head%1#0, aggregate%as_Encoded(len+uint8[])%0#0, dynamic_uint8_array#0
 debug: selected dynamic_uint8_array#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%0#0, array_length%0#0
+debug: Found equivalence set: aggregate%array_length%0#0, array_length%1#0
 debug: selected aggregate%array_length%0#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%0#0, uint8_item#0
 debug: selected uint8_item#0 from equivalence set
 debug: Found equivalence set: aggregate%head%2#0, aggregate%as_Encoded(len+uint16[])%0#0, aliased_dynamic#0
 debug: selected aliased_dynamic#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%1#0, array_length%1#0
+debug: Found equivalence set: aggregate%array_length%1#0, array_length%3#0
 debug: selected aggregate%array_length%1#0 from equivalence set
 debug: Found equivalence set: aggregate%encoded_element%1#0, uint16_item#0
 debug: selected uint16_item#0 from equivalence set
@@ -19331,7 +19341,7 @@ debug: Found equivalence set: aggregate%array_length%2#0, tmp%8#0
 debug: selected aggregate%array_length%2#0 from equivalence set
 debug: Found equivalence set: aggregate%item%0#0, array_item%2#0
 debug: selected aggregate%item%0#0 from equivalence set
-debug: Found equivalence set: aggregate%array_length%4#0, array_length%2#0
+debug: Found equivalence set: aggregate%array_length%4#0, array_length%5#0
 debug: selected aggregate%array_length%4#0 from equivalence set
 debug: Found equivalence set: aggregate%item%1#0, string_item#0
 debug: selected string_item#0 from equivalence set
@@ -19361,14 +19371,14 @@ debug: Copy propagation made 37 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable aggregate%current_tail_offset%1#0
-debug: Removing unused variable array_length%3#0
-debug: Removing unused variable array_length%4#0
+debug: Removing unused variable array_length%7#0
+debug: Removing unused variable array_length%9#0
 debug: Removing unused variable aggregate%current_tail_offset%3#0
-debug: Removing unused variable array_length%5#0
+debug: Removing unused variable array_length%11#0
 debug: Removing unused variable aggregate%item%3#0
 debug: Removing unused variable index#3
 debug: Removing unused variable array_length#0
-debug: Removing unused variable array_length%6#0
+debug: Removing unused variable array_length%13#0
 debug: Removing unused variable aggregate%data_length%1#0
 debug: Removing unused variable aggregate%data_length%3#0
 debug: Removing unused variable aggregate%item_head_tail_length%3#0

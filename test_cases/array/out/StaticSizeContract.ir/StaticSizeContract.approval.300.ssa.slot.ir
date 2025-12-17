@@ -322,13 +322,13 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_bool_array[routi
         let tmp%10#0: bool = (== aggregate%bytes_len%2#0 tmp%9#0)
         (assert tmp%10#0) // expected correct length
         let count#0: uint64 = 0u
-        let aggregate%slot_contents%3#0: Encoded(bool8[]) = load(local.0)
-        let aggregate%bytes_len%3#0: uint64 = (len aggregate%slot_contents%3#0)
         let item_index_internal%0#0: uint64 = 0u
         goto block@6
     block@6: // for_header_L91
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@5, item_index_internal%0#2 <- block@9)
         let count#1: uint64 = φ(count#0 <- block@5, count#3 <- block@9)
+        let aggregate%slot_contents%3#0: Encoded(bool8[]) = load(local.0)
+        let aggregate%bytes_len%3#0: uint64 = (len aggregate%slot_contents%3#0)
         let continue_looping%1#0: bool = (< item_index_internal%0#1 aggregate%bytes_len%3#0)
         goto continue_looping%1#0 ? block@7 : block@11
     block@7: // for_body_L92
@@ -383,7 +383,10 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_arc4_conversion[
     block@6: // for_header_L105
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@5, item_index_internal%0#2 <- block@9)
         let count#1: uint64 = φ(count#0 <- block@5, count#3 <- block@9)
-        let continue_looping%1#0: bool = (< item_index_internal%0#1 aggregate%array_len%1#0)
+        let aggregate%slot_contents%2#0: Encoded(uint64[]) = load(local.0)
+        let aggregate%bytes_len%2#0: uint64 = (len aggregate%slot_contents%2#0)
+        let aggregate%array_len%2#0: uint64 = (/ aggregate%bytes_len%2#0 8u)
+        let continue_looping%1#0: bool = (< item_index_internal%0#1 aggregate%array_len%2#0)
         goto continue_looping%1#0 ? block@7 : block@11
     block@7: // for_body_L106
         let slot_contents%1#0: Encoded(uint64[]) = load(local.0)
@@ -423,13 +426,14 @@ subroutine test_cases.array.static_size.StaticSizeContract.sum_array[routing]() 
         let extract_to_end%0#0: bytes = ((extract 2 0) arc4_arr#0)
         store(local.0, extract_to_end%0#0)
         let total#0: uint64 = 0u
-        let aggregate%bytes_len%0#0: uint64 = (len extract_to_end%0#0)
-        let aggregate%array_len%0#0: uint64 = (/ aggregate%bytes_len%0#0 8u)
         let item_index_internal%0#0: uint64 = 0u
         goto block@2
     block@2: // for_header_L120
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@3)
         let total#1: uint64 = φ(total#0 <- block@0, total#2 <- block@3)
+        let aggregate%slot_contents%0#0: Encoded(uint64[]) = load(local.0)
+        let aggregate%bytes_len%0#0: uint64 = (len aggregate%slot_contents%0#0)
+        let aggregate%array_len%0#0: uint64 = (/ aggregate%bytes_len%0#0 8u)
         let continue_looping%0#0: bool = (< item_index_internal%0#1 aggregate%array_len%0#0)
         goto continue_looping%0#0 ? block@3 : block@5
     block@3: // for_body_L121

@@ -10,7 +10,7 @@ main:
     intc_2 // 0
     dupn 5
     bytec_0 // ""
-    dupn 14
+    dupn 11
     txn NumAppArgs
     bz main___algopy_default_create@19
     txn OnCompletion
@@ -72,7 +72,7 @@ main_test_quicksort_route@14:
     bytec_0 // 0x
     stores
     txn Sender
-    bury 16
+    bury 13
     intc_2 // 0
     bury 7
 
@@ -81,7 +81,7 @@ main_for_header@25:
     pushint 32
     <
     bz main_after_for@27
-    dig 15
+    dig 12
     dig 7
     dup
     cover 2
@@ -112,24 +112,22 @@ main_after_for@27:
     assert // expected array of length 32
     intc_1 // 1
     -
-    dig 1
     intc_2 // 0
-    uncover 2
+    swap
     callsub quicksort_window
     intc_2 // 0
-    bury 6
-    loads
-    len
-    intc_0 // 8
-    /
-    bury 12
+    bury 5
     intc_2 // 0
     bury 6
 
 main_for_header@28:
-    dig 5
-    dig 12
-    <
+    dig 1
+    loads
+    len
+    intc_0 // 8
+    /
+    dig 6
+    >
     bz main_overhead_route@7
     dig 1
     loads
@@ -156,7 +154,7 @@ main_overhead_route@7:
 
 main_test_iteration_route@13:
     bytec_0 // 0x
-    bury 18
+    bury 15
     intc_2 // 0
     bury 1
 
@@ -165,25 +163,23 @@ main_for_header@33:
     intc_3 // 5
     <
     bz main_after_for@35
-    dig 17
+    dig 14
     dig 1
     dup
     cover 2
     itob
     concat // on error: max array length exceeded
-    bury 19
+    bury 16
     intc_1 // 1
     +
     bury 1
     b main_for_header@33
 
 main_after_for@35:
-    dig 17
+    dig 14
     len
     intc_0 // 8
     /
-    dup
-    bury 15
     intc_3 // 5
     ==
     assert // expected array of length 5
@@ -193,11 +189,14 @@ main_after_for@35:
     bury 7
 
 main_for_header@36:
-    dig 6
     dig 14
-    <
+    len
+    intc_0 // 8
+    /
+    dig 7
+    >
     bz main_after_for@38
-    dig 17
+    dig 14
     dig 7
     dup
     cover 2
@@ -216,20 +215,18 @@ main_for_header@36:
     b main_for_header@36
 
 main_after_for@38:
-    dig 17
-    len
-    intc_0 // 8
-    /
-    bury 13
     intc_2 // 0
     bury 8
 
 main_for_header@39:
-    dig 7
-    dig 13
-    <
+    dig 14
+    len
+    intc_0 // 8
+    /
+    dig 8
+    >
     bz main_after_for@41
-    dig 17
+    dig 14
     dig 8
     dup
     cover 2
@@ -245,7 +242,7 @@ main_for_header@39:
     b main_for_header@39
 
 main_after_for@41:
-    dig 17
+    dig 14
     len
     intc_0 // 8
     /
@@ -259,7 +256,7 @@ main_for_header@42:
     -
     dup
     bury 4
-    dig 18
+    dig 15
     swap
     intc_0 // 8
     *
@@ -273,9 +270,9 @@ main_for_header@42:
 
 main_after_for@44:
     pushbytes 0x0000
-    bury 21
+    bury 18
     bytec_0 // 0x
-    bury 17
+    bury 14
     intc_2 // 0
     bury 9
 
@@ -287,7 +284,7 @@ main_for_header@45:
     dig 8
     dup
     itob
-    dig 22
+    dig 19
     dup
     cover 2
     dig 1
@@ -300,19 +297,19 @@ main_for_header@45:
     itob
     extract 6 2
     replace2 0
-    bury 23
-    dig 18
+    bury 20
+    dig 15
     swap
     concat // on error: max array length exceeded
-    bury 18
+    bury 15
     intc_1 // 1
     +
     bury 9
     b main_for_header@45
 
 main_after_for@47:
-    dig 20
     dig 17
+    dig 14
     concat // on error: max array length exceeded
     dup
     extract 2 0
@@ -360,10 +357,10 @@ main_test_allocations_route@12:
     btoi
     bury 4
     intc_2 // 0
-    bury 15
+    bury 12
 
 main_for_header@50:
-    dig 14
+    dig 11
     dig 4
     <
     bz main_overhead_route@7
@@ -373,10 +370,10 @@ main_for_header@50:
     stores
     intc_1 // 1
     callsub add_x
-    dig 14
+    dig 11
     intc_1 // 1
     +
-    bury 15
+    bury 12
     b main_for_header@50
 
 main_test_array_assignment_maximum_cursage_route@11:
@@ -535,7 +532,7 @@ main_test_array_evaluation_order_route@10:
 
 main_test_array_copy_and_extend_route@9:
     bytec_0 // 0x
-    bury 19
+    bury 16
     intc_2 // 0
     bury 9
 
@@ -544,20 +541,20 @@ main_for_header@59:
     intc_3 // 5
     <
     bz main_after_for@61
-    dig 18
+    dig 15
     dig 9
     dup
     cover 2
     itob
     concat // on error: max array length exceeded
-    bury 20
+    bury 17
     intc_1 // 1
     +
     bury 9
     b main_for_header@59
 
 main_after_for@61:
-    dig 18
+    dig 15
     dup
     intc_3 // 5
     itob
@@ -646,7 +643,7 @@ main_after_for@61:
 
 main_test_array_too_long_route@8:
     bytec_0 // 0x
-    bury 20
+    bury 17
     intc_2 // 0
     bury 9
 
@@ -655,20 +652,20 @@ main_for_header@64:
     intc 4 // 512
     <
     bz main_after_for@66
-    dig 19
+    dig 16
     dig 9
     dup
     cover 2
     itob
     concat // on error: max array length exceeded
-    bury 21
+    bury 18
     intc_1 // 1
     +
     bury 9
     b main_for_header@64
 
 main_after_for@66:
-    dig 19
+    dig 16
     dup
     len
     intc_0 // 8
@@ -770,10 +767,10 @@ main_test_array_route@4:
     pushint 4
     bury 10
     intc_2 // 0
-    bury 15
+    bury 12
 
 main_for_header@68:
-    dig 14
+    dig 11
     pushint 3
     <
     bz main_after_for@70
@@ -803,10 +800,10 @@ main_for_header@68:
     intc_1 // 1
     -
     bury 10
-    dig 14
+    dig 11
     intc_1 // 1
     +
-    bury 15
+    bury 12
     b main_for_header@68
 
 main_after_for@70:

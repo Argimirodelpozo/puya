@@ -447,7 +447,8 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_bool_array(lengt
     block@5: // for_header_L91
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@4, item_index_internal%0#2 <- block@9)
         let count#1: uint64 = φ(count#0 <- block@4, count#3 <- block@9)
-        let continue_looping%1#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(arr#0)
+        let continue_looping%1#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%1#0 ? block@6 : block@10
     block@6: // for_body_L92
         let slot_contents%4#0: Encoded(bool8[]) = load(arr#0)
@@ -508,7 +509,8 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_arc4_conversion(
     block@5: // for_header_L105
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@4, item_index_internal%0#2 <- block@9)
         let count#1: uint64 = φ(count#0 <- block@4, count#3 <- block@9)
-        let continue_looping%1#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(arr#0)
+        let continue_looping%1#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%1#0 ? block@6 : block@10
     block@6: // for_body_L106
         let slot_contents%1#0: Encoded(uint64[]) = load(arr#0)
@@ -562,7 +564,8 @@ subroutine test_cases.array.static_size.StaticSizeContract.sum_array(arc4_arr: E
     block@1: // for_header_L120
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@3)
         let total#1: uint64 = φ(total#0 <- block@0, total#2 <- block@3)
-        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(arr#0)
+        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L121
         let slot_contents%1#0: Encoded(uint64[]) = load(arr#0)
@@ -669,7 +672,8 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_arc4_bool() -> E
         goto block@1
     block@1: // for_header_L156
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@3)
-        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let array_length%1#0: uint64 = array_len(dyn_arr#1)
+        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L157
         let array_item%2#0: bool = extract_value(dyn_arr#1, item_index_internal%0#1)

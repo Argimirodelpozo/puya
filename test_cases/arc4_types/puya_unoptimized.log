@@ -13149,6 +13149,9 @@ debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable reverse_index_internal%0#0
 debug: Removing unused variable reverse_index_internal%1#0
 debug: Removing unused variable reverse_index_internal%2#0
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
+debug: Removing unused variable array_length%4#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -13254,14 +13257,14 @@ debug: Inserted main_block@0.ops[41]: 'l-store-copy tmp%1#0 0'
 debug: Replaced main_block@0.ops[43]: 'v-load tmp%1#0' with 'l-load tmp%1#0'
 debug: Inserted main_block@0.ops[48]: 'l-store-copy tmp%2#0 0'
 debug: Replaced main_block@0.ops[50]: 'v-load tmp%2#0' with 'l-load tmp%2#0'
-debug: Inserted main_block@0.ops[55]: 'l-store-copy aggregate%array_length%0#0 0'
-debug: Replaced main_block@0.ops[57]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
-debug: Inserted main_block@0.ops[46]: 'l-store-copy dynamic_bytes#0 0'
-debug: Replaced main_block@0.ops[53]: 'v-load dynamic_bytes#0' with 'l-load dynamic_bytes#0'
 debug: Inserted main_block@0.ops[35]: 'l-store-copy dynamic_bytes#0 0'
 debug: Replaced main_block@0.ops[46]: 'v-load dynamic_bytes#0' with 'l-load dynamic_bytes#0'
-debug: Inserted main_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced main_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%0#0 0'
+debug: Replaced main_for_header@1.ops[5]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
+debug: Inserted main_for_header@1.ops[10]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced main_for_header@1.ops[12]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@1.ops[6]: 'l-store-copy array_length%1#0 0'
+debug: Replaced main_for_header@1.ops[9]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted main_for_body@2.ops[16]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced main_for_body@2.ops[18]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted main_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -13302,14 +13305,14 @@ debug: Inserted main_after_for@4.ops[40]: 'l-store-copy tmp%8#0 0'
 debug: Replaced main_after_for@4.ops[42]: 'v-load tmp%8#0' with 'l-load tmp%8#0'
 debug: Inserted main_after_for@4.ops[47]: 'l-store-copy tmp%9#0 0'
 debug: Replaced main_after_for@4.ops[49]: 'v-load tmp%9#0' with 'l-load tmp%9#0'
-debug: Inserted main_after_for@4.ops[54]: 'l-store-copy aggregate%array_length%1#0 0'
-debug: Replaced main_after_for@4.ops[56]: 'v-load aggregate%array_length%1#0' with 'l-load aggregate%array_length%1#0'
-debug: Inserted main_after_for@4.ops[45]: 'l-store-copy dynamic_bytes2#0 0'
-debug: Replaced main_after_for@4.ops[52]: 'v-load dynamic_bytes2#0' with 'l-load dynamic_bytes2#0'
 debug: Inserted main_after_for@4.ops[34]: 'l-store-copy dynamic_bytes2#0 0'
 debug: Replaced main_after_for@4.ops[45]: 'v-load dynamic_bytes2#0' with 'l-load dynamic_bytes2#0'
-debug: Inserted main_for_header@5.ops[3]: 'l-store-copy continue_looping%1#0 0'
-debug: Replaced main_for_header@5.ops[5]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@5.ops[3]: 'l-store-copy aggregate%array_length%1#0 0'
+debug: Replaced main_for_header@5.ops[5]: 'v-load aggregate%array_length%1#0' with 'l-load aggregate%array_length%1#0'
+debug: Inserted main_for_header@5.ops[10]: 'l-store-copy continue_looping%1#0 0'
+debug: Replaced main_for_header@5.ops[12]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@5.ops[6]: 'l-store-copy array_length%3#0 0'
+debug: Replaced main_for_header@5.ops[9]: 'v-load array_length%3#0' with 'l-load array_length%3#0'
 debug: Inserted main_for_body@6.ops[16]: 'l-store-copy aggregate%encoded_element%1#0 0'
 debug: Replaced main_for_body@6.ops[18]: 'v-load aggregate%encoded_element%1#0' with 'l-load aggregate%encoded_element%1#0'
 debug: Inserted main_for_body@6.ops[19]: 'l-store-copy array_item%1#0 0'
@@ -13350,16 +13353,16 @@ debug: Inserted main_after_for@8.ops[37]: 'l-store-copy tmp%15#0 0'
 debug: Replaced main_after_for@8.ops[39]: 'v-load tmp%15#0' with 'l-load tmp%15#0'
 debug: Inserted main_after_for@8.ops[44]: 'l-store-copy tmp%16#0 0'
 debug: Replaced main_after_for@8.ops[46]: 'v-load tmp%16#0' with 'l-load tmp%16#0'
-debug: Inserted main_after_for@8.ops[51]: 'l-store-copy aggregate%array_length%2#0 0'
-debug: Replaced main_after_for@8.ops[53]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
-debug: Inserted main_after_for@8.ops[42]: 'l-store-copy dynamic_bytes3#0 0'
-debug: Replaced main_after_for@8.ops[49]: 'v-load dynamic_bytes3#0' with 'l-load dynamic_bytes3#0'
 debug: Inserted main_after_for@8.ops[31]: 'l-store-copy dynamic_bytes3#0 0'
 debug: Replaced main_after_for@8.ops[42]: 'v-load dynamic_bytes3#0' with 'l-load dynamic_bytes3#0'
 debug: Inserted main_after_for@8.ops[5]: 'l-store-copy tmp%12#0 0'
 debug: Replaced main_after_for@8.ops[18]: 'v-load tmp%12#0' with 'l-load tmp%12#0'
-debug: Inserted main_for_header@9.ops[3]: 'l-store-copy continue_looping%2#0 0'
-debug: Replaced main_for_header@9.ops[5]: 'v-load continue_looping%2#0' with 'l-load continue_looping%2#0'
+debug: Inserted main_for_header@9.ops[3]: 'l-store-copy aggregate%array_length%2#0 0'
+debug: Replaced main_for_header@9.ops[5]: 'v-load aggregate%array_length%2#0' with 'l-load aggregate%array_length%2#0'
+debug: Inserted main_for_header@9.ops[10]: 'l-store-copy continue_looping%2#0 0'
+debug: Replaced main_for_header@9.ops[12]: 'v-load continue_looping%2#0' with 'l-load continue_looping%2#0'
+debug: Inserted main_for_header@9.ops[6]: 'l-store-copy array_length%5#0 0'
+debug: Replaced main_for_header@9.ops[9]: 'v-load array_length%5#0' with 'l-load array_length%5#0'
 debug: Inserted main_for_body@10.ops[16]: 'l-store-copy aggregate%encoded_element%2#0 0'
 debug: Replaced main_for_body@10.ops[18]: 'v-load aggregate%encoded_element%2#0' with 'l-load aggregate%encoded_element%2#0'
 debug: Inserted main_for_body@10.ops[19]: 'l-store-copy array_item%2#0 0'
@@ -13486,8 +13489,8 @@ debug: Inserted main_ternary_merge@15.ops[5]: 'l-store-copy tmp%30#0 0'
 debug: Replaced main_ternary_merge@15.ops[7]: 'v-load tmp%30#0' with 'l-load tmp%30#0'
 debug: Inserted main_ternary_merge@15.ops[10]: 'l-store-copy tmp%31#0 0'
 debug: Replaced main_ternary_merge@15.ops[12]: 'v-load tmp%31#0' with 'l-load tmp%31#0'
-debug: test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.approval_program f-stack entry: ['dynamic_bytes2#0', 'dynamic_bytes3#0', 'ternary_result%0#0', 'array_length%1#0', 'array_length%2#0', 'item_index_internal%1#0', 'item_index_internal%2#0']
-debug: test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.approval_program f-stack on first store: ['total#0', 'dynamic_bytes#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.approval_program f-stack entry: ['dynamic_bytes2#0', 'dynamic_bytes3#0', 'ternary_result%0#0', 'item_index_internal%1#0', 'item_index_internal%2#0']
+debug: test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.approval_program f-stack on first store: ['total#0', 'dynamic_bytes#0', 'item_index_internal%0#0']
 arc4_types/dynamic_bytes.py:10:5 debug: optimizing TEAL subroutine ops test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.approval_program() -> uint64:
 arc4_types/dynamic_bytes.py:48:5 debug: optimizing TEAL subroutine ops test_cases.arc4_types.dynamic_bytes.Arc4DynamicBytesContract.clear_state_program() -> uint64:
 debug: optimizing approval program of test_cases.arc4_types.bool_eval.Arc4BoolEvalContract at level 0
@@ -14436,6 +14439,13 @@ debug: Removing unused variable reverse_index_internal%4#0
 debug: Removing unused variable index#1
 debug: Removing unused variable reverse_index_internal%5#0
 debug: Removing unused variable reverse_index_internal%6#0
+debug: Removing unused variable array_length%0#0
+debug: Removing unused variable array_length%2#0
+debug: Removing unused variable array_length%4#0
+debug: Removing unused variable array_length%6#0
+debug: Removing unused variable array_length%8#0
+debug: Removing unused variable array_length%10#0
+debug: Removing unused variable array_length%12#0
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
@@ -14583,12 +14593,12 @@ debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable aggregate%current_tail_offset%1#0
-debug: Removing unused variable array_length%3#0
-debug: Removing unused variable array_length%4#0
+debug: Removing unused variable array_length%7#0
+debug: Removing unused variable array_length%9#0
 debug: Removing unused variable aggregate%current_tail_offset%3#0
-debug: Removing unused variable array_length%5#0
+debug: Removing unused variable array_length%11#0
 debug: Removing unused variable aggregate%item%3#0
-debug: Removing unused variable array_length%6#0
+debug: Removing unused variable array_length%13#0
 debug: Removing unused variable aggregate%data_length%1#0
 debug: Removing unused variable aggregate%data_length%3#0
 debug: Removing unused variable aggregate%item_head_tail_length%3#0
@@ -14784,12 +14794,12 @@ debug: Inserted main_block@0.ops[19]: 'l-store-copy aggregate%as_Encoded(len+uin
 debug: Replaced main_block@0.ops[21]: 'v-load aggregate%as_Encoded(len+uint8[])%0#0' with 'l-load aggregate%as_Encoded(len+uint8[])%0#0'
 debug: Inserted main_block@0.ops[22]: 'l-store-copy encoded_array%0#0 0'
 debug: Replaced main_block@0.ops[24]: 'v-load encoded_array%0#0' with 'l-load encoded_array%0#0'
-debug: Inserted main_block@0.ops[31]: 'l-store-copy aggregate%array_length%0#0 0'
-debug: Replaced main_block@0.ops[33]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
-debug: Inserted main_block@0.ops[25]: 'l-store-copy dynamic_uint8_array#0 0'
-debug: Replaced main_block@0.ops[29]: 'v-load dynamic_uint8_array#0' with 'l-load dynamic_uint8_array#0'
-debug: Inserted main_for_header@1.ops[3]: 'l-store-copy continue_looping%0#0 0'
-debug: Replaced main_for_header@1.ops[5]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@1.ops[3]: 'l-store-copy aggregate%array_length%0#0 0'
+debug: Replaced main_for_header@1.ops[5]: 'v-load aggregate%array_length%0#0' with 'l-load aggregate%array_length%0#0'
+debug: Inserted main_for_header@1.ops[10]: 'l-store-copy continue_looping%0#0 0'
+debug: Replaced main_for_header@1.ops[12]: 'v-load continue_looping%0#0' with 'l-load continue_looping%0#0'
+debug: Inserted main_for_header@1.ops[6]: 'l-store-copy array_length%1#0 0'
+debug: Replaced main_for_header@1.ops[9]: 'v-load array_length%1#0' with 'l-load array_length%1#0'
 debug: Inserted main_for_body@2.ops[16]: 'l-store-copy aggregate%encoded_element%0#0 0'
 debug: Replaced main_for_body@2.ops[18]: 'v-load aggregate%encoded_element%0#0' with 'l-load aggregate%encoded_element%0#0'
 debug: Inserted main_for_body@2.ops[19]: 'l-store-copy array_item%0#0 0'
@@ -14820,12 +14830,12 @@ debug: Inserted main_after_for@4.ops[21]: 'l-store-copy aggregate%as_Encoded(len
 debug: Replaced main_after_for@4.ops[23]: 'v-load aggregate%as_Encoded(len+uint16[])%0#0' with 'l-load aggregate%as_Encoded(len+uint16[])%0#0'
 debug: Inserted main_after_for@4.ops[24]: 'l-store-copy encoded_array%1#0 0'
 debug: Replaced main_after_for@4.ops[26]: 'v-load encoded_array%1#0' with 'l-load encoded_array%1#0'
-debug: Inserted main_after_for@4.ops[27]: 'l-store-copy aliased_dynamic#0 0'
-debug: Replaced main_after_for@4.ops[29]: 'v-load aliased_dynamic#0' with 'l-load aliased_dynamic#0'
-debug: Inserted main_after_for@4.ops[32]: 'l-store-copy aggregate%array_length%1#0 0'
-debug: Replaced main_after_for@4.ops[34]: 'v-load aggregate%array_length%1#0' with 'l-load aggregate%array_length%1#0'
-debug: Inserted main_for_header@5.ops[3]: 'l-store-copy continue_looping%1#0 0'
-debug: Replaced main_for_header@5.ops[5]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@5.ops[3]: 'l-store-copy aggregate%array_length%1#0 0'
+debug: Replaced main_for_header@5.ops[5]: 'v-load aggregate%array_length%1#0' with 'l-load aggregate%array_length%1#0'
+debug: Inserted main_for_header@5.ops[10]: 'l-store-copy continue_looping%1#0 0'
+debug: Replaced main_for_header@5.ops[12]: 'v-load continue_looping%1#0' with 'l-load continue_looping%1#0'
+debug: Inserted main_for_header@5.ops[6]: 'l-store-copy array_length%3#0 0'
+debug: Replaced main_for_header@5.ops[9]: 'v-load array_length%3#0' with 'l-load array_length%3#0'
 debug: Inserted main_for_body@6.ops[16]: 'l-store-copy aggregate%encoded_element%1#0 0'
 debug: Replaced main_for_body@6.ops[18]: 'v-load aggregate%encoded_element%1#0' with 'l-load aggregate%encoded_element%1#0'
 debug: Inserted main_for_body@6.ops[19]: 'l-store-copy array_item%1#0 0'
@@ -14912,8 +14922,6 @@ debug: Inserted main_after_for@8.ops[190]: 'l-store-copy aggregate%as_Encoded(le
 debug: Replaced main_after_for@8.ops[192]: 'v-load aggregate%as_Encoded(len+utf8[])%2#0' with 'l-load aggregate%as_Encoded(len+utf8[])%2#0'
 debug: Inserted main_after_for@8.ops[197]: 'l-store-copy tmp%11#0 0'
 debug: Replaced main_after_for@8.ops[199]: 'v-load tmp%11#0' with 'l-load tmp%11#0'
-debug: Inserted main_after_for@8.ops[206]: 'l-store-copy aggregate%array_length%4#0 0'
-debug: Replaced main_after_for@8.ops[208]: 'v-load aggregate%array_length%4#0' with 'l-load aggregate%array_length%4#0'
 debug: Inserted main_after_for@8.ops[64]: 'l-store-copy aggregate%offset_as_uint16%0#0 0'
 debug: Replaced main_after_for@8.ops[67]: 'v-load aggregate%offset_as_uint16%0#0' with 'l-load aggregate%offset_as_uint16%0#0'
 debug: Inserted main_after_for@8.ops[72]: 'l-store-copy aggregate%data_length%0#0 0'
@@ -14958,10 +14966,12 @@ debug: Inserted main_after_for@8.ops[28]: 'l-store-copy tmp%6#0 0'
 debug: Replaced main_after_for@8.ops[73]: 'v-load tmp%6#0' with 'l-load tmp%6#0'
 debug: Inserted main_after_for@8.ops[51]: 'l-store-copy tmp%7#0 1'
 debug: Replaced main_after_for@8.ops[103]: 'v-load tmp%7#0' with 'l-load tmp%7#0'
-debug: Inserted main_after_for@8.ops[145]: 'l-store-copy dynamic_string_array#0 1'
-debug: Replaced main_after_for@8.ops[226]: 'v-load dynamic_string_array#0' with 'l-load dynamic_string_array#0'
-debug: Inserted main_for_header@9.ops[3]: 'l-store-copy continue_looping%2#0 0'
-debug: Replaced main_for_header@9.ops[5]: 'v-load continue_looping%2#0' with 'l-load continue_looping%2#0'
+debug: Inserted main_for_header@9.ops[3]: 'l-store-copy aggregate%array_length%4#0 0'
+debug: Replaced main_for_header@9.ops[5]: 'v-load aggregate%array_length%4#0' with 'l-load aggregate%array_length%4#0'
+debug: Inserted main_for_header@9.ops[10]: 'l-store-copy continue_looping%2#0 0'
+debug: Replaced main_for_header@9.ops[12]: 'v-load continue_looping%2#0' with 'l-load continue_looping%2#0'
+debug: Inserted main_for_header@9.ops[6]: 'l-store-copy array_length%5#0 0'
+debug: Replaced main_for_header@9.ops[9]: 'v-load array_length%5#0' with 'l-load array_length%5#0'
 debug: Inserted main_for_body@10.ops[19]: 'l-store-copy aggregate%item_length%1#0 0'
 debug: Replaced main_for_body@10.ops[21]: 'v-load aggregate%item_length%1#0' with 'l-load aggregate%item_length%1#0'
 debug: Inserted main_for_body@10.ops[24]: 'l-store-copy aggregate%item_length_in_bytes%1#0 0'
@@ -15290,8 +15300,8 @@ debug: Inserted recalculate_head_for_elements_with_byte_length_head_for_body@2.o
 debug: Replaced recalculate_head_for_elements_with_byte_length_head_for_body@2.ops[24]: 'v-load tail_offset#0' with 'l-load tail_offset#0'
 debug: Inserted hash_as_array_block@0.ops[2]: 'l-store-copy reinterpret_Encoded(uint8[32])%0#0 0'
 debug: Replaced hash_as_array_block@0.ops[4]: 'v-load reinterpret_Encoded(uint8[32])%0#0' with 'l-load reinterpret_Encoded(uint8[32])%0#0'
-debug: test_cases.arc4_types.array.Arc4ArraysContract.approval_program f-stack entry: ['aliased_dynamic#0', 'dynamic_string_array#0', 'result#0', 'static_string_array#0', 'static_uint32_array#0', 'string_item#0', 'array_length%1#0', 'array_length%2#0', 'count#0', 'item_index_internal%1#0', 'item_index_internal%2#0', 'item_index_internal%3#0', 'item_index_internal%4#0', 'item_index_internal%5#0', 'item_index_internal%6#0', 'uint8_total#0']
-debug: test_cases.arc4_types.array.Arc4ArraysContract.approval_program f-stack on first store: ['dynamic_uint8_array#0', 'total#0', 'array_length%0#0', 'item_index_internal%0#0']
+debug: test_cases.arc4_types.array.Arc4ArraysContract.approval_program f-stack entry: ['aliased_dynamic#0', 'dynamic_string_array#0', 'result#0', 'static_string_array#0', 'static_uint32_array#0', 'string_item#0', 'count#0', 'item_index_internal%1#0', 'item_index_internal%2#0', 'item_index_internal%3#0', 'item_index_internal%4#0', 'item_index_internal%5#0', 'item_index_internal%6#0', 'uint8_total#0']
+debug: test_cases.arc4_types.array.Arc4ArraysContract.approval_program f-stack on first store: ['dynamic_uint8_array#0', 'total#0', 'item_index_internal%0#0']
 debug: _puya_lib.arc4.recalculate_head_for_elements_with_byte_length_head f-stack entry: []
 debug: _puya_lib.arc4.recalculate_head_for_elements_with_byte_length_head f-stack on first store: ['tail_offset#0', 'tmp%4#0', 'value_internal%0#0']
 arc4_types/array.py:24:5 debug: optimizing TEAL subroutine ops test_cases.arc4_types.array.Arc4ArraysContract.approval_program() -> uint64:

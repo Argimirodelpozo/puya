@@ -7,14 +7,14 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let aggregate%as_Encoded(len+uint8[])%0#0: Encoded(len+uint8[]) = aggregate%head%1#0
         let dynamic_uint8_array#0: Encoded(len+uint8[]) = aggregate%as_Encoded(len+uint8[])%0#0
         let total#0: uint64 = 0u
-        let aggregate%array_length%0#0: uint64 = (extract_uint16 dynamic_uint8_array#0 0u) // on error: invalid array length header
-        let array_length%0#0: uint64 = aggregate%array_length%0#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L27
         let item_index_internal%0#1: uint64 = φ(item_index_internal%0#0 <- block@0, item_index_internal%0#2 <- block@2)
         let total#1: uint64 = φ(total#0 <- block@0, total#2 <- block@2)
-        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%0#0)
+        let aggregate%array_length%0#0: uint64 = (extract_uint16 dynamic_uint8_array#0 0u) // on error: invalid array length header
+        let array_length%1#0: uint64 = aggregate%array_length%0#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#1 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L28
         let aggregate%total_length%0#0: uint64 = (len dynamic_uint8_array#0)
@@ -34,14 +34,14 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let aggregate%head%2#0: bytes = (concat aggregate%len_u16%1#0 0x0001)
         let aggregate%as_Encoded(len+uint16[])%0#0: Encoded(len+uint16[]) = aggregate%head%2#0
         let aliased_dynamic#0: Encoded(len+uint16[]) = aggregate%as_Encoded(len+uint16[])%0#0
-        let aggregate%array_length%1#0: uint64 = (extract_uint16 aliased_dynamic#0 0u) // on error: invalid array length header
-        let array_length%1#0: uint64 = aggregate%array_length%1#0
         let item_index_internal%1#0: uint64 = 0u
         goto block@5
     block@5: // for_header_L32
         let item_index_internal%1#1: uint64 = φ(item_index_internal%1#0 <- block@4, item_index_internal%1#2 <- block@6)
         let total#3: uint64 = φ(total#1 <- block@4, total#4 <- block@6)
-        let continue_looping%1#0: bool = (< item_index_internal%1#1 array_length%1#0)
+        let aggregate%array_length%1#0: uint64 = (extract_uint16 aliased_dynamic#0 0u) // on error: invalid array length header
+        let array_length%3#0: uint64 = aggregate%array_length%1#0
+        let continue_looping%1#0: bool = (< item_index_internal%1#1 array_length%3#0)
         goto continue_looping%1#0 ? block@6 : block@8
     block@6: // for_body_L33
         let aggregate%total_length%1#0: uint64 = (len aliased_dynamic#0)
@@ -103,14 +103,14 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let tmp%11#0: bool = (== array_item%2#0 tmp%6#0)
         (assert tmp%11#0)
         let result#0: string = ""
-        let aggregate%array_length%4#0: uint64 = (extract_uint16 dynamic_string_array#0 0u) // on error: invalid array length header
-        let array_length%2#0: uint64 = aggregate%array_length%4#0
         let item_index_internal%2#0: uint64 = 0u
         goto block@9
     block@9: // for_header_L39
         let index#0: uint64 = φ(item_index_internal%2#0 <- block@8, item_index_internal%2#2 <- block@13)
         let result#2: string = φ(result#0 <- block@8, result#4 <- block@13)
-        let continue_looping%2#0: bool = (< index#0 array_length%2#0)
+        let aggregate%array_length%4#0: uint64 = (extract_uint16 dynamic_string_array#0 0u) // on error: invalid array length header
+        let array_length%5#0: uint64 = aggregate%array_length%4#0
+        let continue_looping%2#0: bool = (< index#0 array_length%5#0)
         goto continue_looping%2#0 ? block@10 : block@15
     block@10: // for_body_L40
         let aggregate%total_length%3#0: uint64 = (len dynamic_string_array#0)
@@ -144,13 +144,13 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let aggregate%head%8#0: bytes = (concat aggregate%head%7#0 0x00000080)
         let aggregate%as_Encoded(uint32[4])%0#0: Encoded(uint32[4]) = aggregate%head%8#0
         let static_uint32_array#0: Encoded(uint32[4]) = aggregate%as_Encoded(uint32[4])%0#0
-        let array_length%3#0: uint64 = 4u
         let item_index_internal%3#0: uint64 = 0u
         goto block@16
     block@16: // for_header_L49
         let item_index_internal%3#1: uint64 = φ(item_index_internal%3#0 <- block@15, item_index_internal%3#2 <- block@17)
         let total#5: uint64 = φ(total#3 <- block@15, total#6 <- block@17)
-        let continue_looping%3#0: bool = (< item_index_internal%3#1 array_length%3#0)
+        let array_length%7#0: uint64 = 4u
+        let continue_looping%3#0: bool = (< item_index_internal%3#1 array_length%7#0)
         goto continue_looping%3#0 ? block@17 : block@19
     block@17: // for_body_L50
         let aggregate%bytes_offset%2#0: uint64 = (* item_index_internal%3#1 4u)
@@ -165,14 +165,14 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         (assert tmp%20#0)
         let uint8_total#0: uint64 = 0u
         let count#0: uint64 = 0u
-        let array_length%4#0: uint64 = 4u
         let item_index_internal%4#0: uint64 = 0u
         goto block@20
     block@20: // for_header_L58
         let item_index_internal%4#1: uint64 = φ(item_index_internal%4#0 <- block@19, item_index_internal%4#2 <- block@21)
         let uint8_total#1: uint64 = φ(uint8_total#0 <- block@19, uint8_total#2 <- block@21)
         let count#1: uint64 = φ(count#0 <- block@19, count#2 <- block@21)
-        let continue_looping%4#0: bool = (< item_index_internal%4#1 array_length%4#0)
+        let array_length%9#0: uint64 = 4u
+        let continue_looping%4#0: bool = (< item_index_internal%4#1 array_length%9#0)
         goto continue_looping%4#0 ? block@21 : block@23
     block@21: // for_body_L59
         let aggregate%bytes_offset%3#0: uint64 = (* item_index_internal%4#1 1u)
@@ -225,13 +225,13 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let aggregate%as_Encoded((len+utf8[])[2])%0#0: Encoded((len+utf8[])[2]) = aggregate%concat%3#0
         let static_string_array#0: Encoded((len+utf8[])[2]) = aggregate%as_Encoded((len+utf8[])[2])%0#0
         let result#5: string = ""
-        let array_length%5#0: uint64 = 2u
         let item_index_internal%5#0: uint64 = 0u
         goto block@24
     block@24: // for_header_L73
         let index#2: uint64 = φ(item_index_internal%5#0 <- block@23, item_index_internal%5#2 <- block@28)
         let result#7: string = φ(result#5 <- block@23, result#9 <- block@28)
-        let continue_looping%5#0: bool = (< index#2 array_length%5#0)
+        let array_length%11#0: uint64 = 2u
+        let continue_looping%5#0: bool = (< index#2 array_length%11#0)
         goto continue_looping%5#0 ? block@25 : block@30
     block@25: // for_body_L74
         let aggregate%item_offset_offset%2#0: uint64 = (* index#2 2u)
@@ -270,13 +270,13 @@ main test_cases.arc4_types.array.Arc4ArraysContract.approval_program:
         let aggregate%updated_array%0#0: bytes = _puya_lib.arc4.static_array_replace_byte_length_head(static_string_array#0, tmp%30#0, 1u, 2u)
         let static_string_array#3: Encoded((len+utf8[])[2]) = aggregate%updated_array%0#0
         let result#10: string = ""
-        let array_length%6#0: uint64 = 2u
         let item_index_internal%6#0: uint64 = 0u
         goto block@31
     block@31: // for_header_L83
         let item_index_internal%6#1: uint64 = φ(item_index_internal%6#0 <- block@30, item_index_internal%6#2 <- block@32)
         let result#11: string = φ(result#10 <- block@30, result#12 <- block@32)
-        let continue_looping%6#0: bool = (< item_index_internal%6#1 array_length%6#0)
+        let array_length%13#0: uint64 = 2u
+        let continue_looping%6#0: bool = (< item_index_internal%6#1 array_length%13#0)
         goto continue_looping%6#0 ? block@32 : block@34
     block@32: // for_body_L84
         let aggregate%item_offset_offset%4#0: uint64 = (* item_index_internal%6#1 2u)

@@ -582,14 +582,14 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_bool_array(lengt
         let tmp%10#0: bool = (== tmp%8#0 tmp%9#0)
         (assert tmp%10#0) // expected correct length
         let count#0: uint64 = 0u
-        let aggregate%slot_contents%3#0: Encoded(bool8[]) = load(arr#0)
-        let aggregate%bytes_len%3#0: uint64 = (len aggregate%slot_contents%3#0)
-        let aggregate%array_len%3#0: uint64 = (/ aggregate%bytes_len%3#0 1u)
-        let array_length%0#0: uint64 = aggregate%array_len%3#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@5
     block@5: // for_header_L91
-        let continue_looping%1#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%slot_contents%3#0: Encoded(bool8[]) = load(arr#0)
+        let aggregate%bytes_len%3#0: uint64 = (len aggregate%slot_contents%3#0)
+        let aggregate%array_len%3#0: uint64 = (/ aggregate%bytes_len%3#0 1u)
+        let array_length%1#0: uint64 = aggregate%array_len%3#0
+        let continue_looping%1#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%1#0 ? block@6 : block@10
     block@6: // for_body_L92
         let slot_contents%4#0: Encoded(bool8[]) = load(arr#0)
@@ -656,14 +656,14 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_arc4_conversion(
         let tmp%6#0: bool = (== tmp%5#0 length#0)
         (assert tmp%6#0) // expected correct length
         let count#0: uint64 = 0u
-        let aggregate%slot_contents%2#0: Encoded(uint64[]) = load(arr#0)
-        let aggregate%bytes_len%2#0: uint64 = (len aggregate%slot_contents%2#0)
-        let aggregate%array_len%2#0: uint64 = (/ aggregate%bytes_len%2#0 8u)
-        let array_length%0#0: uint64 = aggregate%array_len%2#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@5
     block@5: // for_header_L105
-        let continue_looping%1#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%slot_contents%2#0: Encoded(uint64[]) = load(arr#0)
+        let aggregate%bytes_len%2#0: uint64 = (len aggregate%slot_contents%2#0)
+        let aggregate%array_len%2#0: uint64 = (/ aggregate%bytes_len%2#0 8u)
+        let array_length%1#0: uint64 = aggregate%array_len%2#0
+        let continue_looping%1#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%1#0 ? block@6 : block@10
     block@6: // for_body_L106
         let slot_contents%1#0: Encoded(uint64[]) = load(arr#0)
@@ -716,14 +716,14 @@ subroutine test_cases.array.static_size.StaticSizeContract.sum_array(arc4_arr: E
         let concat%0#0: Encoded(uint64[]) = (concat slot_contents%0#0 extract_to_end%0#0) // on error: max array length exceeded
         store(arr#0, concat%0#0)
         let total#0: uint64 = 0u
-        let aggregate%slot_contents%0#0: Encoded(uint64[]) = load(arr#0)
-        let aggregate%bytes_len%0#0: uint64 = (len aggregate%slot_contents%0#0)
-        let aggregate%array_len%0#0: uint64 = (/ aggregate%bytes_len%0#0 8u)
-        let array_length%0#0: uint64 = aggregate%array_len%0#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L120
-        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%slot_contents%0#0: Encoded(uint64[]) = load(arr#0)
+        let aggregate%bytes_len%0#0: uint64 = (len aggregate%slot_contents%0#0)
+        let aggregate%array_len%0#0: uint64 = (/ aggregate%bytes_len%0#0 8u)
+        let array_length%1#0: uint64 = aggregate%array_len%0#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L121
         let slot_contents%1#0: Encoded(uint64[]) = load(arr#0)
@@ -860,12 +860,12 @@ subroutine test_cases.array.static_size.StaticSizeContract.test_arc4_bool() -> E
         let slot_contents%3#0: Encoded(bool8[]) = load(arr#0)
         store(slot%1#0, slot_contents%3#0)
         let arr2#0: Encoded(bool8[])* = slot%1#0
-        let aggregate%array_length%3#0: uint64 = (extract_uint16 dyn_arr#0 0u) // on error: invalid array length header
-        let array_length%0#0: uint64 = aggregate%array_length%3#0
         let item_index_internal%0#0: uint64 = 0u
         goto block@1
     block@1: // for_header_L156
-        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%0#0)
+        let aggregate%array_length%3#0: uint64 = (extract_uint16 dyn_arr#0 0u) // on error: invalid array length header
+        let array_length%1#0: uint64 = aggregate%array_length%3#0
+        let continue_looping%0#0: bool = (< item_index_internal%0#0 array_length%1#0)
         goto continue_looping%0#0 ? block@2 : block@4
     block@2: // for_body_L157
         let aggregate%add%2#0: uint64 = (+ item_index_internal%0#0 16u)

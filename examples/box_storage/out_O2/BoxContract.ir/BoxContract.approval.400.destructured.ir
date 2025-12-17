@@ -778,11 +778,11 @@ main algopy.arc4.ARC4Contract.approval_program:
         let tmp%1#5: bool = (== values%1#0 2u)
         (assert tmp%1#5) // expected 2
         let total#0: uint64 = (+ values%0#0 values%1#0)
-        let box%box_extract%4#0: bytes = (box_extract "dynamic_arr_struct" 20u 2u)
-        let box%array_length%0#0: uint64 = (btoi box%box_extract%4#0)
         let item_index_internal%0#0: uint64 = 0u
         goto block@105
     block@105: // for_header_L328
+        let box%box_extract%4#0: bytes = (box_extract "dynamic_arr_struct" 20u 2u)
+        let box%array_length%0#0: uint64 = (btoi box%box_extract%4#0)
         let continue_looping%0#0: bool = (< item_index_internal%0#0 box%array_length%0#0)
         goto continue_looping%0#0 ? block@106 : block@107
     block@106: // for_body_L329
@@ -798,13 +798,13 @@ main algopy.arc4.ARC4Contract.approval_program:
         let item_index_internal%0#0: uint64 = (+ item_index_internal%0#0 1u)
         goto block@105
     block@107: // after_for_L328
+        let item_index_internal%1#0: uint64 = 0u
+        goto block@108
+    block@108: // for_header_L330
         let box%box_extract%7#0: bytes = (box_extract "dynamic_arr_struct" 18u 2u)
         let box%btoi%1#0: uint64 = (btoi box%box_extract%7#0)
         let box%box_extract%8#0: bytes = (box_extract "dynamic_arr_struct" box%btoi%1#0 2u)
         let box%array_length%1#0: uint64 = (btoi box%box_extract%8#0)
-        let item_index_internal%1#0: uint64 = 0u
-        goto block@108
-    block@108: // for_header_L330
         let continue_looping%1#0: bool = (< item_index_internal%1#0 box%array_length%1#0)
         goto continue_looping%1#0 ? block@109 : block@110
     block@109: // for_body_L331
@@ -952,11 +952,11 @@ main algopy.arc4.ARC4Contract.approval_program:
         exit 1u
     block@38: // sum_dynamic_box_route_L386
         let total#0: uint64 = 0u
-        let box%box_extract%0#0: bytes = (box_extract "dynamic_box" 0u 2u)
-        let box%array_length%0#0: uint64 = (btoi box%box_extract%0#0)
         let item_index_internal%0#0: uint64 = 0u
         goto block@76
     block@76: // for_header_L389
+        let box%box_extract%0#0: bytes = (box_extract "dynamic_box" 0u 2u)
+        let box%array_length%0#0: uint64 = (btoi box%box_extract%0#0)
         let continue_looping%0#0: bool = (< item_index_internal%0#0 box%array_length%0#0)
         goto continue_looping%0#0 ? block@77 : block@78
     block@77: // for_body_L390

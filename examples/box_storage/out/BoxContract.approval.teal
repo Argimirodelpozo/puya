@@ -2268,7 +2268,6 @@ nested_read:
 // examples.box_storage.contract.BoxContract.sum_dynamic_arr_struct[routing]() -> void:
 sum_dynamic_arr_struct:
     pushbytes ""
-    dup
     // box_storage/contract.py:325
     // assert self.dynamic_arr_struct.value.a == 1, "expected 1"
     bytec_0 // "dynamic_arr_struct"
@@ -2294,6 +2293,9 @@ sum_dynamic_arr_struct:
     // box_storage/contract.py:327
     // total = self.dynamic_arr_struct.value.a + self.dynamic_arr_struct.value.b
     +
+    intc_3 // 0
+
+sum_dynamic_arr_struct_for_header@2:
     // box_storage/contract.py:328
     // for val in self.dynamic_arr_struct.value.arr:
     bytec_0 // "dynamic_arr_struct"
@@ -2301,14 +2303,8 @@ sum_dynamic_arr_struct:
     intc_0 // 2
     box_extract
     btoi
-    intc_3 // 0
-
-sum_dynamic_arr_struct_for_header@2:
-    // box_storage/contract.py:328
-    // for val in self.dynamic_arr_struct.value.arr:
-    dup
-    dig 2
-    <
+    dig 1
+    >
     bz sum_dynamic_arr_struct_after_for@5
     bytec_0 // "dynamic_arr_struct"
     pushint 20
@@ -2332,15 +2328,19 @@ sum_dynamic_arr_struct_for_header@2:
     btoi
     // box_storage/contract.py:329
     // total += val
-    dig 4
+    dig 3
     +
-    bury 4
+    bury 3
     intc_1 // 1
     +
     bury 1
     b sum_dynamic_arr_struct_for_header@2
 
 sum_dynamic_arr_struct_after_for@5:
+    intc_3 // 0
+    bury 3
+
+sum_dynamic_arr_struct_for_header@6:
     // box_storage/contract.py:330
     // for val in self.dynamic_arr_struct.value.arr2:
     bytec_0 // "dynamic_arr_struct"
@@ -2353,16 +2353,8 @@ sum_dynamic_arr_struct_after_for@5:
     intc_0 // 2
     box_extract
     btoi
-    bury 5
-    intc_3 // 0
-    bury 4
-
-sum_dynamic_arr_struct_for_header@6:
-    // box_storage/contract.py:330
-    // for val in self.dynamic_arr_struct.value.arr2:
     dig 3
-    dig 5
-    <
+    >
     bz sum_dynamic_arr_struct_after_for@9
     bytec_0 // "dynamic_arr_struct"
     pushint 18
@@ -2371,7 +2363,7 @@ sum_dynamic_arr_struct_for_header@6:
     btoi
     intc_0 // 2
     +
-    dig 4
+    dig 3
     dup
     cover 2
     intc_2 // 8
@@ -2384,18 +2376,18 @@ sum_dynamic_arr_struct_for_header@6:
     btoi
     // box_storage/contract.py:331
     // total += val
-    dig 4
+    dig 3
     +
-    bury 4
+    bury 3
     intc_1 // 1
     +
-    bury 4
+    bury 3
     b sum_dynamic_arr_struct_for_header@6
 
 sum_dynamic_arr_struct_after_for@9:
     // box_storage/contract.py:323
     // @arc4.abimethod
-    dig 2
+    dig 1
     itob
     bytec_3 // 0x151f7c75
     swap
@@ -2729,6 +2721,9 @@ sum_dynamic_box:
     // box_storage/contract.py:388
     // total = UInt64()
     intc_3 // 0
+    dup
+
+sum_dynamic_box_for_header@2:
     // box_storage/contract.py:389
     // for val in self.dynamic_box.value:
     bytec_2 // "dynamic_box"
@@ -2736,14 +2731,8 @@ sum_dynamic_box:
     intc_0 // 2
     box_extract
     btoi
-    intc_3 // 0
-
-sum_dynamic_box_for_header@2:
-    // box_storage/contract.py:389
-    // for val in self.dynamic_box.value:
-    dup
-    dig 2
-    <
+    dig 1
+    >
     bz sum_dynamic_box_after_for@5
     dupn 2
     intc_2 // 8
@@ -2757,9 +2746,9 @@ sum_dynamic_box_for_header@2:
     btoi
     // box_storage/contract.py:390
     // total += val
-    dig 4
+    dig 3
     +
-    bury 4
+    bury 3
     intc_1 // 1
     +
     bury 1
@@ -2768,7 +2757,7 @@ sum_dynamic_box_for_header@2:
 sum_dynamic_box_after_for@5:
     // box_storage/contract.py:386
     // @arc4.abimethod
-    dig 2
+    dig 1
     itob
     bytec_3 // 0x151f7c75
     swap

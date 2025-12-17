@@ -1986,7 +1986,7 @@ test_nested_array:
     intc_0 // 0
     dupn 2
     bytec_0 // ""
-    dupn 6
+    dupn 4
     // array/immutable.py:258
     // @arc4.abimethod()
     txna ApplicationArgs 1
@@ -2073,7 +2073,7 @@ test_nested_array_for_header@6:
     // array/immutable.py:264
     // extra_arr = ImmutableArray[UInt64]()
     bytec_2 // 0x0000
-    bury 17
+    bury 15
     // array/immutable.py:265
     // for j in urange(i):
     intc_0 // 0
@@ -2091,7 +2091,7 @@ test_nested_array_for_header@8:
     dig 8
     dup
     itob
-    dig 18
+    dig 16
     dup
     uncover 2
     concat // on error: max array length exceeded
@@ -2103,7 +2103,7 @@ test_nested_array_for_header@8:
     itob
     extract 6 2
     replace2 0
-    bury 18
+    bury 16
     // array/immutable.py:265
     // for j in urange(i):
     intc_1 // 1
@@ -2121,7 +2121,7 @@ test_nested_array_after_for@11:
     swap
     extract 2 0
     bytec 4 // 0x0002
-    dig 19
+    dig 17
     concat
     cover 2
     intc_1 // 1
@@ -2142,22 +2142,18 @@ test_nested_array_after_for@13:
     // # sum inner arrays and return an array containing sums
     // totals = ImmutableArray[UInt64]()
     bytec_2 // 0x0000
-    bury 15
-    // array/immutable.py:271
-    // for inner_arr in arr:
-    dig 5
-    intc_0 // 0
-    extract_uint16 // on error: invalid array length header
-    bury 14
+    bury 13
     intc_0 // 0
     bury 11
 
 test_nested_array_for_header@14:
     // array/immutable.py:271
     // for inner_arr in arr:
-    dig 10
-    dig 14
-    <
+    dig 5
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    dig 11
+    >
     bz test_nested_array_after_for@17
     dig 5
     extract 2 0
@@ -2174,28 +2170,24 @@ test_nested_array_for_header@14:
     intc_2 // 2
     +
     extract3
-    dup
-    bury 17
+    bury 14
     // array/immutable.py:519
     // total = UInt64()
     intc_0 // 0
-    bury 9
-    // array/immutable.py:520
-    // for i in arr:
-    intc_0 // 0
-    extract_uint16 // on error: invalid array length header
-    bury 13
+    bury 8
     intc_0 // 0
     bury 10
 
 test_nested_array_for_header@19:
     // array/immutable.py:520
     // for i in arr:
-    dig 9
     dig 13
-    <
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    dig 10
+    >
     bz test_nested_array_after_for@21
-    dig 15
+    dig 13
     extract 2 0
     dig 10
     dup
@@ -2218,7 +2210,7 @@ test_nested_array_after_for@21:
     // totals = totals.append(sum_arr(inner_arr))
     dig 7
     itob
-    dig 15
+    dig 13
     dup
     uncover 2
     concat // on error: max array length exceeded
@@ -2230,7 +2222,7 @@ test_nested_array_after_for@21:
     itob
     extract 6 2
     replace2 0
-    bury 15
+    bury 13
     dig 10
     intc_1 // 1
     +
@@ -2241,7 +2233,7 @@ test_nested_array_after_for@17:
     // array/immutable.py:258
     // @arc4.abimethod()
     bytec_1 // 0x151f7c75
-    dig 15
+    dig 13
     concat
     log
     intc_1 // 1
