@@ -57,6 +57,8 @@ class Log:
 class LoggingContext:
     _logs: list[Log] = attrs.field(factory=list)
     sources_by_path: Mapping[Path, Sequence[str] | None] | None = None
+    treat_warnings_as_errors: bool = False
+    _warnings: int = 0
     _errors: int = 0
     _criticals: int = 0
 
@@ -69,6 +71,8 @@ class LoggingContext:
         return self._errors + self._criticals
 
     def append_log(self, log: Log) -> None:
+        if log.level == LogLevel.warning:
+            self._warnings += 1
         if log.level == LogLevel.error:
             self._errors += 1
         if log.level == LogLevel.critical:
@@ -80,7 +84,7 @@ class LoggingContext:
 
         if self._criticals:
             raise PuyaExitError(ErrorExitCode.internal)
-        if self._errors:
+        if self._errors or (self._warnings and self.treat_warnings_as_errors):
             raise PuyaExitError(ErrorExitCode.code)
 
 
@@ -339,7 +343,9 @@ def configure_logging(
 
 
 class _Logger:
-    def __init__(self, name: str, initial_values: dict[str, typing.Any]):
+    def __init__(
+        self, name: str, initial_values: dict[str, typing.Any], warnings_as_errors: bool = False
+    ):
         self._logger = structlog.get_logger(name, **initial_values)
 
     def debug(
@@ -463,8 +469,13 @@ def get_logger(name: str, **initial_values: typing.Any) -> _Logger:
 
 
 @contextlib.contextmanager
-def logging_context() -> Iterator[LoggingContext]:
-    ctx = LoggingContext()
+def logging_context(treat_warnings_as_errors: bool | None = None) -> Iterator[LoggingContext]:
+    if treat_warnings_as_errors is None:
+        parent = _current_ctx.get(None)
+        # inherit warning treatment from parent if nested, else default False
+        treat_warnings_as_errors = parent.treat_warnings_as_errors if parent is not None else False
+
+    ctx = LoggingContext(treat_warnings_as_errors=treat_warnings_as_errors)
     restore = _current_ctx.set(ctx)
     try:
         yield ctx
