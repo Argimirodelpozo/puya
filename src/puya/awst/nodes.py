@@ -1,6 +1,7 @@
 import abc
 import decimal
 import enum
+import re
 import typing
 from abc import ABC, abstractmethod
 from collections.abc import Iterator, Mapping, Sequence, Set
@@ -334,10 +335,23 @@ class AssertExpression(Expression):
 
     condition: Expression | None
     """The condition (if any) to be checked"""
-    error_message: str | None
+    error_message: str = attrs.field(default=None)
     """An error message to be associated with the assertion failure"""
     wtype: WType = attrs.field(default=wtypes.void_wtype, init=False)
     explicit: bool = True
+
+    @error_message.validator
+    def _arc65_validator(self, error_message: str | None):
+        # TODO: emit warnings on:
+        #  -string too long
+        #  -non camel case alphanumeric code
+        #  -error string is exactly 8 or 32 bytes
+        _ARC65_REGEX = re.compile(f"^(?:ERR|AER):[A-Za-z0-9]+(?::[^:\r\n]+)?$")
+        if error_message and not _ARC65_REGEX.match(error_message):
+            logger.error(
+                f"error message {error_message} does not comply with the arc65 standard", 
+                self.source_location,
+            )
 
     def accept(self, visitor: ExpressionVisitor[T]) -> T:
         return visitor.visit_assert_expression(self)

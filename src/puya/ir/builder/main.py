@@ -43,7 +43,12 @@ from puya.ir.builder.encoding_validation import validate_encoding
 from puya.ir.context import IRBuildContext
 from puya.ir.encodings import wtype_to_encoding
 from puya.ir.op_utils import OpFactory, assert_value, assign_intrinsic_op, assign_targets, mktemp
-from puya.ir.types_ import wtype_to_encoded_ir_type, wtype_to_ir_type
+from puya.ir.types_ import (
+    AVMBytesEncoding,
+    PrimitiveIRType,
+    wtype_to_encoded_ir_type,
+    wtype_to_ir_type,
+)
 from puya.parse import SourceLocation
 
 TExpression: typing.TypeAlias = ir.ValueProvider | None
@@ -826,9 +831,9 @@ class FunctionIRBuilder(
             # can never appear as an assignment target
             return factory.extract3(base, index, 1)
 
-        assert isinstance(
-            indexable_wtype, wtypes.ReferenceArray | wtypes.ARC4Array
-        ), "expected array type"
+        assert isinstance(indexable_wtype, wtypes.ReferenceArray | wtypes.ARC4Array), (
+            "expected array type"
+        )
 
         return sequence.read_aggregate_index_and_decode(
             self.context, indexable_wtype, [base], [index], loc
@@ -1125,6 +1130,45 @@ class FunctionIRBuilder(
                     source_location=loc,
                 )
             )
+        # TODO: this needs to be compilation flag governed
+        # To emit an arc65 error, an error string needs to be there
+        # and also it needs to be a contract (as logicsigs don't allow for log ops)
+        # also keep in mind that if the error_message got here, we assume it was
+        # validated by the AWST assert node validator, via an arc65 validation regexp
+        elif expr.error_message and isinstance(self.context.root, awst_nodes.Contract):
+            false, true = self.context.block_builder.mkblocks(
+                "arc65_error_handling", "after_assert", source_location=loc
+            )
+            self.context.block_builder.terminate(
+                ir.ConditionalBranch(
+                    condition=condition_value,
+                    non_zero=true,
+                    zero=false,
+                    source_location=loc,
+                )
+            )
+            error_as_bytes = ir.BytesConstant(
+                value=expr.error_message.encode("utf-8"),
+                ir_type=PrimitiveIRType.string,
+                encoding=AVMBytesEncoding.utf8,
+                source_location=loc,
+            )
+            self.context.block_builder.activate_block(true)
+            self.context.block_builder.add(
+                ir.Intrinsic(
+                    op=AVMOp("log"),
+                    args=[error_as_bytes],
+                    source_location=loc,
+                )
+            )
+            self.context.block_builder.terminate(
+                ir.Fail(
+                    error_message=expr.error_message,
+                    explicit=True,  # in arc65 this err should always be explicit
+                    source_location=loc,
+                )
+            )
+            self.context.block_builder.try_activate_block(false)
         else:
             self.context.block_builder.add(
                 ir.Assert(
@@ -1262,9 +1306,9 @@ class FunctionIRBuilder(
 
         # double check encodings match
         struct_encoding = wtype_to_encoding(expr.wtype, loc)
-        assert (
-            tuple_encoding == struct_encoding
-        ), "expected struct encoding to match tuple encoding"
+        assert tuple_encoding == struct_encoding, (
+            "expected struct encoding to match tuple encoding"
+        )
 
         # evaluate struct in order of declaration
         elements_by_name = {
@@ -1388,9 +1432,9 @@ class FunctionIRBuilder(
         loc = expr.source_location
 
         array_wtype = expr.array.wtype
-        assert isinstance(
-            array_wtype, wtypes.ReferenceArray | wtypes.ARC4Array
-        ), "expected array wtype"
+        assert isinstance(array_wtype, wtypes.ReferenceArray | wtypes.ARC4Array), (
+            "expected array wtype"
+        )
 
         array = self.visit_and_materialise_single(expr.array)
 
