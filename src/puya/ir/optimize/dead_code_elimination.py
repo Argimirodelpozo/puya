@@ -205,6 +205,15 @@ class SubroutineCollector(visitor.IRTraverser):
             PuyaLibIR.recalculate_head_for_elements_with_byte_length_head,
         )
 
+    def visit_array_pop(self, _: models.ArrayPop) -> None:
+        self.referenced_libs |= (
+            PuyaLibIR.r_trim,
+            PuyaLibIR.dynamic_array_pop_fixed_size,
+        )
+
+    def visit_array_concat(self, _: models.ArrayConcat) -> None:
+        self.referenced_libs |= (PuyaLibIR.dynamic_array_concat_fixed,)
+
     def visit_invoke_subroutine(self, callsub: models.InvokeSubroutine) -> None:
         self.visit_subroutine(callsub.target)
 
@@ -218,6 +227,20 @@ def remove_unused_subroutines(program: models.Program) -> bool:
                 logger.debug(f"removing unused subroutine {p.id}")
         program.subroutines = to_keep
     return modified
+
+
+_PureValueProviders = (
+    models.Value
+    | models.InnerTransactionField
+    | models.BoxRead
+    | models.ExtractValue
+    | models.ReplaceValue
+    | models.DecodeBytes
+    | models.BytesEncode
+    | models.ArrayLength
+    | models.ArrayPop
+    | models.ArrayConcat
+)
 
 
 def remove_unused_variables(_context: CompileContext, subroutine: models.Subroutine) -> bool:
@@ -236,17 +259,7 @@ def remove_unused_variables(_context: CompileContext, subroutine: models.Subrout
         if registers.symmetric_difference(ass.targets):
             pass  # some registers still used
         elif (
-            isinstance(
-                ass.source,
-                models.Value
-                | models.InnerTransactionField
-                | models.BoxRead
-                | models.ExtractValue
-                | models.ReplaceValue
-                | models.DecodeBytes
-                | models.BytesEncode
-                | models.ArrayLength,
-            )
+            isinstance(ass.source, _PureValueProviders)
             or (isinstance(ass.source, models.InvokeSubroutine) and ass.source.target.pure)
             or (
                 isinstance(ass.source, models.Intrinsic)

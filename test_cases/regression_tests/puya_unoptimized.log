@@ -100,6 +100,9 @@ debug: Terminated block@5
 debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_bit
 debug: Sealing block@0
 debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.r_trim
+debug: Sealing block@0
+debug: Terminated block@0
 debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: Sealing block@0
 debug: Terminated block@0
@@ -156,6 +159,9 @@ debug: Replacing trivial Phi node: let popped#1: bytes = φ(popped#0 <- block@0,
 debug: Deleting Phi assignment: let popped#1: bytes = φ(popped#0 <- block@0, popped#1 <- block@3)
 debug: Replaced trivial Phi node: let popped#1: bytes = φ(popped#0 <- block@0, popped#1 <- block@3) (popped#1) with popped#0 in current definition for 3 blocks
 debug: Terminated block@4
+debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_fixed
+debug: Sealing block@0
+debug: Terminated block@0
 debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_bits
 debug: Sealing block@0
 debug: Terminated block@0
@@ -503,9 +509,11 @@ debug: Sealing block@2
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -530,9 +538,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -565,6 +575,7 @@ debug: Sealing block@0
 debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
@@ -590,9 +601,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -648,9 +661,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -674,9 +689,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -736,9 +753,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -762,9 +781,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1134,9 +1155,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1159,9 +1182,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1225,9 +1250,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1252,9 +1279,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1546,9 +1575,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1573,9 +1604,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1647,9 +1680,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1674,9 +1709,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1738,9 +1775,11 @@ debug: Terminated block@2
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1764,9 +1803,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1826,9 +1867,11 @@ debug: Terminated block@2
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1852,9 +1895,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1920,9 +1965,11 @@ debug: Terminated block@2
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -1946,9 +1993,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2036,9 +2085,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2063,9 +2114,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2111,9 +2164,11 @@ debug: Sealing block@1
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2138,9 +2193,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2200,9 +2257,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2227,9 +2286,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2288,9 +2349,11 @@ debug: Sealing block@0
 debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2315,9 +2378,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2401,9 +2466,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2428,9 +2495,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2516,9 +2585,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2543,9 +2614,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2607,9 +2680,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2633,9 +2708,11 @@ debug: Terminated block@0
 debug: removing unused subroutine _puya_lib.util.ensure_budget
 debug: removing unused subroutine _puya_lib.bytes_.is_substring
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
 debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
@@ -2754,6 +2831,15 @@ debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
 debug: Optimizer: Replace Aggregate Box Ops
+debug: Optimizing subroutine _puya_lib.arc4.dynamic_array_concat_fixed
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
 debug: Optimizing subroutine test_cases.regression_tests.slot_allocation_inlining.do_something_with_array
 debug: Optimizer: Perform Subroutine Inlining
 debug: Optimizer: Split Parallel Copies
@@ -2784,6 +2870,15 @@ debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
 debug: Optimizer: Replace Aggregate Box Ops
 debug: Optimizing subroutine _puya_lib.util.ensure_budget
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
+debug: Optimizing subroutine _puya_lib.arc4.dynamic_array_concat_fixed
 debug: Optimizer: Perform Subroutine Inlining
 debug: Optimizer: Split Parallel Copies
 debug: Optimizer: Constant Replacer
@@ -2845,6 +2940,15 @@ debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
 debug: Optimizer: Replace Aggregate Box Ops
+debug: Optimizing subroutine _puya_lib.arc4.dynamic_array_concat_fixed
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
 debug: Optimizing subroutine test_cases.regression_tests.slot_allocation_inlining.do_something_with_array
 debug: Optimizer: Perform Subroutine Inlining
 debug: Optimizer: Split Parallel Copies
@@ -2865,6 +2969,8 @@ debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
 debug: Optimizer: Merge Chained Aggregate Reads
 debug: Optimizer: Replace Aggregate Box Ops
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
+debug: Unused subroutines removed
 debug: Begin optimization pass 2/100
 debug: Optimizing subroutine test_cases.regression_tests.slot_allocation_inlining.SlotAllocationInlining.approval_program
 debug: Optimizer: Perform Subroutine Inlining
@@ -3000,12 +3106,14 @@ debug: Inserted append_to_array_for_body@2.ops[21]: 'l-store-copy aggregate%head
 debug: Replaced append_to_array_for_body@2.ops[23]: 'v-load aggregate%head%0#0' with 'l-load aggregate%head%0#0'
 debug: Inserted append_to_array_for_body@2.ops[24]: 'l-store-copy aggregate%as_Encoded(uint64[])%0#0 0'
 debug: Replaced append_to_array_for_body@2.ops[26]: 'v-load aggregate%as_Encoded(uint64[])%0#0' with 'l-load aggregate%as_Encoded(uint64[])%0#0'
+debug: Inserted append_to_array_for_body@2.ops[31]: 'l-store-copy aggregate%concat%0#0 0'
+debug: Replaced append_to_array_for_body@2.ops[33]: 'v-load aggregate%concat%0#0' with 'l-load aggregate%concat%0#0'
 debug: Inserted append_to_array_for_body@2.ops[17]: 'l-store-copy aggregate%as_Encoded(uint64)%0#0 0'
 debug: Replaced append_to_array_for_body@2.ops[20]: 'v-load aggregate%as_Encoded(uint64)%0#0' with 'l-load aggregate%as_Encoded(uint64)%0#0'
 debug: Inserted append_to_array_for_body@2.ops[28]: 'l-store-copy tmp%2#0 0'
 debug: Replaced append_to_array_for_body@2.ops[31]: 'v-load tmp%2#0' with 'l-load tmp%2#0'
-debug: Inserted append_to_array_for_body@2.ops[33]: 'l-store-copy concat%0#0 0'
-debug: Replaced append_to_array_for_body@2.ops[36]: 'v-load concat%0#0' with 'l-load concat%0#0'
+debug: Inserted append_to_array_for_body@2.ops[36]: 'l-store-copy tmp%3#0 0'
+debug: Replaced append_to_array_for_body@2.ops[39]: 'v-load tmp%3#0' with 'l-load tmp%3#0'
 debug: Inserted append_to_array_for_body@2.ops[8]: 'l-store-copy tmp%1#0 0'
 debug: Replaced append_to_array_for_body@2.ops[13]: 'v-load tmp%1#0' with 'l-load tmp%1#0'
 debug: Inserted append_to_array_for_body@2.ops[12]: 'l-store-copy slot_contents%0#0 1'

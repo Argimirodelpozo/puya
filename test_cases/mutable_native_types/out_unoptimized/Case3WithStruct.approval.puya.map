@@ -3,7 +3,7 @@
   "sources": [
     "../case3_with_mutable_struct.py"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -2293,10 +2293,10 @@
     "542": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "543": {
@@ -2410,31 +2410,31 @@
     "563": {
       "op": "btoi",
       "defined_out": [
-        "tup%out#0",
-        "values%0#0"
-      ],
-      "stack_out": [
-        "tup%out#0",
-        "values%0#0"
-      ]
-    },
-    "564": {
-      "op": "intc_1 // 8",
-      "stack_out": [
-        "tup%out#0",
-        "values%0#0",
-        "8"
-      ]
-    },
-    "565": {
-      "op": "<",
-      "defined_out": [
         "tmp%0#0",
         "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
         "tmp%0#0"
+      ]
+    },
+    "564": {
+      "op": "intc_1 // 8",
+      "stack_out": [
+        "tup%out#0",
+        "tmp%0#0",
+        "8"
+      ]
+    },
+    "565": {
+      "op": "<",
+      "defined_out": [
+        "tmp%1#0",
+        "tup%out#0"
+      ],
+      "stack_out": [
+        "tup%out#0",
+        "tmp%1#0"
       ]
     },
     "566": {
@@ -2509,19 +2509,19 @@
     "575": {
       "op": "btoi",
       "defined_out": [
-        "tup%out#0",
-        "values%1#0"
+        "tmp%2#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
-        "values%1#0"
+        "tmp%2#0"
       ]
     },
     "576": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tup%out#0",
-        "values%1#0",
+        "tmp%2#0",
         "0"
       ]
     },
@@ -2529,7 +2529,7 @@
       "op": "intc_1 // 8",
       "stack_out": [
         "tup%out#0",
-        "values%1#0",
+        "tmp%2#0",
         "0",
         "8"
       ]
@@ -2538,12 +2538,12 @@
       "op": "+",
       "defined_out": [
         "box%offset%2#0",
-        "tup%out#0",
-        "values%1#0"
+        "tmp%2#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
-        "values%1#0",
+        "tmp%2#0",
         "box%offset%2#0"
       ]
     },
@@ -2552,22 +2552,22 @@
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0"
+        "tmp%2#0"
       ]
     },
     "581": {
       "op": "dup",
       "defined_out": [
         "box%offset%2#0",
-        "tup%out#0",
-        "values%1#0",
-        "values%1#0 (copy)"
+        "tmp%2#0",
+        "tmp%2#0 (copy)",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0",
-        "values%1#0 (copy)"
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
       ]
     },
     "582": {
@@ -2575,8 +2575,8 @@
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0",
-        "values%1#0 (copy)",
+        "tmp%2#0",
+        "tmp%2#0 (copy)",
         "8"
       ]
     },
@@ -2585,13 +2585,13 @@
       "defined_out": [
         "box%index_ok%0#0",
         "box%offset%2#0",
-        "tup%out#0",
-        "values%1#0"
+        "tmp%2#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0",
+        "tmp%2#0",
         "box%index_ok%0#0"
       ]
     },
@@ -2601,7 +2601,7 @@
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0"
+        "tmp%2#0"
       ]
     },
     "585": {
@@ -2609,13 +2609,13 @@
       "defined_out": [
         "16",
         "box%offset%2#0",
-        "tup%out#0",
-        "values%1#0"
+        "tmp%2#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
         "box%offset%2#0",
-        "values%1#0",
+        "tmp%2#0",
         "16"
       ]
     },
@@ -2739,36 +2739,36 @@
     "602": {
       "op": "btoi",
       "defined_out": [
-        "tup%out#0",
-        "values%2#0"
+        "tmp%3#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
-        "values%2#0"
+        "tmp%3#0"
       ]
     },
     "603": {
       "op": "intc_2 // 1",
       "defined_out": [
         "1",
-        "tup%out#0",
-        "values%2#0"
+        "tmp%3#0",
+        "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
-        "values%2#0",
+        "tmp%3#0",
         "1"
       ]
     },
     "604": {
       "op": "+",
       "defined_out": [
-        "tmp%1#0",
+        "tmp%4#0",
         "tup%out#0"
       ],
       "stack_out": [
         "tup%out#0",
-        "tmp%1#0"
+        "tmp%4#0"
       ]
     },
     "605": {
@@ -2931,30 +2931,30 @@
     "630": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "631": {
       "op": "frame_dig -1",
       "defined_out": [
         "index#0 (copy)",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "index#0 (copy)"
       ]
     },
     "633": {
       "op": ">",
       "defined_out": [
-        "tmp%0#0"
+        "tmp%1#0"
       ],
       "stack_out": [
-        "tmp%0#0"
+        "tmp%1#0"
       ]
     },
     "634": {
@@ -3164,22 +3164,22 @@
     "666": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "667": {
       "op": "intc_2 // 1",
       "defined_out": [
         "1",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "1"
       ]
     },
@@ -3188,17 +3188,17 @@
       "op": "assert // Step cannot be zero",
       "stack_out": [
         "total#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "669": {
       "op": "intc_0 // 0",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -3209,7 +3209,7 @@
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.sum_for_header@1",
       "stack_in": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 2",
@@ -3218,7 +3218,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -3226,27 +3226,27 @@
     "675": {
       "op": "frame_dig 1",
       "defined_out": [
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "677": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "continue_looping%0#0"
       ]
@@ -3255,7 +3255,7 @@
       "op": "bz test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.sum_after_for@4",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -3266,7 +3266,7 @@
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.sum_for_body@2",
       "stack_in": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 2",
@@ -3276,7 +3276,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0"
       ]
@@ -3290,7 +3290,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "0"
@@ -3306,7 +3306,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "0",
@@ -3322,7 +3322,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "box%offset%2#0"
@@ -3338,7 +3338,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "box%offset%2#0",
@@ -3349,7 +3349,7 @@
       "op": "uncover 1",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "\"tup_bag\"",
@@ -3367,7 +3367,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "\"tup_bag\"",
@@ -3384,7 +3384,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "box%box_extract%2#0"
@@ -3394,7 +3394,7 @@
       "op": "uncover 1",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "box%box_extract%2#0",
         "i#0"
@@ -3410,7 +3410,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "box%box_extract%2#0",
         "i#0",
@@ -3426,7 +3426,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "box%box_extract%2#0",
         "aggregate%bytes_offset%0#0"
@@ -3436,7 +3436,7 @@
       "op": "intc_3 // 16",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "box%box_extract%2#0",
         "aggregate%bytes_offset%0#0",
@@ -3452,7 +3452,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0"
       ]
@@ -3466,7 +3466,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
         "tup#0 (copy)"
@@ -3476,7 +3476,7 @@
       "op": "intc_0 // 0",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
         "tup#0 (copy)",
@@ -3487,7 +3487,7 @@
       "op": "intc_1 // 8",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
         "tup#0 (copy)",
@@ -3504,7 +3504,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
         "tuple_item%2#0"
@@ -3513,32 +3513,32 @@
     "705": {
       "op": "btoi",
       "defined_out": [
+        "tmp%1#0",
         "tup#0",
-        "value_internal%0#0",
-        "values%1#0"
+        "value_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
-        "values%1#0"
+        "tmp%1#0"
       ]
     },
     "706": {
       "op": "frame_dig 0",
       "defined_out": [
+        "tmp%1#0",
         "total#0",
         "tup#0",
-        "value_internal%0#0",
-        "values%1#0"
+        "value_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
-        "values%1#0",
+        "tmp%1#0",
         "total#0"
       ]
     },
@@ -3551,7 +3551,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "tup#0",
         "total#0"
@@ -3561,7 +3561,7 @@
       "op": "uncover 1",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "total#0",
         "tup#0"
@@ -3571,7 +3571,7 @@
       "op": "intc_1 // 8",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "total#0",
         "tup#0",
@@ -3582,7 +3582,7 @@
       "op": "intc_1 // 8",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "total#0",
         "tup#0",
@@ -3599,7 +3599,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "total#0",
         "tuple_item%3#0"
@@ -3608,30 +3608,30 @@
     "714": {
       "op": "btoi",
       "defined_out": [
-        "total#0",
-        "value_internal%0#0",
-        "values%2#0"
-      ],
-      "stack_out": [
-        "total#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "total#0",
-        "values%2#0"
-      ]
-    },
-    "715": {
-      "op": "+",
-      "defined_out": [
-        "tmp%1#0",
+        "tmp%3#0",
         "total#0",
         "value_internal%0#0"
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "tmp%1#0"
+        "total#0",
+        "tmp%3#0"
+      ]
+    },
+    "715": {
+      "op": "+",
+      "defined_out": [
+        "tmp%4#0",
+        "total#0",
+        "value_internal%0#0"
+      ],
+      "stack_out": [
+        "total#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "tmp%4#0"
       ]
     },
     "716": {
@@ -3642,7 +3642,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -3653,7 +3653,7 @@
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.sum_for_footer@3",
       "stack_in": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 2",
@@ -3662,7 +3662,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -3675,7 +3675,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
         "1"
@@ -3685,7 +3685,7 @@
       "op": "+",
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -3697,7 +3697,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -3708,7 +3708,7 @@
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.sum_after_for@4",
       "stack_in": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "retsub": true,
@@ -3718,7 +3718,7 @@
       ],
       "stack_out": [
         "total#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "total#0"
       ]
@@ -4493,20 +4493,20 @@
     "864": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "865": {
       "op": "intc_2 // 1",
       "defined_out": [
         "1",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "1"
       ]
     },
@@ -4514,16 +4514,16 @@
       "error": "Step cannot be zero",
       "op": "assert // Step cannot be zero",
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "867": {
       "op": "intc_0 // 0",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -4533,7 +4533,7 @@
     "871": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_a_for_header@1",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -4541,7 +4541,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -4549,25 +4549,25 @@
     "873": {
       "op": "frame_dig 0",
       "defined_out": [
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "875": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "continue_looping%0#0"
       ]
@@ -4575,7 +4575,7 @@
     "876": {
       "op": "bz test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_a_after_for@4",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -4585,7 +4585,7 @@
     "882": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_a_for_body@2",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -4594,7 +4594,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0"
       ]
@@ -4607,7 +4607,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "a#0 (copy)"
@@ -4621,7 +4621,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "aggregate%as_Encoded(uint64)%0#0"
@@ -4635,7 +4635,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0"
@@ -4650,7 +4650,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4667,7 +4667,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4684,7 +4684,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4701,7 +4701,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4712,7 +4712,7 @@
     "894": {
       "op": "intc_1 // 8",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4731,7 +4731,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4743,7 +4743,7 @@
       "error": "index out of bounds",
       "op": "assert // index out of bounds",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -4753,7 +4753,7 @@
     "897": {
       "op": "uncover 1",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -4770,7 +4770,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -4787,7 +4787,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -4802,7 +4802,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%2#0"
@@ -4811,7 +4811,7 @@
     "902": {
       "op": "intc_0 // 0",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%2#0",
@@ -4826,7 +4826,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%3#0"
@@ -4841,7 +4841,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%3#0",
@@ -4851,7 +4851,7 @@
     "905": {
       "op": "uncover 1",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "\"tup_bag\"",
@@ -4861,7 +4861,7 @@
     "907": {
       "op": "uncover 2",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "\"tup_bag\"",
         "box%offset%3#0",
@@ -4871,7 +4871,7 @@
     "909": {
       "op": "box_replace",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -4881,7 +4881,7 @@
     "913": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_a_for_footer@3",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -4889,7 +4889,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -4901,7 +4901,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
         "1"
@@ -4910,7 +4910,7 @@
     "916": {
       "op": "+",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -4921,7 +4921,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -4931,7 +4931,7 @@
     "922": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_a_after_for@4",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "retsub": true,
@@ -5023,20 +5023,20 @@
     "940": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "941": {
       "op": "intc_2 // 1",
       "defined_out": [
         "1",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "1"
       ]
     },
@@ -5044,16 +5044,16 @@
       "error": "Step cannot be zero",
       "op": "assert // Step cannot be zero",
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "943": {
       "op": "intc_0 // 0",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -5063,7 +5063,7 @@
     "947": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_b_for_header@1",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -5071,7 +5071,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -5079,25 +5079,25 @@
     "949": {
       "op": "frame_dig 0",
       "defined_out": [
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "951": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "continue_looping%0#0"
       ]
@@ -5105,7 +5105,7 @@
     "952": {
       "op": "bz test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_b_after_for@4",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -5115,7 +5115,7 @@
     "958": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_b_for_body@2",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -5124,7 +5124,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0"
       ]
@@ -5137,7 +5137,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "b#0 (copy)"
@@ -5151,7 +5151,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "aggregate%as_Encoded(uint64)%0#0"
@@ -5165,7 +5165,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0"
@@ -5180,7 +5180,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5197,7 +5197,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5214,7 +5214,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5231,7 +5231,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5242,7 +5242,7 @@
     "970": {
       "op": "intc_1 // 8",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5261,7 +5261,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5273,7 +5273,7 @@
       "error": "index out of bounds",
       "op": "assert // index out of bounds",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "i#0",
@@ -5283,7 +5283,7 @@
     "973": {
       "op": "uncover 1",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -5300,7 +5300,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -5317,7 +5317,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%1#0",
@@ -5332,7 +5332,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%2#0"
@@ -5341,7 +5341,7 @@
     "978": {
       "op": "intc_1 // 8",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%2#0",
@@ -5356,7 +5356,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%3#0"
@@ -5371,7 +5371,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "box%offset%3#0",
@@ -5381,7 +5381,7 @@
     "981": {
       "op": "uncover 1",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "encoded_value%0#0",
         "\"tup_bag\"",
@@ -5391,7 +5391,7 @@
     "983": {
       "op": "uncover 2",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "\"tup_bag\"",
         "box%offset%3#0",
@@ -5401,7 +5401,7 @@
     "985": {
       "op": "box_replace",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -5411,7 +5411,7 @@
     "989": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_b_for_footer@3",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 1",
@@ -5419,7 +5419,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -5431,7 +5431,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
         "1"
@@ -5440,7 +5440,7 @@
     "992": {
       "op": "+",
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
@@ -5451,7 +5451,7 @@
         "value_internal%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
@@ -5461,7 +5461,7 @@
     "998": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.set_b_after_for@4",
       "stack_in": [
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "retsub": true,
@@ -5549,20 +5549,20 @@
     "1013": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
     "1014": {
       "op": "frame_dig -1",
       "defined_out": [
         "start#0 (copy)",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "start#0 (copy)"
       ]
     },
@@ -5571,10 +5571,10 @@
       "defined_out": [
         "3",
         "start#0 (copy)",
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0",
+        "tmp%0#0",
         "start#0 (copy)",
         "3"
       ]
@@ -5583,20 +5583,20 @@
       "op": "+",
       "defined_out": [
         "tmp%0#0",
-        "values%0#0"
+        "tmp%1#0"
       ],
       "stack_out": [
-        "values%0#0",
-        "tmp%0#0"
+        "tmp%0#0",
+        "tmp%1#0"
       ]
     },
     "1019": {
       "op": ">=",
       "defined_out": [
-        "tmp%1#0"
+        "tmp%2#0"
       ],
       "stack_out": [
-        "tmp%1#0"
+        "tmp%2#0"
       ]
     },
     "1020": {
@@ -5774,12 +5774,12 @@
       "defined_out": [
         "array_item%0#0",
         "items#0",
-        "tmp%2#0"
+        "tmp%3#0"
       ],
       "stack_out": [
         "array_item%0#0",
         "items#0",
-        "tmp%2#0"
+        "tmp%3#0"
       ]
     },
     "1046": {
@@ -5787,7 +5787,7 @@
       "stack_out": [
         "array_item%0#0",
         "items#0",
-        "tmp%2#0",
+        "tmp%3#0",
         "16"
       ]
     },
@@ -5891,13 +5891,13 @@
         "array_item%0#0",
         "array_item%1#0",
         "items#0",
-        "tmp%3#0"
+        "tmp%4#0"
       ],
       "stack_out": [
         "array_item%0#0",
         "array_item%1#0",
         "items#0",
-        "tmp%3#0"
+        "tmp%4#0"
       ]
     },
     "1061": {
@@ -5906,7 +5906,7 @@
         "array_item%0#0",
         "array_item%1#0",
         "items#0",
-        "tmp%3#0",
+        "tmp%4#0",
         "16"
       ]
     },
@@ -6033,85 +6033,134 @@
       "op": "proto 0 1"
     },
     "1079": {
-      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_block@0"
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0"
+      ]
+    },
+    "1080": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0"
+      ]
+    },
+    "1081": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0"
+      ]
     },
     "1082": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_block@0"
+    },
+    "1085": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_block@0",
-      "stack_in": [],
+      "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0"
+      ],
       "op": "intc_0 // 0",
       "defined_out": [
         "0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "0"
       ]
     },
-    "1083": {
+    "1086": {
       "op": "itob",
       "defined_out": [
         "aggregate%as_bytes%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "aggregate%as_bytes%0#0"
       ]
     },
-    "1084": {
+    "1087": {
       "op": "extract 6 2",
       "defined_out": [],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0"
       ]
     },
-    "1087": {
+    "1090": {
       "op": "intc_0 // 0",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "0"
       ]
     },
-    "1088": {
+    "1091": {
       "op": "intc_1 // 8",
       "defined_out": [
         "0",
         "8"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "0",
         "8"
       ]
     },
-    "1089": {
+    "1092": {
       "op": "+",
       "defined_out": [
         "box%offset%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "box%offset%0#0"
       ]
     },
-    "1090": {
+    "1093": {
       "op": "bytec_0 // \"tup_bag\"",
       "defined_out": [
         "\"tup_bag\"",
         "box%offset%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "box%offset%0#0",
         "\"tup_bag\""
       ]
     },
-    "1091": {
+    "1094": {
       "op": "uncover 1",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "\"tup_bag\"",
         "box%offset%0#0"
       ]
     },
-    "1093": {
+    "1096": {
       "op": "intc 5 // 128",
       "defined_out": [
         "\"tup_bag\"",
@@ -6119,69 +6168,93 @@
         "box%offset%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "\"tup_bag\"",
         "box%offset%0#0",
         "128"
       ]
     },
-    "1095": {
+    "1098": {
       "op": "box_extract",
       "defined_out": [],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0"
       ]
     },
-    "1096": {
+    "1099": {
       "op": "intc_0 // 0",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "0"
       ]
     },
-    "1097": {
+    "1100": {
       "op": "intc_0 // 0",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "0",
         "0"
       ]
     },
-    "1098": {
+    "1101": {
       "op": "+",
       "defined_out": [
         "box%offset%1#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "box%offset%1#0"
       ]
     },
-    "1099": {
+    "1102": {
       "op": "bytec_0 // \"tup_bag\"",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "box%offset%1#0",
         "\"tup_bag\""
       ]
     },
-    "1100": {
+    "1103": {
       "op": "uncover 1",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "\"tup_bag\"",
         "box%offset%1#0"
       ]
     },
-    "1102": {
+    "1105": {
       "op": "intc_1 // 8",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "\"tup_bag\"",
@@ -6189,149 +6262,185 @@
         "8"
       ]
     },
-    "1103": {
+    "1106": {
       "op": "box_extract",
       "defined_out": [
         "tuple_item%1#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
         "tuple_item%1#0"
       ]
     },
-    "1104": {
+    "1107": {
       "op": "btoi",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0"
-      ]
-    },
-    "1105": {
-      "op": "intc_2 // 1",
-      "defined_out": [
-        "1",
-        "values%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "1"
-      ]
-    },
-    "1106": {
-      "error": "Step cannot be zero",
-      "op": "assert // Step cannot be zero",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0"
-      ]
-    },
-    "1107": {
-      "op": "intc_0 // 0",
-      "defined_out": [
-        "values%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0"
+        "tmp%0#0"
       ]
     },
     "1108": {
-      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_header@1"
+      "op": "intc_2 // 1",
+      "defined_out": [
+        "1",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "1"
+      ]
+    },
+    "1109": {
+      "error": "Step cannot be zero",
+      "op": "assert // Step cannot be zero",
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0"
+      ]
+    },
+    "1110": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0"
+      ]
     },
     "1111": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_header@1"
+    },
+    "1114": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_header@1",
       "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
-      "op": "frame_dig 3",
+      "op": "frame_dig 6",
       "defined_out": [
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0"
       ]
     },
-    "1113": {
-      "op": "frame_dig 2",
+    "1116": {
+      "op": "frame_dig 5",
       "defined_out": [
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
-    "1115": {
+    "1118": {
       "op": "<",
       "defined_out": [
         "continue_looping%0#0",
-        "value_internal%0#0",
-        "values%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "continue_looping%0#0"
       ]
     },
-    "1116": {
+    "1119": {
       "op": "bz test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_after_for@4",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
-    "1119": {
+    "1122": {
       "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_body@2"
     },
-    "1122": {
+    "1125": {
       "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_body@2",
       "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
-      "op": "frame_dig 3",
+      "op": "frame_dig 6",
       "defined_out": [
         "i#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0"
       ]
     },
-    "1124": {
+    "1127": {
       "op": "intc_3 // 16",
       "defined_out": [
         "16",
@@ -6339,68 +6448,83 @@
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "i#0",
         "16"
       ]
     },
-    "1125": {
+    "1128": {
       "op": "*",
       "defined_out": [
         "aggregate%bytes_offset%0#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "1126": {
-      "op": "frame_dig 1",
+    "1129": {
+      "op": "frame_dig 4",
       "defined_out": [
         "aggregate%bytes_offset%0#0",
         "items#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "aggregate%bytes_offset%0#0",
         "items#0"
       ]
     },
-    "1128": {
+    "1131": {
       "op": "uncover 1",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "items#0",
         "aggregate%bytes_offset%0#0"
       ]
     },
-    "1130": {
+    "1133": {
       "op": "intc_3 // 16",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "items#0",
         "aggregate%bytes_offset%0#0",
         "16"
       ]
     },
-    "1131": {
+    "1134": {
       "error": "index access is out of bounds",
       "op": "extract3 // on error: index access is out of bounds",
       "defined_out": [
@@ -6409,14 +6533,17 @@
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "array_item%0#0"
       ]
     },
-    "1132": {
+    "1135": {
       "op": "bytec_2 // 0x",
       "defined_out": [
         "0x",
@@ -6425,397 +6552,500 @@
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "array_item%0#0",
         "0x"
       ]
     },
-    "1133": {
+    "1136": {
       "op": "uncover 1",
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
         "0x",
         "array_item%0#0"
       ]
     },
-    "1135": {
+    "1138": {
       "op": "concat",
       "defined_out": [
         "items#0",
-        "tmp%0#0",
+        "tmp%1#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "tmp%0#0"
-      ]
-    },
-    "1136": {
-      "op": "frame_dig 0",
-      "defined_out": [
-        "items#0",
-        "result#0",
-        "tmp%0#0",
-        "value_internal%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "tmp%0#0",
-        "result#0"
-      ]
-    },
-    "1138": {
-      "op": "dup",
-      "defined_out": [
-        "items#0",
-        "result#0",
-        "result#0 (copy)",
-        "tmp%0#0",
-        "value_internal%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "tmp%0#0",
-        "result#0 (copy)",
-        "result#0 (copy)"
+        "tmp%1#0"
       ]
     },
     "1139": {
-      "op": "cover 2",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "result#0",
-        "tmp%0#0",
-        "result#0 (copy)"
-      ]
-    },
-    "1141": {
-      "op": "uncover 1",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "result#0",
-        "result#0 (copy)",
-        "tmp%0#0"
-      ]
-    },
-    "1143": {
-      "error": "max array length exceeded",
-      "op": "concat // on error: max array length exceeded",
+      "op": "frame_dig 3",
       "defined_out": [
-        "concat%0#0",
         "items#0",
         "result#0",
+        "tmp%1#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "result#0",
-        "concat%0#0"
-      ]
-    },
-    "1144": {
-      "op": "cover 1",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "concat%0#0",
+        "tmp%1#0",
         "result#0"
       ]
     },
-    "1146": {
-      "op": "intc_0 // 0",
+    "1141": {
+      "op": "frame_bury 1",
       "defined_out": [
-        "0",
-        "concat%0#0",
         "items#0",
         "result#0",
+        "tmp%1#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "concat%0#0",
-        "result#0",
-        "0"
+        "tmp%1#0"
       ]
     },
-    "1147": {
-      "op": "extract_uint16",
+    "1143": {
+      "op": "frame_bury 2",
       "defined_out": [
-        "concat%0#0",
-        "extract_uint16%0#0",
         "items#0",
         "result#0",
         "value_internal%0#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "concat%0#0",
-        "extract_uint16%0#0"
+        "tmp%0#0",
+        "value_internal%0#0"
       ]
+    },
+    "1145": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_block@5"
     },
     "1148": {
-      "op": "intc_2 // 1",
-      "defined_out": [
-        "1",
-        "concat%0#0",
-        "extract_uint16%0#0",
-        "items#0",
+      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_block@5",
+      "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
+        "items#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "concat%0#0",
-        "extract_uint16%0#0",
-        "1"
-      ]
-    },
-    "1149": {
-      "op": "+",
+      "op": "frame_dig 1",
       "defined_out": [
-        "add%0#0",
-        "concat%0#0",
-        "items#0",
-        "result#0",
-        "value_internal%0#0"
+        "array#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "concat%0#0",
-        "add%0#0"
+        "array#0"
       ]
     },
     "1150": {
-      "op": "itob",
+      "op": "dup",
       "defined_out": [
-        "as_bytes%0#0",
-        "concat%0#0",
-        "items#0",
-        "result#0",
-        "value_internal%0#0"
+        "array#0",
+        "array#0 (copy)"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "concat%0#0",
-        "as_bytes%0#0"
+        "array#0",
+        "array#0 (copy)"
       ]
     },
     "1151": {
-      "op": "extract 6 2",
+      "op": "intc_0 // 0",
       "defined_out": [
-        "as_u16_bytes%0#0",
-        "concat%0#0",
-        "items#0",
-        "result#0",
-        "value_internal%0#0"
+        "0",
+        "array#0",
+        "array#0 (copy)"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "concat%0#0",
-        "as_u16_bytes%0#0"
-      ]
-    },
-    "1154": {
-      "op": "uncover 1",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "as_u16_bytes%0#0",
-        "concat%0#0"
-      ]
-    },
-    "1156": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "as_u16_bytes%0#0",
-        "concat%0#0",
+        "array#0",
+        "array#0 (copy)",
         "0"
       ]
     },
-    "1157": {
-      "op": "uncover 2",
+    "1152": {
+      "op": "extract_uint16",
+      "defined_out": [
+        "array#0",
+        "array_length#0"
+      ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "concat%0#0",
-        "0",
-        "as_u16_bytes%0#0"
+        "array#0",
+        "array_length#0"
+      ]
+    },
+    "1153": {
+      "op": "intc_2 // 1",
+      "defined_out": [
+        "1",
+        "array#0",
+        "array_length#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "array#0",
+        "array_length#0",
+        "1"
+      ]
+    },
+    "1154": {
+      "op": "+",
+      "defined_out": [
+        "array#0",
+        "new_array_length#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "array#0",
+        "new_array_length#0"
+      ]
+    },
+    "1155": {
+      "op": "itob",
+      "defined_out": [
+        "array#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "array#0",
+        "tmp%2#0"
+      ]
+    },
+    "1156": {
+      "op": "extract 6 0",
+      "defined_out": [
+        "array#0",
+        "new_len_u16#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "array#0",
+        "new_len_u16#0"
       ]
     },
     "1159": {
-      "op": "replace3",
+      "op": "replace2 0",
       "defined_out": [
-        "as_Encoded(len+(uint64,uint64)[])%0#0",
-        "items#0",
-        "result#0",
-        "value_internal%0#0"
+        "array#0",
+        "result#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "as_Encoded(len+(uint64,uint64)[])%0#0"
+        "result#0"
       ]
     },
-    "1160": {
+    "1161": {
+      "op": "frame_dig 2",
+      "defined_out": [
+        "array#0",
+        "new_items_bytes#0",
+        "result#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "result#0",
+        "new_items_bytes#0"
+      ]
+    },
+    "1163": {
+      "op": "concat",
+      "defined_out": [
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "tmp%5#0"
+      ]
+    },
+    "1164": {
       "op": "frame_bury 0",
       "defined_out": [
-        "items#0",
-        "result#0",
-        "value_internal%0#0"
+        "array#0",
+        "new_items_bytes#0",
+        "result#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ]
     },
-    "1162": {
-      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_footer@3"
+    "1166": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_after_inlined__puya_lib.arc4.dynamic_array_concat_fixed@6"
     },
-    "1165": {
-      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_footer@3",
+    "1169": {
+      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_after_inlined__puya_lib.arc4.dynamic_array_concat_fixed@6",
       "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
+        "value_internal%0#0"
+      ],
+      "op": "frame_dig 0",
+      "defined_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "1171": {
+      "op": "frame_bury 3",
+      "defined_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0"
+      ]
+    },
+    "1173": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_footer@3"
+    },
+    "1176": {
+      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_footer@3",
+      "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0"
+      ],
+      "op": "frame_dig 6",
+      "defined_out": [
+        "value_internal%0#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "value_internal%0#0"
+      ]
+    },
+    "1178": {
+      "op": "intc_2 // 1",
+      "defined_out": [
+        "1",
+        "value_internal%0#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "value_internal%0#0",
+        "1"
+      ]
+    },
+    "1179": {
+      "op": "+",
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0",
+        "value_internal%0#0"
+      ]
+    },
+    "1180": {
+      "op": "frame_bury 6",
+      "defined_out": [
+        "value_internal%0#0"
+      ],
+      "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
+        "value_internal%0#0"
+      ]
+    },
+    "1182": {
+      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_header@1"
+    },
+    "1185": {
+      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_after_for@4",
+      "stack_in": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
+        "result#0",
+        "items#0",
+        "tmp%0#0",
         "value_internal%0#0"
       ],
       "op": "frame_dig 3",
       "defined_out": [
-        "value_internal%0#0"
+        "result#0"
       ],
       "stack_out": [
+        "aggregate%as_Encoded(len+(uint64,uint64)[])%1#0",
+        "array#0",
+        "new_items_bytes#0",
         "result#0",
         "items#0",
-        "values%0#0",
+        "tmp%0#0",
         "value_internal%0#0",
-        "value_internal%0#0"
+        "result#0"
       ]
     },
-    "1167": {
-      "op": "intc_2 // 1",
-      "defined_out": [
-        "1",
-        "value_internal%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "value_internal%0#0",
-        "1"
-      ]
+    "1187": {
+      "op": "frame_bury 0"
     },
-    "1168": {
-      "op": "+",
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "value_internal%0#0"
-      ]
-    },
-    "1169": {
-      "op": "frame_bury 3",
-      "defined_out": [
-        "value_internal%0#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0"
-      ]
-    },
-    "1171": {
-      "op": "b test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_for_header@1"
-    },
-    "1174": {
-      "block": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct.get_all_tups_after_for@4",
-      "stack_in": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0"
-      ],
+    "1189": {
       "retsub": true,
-      "op": "retsub",
-      "defined_out": [
-        "result#0"
-      ],
-      "stack_out": [
-        "result#0",
-        "items#0",
-        "values%0#0",
-        "value_internal%0#0",
-        "result#0"
-      ]
+      "op": "retsub"
     },
-    "1175": {
+    "1190": {
       "subroutine": "test_cases.mutable_native_types.case3_with_mutable_struct.Case3WithStruct._check_owner",
       "params": {},
       "block": "_check_owner",
       "stack_in": [],
       "op": "b _check_owner_block@0"
     },
-    "1178": {
+    "1193": {
       "block": "_check_owner_block@0",
       "stack_in": [],
       "op": "intc 4 // 34176",
@@ -6826,7 +7056,7 @@
         "34176"
       ]
     },
-    "1180": {
+    "1195": {
       "op": "intc_1 // 8",
       "defined_out": [
         "34176",
@@ -6837,7 +7067,7 @@
         "8"
       ]
     },
-    "1181": {
+    "1196": {
       "op": "/",
       "defined_out": [
         "box%element_byte_offset%0#0"
@@ -6846,7 +7076,7 @@
         "box%element_byte_offset%0#0"
       ]
     },
-    "1182": {
+    "1197": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -6857,7 +7087,7 @@
         "0"
       ]
     },
-    "1183": {
+    "1198": {
       "op": "+",
       "defined_out": [
         "box%byte_containing_bit_offset%0#0"
@@ -6866,14 +7096,14 @@
         "box%byte_containing_bit_offset%0#0"
       ]
     },
-    "1184": {
+    "1199": {
       "op": "intc 4 // 34176",
       "stack_out": [
         "box%byte_containing_bit_offset%0#0",
         "34176"
       ]
     },
-    "1186": {
+    "1201": {
       "op": "intc_1 // 8",
       "stack_out": [
         "box%byte_containing_bit_offset%0#0",
@@ -6881,7 +7111,7 @@
         "8"
       ]
     },
-    "1187": {
+    "1202": {
       "op": "%",
       "defined_out": [
         "box%byte_containing_bit_offset%0#0",
@@ -6892,14 +7122,14 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "1188": {
+    "1203": {
       "op": "cover 1",
       "stack_out": [
         "box%element_bit_offset%0#0",
         "box%byte_containing_bit_offset%0#0"
       ]
     },
-    "1190": {
+    "1205": {
       "op": "bytec_0 // \"tup_bag\"",
       "defined_out": [
         "\"tup_bag\"",
@@ -6912,7 +7142,7 @@
         "\"tup_bag\""
       ]
     },
-    "1191": {
+    "1206": {
       "op": "uncover 1",
       "stack_out": [
         "box%element_bit_offset%0#0",
@@ -6920,7 +7150,7 @@
         "box%byte_containing_bit_offset%0#0"
       ]
     },
-    "1193": {
+    "1208": {
       "op": "intc_2 // 1",
       "defined_out": [
         "\"tup_bag\"",
@@ -6935,7 +7165,7 @@
         "1"
       ]
     },
-    "1194": {
+    "1209": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -6946,14 +7176,14 @@
         "box%box_extract%0#0"
       ]
     },
-    "1195": {
+    "1210": {
       "op": "cover 1",
       "stack_out": [
         "box%box_extract%0#0",
         "box%element_bit_offset%0#0"
       ]
     },
-    "1197": {
+    "1212": {
       "op": "dup",
       "defined_out": [
         "box%box_extract%0#0",
@@ -6966,7 +7196,7 @@
         "box%element_bit_offset%0#0 (copy)"
       ]
     },
-    "1198": {
+    "1213": {
       "op": "intc_1 // 8",
       "stack_out": [
         "box%box_extract%0#0",
@@ -6975,7 +7205,7 @@
         "8"
       ]
     },
-    "1199": {
+    "1214": {
       "op": "<",
       "defined_out": [
         "aggregate%lt%0#0",
@@ -6988,7 +7218,7 @@
         "aggregate%lt%0#0"
       ]
     },
-    "1200": {
+    "1215": {
       "error": "index access is out of bounds",
       "op": "assert // index access is out of bounds",
       "stack_out": [
@@ -6996,27 +7226,27 @@
         "box%element_bit_offset%0#0"
       ]
     },
-    "1201": {
+    "1216": {
       "op": "getbit",
       "defined_out": [
-        "values%0#0"
+        "tmp%0#0"
       ],
       "stack_out": [
-        "values%0#0"
+        "tmp%0#0"
       ]
     },
-    "1202": {
+    "1217": {
       "error": "app not bootstrapped",
       "op": "assert // app not bootstrapped",
       "stack_out": []
     },
-    "1203": {
+    "1218": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "1204": {
+    "1219": {
       "op": "pushint 136",
       "defined_out": [
         "0",
@@ -7027,7 +7257,7 @@
         "136"
       ]
     },
-    "1207": {
+    "1222": {
       "op": "+",
       "defined_out": [
         "box%offset%0#0"
@@ -7036,21 +7266,21 @@
         "box%offset%0#0"
       ]
     },
-    "1208": {
+    "1223": {
       "op": "bytec_0 // \"tup_bag\"",
       "stack_out": [
         "box%offset%0#0",
         "\"tup_bag\""
       ]
     },
-    "1209": {
+    "1224": {
       "op": "uncover 1",
       "stack_out": [
         "\"tup_bag\"",
         "box%offset%0#0"
       ]
     },
-    "1211": {
+    "1226": {
       "op": "pushint 32",
       "defined_out": [
         "\"tup_bag\"",
@@ -7063,114 +7293,23 @@
         "32"
       ]
     },
-    "1213": {
-      "op": "box_extract",
-      "defined_out": [
-        "values%1#0"
-      ],
-      "stack_out": [
-        "values%1#0"
-      ]
-    },
-    "1214": {
-      "op": "txn Sender",
-      "defined_out": [
-        "tmp%0#0",
-        "values%1#0"
-      ],
-      "stack_out": [
-        "values%1#0",
-        "tmp%0#0"
-      ]
-    },
-    "1216": {
-      "op": "==",
-      "defined_out": [
-        "tmp%1#0"
-      ],
-      "stack_out": [
-        "tmp%1#0"
-      ]
-    },
-    "1217": {
-      "error": "sender not authorized",
-      "op": "assert // sender not authorized",
-      "stack_out": []
-    },
-    "1218": {
-      "op": "intc_0 // 0",
-      "stack_out": [
-        "0"
-      ]
-    },
-    "1219": {
-      "op": "pushint 168",
-      "defined_out": [
-        "0",
-        "168"
-      ],
-      "stack_out": [
-        "0",
-        "168"
-      ]
-    },
-    "1222": {
-      "op": "+",
-      "defined_out": [
-        "box%offset%1#0"
-      ],
-      "stack_out": [
-        "box%offset%1#0"
-      ]
-    },
-    "1223": {
-      "op": "bytec_0 // \"tup_bag\"",
-      "stack_out": [
-        "box%offset%1#0",
-        "\"tup_bag\""
-      ]
-    },
-    "1224": {
-      "op": "uncover 1",
-      "stack_out": [
-        "\"tup_bag\"",
-        "box%offset%1#0"
-      ]
-    },
-    "1226": {
-      "op": "intc_1 // 8",
-      "stack_out": [
-        "\"tup_bag\"",
-        "box%offset%1#0",
-        "8"
-      ]
-    },
-    "1227": {
-      "op": "box_extract",
-      "defined_out": [
-        "tuple_item%2#0"
-      ],
-      "stack_out": [
-        "tuple_item%2#0"
-      ]
-    },
     "1228": {
-      "op": "btoi",
+      "op": "box_extract",
       "defined_out": [
-        "values%2#0"
+        "tmp%1#0"
       ],
       "stack_out": [
-        "values%2#0"
+        "tmp%1#0"
       ]
     },
     "1229": {
-      "op": "global CurrentApplicationID",
+      "op": "txn Sender",
       "defined_out": [
-        "tmp%2#0",
-        "values%2#0"
+        "tmp%1#0",
+        "tmp%2#0"
       ],
       "stack_out": [
-        "values%2#0",
+        "tmp%1#0",
         "tmp%2#0"
       ]
     },
@@ -7184,11 +7323,102 @@
       ]
     },
     "1232": {
+      "error": "sender not authorized",
+      "op": "assert // sender not authorized",
+      "stack_out": []
+    },
+    "1233": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "1234": {
+      "op": "pushint 168",
+      "defined_out": [
+        "0",
+        "168"
+      ],
+      "stack_out": [
+        "0",
+        "168"
+      ]
+    },
+    "1237": {
+      "op": "+",
+      "defined_out": [
+        "box%offset%1#0"
+      ],
+      "stack_out": [
+        "box%offset%1#0"
+      ]
+    },
+    "1238": {
+      "op": "bytec_0 // \"tup_bag\"",
+      "stack_out": [
+        "box%offset%1#0",
+        "\"tup_bag\""
+      ]
+    },
+    "1239": {
+      "op": "uncover 1",
+      "stack_out": [
+        "\"tup_bag\"",
+        "box%offset%1#0"
+      ]
+    },
+    "1241": {
+      "op": "intc_1 // 8",
+      "stack_out": [
+        "\"tup_bag\"",
+        "box%offset%1#0",
+        "8"
+      ]
+    },
+    "1242": {
+      "op": "box_extract",
+      "defined_out": [
+        "tuple_item%2#0"
+      ],
+      "stack_out": [
+        "tuple_item%2#0"
+      ]
+    },
+    "1243": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "1244": {
+      "op": "global CurrentApplicationID",
+      "defined_out": [
+        "tmp%4#0",
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%4#0",
+        "tmp%5#0"
+      ]
+    },
+    "1246": {
+      "op": "==",
+      "defined_out": [
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "tmp%6#0"
+      ]
+    },
+    "1247": {
       "error": "this error should be impossible",
       "op": "assert // this error should be impossible",
       "stack_out": []
     },
-    "1233": {
+    "1248": {
       "retsub": true,
       "op": "retsub"
     }

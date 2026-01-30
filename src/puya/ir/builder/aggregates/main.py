@@ -10,10 +10,11 @@ from puya.ir import (
 )
 from puya.ir._puya_lib import PuyaLibIR
 from puya.ir.avm_ops import AVMOp
+from puya.ir.builder._utils import invoke_puya_lib_subroutine
 from puya.ir.builder.aggregates import arc4_codecs, sequence, tup
 from puya.ir.encodings import ArrayEncoding, Encoding, TupleEncoding
 from puya.ir.mutating_register_context import MutatingRegisterContext
-from puya.ir.op_utils import assert_value
+from puya.ir.op_utils import OpFactory, assert_value
 
 logger = log.get_logger(__name__)
 
@@ -58,6 +59,51 @@ class _AggregateNodeReplacer(MutatingRegisterContext):
         return sequence.get_length(
             self, length.array_encoding, length.base, length.source_location
         )
+
+    @typing.override
+    def visit_array_pop(self, pop: ir.ArrayPop) -> ir.ValueProvider:
+        array_encoding = pop.array_encoding
+        element_encoding = array_encoding.element
+        if not element_encoding.is_fixed or element_encoding.is_bit:
+            raise InternalError(
+                "ir.ArrayPop only supports fixed size elements currently", pop.source_location
+            )
+        if array_encoding.length_header:
+            pop_method = PuyaLibIR.dynamic_array_pop_fixed_size
+        else:
+            pop_method = PuyaLibIR.r_trim
+        return invoke_puya_lib_subroutine(
+            self,
+            full_name=pop_method,
+            args=[pop.base, element_encoding.checked_num_bytes],
+            source_location=pop.source_location,
+        )
+
+    @typing.override
+    def visit_array_concat(self, concat: ir.ArrayConcat) -> ir.ValueProvider:
+        array_encoding = concat.array_encoding
+        array_element = array_encoding.element
+        if not array_element.is_fixed or array_element.is_bit:
+            raise InternalError(
+                "ir.ArrayConcat only supports fixed size elements currently",
+                concat.source_location,
+            )
+        factory = OpFactory(self, concat.source_location)
+        if array_encoding.length_header:
+            updated_array: ir.ValueProvider = invoke_puya_lib_subroutine(
+                self,
+                full_name=PuyaLibIR.dynamic_array_concat_fixed,
+                args=[concat.base, concat.items, concat.num_items],
+                source_location=concat.source_location,
+            )
+        else:
+            updated_array = factory.concat(
+                concat.base,
+                concat.items,
+                ir_type=concat.base_type,
+                error_message="max array length exceeded",
+            )
+        return factory.as_ir_type(updated_array, concat.base_type)
 
     @typing.override
     def visit_extract_value(self, read: ir.ExtractValue) -> ir.Value:

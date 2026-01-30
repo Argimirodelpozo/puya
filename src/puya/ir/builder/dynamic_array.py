@@ -188,45 +188,52 @@ class _FixedElementDynamicArrayBuilder(_DynamicArrayBuilderImpl):
         iterable: ir.ValueProvider,
         iterable_ir_type: types.IRType | types.TupleIRType,
     ) -> ir.Value:
-        _, iter_head_and_tail = self._get_iterable_length_and_head_tail(iterable, iterable_ir_type)
-        iter_head_and_tail = self.factory.materialise_single(iter_head_and_tail)
-        updated_array = self.factory.concat(
-            array,
-            iter_head_and_tail,
-            ir_type=array.ir_type,
-            error_message="max array length exceeded",
+        iter_len, iter_head_and_tail = self._get_iterable_length_and_head_tail(
+            iterable, iterable_ir_type
         )
-        if self.array_encoding.length_header:
-            if isinstance(iterable_ir_type, types.TupleIRType):
-                existing_len = self.factory.extract_uint16(array, 0)
-                array_len = self.factory.add(existing_len, len(iterable_ir_type.elements))
-            else:
-                array_head_and_tail = self.factory.extract_to_end(updated_array, 2)
-                array_bytes_len = self.factory.len(array_head_and_tail)
-                array_len = self.factory.div_floor(
-                    array_bytes_len, self.array_encoding.element.checked_num_bytes
-                )
-            array_len_u16 = self.factory.as_u16_bytes(array_len)
-            updated_array = self.factory.replace(updated_array, 0, array_len_u16)
-        return self._as_array_type(updated_array)
+        iter_head_and_tail = self.factory.materialise_single(iter_head_and_tail)
+        iter_len = self.factory.materialise_single(iter_len)
+        concat = ir.ArrayConcat(
+            base=array,
+            base_type=types.EncodedType(self.array_encoding),
+            items=iter_head_and_tail,
+            num_items=iter_len,
+            source_location=self.loc,
+        )
+        return self.factory.materialise_single(concat)
 
     @typing.override
     def pop(self, array: ir.Value) -> tuple[ir.Value, ir.MultiValue]:
-        element_encoding = self.array_encoding.element
-        if self.array_encoding.length_header:
-            invoke = invoke_puya_lib_subroutine(
-                self.context,
-                full_name=PuyaLibIR.dynamic_array_pop_fixed_size,
-                args=[array, element_encoding.checked_num_bytes],
+        array_len = self.factory.materialise_single(
+            get_length(
+                self.array_encoding,
+                array,
+                self.loc,
+            )
+        )
+        last_index = self.factory.sub(array_len, 1)
+        array_type = types.EncodedType(self.array_encoding)
+        if self.array_encoding.element.is_bit:
+            ir_type: types.IRType = types.bool_
+        else:
+            ir_type = types.EncodedType(self.array_encoding.element)
+        encoded_item = self.factory.materialise_single(
+            ir.ExtractValue(
+                base=array,
+                base_type=array_type,
+                ir_type=ir_type,
+                check_bounds=False,
+                indexes=(last_index,),
                 source_location=self.loc,
             )
-            popped, data = self.factory.materialise_values(invoke)
-        else:
-            array_bytes_len = self.factory.len(array)
-            start_offset = self.factory.sub(array_bytes_len, element_encoding.checked_num_bytes)
-            data = self.factory.extract3(array, 0, start_offset)
-            popped = self.factory.extract_to_end(array, start_offset)
-        return data, self._decode_popped_element(popped)
+        )
+        popped_array = ir.ArrayPop(
+            base=array,
+            base_type=array_type,
+            source_location=self.loc,
+        )
+        popped = self._decode_popped_element(encoded_item)
+        return self.factory.materialise_single(popped_array), popped
 
 
 class _DynamicByteLengthElementDynamicArrayBuilder(_DynamicArrayBuilderImpl):

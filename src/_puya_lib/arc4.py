@@ -44,22 +44,26 @@ def dynamic_array_pop_bit(array: Bytes) -> tuple[bool, Bytes]:
 
 
 @__pure
+@subroutine(inline=True)
+def r_trim(b: Bytes, n: UInt64) -> Bytes:
+    """Remove the last n bytes from b"""
+    return substring(b, 0, b.length - n)
+
+
+@__pure
 @subroutine
-def dynamic_array_pop_fixed_size(array: Bytes, fixed_byte_size: UInt64) -> tuple[Bytes, Bytes]:
+def dynamic_array_pop_fixed_size(array: Bytes, fixed_byte_size: UInt64) -> Bytes:
     """
     Pop the last item from an arc4 dynamic array of fixed sized items
 
     array: The bytes for the source array
 
-    returns: tuple of (The popped item, The updated bytes for the source array)
+    returns: The updated bytes for the source array
     """
-    array_length = extract_uint16(array, 0)
+    result = r_trim(array, fixed_byte_size)
+    array_length = extract_uint16(result, 0)
     length_minus_1 = array_length - 1
-    result = replace(array, 0, extract(itob(length_minus_1), UINT16_OFFSET, 0))
-    item_location = result.length - fixed_byte_size
-    popped = extract(result, item_location, fixed_byte_size)
-    result = substring(result, 0, item_location)
-    return popped, result
+    return replace(result, 0, extract(itob(length_minus_1), UINT16_OFFSET, 0))
 
 
 @__pure
@@ -124,6 +128,29 @@ def dynamic_array_pop_dynamic_element(array: Bytes) -> tuple[Bytes, Bytes]:
     )
 
     return popped, updated
+
+
+@__pure
+@subroutine(inline=True)  # inline=True matches historical behaviour of puya
+def dynamic_array_concat_fixed(
+    *,
+    array: Bytes,
+    new_items_bytes: Bytes,
+    new_items_count: UInt64,
+) -> Bytes:
+    """
+    Concat data to an arc4 dynamic array of fixed size elements
+
+    array: The bytes for the source array
+    new_items_count: The count of new items being added (N)
+    new_items_bytes: THe concatenated bytes of N array elements
+    returns: The updated bytes for the source array
+    """
+    array_length = extract_uint16(array, 0)
+    new_array_length = array_length + new_items_count
+    new_len_u16 = extract(itob(new_array_length), UINT16_OFFSET, 0)
+    result = replace(array, 0, new_len_u16)
+    return result + new_items_bytes
 
 
 @__pure
