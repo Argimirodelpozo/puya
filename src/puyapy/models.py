@@ -32,6 +32,7 @@ class ContractClassOptions:
     state_totals: StateTotals | None
     avm_version: int | None
     autosalt: bool | None
+    splitter: str | None = None
 
 
 @attrs.frozen

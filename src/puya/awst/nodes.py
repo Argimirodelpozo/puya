@@ -2631,6 +2631,9 @@ class Contract(RootNode):
     """AVM version to target, defaults to options.target_avm_version"""
     autosalt: bool | None = None
     """Off-curve autosalt override. `None` leaves contracts unsalted (#pragma emitted on v>=13)"""
+    splitter: str | None = None
+    """uros splitter selector (e.g. "uros"): when set, methods' `chunk` names group
+    them and the splitter runs automatically. None = no in-contract splitter."""
 
     @approval_program.validator
     def check_approval(self, _attribute: object, approval: ContractMethod) -> None:
@@ -2759,6 +2762,8 @@ class ARC4ABIMethodConfig:
     default_args: immutabledict[str, ABIMethodArgDefault] = immutabledict()
     """Mapping is from parameter -> source"""
     validate_encoding: bool | None = None
+    chunk: str | None = None
+    """uros splitter: named chunk this method belongs to (None = not split)"""
 
 
 ARC4MethodConfig = ARC4BareMethodConfig | ARC4ABIMethodConfig

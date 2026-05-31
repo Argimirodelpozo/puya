@@ -65,6 +65,7 @@ _VALIDATE_ENCODING = "validate_encoding"
 _ALLOWED_ACTIONS = "allow_actions"
 _CREATE_OPTIONS = "create"
 _NAME_OVERRIDE = "name"
+_CHUNK = "chunk"
 
 
 def get_arc4_abimethod_data(
@@ -147,6 +148,16 @@ def get_arc4_abimethod_data(
         case invalid_default_args_option:
             context.error(f"invalid default_args option: {invalid_default_args_option}", dec_loc)
 
+    # map "chunk" param (uros splitter: named chunk this method belongs to)
+    chunk: str | None = None
+    match evaluated_args.pop(_CHUNK, None):
+        case None:
+            pass
+        case str(chunk_value):
+            chunk = chunk_value
+        case invalid_chunk:
+            context.error(f"invalid chunk option: {invalid_chunk}", dec_loc)
+
     for unexpected_arg_name in evaluated_args:
         context.error(f"unexpected argument: {unexpected_arg_name}", dec_loc)
 
@@ -159,6 +170,7 @@ def get_arc4_abimethod_data(
         resource_encoding=resource_encoding,
         default_args=immutabledict(default_args),
         validate_encoding=validate_encoding,
+        chunk=chunk,
     )
     return ARC4ABIMethodData(
         member_name=func_def.name,
