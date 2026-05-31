@@ -31,6 +31,7 @@ class ContractClassOptions:
     scratch_slot_reservations: Set[int] | None
     state_totals: StateTotals | None
     avm_version: int | None
+    splitter: str | None = None
 
 
 @attrs.frozen

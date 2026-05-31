@@ -618,9 +618,16 @@ def _process_contract_class_options(
     scratch_slot_reservations = set[int]()
     state_totals = None
     avm_version = None
+    splitter: str | None = None
     for kw_name, kw_expr in cdef.keywords.items():
         with context.log_exceptions(kw_expr):
             match kw_name:
+                case "splitter":
+                    splitter_value = expr_visitor.visit_expression(kw_expr)
+                    if isinstance(splitter_value, str):
+                        splitter = splitter_value
+                    else:
+                        context.error("unexpected argument type", kw_expr)
                 case "name":
                     name_value = expr_visitor.visit_expression(kw_expr)
                     if isinstance(name_value, str):
@@ -674,6 +681,7 @@ def _process_contract_class_options(
         scratch_slot_reservations=scratch_slot_reservations,
         state_totals=state_totals,
         avm_version=avm_version,
+        splitter=splitter,
     )
 
 
