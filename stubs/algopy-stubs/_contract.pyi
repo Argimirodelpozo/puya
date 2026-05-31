@@ -42,6 +42,7 @@ class Contract(abc.ABC):
         state_totals: StateTotals = ...,
         avm_version: int = ...,
         autosalt: bool = ...,
+        splitter: str = ...,
     ):
         """
         When declaring a Contract subclass, options and configuration are passed in

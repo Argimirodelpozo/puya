@@ -48,6 +48,7 @@ def abimethod(
     readonly: bool = False,
     default_args: Mapping[str, str | _ReadOnlyNoArgsMethod | object] = ...,
     validate_encoding: typing.Literal["unsafe_disabled", "args"] = ...,
+    chunk: str = ...,
 ) -> Callable[[Callable[_P, _R]], Callable[_P, _R]]:
     """Decorator that indicates a method is an ARC-4 ABI method.
 
