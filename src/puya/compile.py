@@ -57,8 +57,20 @@ def awst_to_teal(
     *,
     write: bool = True,
 ) -> list[CompilationArtifact]:
+    # detect the kwarg-driven uros splitter config (Contract(..., splitter="uros") + per-method
+    # chunk=). The chunks are pipeline state, threaded as a local: the detected hint chunks drive
+    # infra grafting + the split, then `apply` returns the resolved chunks (post force-merge) for
+    # the deploy manifest. Empty when no contract opted in.
+    from puya.ir import uros
+
+    uros_chunks = uros.detect_config(awst)
     validate_awst(awst)
     log_ctx.exit_if_errors()
+    if uros_chunks:
+        # merge the embedded uros lib (setup + grafted infra) so a single invocation emits the
+        # whole system, and inject the per-method preceded-by-prepare guard
+        awst, extra_compilation = uros.inject_setup(awst, uros_chunks, compilation_set)
+        compilation_set = {**compilation_set, **extra_compilation}
     context = CompileContext(
         options=options,
         compilation_set=compilation_set,
@@ -67,10 +79,15 @@ def awst_to_teal(
     log_ctx.exit_if_errors()
     ir = list(awst_to_ir(context, awst))
     log_ctx.exit_if_errors()
+    if uros_chunks:
+        ir, context, uros_chunks = uros.apply(context, ir, uros_chunks)
+        log_ctx.exit_if_errors()
     teal = list(_ir_to_teal(log_ctx, context, ir))
     log_ctx.exit_if_errors()
     if write:
         _write_artifacts(context, teal)
+        if uros_chunks:
+            uros.write_manifest(context, teal, uros_chunks)
     return teal
 
 
