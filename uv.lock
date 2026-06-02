@@ -1439,7 +1439,7 @@ wheels = [
 
 [[package]]
 name = "puyapy"
-version = "5.9.0rc1"
+version = "5.9.0rc2"
 source = { editable = "." }
 dependencies = [
     { name = "attrs" },
