@@ -5,6 +5,7 @@ import typing
 import warnings
 from collections.abc import Mapping, Sequence
 from pathlib import Path
+from typing import Literal
 
 from cattrs.literals import is_literal_containing_enums
 from cattrs.preconf.json import JsonConverter, make_converter
@@ -17,6 +18,9 @@ from puya.errors import InternalError, PuyaError
 
 logger = log.get_logger(__name__)
 
+ID_KEY = "_$%!#ID"
+REF_KEY = "_$%!#REF"
+
 
 def _unstructure_optional_enum_literal(value: object) -> object:
     if value is None:
@@ -24,6 +28,65 @@ def _unstructure_optional_enum_literal(value: object) -> object:
     if not isinstance(value, enum.Enum):
         raise TypeError("expected enum value")
     return value.value
+
+
+def _resolve_json_references_inplace(obj: object) -> None:
+    definitions: dict[int, dict[str, object]] = {}
+    visited_nodes: set[int]
+
+    def gather_definitions(v: object) -> None:
+        if id(v) in visited_nodes:
+            return
+        visited_nodes.add(id(v))
+
+        if isinstance(v, dict):
+            id_key = v.get(ID_KEY)
+            if id_key is not None:
+                assert id_key not in definitions, f"{id_key} was defined multiple times"
+                definitions[id_key] = v
+                del v[ID_KEY]
+            for child in v.values():
+                gather_definitions(child)
+        if isinstance(v, list):
+            for child in v:
+                gather_definitions(child)
+
+    def replace_references(
+        v: object,
+    ) -> tuple[Literal[True], object] | tuple[Literal[False], None]:
+        already_visited = id(v) in visited_nodes
+        visited_nodes.add(id(v))
+
+        if isinstance(v, dict):
+            ref_key = v.get(REF_KEY)
+            if ref_key is not None:
+                assert ref_key in definitions, f"{ref_key} was not defined"
+                return True, definitions[ref_key]
+            if already_visited:
+                return False, None
+
+            keys = v.keys()
+            for k in keys:
+                should_update, new_field_value = replace_references(v[k])
+                if should_update:
+                    v[k] = new_field_value
+
+        if isinstance(v, list):
+            if already_visited:
+                return False, None
+
+            length = len(v)
+            for i in range(length):
+                should_update, new_field_value = replace_references(v[i])
+                if should_update:
+                    v[i] = new_field_value
+
+        return False, None
+
+    visited_nodes = set()
+    gather_definitions(obj)
+    visited_nodes = set()
+    replace_references(obj)
 
 
 @functools.cache
@@ -91,6 +154,8 @@ def get_converter() -> JsonConverter:
     @functools.wraps(structure_method)
     def wrapped_structure[T](obj: object, cl: type[T]) -> T:
         try:
+            _resolve_json_references_inplace(obj)
+
             # ignore DeprecationWarning while structuring
             with warnings.catch_warnings(action="ignore", category=DeprecationWarning):
                 return structure_method(obj, cl)
