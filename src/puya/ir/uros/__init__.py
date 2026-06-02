@@ -86,7 +86,12 @@ def split_contract(
     for group in groups:
         keep = set(group)
         chunk_contract = deep_copy(contract)
-        _stub_method_bodies(chunk_contract, method_names - keep - keep_real)
+        # Keep every impl real; cut dispatch for non-owned methods by stubbing their
+        # routing wrappers. Per-Contract DCE then prunes the impls this chunk can't
+        # reach, while impls reached by internal calls from the chunk's own methods
+        # survive — so internal calls to other ABI methods Just Work, with no
+        # force-merge and no reachability bookkeeping (DCE already does it).
+        _stub_routing_wrappers(chunk_contract, method_names - keep - keep_real)
         chunks.append(chunk_contract)
     return main_shell, chunks
 
@@ -109,6 +114,17 @@ def _stub_method_bodies(contract: ir.Contract, method_names: set[str]) -> None:
             ):
                 continue
             if sub.short_name in method_names:
+                _stub_subroutine(sub)
+
+
+def _stub_routing_wrappers(contract: ir.Contract, method_names: set[str]) -> None:
+    """Stub the ARC-4 routing wrappers of the given methods, cutting their dispatch to the
+    (kept-real) impls. Each impl then survives per-Contract DCE only if reached by an internal
+    call from a method this chunk still owns — so cross-chunk internal calls keep working while
+    everything else is pruned, with no force-merge needed."""
+    for program in contract.all_programs():
+        for sub in program.all_subroutines:
+            if sub.is_routing_wrapper and sub.short_name in method_names:
                 _stub_subroutine(sub)
 
 
@@ -163,18 +179,17 @@ def detect_config(awst: AWST) -> UrosChunks:
         cfg = m.arc4_method_config
         if not isinstance(cfg, awst_nodes.ARC4ABIMethodConfig):
             continue
-        if cfg.chunk is None:
+        # Unannotated ABI methods — including compiler-synthesised ones the user
+        # can't annotate, e.g. the SimpleSplitter's `__delegate_update` — default
+        # to the `shell` chunk. They stay real in the genesis shell and DCE trims
+        # whatever each chunk doesn't reach, so no explicit marker is required.
+        chunk = cfg.chunk if cfg.chunk is not None else "shell"
+        if "+" in chunk:
             raise CodeError(
-                f"{target.id}.{m.member_name}: contract has splitter={SPLITTER_KEY!r} but"
-                " this @arc4.abimethod has no `chunk='...'` marker — every ABI method must"
-                " declare which chunk it belongs to"
+                f"{target.id}.{m.member_name}: chunk name {chunk!r} may not contain '+'"
+                " ('+' is reserved as the chunk-name separator)"
             )
-        if "+" in cfg.chunk:
-            raise CodeError(
-                f"{target.id}.{m.member_name}: chunk name {cfg.chunk!r} may not contain '+'"
-                " ('+' is reserved as the separator for force-merged chunk names)"
-            )
-        chunks.setdefault(cfg.chunk, []).append(m.member_name)
+        chunks.setdefault(chunk, []).append(m.member_name)
     return tuple((name, tuple(methods)) for name, methods in chunks.items())
 
 
@@ -262,7 +277,106 @@ def _inject_guards(
         else m
         for m in target.methods
     )
-    return attrs.evolve(target, methods=methods)
+    target = attrs.evolve(target, methods=methods)
+    # The grafted guard adds a leading ABI transaction arg to each chunked method
+    # so external clients auto-place setup.prepare. But an INTERNAL call (callsub)
+    # can't supply an ABI transaction arg, so the now-2-arg signature breaks every
+    # internal caller (e.g. `addAsset` -> `isUnderlyingListed`). Rewrite each
+    # internal call to a chunked method to pass GroupTransactionReference(
+    # GroupIndex - 1) — exactly the preceding setup.prepare the ABI router
+    # resolves externally. GroupIndex is constant within a top-level txn, so an
+    # internal call re-reads the same setup.prepare and the guard re-passes.
+    # (Every chunk keeps all impls real and lets per-Contract DCE prune the
+    # unreachable ones, so the callee's real body survives in whatever chunk
+    # internally calls it; here we only fix the call signature.)
+    return _rewrite_internal_calls(target, requested, guard_arg.wtype)
+
+
+def _make_prep_ref(prep_wtype: object, loc: object) -> object:
+    """Build `GroupTransactionReference(txn.GroupIndex - 1)` typed as the guard's
+    transaction arg — the value the ABI router passes externally."""
+    from puya.awst import nodes as awst_nodes
+    from puya.awst import wtypes
+    from puya.ir.arc4_router import _constant, _txn, _uint64_sub
+
+    group_index = _txn("GroupIndex", wtypes.uint64_wtype, loc)
+    index = _uint64_sub(group_index, _constant(1, loc), loc)
+    return awst_nodes.GroupTransactionReference(
+        index=index, wtype=prep_wtype, source_location=loc
+    )
+
+
+def _rewrite_internal_calls(
+    target: AwstContract, requested: set[str], prep_wtype: object
+) -> AwstContract:
+    """Prepend a preceding-setup transaction arg to every internal call of a
+    chunked method (see _inject_guards). Generic recursive rebuild over the AWST
+    (frozen attrs nodes), intercepting SubroutineCallExpression targets."""
+    import attrs as _attrs
+
+    return _attrs.evolve(
+        target,
+        methods=tuple(_rewrite_node(m, requested, prep_wtype) for m in target.methods),
+    )
+
+
+def _rewrite_node(node: object, requested: set[str], prep_wtype: object) -> object:
+    import attrs as _attrs
+
+    from puya.awst import nodes as awst_nodes
+
+    changes = {}
+    for f in _attrs.fields(type(node)):
+        v = getattr(node, f.name)
+        nv = _rewrite_value(v, requested, prep_wtype)
+        if nv is not v:
+            changes[f.name] = nv
+    if changes:
+        node = _attrs.evolve(node, **changes)
+    if (
+        isinstance(node, awst_nodes.SubroutineCallExpression)
+        and isinstance(
+            node.target,
+            (
+                awst_nodes.InstanceMethodTarget,
+                awst_nodes.InstanceSuperMethodTarget,
+                awst_nodes.ContractMethodTarget,
+            ),
+        )
+        and node.target.member_name in requested
+    ):
+        prep = awst_nodes.CallArg(
+            name=None, value=_make_prep_ref(prep_wtype, node.source_location)
+        )
+        node = _attrs.evolve(node, args=(prep, *node.args))
+    return node
+
+
+def _rewrite_value(v: object, requested: set[str], prep_wtype: object) -> object:
+    import attrs as _attrs
+    from collections.abc import Mapping
+
+    from puya.awst import nodes as awst_nodes
+
+    if isinstance(v, awst_nodes.Node):
+        return _rewrite_node(v, requested, prep_wtype)
+    if isinstance(v, awst_nodes.CallArg):
+        nv = _rewrite_value(v.value, requested, prep_wtype)
+        return _attrs.evolve(v, value=nv) if nv is not v.value else v
+    if isinstance(v, tuple):
+        return tuple(_rewrite_value(x, requested, prep_wtype) for x in v)
+    # Mapping fields (immutabledict): NewStruct.values, Switch.cases (Expression
+    # keys), inner-txn field maps. Recurse keys AND values; the attrs converter
+    # re-wraps the plain dict on evolve. Without this, calls nested in e.g. an
+    # ARC-4 struct literal arg are missed (AAVE Hub's AssetConfig{...}).
+    if isinstance(v, Mapping):
+        return {
+            _rewrite_value(k, requested, prep_wtype): _rewrite_value(
+                val, requested, prep_wtype
+            )
+            for k, val in v.items()
+        }
+    return v
 
 
 # --- IR-level dispatch (after awst_to_ir) ---
@@ -318,67 +432,18 @@ def apply(
 
 
 def _resolve_chunks(contract: ir.Contract, chunks: UrosChunks) -> UrosChunks:
-    """Resolve the `chunk=` hint pairs into the final chunks. Each hint chunk stays its own chunk,
-    except hint-chunks whose ABI methods (transitively) call each other are force-merged — only
-    one chunk is live at a time, so a callee can't be left as a stub. Final chunk name = the
-    '+'-joined sorted hint names it contains (an un-merged chunk keeps its own name)."""
-    from puya.ir.optimize._call_graph import CallGraph
-
-    program = contract.approval_program
-    cg = CallGraph(program)
-    body_subs = [
-        s
-        for s in program.all_subroutines
-        if s is not program.main
-        and not s.is_routing_wrapper
-        and s.short_name != ROUTER_SHORT_NAME
-    ]
-    impl = {}  # ABI method name -> its (non-wrapper) impl subroutine
-    for s in body_subs:
-        impl.setdefault(s.short_name, s)
-    abi = abi_method_names(contract)
-
-    def reached_abi_methods(methods: tuple[str, ...]) -> set[str]:
-        # ABI methods (transitively) called by these methods' impls — they must co-locate
-        reached: set[str] = set()
-        for m in methods:
-            start = impl.get(m)
-            if start is None:
-                continue
-            for s in body_subs:
-                if s.short_name in abi and (s.id == start.id or cg.has_path(start.id, s.id)):
-                    reached.add(s.short_name)
-        return reached
-
-    units = [
-        {"names": [name], "methods": list(methods), "reaches": reached_abi_methods(methods)}
-        for name, methods in chunks
-    ]
-
-    # force-merge units whose ABI methods call each other
-    merged = True
-    while merged:
-        merged = False
-        for i in range(len(units)):
-            for j in range(len(units) - 1, i, -1):
-                ui, uj = units[i], units[j]
-                if (set(ui["methods"]) & uj["reaches"]) or (set(uj["methods"]) & ui["reaches"]):
-                    ui["names"] += uj["names"]
-                    ui["methods"] += uj["methods"]
-                    ui["reaches"] |= uj["reaches"]
-                    units.pop(j)
-                    merged = True
-
-    resolved: UrosChunks = tuple(
-        ("+".join(sorted(u["names"])), tuple(u["methods"])) for u in units
-    )
-    for name, _ in resolved:
+    """Each `chunk=` hint stays its own chunk. Cross-chunk internal calls used to require
+    force-merging call-connected hint-chunks (a callee can't be a stub); that is no longer needed
+    — split_contract keeps every impl real per chunk and lets per-Contract DCE prune the
+    unreachable ones, so a chunk that internally calls another chunk's ABI method just keeps that
+    impl. Only validate the chunk names fit the 64-byte box-key limit."""
+    for name, _ in chunks:
         if len(name.encode()) > 64:
             raise CodeError(
                 f"uros splitter: chunk name {name!r} exceeds the 64-byte box-key limit;"
                 " use fewer / coarser chunk= hints"
             )
-    return resolved
+    return chunks
 
 
 def write_manifest(
