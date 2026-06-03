@@ -13,8 +13,6 @@ chunk is live at a time, so a callee can't be left as a stub. (A merged chunk's 
 `+`-joined names, e.g. `fast+slow`.) Sizing each chunk under 8 KB is up to you; if a chunk
 overshoots, the assembler rejects it — split it with finer `chunk=` names.
 
-Driven entirely by **in-contract config** — no CLI flag:
-
 ```python
 class MyContract(arc4.ARC4Contract, splitter="uros"):
     @arc4.abimethod(chunk="fast")
