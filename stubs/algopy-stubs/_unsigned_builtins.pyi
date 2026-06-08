@@ -14,9 +14,9 @@ from algopy import UInt64
 class urange(Reversible[UInt64]):  # noqa: N801
     """Produces a sequence of UInt64 from start (inclusive) to stop (exclusive) by step.
 
-    urange(4) produces 0, 1, 2, 3
-    urange(i, j) produces i, i+1, i+2, ..., j-1.
-    urange(i, j, 2) produces i, i+2, i+4, ..., i+2n where n is the largest value where i+2n < j
+    - urange(4) produces 0, 1, 2, 3
+    - urange(i, j) produces i, i+1, i+2, ..., j-1.
+    - urange(i, j, 2) produces i, i+2, i+4, ..., i+2n where n is the largest value where i+2n < j
     """
 
     @typing.overload
@@ -35,7 +35,10 @@ class uenumerate(Reversible[tuple[UInt64, _T]]):  # noqa: N801
     """Yields pairs containing a count (from zero) and a value yielded by the iterable argument.
 
     enumerate is useful for obtaining an indexed list:
-        (0, seq[0]), (1, seq[1]), (2, seq[2]), ...
+
+    ```
+    (0, seq[0]), (1, seq[1]), (2, seq[2]), ...
+    ```
 
     enumerate((a, b, c)) produces (0, a), (1, b), (2, c)
     """
