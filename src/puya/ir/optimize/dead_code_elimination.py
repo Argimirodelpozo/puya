@@ -45,8 +45,13 @@ PURE_AVM_OPS = frozenset(
         "shl",
         "shr",
         # group: fail if an input is zero
-        "%",
-        "/",
+        # NB "%" / "/" (and their biguint twins below) are deliberately NOT in this
+        # list for puya-sol: the opcode's divide-by-zero panic IS the EVM-semantic
+        # revert (the frontend emits no explicit assert for it, unlike checked
+        # +/-/* whose asserts keep their operands alive). Dropping an unused
+        # division deletes that revert: `(d / d) << 256` must still revert at
+        # d == 0 after the shift constant-folds to 0. Found by the differential
+        # fuzzer (missing-revert class).
         "expw",
         "divmodw",
         "divw",
@@ -91,11 +96,11 @@ PURE_AVM_OPS = frozenset(
         "gtxnsas",
         "block",
         # group: fail on input too large
-        "b%",
+        # NB "b%" / "b/" excluded for puya-sol — the zero-divisor panic carries the
+        # EVM revert semantics; see the "/" / "%" note above.
         "b*",
         "b+",
         "b-",
-        "b/",
         "b^",
         "btoi",
         # group: might fail on input too large? TODO: verify these
