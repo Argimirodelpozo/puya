@@ -21,8 +21,8 @@ def ensure_budget(required_budget: UInt64, fee_source: OpUpFeeSource) -> None:
         op.ITxnCreate.begin()
         op.ITxnCreate.set_type_enum(TransactionType.ApplicationCall)
         op.ITxnCreate.set_on_completion(OnCompleteAction.DeleteApplication)
-        op.ITxnCreate.set_approval_program(Bytes.from_hex("068101"))
-        op.ITxnCreate.set_clear_state_program(Bytes.from_hex("068101"))
+        op.ITxnCreate.set_approval_program(Bytes.from_hex("0d8101"))
+        op.ITxnCreate.set_clear_state_program(Bytes.from_hex("0d8101"))
         match fee_source:
             case OpUpFeeSource.GroupCredit:
                 op.ITxnCreate.set_fee(0)
