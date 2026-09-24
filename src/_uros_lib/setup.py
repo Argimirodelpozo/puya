@@ -35,6 +35,8 @@ class UrosSetup(arc4.ARC4Contract):
         self.main_app = UInt64(0)
         # maps an ARC-4 method selector -> the codebox key of the chunk that owns it
         self.method_chunk = BoxMap(Bytes, Bytes, key_prefix=b"m")
+        # codebox keys the creator registered as installable chunk programs (planned mode)
+        self.chunk_registered = BoxMap(Bytes, UInt64, key_prefix=b"c")
 
     # --- deploy-time setup (creator only) ---
 
@@ -47,6 +49,13 @@ class UrosSetup(arc4.ARC4Contract):
     def map_method(self, selector: Bytes, chunk_key: Bytes) -> None:
         assert Txn.sender == Global.creator_address, "uros: only creator"
         self.method_chunk[selector] = chunk_key
+
+    @arc4.abimethod
+    def register_chunk(self, chunk_key: Bytes) -> None:
+        # only registered codeboxes may be installed by `install`; never the clear program box
+        assert Txn.sender == Global.creator_address, "uros: only creator"
+        assert chunk_key != Bytes(b"clear"), "uros: clear program is not a chunk"
+        self.chunk_registered[chunk_key] = UInt64(1)
 
     @arc4.abimethod
     def create_codeboxes(self, specs: arc4.DynamicArray[CodeboxSpec]) -> None:
@@ -80,31 +89,45 @@ class UrosSetup(arc4.ARC4Contract):
         assert nxt.app_id.id == self.main_app, "uros: next txn must call main"
         self._swap(self.method_chunk[nxt.app_args(0)])
 
+    @arc4.abimethod
+    def install(self, chunk_key: Bytes) -> None:
+        # planned mode: the caller's group installs the chunk its later calls need (including
+        # calls that reach `main` as inner transactions from other apps). Any registered chunk of
+        # the same contract may be installed by anyone: it changes which methods `main` serves,
+        # never its state, and every group installs exactly what it needs before using it.
+        assert chunk_key in self.chunk_registered, "uros: unregistered chunk"
+        self._swap(chunk_key)
+
     @subroutine
     def _swap(self, approval_key: Bytes) -> None:
-        # The program lives in one box but may be up to 8 KB; a single `bytes` value tops out
-        # at 4096, so read it in <=4096-byte pages and hand the inner UpdateApplication a tuple
-        # of pages (the AVM concatenates them). <=8 KB programs are at most two pages.
+        # A chunk program may be up to 16 KiB (AVM 13: 1 + 7 extra pages), but one `bytes` value
+        # tops out at 4096, so hand the inner UpdateApplication four <=4096-byte pages (the AVM
+        # concatenates them; empty trailing pages contribute nothing).
         length, exists = op.Box.length(approval_key)
         assert exists, "uros: missing program box"
+        assert length <= UInt64(16384), "uros: chunk program exceeds 16 KiB"
         clear = Box(Bytes, key=Bytes(b"clear")).value
-        if length > UInt64(4096):
-            page0 = op.Box.extract(approval_key, UInt64(0), UInt64(4096))
-            page1 = op.Box.extract(approval_key, UInt64(4096), length - UInt64(4096))
-            itxn.ApplicationCall(
-                app_id=self.main_app,
-                on_completion=OnCompleteAction.UpdateApplication,
-                # carry main's guard selector so its router admits this UpdateApplication
-                app_args=(arc4.arc4_signature("uros_guard()void"),),
-                approval_program=(page0, page1),
-                clear_state_program=(clear,),
-            ).submit()
-        else:
-            page0 = op.Box.extract(approval_key, UInt64(0), length)
-            itxn.ApplicationCall(
-                app_id=self.main_app,
-                on_completion=OnCompleteAction.UpdateApplication,
-                app_args=(arc4.arc4_signature("uros_guard()void"),),
-                approval_program=(page0,),
-                clear_state_program=(clear,),
-            ).submit()
+        itxn.ApplicationCall(
+            app_id=self.main_app,
+            on_completion=OnCompleteAction.UpdateApplication,
+            # carry main's guard selector so its router admits this UpdateApplication
+            app_args=(arc4.arc4_signature("uros_guard()void"),),
+            approval_program=(
+                self._page(approval_key, length, UInt64(0)),
+                self._page(approval_key, length, UInt64(1)),
+                self._page(approval_key, length, UInt64(2)),
+                self._page(approval_key, length, UInt64(3)),
+            ),
+            clear_state_program=(clear,),
+        ).submit()
+
+
+    @subroutine
+    def _page(self, key: Bytes, length: UInt64, index: UInt64) -> Bytes:
+        start = index * UInt64(4096)
+        if start >= length:
+            return Bytes()
+        size = length - start
+        if size > UInt64(4096):
+            size = UInt64(4096)
+        return op.Box.extract(key, start, size)
