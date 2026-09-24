@@ -56,6 +56,11 @@ INFRA_METHODS = ("uros_guard", "uros_set_setup")
 GUARD_TEMPLATE_METHOD = "uros_prepare_guard"
 # class-kwarg value that selects this approach: `class C(ARC4Contract, splitter=SPLITTER_KEY)`
 SPLITTER_KEY = "uros"
+# planned-install variant: no per-method prepare guard and no signature change. The caller's
+# group installs the chunk it needs via `setup.install(chunk)` before using it, so calls that
+# reach the split contract as inner transactions from other apps keep their ABI selectors.
+PLANNED_SPLITTER_KEY = "uros-planned"
+SPLITTER_KEYS = (SPLITTER_KEY, PLANNED_SPLITTER_KEY)
 
 # ordered (chunk_name, method_names) pairs — the single representation threaded (as compile.py
 # pipeline state) through detection, chunk resolution (force-merge), and the deploy manifest.
@@ -165,7 +170,7 @@ def detect_config(awst: AWST) -> UrosChunks:
     from puya.awst import nodes as awst_nodes
 
     targets = [
-        n for n in awst if isinstance(n, awst_nodes.Contract) and n.splitter == SPLITTER_KEY
+        n for n in awst if isinstance(n, awst_nodes.Contract) and n.splitter in SPLITTER_KEYS
     ]
     if not targets:
         return ()
@@ -218,7 +223,10 @@ def inject_setup(
             m.member_name for m in node.methods
         } & requested:
             out_dir = compilation_set.get(ContractReference(node.id))
-            result[i] = _inject_guards(_graft_infra(node, infra_node), infra_node, requested)
+            grafted = _graft_infra(node, infra_node)
+            if node.splitter != PLANNED_SPLITTER_KEY:
+                grafted = _inject_guards(grafted, infra_node, requested)
+            result[i] = grafted
             break
 
     result.append(setup_node)
