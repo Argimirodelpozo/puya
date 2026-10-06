@@ -511,6 +511,16 @@ def apply(
         if isinstance(a, ir.Contract)
         and (("uros_guard" in abi_method_names(a)) if evm else (abi_method_names(a) & requested))
     ]
+    if not targets and evm:
+        # a delegatable contract's runtime-only program (puya-sol --delegate-routes) has no ARC-4 router, so no
+        # grafted uros_guard route: its EVM selector Switch alone marks it
+        targets = [
+            a
+            for a in ir_artifacts
+            if isinstance(a, ir.Contract)
+            and a.metadata.ref in context.compilation_set
+            and _selector_switches(a)
+        ]
     if not targets:
         raise CodeError(
             "uros splitter: no compiled contract contains the requested method(s):"
