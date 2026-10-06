@@ -104,6 +104,11 @@ class ARC4ABIMethod:
         return self._config.readonly
 
     @property
+    def chunk(self) -> str | None:
+        """The uros `chunk=` hint (None when unannotated)."""
+        return self._config.chunk
+
+    @property
     def resource_encoding(self) -> typing.Literal["index", "value"]:
         return self._config.resource_encoding
 
