@@ -64,6 +64,29 @@ SPLITTER_KEYS = (SPLITTER_KEY, PLANNED_SPLITTER_KEY)
 # reserved chunk name: the method is kept real in the shell and in every chunk
 EVERY_CHUNK = "*"
 
+# EVM-calldata contracts (puya-sol `--contract-abi evm`) route every public function through one
+# `Switch` on ApplicationArgs[0] over 4-byte keccak selectors inside the approval program, not through
+# ARC-4 methods, so there is no ARC-4 config to carry `chunk=`. Their split is configured by a JSON file
+# named in this environment variable: {"chunks": {"<chunk>": ["<selector hex>", ...]}}, with "*" for
+# selectors real in every chunk; a selector no chunk lists belongs to "shell". Each chunk then keeps the
+# Switch cases it owns and sends every other case to a block that fails like a stubbed method.
+EVM_CHUNKS_ENV = "UROS_EVM_CHUNKS"
+SHELL_CHUNK = "shell"
+# the selector -> chunk table of the split contract, filled in by `apply` for `write_manifest`
+_evm_manifest: dict[bytes, str] = {}
+
+
+def evm_config() -> dict[str, list[str]] | None:
+    import json
+    import os
+
+    path = os.environ.get(EVM_CHUNKS_ENV)
+    if not path:
+        return None
+    chunks = json.loads(Path(path).read_text(encoding="utf8"))["chunks"]
+    return {name: [sel.removeprefix("0x").lower() for sel in sels] for name, sels in chunks.items()}
+
+
 # ordered (chunk_name, method_names) pairs — the single representation threaded (as compile.py
 # pipeline state) through detection, chunk resolution (force-merge), and the deploy manifest.
 UrosChunks = tuple[tuple[str, tuple[str, ...]], ...]
@@ -101,6 +124,80 @@ def split_contract(
         _stub_routing_wrappers(chunk_contract, method_names - keep - keep_real)
         chunks.append(chunk_contract)
     return main_shell, chunks
+
+
+def split_evm_contract(
+    contract: ir.Contract, chunks: UrosChunks, every: set[str]
+) -> tuple[ir.Contract, list[ir.Contract]]:
+    """EVM-calldata split: each chunk is a copy of the contract whose selector Switch keeps the cases the
+    chunk owns (plus `every`) and sends the rest to a failing block; per-Contract DCE then prunes the
+    unreachable arms and impls. The shell (the genesis program) is the "shell" chunk."""
+    selectors = _selector_switch_cases(contract)
+    if not selectors:
+        raise CodeError("uros splitter: no EVM selector Switch found in the approval program")
+    listed = {bytes.fromhex(sel): name for name, sels in chunks for sel in sels}
+    unknown = sorted(sel.hex() for sel in listed if sel not in selectors)
+    if unknown:
+        raise CodeError(f"uros splitter: selectors not routed by the contract: {', '.join(unknown)}")
+    every_b = {bytes.fromhex(sel) for sel in every}
+    owner = {sel: (EVERY_CHUNK if sel in every_b else listed.get(sel, SHELL_CHUNK)) for sel in selectors}
+    _evm_manifest.clear()
+    _evm_manifest.update(owner)
+    out = []
+    for name, _sels in chunks:
+        chunk_contract = deep_copy(contract)
+        _cut_selector_cases(chunk_contract, lambda sel, name=name: owner[sel] in (name, EVERY_CHUNK))
+        out.append(chunk_contract)
+    shell = deep_copy(contract)
+    _cut_selector_cases(shell, lambda sel: owner[sel] in (SHELL_CHUNK, EVERY_CHUNK))
+    return shell, out
+
+
+def _selector_switches(contract: ir.Contract) -> list[tuple[ir.Subroutine, ir.BasicBlock, ir.Switch]]:
+    """The approval program's Switch terminators over 4-byte constants: the EVM entry router, in `main`
+    or, for a delegatable contract (self-delegatecalls), in its `__delegate_main` subroutine."""
+    found = []
+    program = contract.approval_program
+    for sub in (program.main, *program.subroutines):
+        for block in sub.body:
+            t = block.terminator
+            if isinstance(t, ir.Switch) and t.cases and all(
+                isinstance(c, ir.BytesConstant) and len(c.value) == 4 for c in t.cases
+            ):
+                found.append((sub, block, t))
+    return found
+
+
+def _selector_switch_cases(contract: ir.Contract) -> set[bytes]:
+    return {
+        case.value  # type: ignore[attr-defined]
+        for _, _, switch in _selector_switches(contract)
+        for case in switch.cases
+    }
+
+
+def _cut_selector_cases(contract: ir.Contract, keep: typing.Callable[[bytes], bool]) -> None:
+    for sub, block, switch in _selector_switches(contract):
+        loc = switch.source_location
+        fail = ir.BasicBlock(
+            source_location=loc,
+            id=max((b.id or 0) for b in sub.body) + 1,
+            label="uros_not_installed",
+        )
+        fail.terminator = ir.Fail(
+            error_message="uros: method not in the installed chunk", explicit=True, source_location=loc
+        )
+        cut = False
+        for case, target in list(switch.cases.items()):
+            if keep(case.value):  # type: ignore[attr-defined]
+                continue
+            switch.cases[case] = fail
+            cut = True
+            if target not in switch.targets():
+                target.remove_predecessor(block)
+        if cut:
+            fail.add_predecessor(block)
+            sub.body.append(fail)
 
 
 def abi_method_names(contract: ir.Contract) -> set[str]:
@@ -184,6 +281,11 @@ def detect_config(awst: AWST) -> UrosChunks:
             f"multiple contracts marked with splitter={SPLITTER_KEY!r} is not supported"
         )
     target = targets[0]
+    cfg = evm_config()
+    if cfg is not None:
+        # EVM-calldata contract: chunk members are selectors (hex), and every split has a shell
+        cfg.setdefault(SHELL_CHUNK, [])
+        return tuple((name, tuple(sels)) for name, sels in cfg.items())
     chunks: dict[str, list[str]] = {}
     for m in target.methods:
         cfg = m.arc4_method_config
@@ -224,9 +326,10 @@ def inject_setup(
     out_dir: Path | None = None
     result = list(awst)
     for i, node in enumerate(result):
-        if isinstance(node, awst_nodes.Contract) and {
-            m.member_name for m in node.methods
-        } & requested:
+        if isinstance(node, awst_nodes.Contract) and (
+            {m.member_name for m in node.methods} & requested
+            or (evm_config() is not None and node.splitter in SPLITTER_KEYS)
+        ):
             out_dir = compilation_set.get(ContractReference(node.id))
             grafted = _graft_infra(node, infra_node)
             if node.splitter != PLANNED_SPLITTER_KEY:
@@ -401,10 +504,12 @@ def apply(
     chunks: UrosChunks,
 ) -> tuple[list[ir.ModuleArtifact], CompileContext, UrosChunks]:
     requested = {m for _, methods in chunks for m in methods}
+    evm = evm_config() is not None
     targets = [
         a
         for a in ir_artifacts
-        if isinstance(a, ir.Contract) and (abi_method_names(a) & requested)
+        if isinstance(a, ir.Contract)
+        and (("uros_guard" in abi_method_names(a)) if evm else (abi_method_names(a) & requested))
     ]
     if not targets:
         raise CodeError(
@@ -426,9 +531,12 @@ def apply(
     # apps read in the same group as a chunked mutator); they are not a chunk of their own
     every = {m for name, methods in resolved if name == EVERY_CHUNK for m in methods}
     resolved = tuple((name, methods) for name, methods in resolved if name != EVERY_CHUNK)
-    keep_real = (set(INFRA_METHODS) | every) & abi_method_names(target)
-    groups = [list(methods) for _, methods in resolved]
-    main_shell, chunk_contracts = split_contract(target, groups, keep_real=keep_real)
+    if evm:
+        main_shell, chunk_contracts = split_evm_contract(target, resolved, every)
+    else:
+        keep_real = (set(INFRA_METHODS) | every) & abi_method_names(target)
+        groups = [list(methods) for _, methods in resolved]
+        main_shell, chunk_contracts = split_contract(target, groups, keep_real=keep_real)
 
     new_ir: list[ir.ModuleArtifact] = [a for a in ir_artifacts if a is not target]
     new_ir.append(main_shell)
@@ -490,6 +598,22 @@ def write_manifest(
             continue
         out_dir = context.compilation_set.get(app.id)
         if out_dir is None:
+            continue
+        if _evm_manifest:
+            manifest = {
+                "main_contract": name,
+                "setup_contract": SETUP_CONTRACT_NAME if setup is not None else None,
+                "abi": "evm",
+                "methods": [
+                    {"name": "0x" + sel.hex(), "selector": "0x" + sel.hex(), "chunk": chunk}
+                    for sel, chunk in sorted(_evm_manifest.items())
+                    if chunk != EVERY_CHUNK
+                ],
+                "every": ["0x" + sel.hex() for sel, chunk in sorted(_evm_manifest.items()) if chunk == EVERY_CHUNK],
+            }
+            out_path = out_dir / "deploy.uros.json"
+            logger.info(f"Writing {make_path_relative_to_cwd(out_path)}")
+            out_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
             continue
         # chunks are grouped by the method's member name, which differs from its ARC-4 name when
         # the frontend routes the method through a synthesized entry wrapper (the method id is
