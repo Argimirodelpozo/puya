@@ -25,7 +25,7 @@ from puya import log
 from puya.avm import AVMType
 from puya.compilation_artifacts import CompilationArtifact, CompiledContract
 from puya.context import CompileContext
-from puya.errors import CodeError
+from puya.errors import CodeError, InternalError
 from puya.ir import models as ir
 from puya.ir._utils import deep_copy
 from puya.ir.types_ import AVMBytesEncoding, IRType, SizedBytesType
@@ -61,6 +61,8 @@ SPLITTER_KEY = "uros"
 # reach the split contract as inner transactions from other apps keep their ABI selectors.
 PLANNED_SPLITTER_KEY = "uros-planned"
 SPLITTER_KEYS = (SPLITTER_KEY, PLANNED_SPLITTER_KEY)
+# reserved chunk name: the method is kept real in the shell and in every chunk
+EVERY_CHUNK = "*"
 
 # ordered (chunk_name, method_names) pairs — the single representation threaded (as compile.py
 # pipeline state) through detection, chunk resolution (force-merge), and the deploy manifest.
@@ -134,12 +136,15 @@ def _stub_routing_wrappers(contract: ir.Contract, method_names: set[str]) -> Non
 
 
 def _stub_subroutine(sub: ir.Subroutine) -> None:
-    """Replace a subroutine body with a single block returning default values."""
+    """Replace a subroutine body with a single block that fails: reaching a method the installed chunk
+    does not own is an error (an atomic revert the caller can repair by installing the owning chunk),
+    never a silent default result."""
     loc = sub.source_location
-    results = [_default_value(ir_type, loc) for ir_type in sub.returns]
     # id must be assigned: the inliner pass asserts on BasicBlock.id
     block = ir.BasicBlock(source_location=loc, id=0, label="entry")
-    block.terminator = ir.SubroutineReturn(result=results, source_location=loc)
+    block.terminator = ir.Fail(
+        error_message="uros: method not in the installed chunk", explicit=True, source_location=loc
+    )
     sub.body = [block]
 
 
@@ -417,7 +422,11 @@ def apply(
     # the manifest. Chunk sizing is the author's responsibility; the assembler enforces 8 KB.
     resolved = _resolve_chunks(target, chunks)
 
-    keep_real = set(INFRA_METHODS) & abi_method_names(target)
+    # methods marked chunk="*" stay real in the shell and in every chunk (e.g. getters that other
+    # apps read in the same group as a chunked mutator); they are not a chunk of their own
+    every = {m for name, methods in resolved if name == EVERY_CHUNK for m in methods}
+    resolved = tuple((name, methods) for name, methods in resolved if name != EVERY_CHUNK)
+    keep_real = (set(INFRA_METHODS) | every) & abi_method_names(target)
     groups = [list(methods) for _, methods in resolved]
     main_shell, chunk_contracts = split_contract(target, groups, keep_real=keep_real)
 
@@ -482,18 +491,32 @@ def write_manifest(
         out_dir = context.compilation_set.get(app.id)
         if out_dir is None:
             continue
-        manifest = {
-            "main_contract": name,
-            "setup_contract": SETUP_CONTRACT_NAME if setup is not None else None,
-            "methods": [
+        # chunks are grouped by the method's member name, which differs from its ARC-4 name when
+        # the frontend routes the method through a synthesized entry wrapper (the method id is
+        # `<contract ref>.<member name>`); look each method up by member name
+        methods = []
+        for m in app.metadata.arc4_methods:
+            if not isinstance(m, ARC4ABIMethod):
+                continue
+            member = m.id.rsplit(".", 1)[-1]
+            chunk = chunk_of_method.get(member, chunk_of_method.get(m.name))
+            if chunk is None:
+                if m.chunk == EVERY_CHUNK or member in INFRA_METHODS or m.name in INFRA_METHODS:
+                    continue  # real in every chunk (a `*` method or uros infrastructure): nothing to install
+                raise InternalError(
+                    f"uros manifest: ABI method {m.name!r} ({m.id}) has no resolved chunk"
+                )
+            methods.append(
                 {
                     "name": m.name,
                     "selector": "0x" + method_selector_hash(m.signature).hex(),
-                    "chunk": chunk_of_method[m.name],
+                    "chunk": chunk,
                 }
-                for m in app.metadata.arc4_methods
-                if isinstance(m, ARC4ABIMethod) and m.name in chunk_of_method
-            ],
+            )
+        manifest = {
+            "main_contract": name,
+            "setup_contract": SETUP_CONTRACT_NAME if setup is not None else None,
+            "methods": methods,
         }
         out_path = out_dir / "deploy.uros.json"
         logger.info(f"Writing {make_path_relative_to_cwd(out_path)}")
