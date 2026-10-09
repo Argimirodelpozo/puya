@@ -72,6 +72,10 @@ EVERY_CHUNK = "*"
 # Switch cases it owns and sends every other case to a block that fails like a stubbed method.
 EVM_CHUNKS_ENV = "UROS_EVM_CHUNKS"
 SHELL_CHUNK = "shell"
+# puya-sol --split-forward: the reserved Switch case whose arm runs the call through a routed delegate copy
+# of the app's own code. A chunk sends the selectors it does not own there (instead of failing), and the
+# case itself is dropped from every program.
+SPLIT_FORWARD_SELECTOR = b"\xff\xff\xff\xff"
 # the selector -> chunk table of the split contract, filled in by `apply` for `write_manifest`
 _evm_manifest: dict[bytes, str] = {}
 
@@ -132,7 +136,7 @@ def split_evm_contract(
     """EVM-calldata split: each chunk is a copy of the contract whose selector Switch keeps the cases the
     chunk owns (plus `every`) and sends the rest to a failing block; per-Contract DCE then prunes the
     unreachable arms and impls. The shell (the genesis program) is the "shell" chunk."""
-    selectors = _selector_switch_cases(contract)
+    selectors = _selector_switch_cases(contract) - {SPLIT_FORWARD_SELECTOR}
     if not selectors:
         raise CodeError("uros splitter: no EVM selector Switch found in the approval program")
     listed = {bytes.fromhex(sel): name for name, sels in chunks for sel in sels}
@@ -179,25 +183,48 @@ def _selector_switch_cases(contract: ir.Contract) -> set[bytes]:
 def _cut_selector_cases(contract: ir.Contract, keep: typing.Callable[[bytes], bool]) -> None:
     for sub, block, switch in _selector_switches(contract):
         loc = switch.source_location
-        fail = ir.BasicBlock(
-            source_location=loc,
-            id=max((b.id or 0) for b in sub.body) + 1,
-            label="uros_not_installed",
+        forward_case = next(
+            (c for c in switch.cases if c.value == SPLIT_FORWARD_SELECTOR),  # type: ignore[attr-defined]
+            None,
         )
-        fail.terminator = ir.Fail(
-            error_message="uros: method not in the installed chunk", explicit=True, source_location=loc
-        )
+        forward = switch.cases.pop(forward_case) if forward_case is not None else None
+        if forward is not None:
+            # unowned selectors run through the forwarding arm (a routed delegate copy of the app's own code)
+            fail = forward
+        else:
+            fail = ir.BasicBlock(
+                source_location=loc,
+                id=max((b.id or 0) for b in sub.body) + 1,
+                label="uros_not_installed",
+            )
+            fail.terminator = ir.Fail(
+                error_message="uros: method not in the installed chunk", explicit=True, source_location=loc
+            )
+        # unowned selectors fall to the default (it rejects too) instead of each keeping a match label: when
+        # the default only fails, or in a runtime program (run by copies only, whose callers pick the chunk
+        # owning the selector: no install-on-demand to signal)
+        drop = forward is None and (_only_fails(switch.default) or str(contract.metadata.ref).endswith("__runtime"))
         cut = False
         for case, target in list(switch.cases.items()):
             if keep(case.value):  # type: ignore[attr-defined]
                 continue
-            switch.cases[case] = fail
-            cut = True
+            if drop:
+                del switch.cases[case]
+            else:
+                switch.cases[case] = fail
+                cut = True
             if target not in switch.targets():
                 target.remove_predecessor(block)
-        if cut:
+        if forward is not None:
+            if forward not in switch.targets():
+                forward.remove_predecessor(block)
+        elif cut:
             fail.add_predecessor(block)
             sub.body.append(fail)
+
+
+def _only_fails(block: ir.BasicBlock) -> bool:
+    return not block.ops and isinstance(block.terminator, ir.Fail)
 
 
 def abi_method_names(contract: ir.Contract) -> set[str]:
