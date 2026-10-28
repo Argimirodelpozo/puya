@@ -1515,6 +1515,27 @@ class AVMOp(enum.StrEnum):
     (exclusive)
     """
 
+    bmodexp = AVMOpData(
+        op_code="bmodexp",
+        variants=Variant(
+            signature=OpSignature(
+                args=[PrimitiveIRType.biguint, PrimitiveIRType.biguint, PrimitiveIRType.biguint],
+                returns=[PrimitiveIRType.biguint],
+            ),
+            enum=None,
+            supported_modes=RunMode.any,
+            min_avm_version=14,
+        ),
+        immediate_types=(),
+        cost=None,
+        min_avm_version=14,
+        supported_modes=RunMode.any,
+    )
+    """
+    A raised to the Bth power modulo C. A, B and C are interpreted as big-endian unsigned integers
+    limited to 4096 bytes. Fail if C is zero, or if A and B are both zero.
+    """
+
     box_create = AVMOpData(
         op_code="box_create",
         variants=Variant(

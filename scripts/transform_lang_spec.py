@@ -509,7 +509,8 @@ def transform_encoding(value: str) -> ImmediateKind:
             result = ImmediateKind.uint8
         case "int8":
             result = ImmediateKind.int8
-        case "int16 (big-endian)":
+        case "int16 (big-endian)" | "varint (zigzag)":
+            # v13+: the assembler encodes branch offsets as varints
             result = ImmediateKind.label
         case "varuint":
             result = ImmediateKind.varuint

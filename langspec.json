@@ -1,6 +1,6 @@
 {
-  "Version": 13,
-  "LogicSigVersion": 13,
+  "Version": 14,
+  "LogicSigVersion": 14,
   "NamedTypes": [
     {
       "Name": "[]byte",
@@ -173,7 +173,7 @@
       ],
       "Size": 1,
       "DocCost": "1900",
-      "Doc": "for (data A, signature B, pubkey C) verify the signature of (\"ProgData\" || program_hash || data) against the pubkey =\u003e {0 or 1}",
+      "Doc": "for (data A, signature B, pubkey C) verify the signature of (\"ProgData\" || program_hash || data) against the pubkey => {0 or 1}",
       "DocExtra": "The 32 byte public key is the last element on the stack, preceded by the 64 byte signature at the second-to-last element on the stack, preceded by the data which was signed at the third-to-last element on the stack.",
       "IntroducedVersion": 1,
       "Groups": [
@@ -214,7 +214,7 @@
         }
       ],
       "DocCost": "Secp256k1=1700; Secp256r1=2500",
-      "Doc": "for (data A, signature B, C and pubkey D, E) verify the signature of the data against the pubkey =\u003e {0 or 1}",
+      "Doc": "for (data A, signature B, C and pubkey D, E) verify the signature of the data against the pubkey => {0 or 1}",
       "DocExtra": "The 32 byte Y-component of a public key is the last element on the stack, preceded by X-component of a pubkey, preceded by S and R components of a signature, preceded by the data that is fifth element on the stack. All values are big-endian encoded. The signed data must be 32 bytes long, and signatures in lower-S form are only accepted.",
       "ImmediateNote": [
         {
@@ -357,7 +357,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A minus B. Fail if B \u003e A.",
+      "Doc": "A minus B. Fail if B > A.",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -406,7 +406,7 @@
     },
     {
       "Opcode": 12,
-      "Name": "\u003c",
+      "Name": "<",
       "Args": [
         "uint64",
         "uint64"
@@ -416,7 +416,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A less than B =\u003e {0 or 1}",
+      "Doc": "A less than B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -425,7 +425,7 @@
     },
     {
       "Opcode": 13,
-      "Name": "\u003e",
+      "Name": ">",
       "Args": [
         "uint64",
         "uint64"
@@ -435,7 +435,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A greater than B =\u003e {0 or 1}",
+      "Doc": "A greater than B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -444,7 +444,7 @@
     },
     {
       "Opcode": 14,
-      "Name": "\u003c=",
+      "Name": "<=",
       "Args": [
         "uint64",
         "uint64"
@@ -454,7 +454,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A less than or equal to B =\u003e {0 or 1}",
+      "Doc": "A less than or equal to B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -463,7 +463,7 @@
     },
     {
       "Opcode": 15,
-      "Name": "\u003e=",
+      "Name": ">=",
       "Args": [
         "uint64",
         "uint64"
@@ -473,7 +473,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A greater than or equal to B =\u003e {0 or 1}",
+      "Doc": "A greater than or equal to B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -482,7 +482,7 @@
     },
     {
       "Opcode": 16,
-      "Name": "\u0026\u0026",
+      "Name": "&&",
       "Args": [
         "uint64",
         "uint64"
@@ -492,7 +492,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A is not zero and B is not zero =\u003e {0 or 1}",
+      "Doc": "A is not zero and B is not zero => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -511,7 +511,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A is not zero or B is not zero =\u003e {0 or 1}",
+      "Doc": "A is not zero or B is not zero => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -530,7 +530,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A is equal to B =\u003e {0 or 1}",
+      "Doc": "A is equal to B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -549,7 +549,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A is not equal to B =\u003e {0 or 1}",
+      "Doc": "A is not equal to B => {0 or 1}",
       "IntroducedVersion": 1,
       "Groups": [
         "Arithmetic"
@@ -621,7 +621,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "converts big-endian byte array A to uint64. Fails if len(A) \u003e 8. Padded by leading 0s if len(A) \u003c 8.",
+      "Doc": "converts big-endian byte array A to uint64. Fails if len(A) > 8. Padded by leading 0s if len(A) < 8.",
       "DocExtra": "`btoi` fails if the input is longer than 8 bytes.",
       "IntroducedVersion": 1,
       "Groups": [
@@ -669,7 +669,7 @@
     },
     {
       "Opcode": 26,
-      "Name": "\u0026",
+      "Name": "&",
       "Args": [
         "uint64",
         "uint64"
@@ -3573,7 +3573,7 @@
       "Size": 3,
       "DocCost": "1",
       "Doc": "Ith scratch space value of the Tth transaction in the current group",
-      "DocExtra": "`gload` fails unless the requested transaction is an ApplicationCall and T \u003c GroupIndex.",
+      "DocExtra": "`gload` fails unless the requested transaction is an ApplicationCall and T < GroupIndex.",
       "ImmediateNote": [
         {
           "Comment": "transaction group index",
@@ -3604,7 +3604,7 @@
       "Size": 2,
       "DocCost": "1",
       "Doc": "Ith scratch space value of the Ath transaction in the current group",
-      "DocExtra": "`gloads` fails unless the requested transaction is an ApplicationCall and A \u003c GroupIndex.",
+      "DocExtra": "`gloads` fails unless the requested transaction is an ApplicationCall and A < GroupIndex.",
       "ImmediateNote": [
         {
           "Comment": "position in scratch space to load from",
@@ -3627,7 +3627,7 @@
       "Size": 2,
       "DocCost": "1",
       "Doc": "ID of the asset or application created in the Tth transaction of the current group",
-      "DocExtra": "`gaid` fails unless the requested transaction created an asset or application and T \u003c GroupIndex.",
+      "DocExtra": "`gaid` fails unless the requested transaction created an asset or application and T < GroupIndex.",
       "ImmediateNote": [
         {
           "Comment": "transaction group index",
@@ -3653,7 +3653,7 @@
       "Size": 1,
       "DocCost": "1",
       "Doc": "ID of the asset or application created in the Ath transaction of the current group",
-      "DocExtra": "`gaids` fails unless the requested transaction created an asset or application and A \u003c GroupIndex.",
+      "DocExtra": "`gaids` fails unless the requested transaction created an asset or application and A < GroupIndex.",
       "IntroducedVersion": 4,
       "Groups": [
         "Loading Values"
@@ -3986,7 +3986,7 @@
       ],
       "Size": 2,
       "DocCost": "1",
-      "Doc": "remove top of stack, and place it deeper in the stack such that N elements are above it. Fails if stack depth \u003c= N.",
+      "Doc": "remove top of stack, and place it deeper in the stack such that N elements are above it. Fails if stack depth <= N.",
       "ImmediateNote": [
         {
           "Comment": "depth",
@@ -4011,7 +4011,7 @@
       ],
       "Size": 2,
       "DocCost": "1",
-      "Doc": "remove the value at depth N in the stack and shift above items down so the Nth deep value is on top of the stack. Fails if stack depth \u003c= N.",
+      "Doc": "remove the value at depth N in the stack and shift above items down so the Nth deep value is on top of the stack. Fails if stack depth <= N.",
       "ImmediateNote": [
         {
           "Comment": "depth",
@@ -4056,7 +4056,7 @@
       ],
       "Size": 3,
       "DocCost": "1",
-      "Doc": "A range of bytes from A starting at S up to but not including E. If E \u003c S, or either is larger than the array length, the program fails",
+      "Doc": "A range of bytes from A starting at S up to but not including E. If E < S, or either is larger than the array length, the program fails",
       "ImmediateNote": [
         {
           "Comment": "start position",
@@ -4088,7 +4088,7 @@
       ],
       "Size": 1,
       "DocCost": "1",
-      "Doc": "A range of bytes from A starting at B up to but not including C. If C \u003c B, or either is larger than the array length, the program fails",
+      "Doc": "A range of bytes from A starting at B up to but not including C. If C < B, or either is larger than the array length, the program fails",
       "IntroducedVersion": 2,
       "Groups": [
         "Byte Array Manipulation"
@@ -5373,7 +5373,7 @@
       ],
       "Size": 1,
       "DocCost": "1900",
-      "Doc": "for (data A, signature B, pubkey C) verify the signature of the data against the pubkey =\u003e {0 or 1}",
+      "Doc": "for (data A, signature B, pubkey C) verify the signature of the data against the pubkey => {0 or 1}",
       "IntroducedVersion": 7,
       "Groups": [
         "Cryptography"
@@ -5393,7 +5393,7 @@
       ],
       "Size": 1,
       "DocCost": "1700",
-      "Doc": "for (data A, deterministic FALCON-1024 compressed-format signature B, pubkey C) verify the signature of data against the pubkey =\u003e {0 or 1}",
+      "Doc": "for (data A, deterministic FALCON-1024 compressed-format signature B, pubkey C) verify the signature of data against the pubkey => {0 or 1}",
       "DocExtra": "Signature B is variable-length, with maximum size 1423 bytes.",
       "IntroducedVersion": 12,
       "Groups": [
@@ -5615,7 +5615,7 @@
       ],
       "Size": 1,
       "DocCost": "4",
-      "Doc": "The largest integer I such that I^2 \u003c= A",
+      "Doc": "The largest integer I such that I^2 <= A",
       "IntroducedVersion": 4,
       "Groups": [
         "Arithmetic"
@@ -5691,7 +5691,7 @@
       ],
       "Size": 1,
       "DocCost": "40",
-      "Doc": "The largest integer I such that I^2 \u003c= A. A and I are interpreted as big-endian unsigned integers",
+      "Doc": "The largest integer I such that I^2 <= A. A and I are interpreted as big-endian unsigned integers",
       "IntroducedVersion": 6,
       "Groups": [
         "Byte Array Arithmetic"
@@ -5815,7 +5815,7 @@
     },
     {
       "Opcode": 164,
-      "Name": "b\u003c",
+      "Name": "b<",
       "Args": [
         "bigint",
         "bigint"
@@ -5834,7 +5834,7 @@
     },
     {
       "Opcode": 165,
-      "Name": "b\u003e",
+      "Name": "b>",
       "Args": [
         "bigint",
         "bigint"
@@ -5853,7 +5853,7 @@
     },
     {
       "Opcode": 166,
-      "Name": "b\u003c=",
+      "Name": "b<=",
       "Args": [
         "bigint",
         "bigint"
@@ -5872,7 +5872,7 @@
     },
     {
       "Opcode": 167,
-      "Name": "b\u003e=",
+      "Name": "b>=",
       "Args": [
         "bigint",
         "bigint"
@@ -5967,7 +5967,7 @@
     },
     {
       "Opcode": 172,
-      "Name": "b\u0026",
+      "Name": "b&",
       "Args": [
         "[]byte",
         "[]byte"
@@ -8780,7 +8780,7 @@
       "Size": 1,
       "DocCost": "1",
       "Doc": "set box A to contain its previous bytes up to index B, followed by D, followed by the original bytes of A that began at index B+C.",
-      "DocExtra": "Boxes are of constant length. If C \u003c len(D), then len(D)-C bytes will be removed from the end. If C \u003e len(D), zero bytes will be appended to the end to reach the box length.",
+      "DocExtra": "Boxes are of constant length. If C < len(D), then len(D)-C bytes will be removed from the end. If C > len(D), zero bytes will be appended to the end to reach the box length.",
       "IntroducedVersion": 10,
       "Groups": [
         "Box Access"
@@ -8978,7 +8978,7 @@
       "Size": 2,
       "DocCost": "1",
       "Doc": "set box B of app A to contain its previous bytes up to index C, followed by E, followed by the original bytes of B that began at index C+D.",
-      "DocExtra": "Boxes are of constant length. If D \u003c len(E), then len(E)-D bytes will be removed from the end. If D \u003e len(E), zero bytes will be appended to the end to reach the box length.",
+      "DocExtra": "Boxes are of constant length. If D < len(E), then len(E)-D bytes will be removed from the end. If D > len(E), zero bytes will be appended to the end to reach the box length.",
       "IntroducedVersion": 13,
       "Groups": [
         "Box Access"
@@ -9449,6 +9449,44 @@
       "IntroducedVersion": 13,
       "Groups": [
         "Cryptography"
+      ],
+      "Modes": 3
+    },
+    {
+      "Opcode": 134,
+      "Name": "sumhash512",
+      "Args": [
+        "[]byte"
+      ],
+      "Returns": [
+        "[64]byte"
+      ],
+      "Size": 1,
+      "DocCost": "150 + 4 per 7 bytes of A",
+      "Doc": "sumhash512 of value A, yields [64]byte",
+      "IntroducedVersion": 14,
+      "Groups": [
+        "Cryptography"
+      ],
+      "Modes": 3
+    },
+    {
+      "Opcode": 153,
+      "Name": "bmodexp",
+      "Args": [
+        "bigint",
+        "bigint",
+        "bigint"
+      ],
+      "Returns": [
+        "bigint"
+      ],
+      "Size": 1,
+      "DocCost": "10 + 1 per 32 bytes of A, B, and C, plus a cost that depends on bitlen(B). Let S = 2 + 2W + W^2/10, where W = len(C)/8, rounded up. If bitlen(B) == 0, nothing more. If bitlen(B) == 1, the cost of A b% C. If bitlen(B) <= 64, (bitlen(B) + popcount(B)) * (S + 2), plus, if len(A) > len(C), popcount(B) * (1 + (len(A)-len(C))/8) * (1 + len(C)/8) / 2 + 3 * (A b* A) + (2*len(A) b% C). Otherwise, (64 * ceil(bitlen(B)/64) + 16) * S + (A b% C). Costs in parentheses are the costs of those operations on inputs of those lengths. Like b% itself, the b% terms are based on the lengths of A and C without their leading zero bytes.",
+      "Doc": "A raised to the Bth power modulo C. A, B and C are interpreted as big-endian unsigned integers limited to 4096 bytes. Fail if C is zero, or if A and B are both zero.",
+      "IntroducedVersion": 14,
+      "Groups": [
+        "Byte Array Arithmetic"
       ],
       "Modes": 3
     }

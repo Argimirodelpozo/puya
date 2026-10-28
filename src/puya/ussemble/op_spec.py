@@ -611,6 +611,7 @@ OP_SPECS = {
     "bsqrt": OpSpec(name="bsqrt", code=150, immediates=[], sub_code=None),
     "divw": OpSpec(name="divw", code=151, immediates=[], sub_code=None),
     "sha3_256": OpSpec(name="sha3_256", code=152, immediates=[], sub_code=None),
+    "bmodexp": OpSpec(name="bmodexp", code=153, immediates=[], sub_code=None),
     "b+": OpSpec(name="b+", code=160, immediates=[], sub_code=None),
     "b-": OpSpec(name="b-", code=161, immediates=[], sub_code=None),
     "b/": OpSpec(name="b/", code=162, immediates=[], sub_code=None),
