@@ -1,0 +1,196 @@
+"""With `LinearMemory` declared (see `puya.options`), a run of word writes to neighbouring
+addresses becomes one range write of the words joined together: one call, one page lookup.
+
+A run is a sequence of word writes in one block, to distinct words at known distances from one
+base, with nothing between them that reads or writes scratch space, calls a subroutine or asserts
+a condition. The words keep their values; only the moment they reach memory moves, to the last
+write of the run, and nothing in between can tell. One difference remains: a write to an address
+outside memory fails at the end of the run instead of at its own position, so if a pure operation
+in between also fails, that failure is the one reported.
+"""
+
+from collections.abc import Sequence
+
+import attrs
+
+from puya import log
+from puya.ir import models
+from puya.ir.avm_ops import AVMOp
+from puya.ir.optimize.context import IROptimizationContext
+from puya.ir.optimize.dead_code_elimination import PURE_AVM_OPS
+from puya.ir.optimize.scratch_reads import _WORD, _Address, _declared_memory, _Memory
+
+logger = log.get_logger(__name__)
+
+# two words joined and padded cost what the second call cost
+_MIN_WORDS = 3
+# a range write takes one stack value
+_MAX_WORDS = 4096 // _WORD
+_PURE_SOURCES = (
+    models.Value,
+    models.ValueTuple,
+    models.DecodeBytes,
+    models.BytesEncode,
+    models.ExtractValue,
+    models.ReplaceValue,
+    models.ArrayLength,
+)
+
+
+def merge_word_writes(context: IROptimizationContext, subroutine: models.Subroutine) -> bool:
+    declared = _declared_memory(context.options.linear_memory)
+    subroutines = context.program_subroutines
+    if declared is None or subroutines is None or declared.write_range is None:
+        return False
+    write_range = subroutines.get(declared.write_range)
+    if write_range is None or len(write_range.parameters) != 2:
+        return False
+    definitions = dict[models.Register, models.ValueProvider]()
+    for block in subroutine.body:
+        for op in block.ops:
+            if isinstance(op, models.Assignment) and len(op.targets) == 1:
+                definitions[op.targets[0]] = op.source
+    merger = _Merger(
+        memory=_Memory(declared, definitions),
+        write_range=write_range,
+        versions=_next_versions(subroutine),
+    )
+    modified = False
+    for block in subroutine.body:
+        modified |= merger.merge(block)
+    return modified
+
+
+def _next_versions(subroutine: models.Subroutine) -> dict[str, int]:
+    versions = dict[str, int]()
+    for register in subroutine.get_assigned_registers():
+        if register.name.startswith(_NAME_PREFIX):
+            versions[register.name] = max(versions.get(register.name, 0), register.version + 1)
+    return versions
+
+
+_NAME_PREFIX = f"merged{models.TMP_VAR_INDICATOR}"
+
+
+@attrs.frozen
+class _Write:
+    call: models.InvokeSubroutine
+    address: _Address
+
+
+@attrs.define
+class _Merger:
+    memory: _Memory
+    write_range: models.Subroutine
+    versions: dict[str, int]
+
+    def merge(self, block: models.BasicBlock) -> bool:
+        runs = list[list[_Write]]()
+        run = list[_Write]()
+        for op in block.ops:
+            if (
+                isinstance(op, models.InvokeSubroutine)
+                and self.memory.role(op.target) == "write"
+                and len(op.args) == 2
+            ):
+                address = self.memory.address(op.args[0])
+                if run and (
+                    address.base != run[0].address.base
+                    or any(abs(address.offset - w.address.offset) < _WORD for w in run)
+                ):
+                    runs.append(run)
+                    run = []
+                run.append(_Write(call=op, address=address))
+            elif not _transparent(op):
+                runs.append(run)
+                run = []
+        runs.append(run)
+        modified = False
+        for run in runs:
+            run.sort(key=lambda w: w.address.offset)
+            group = run[:1]
+            for write in run[1:]:
+                if (
+                    write.address.offset == group[-1].address.offset + _WORD
+                    and len(group) < _MAX_WORDS
+                ):
+                    group.append(write)
+                else:
+                    modified |= self._emit(block, group)
+                    group = [write]
+            modified |= self._emit(block, group)
+        return modified
+
+    def _emit(self, block: models.BasicBlock, group: Sequence[_Write]) -> bool:
+        if len(group) < _MIN_WORDS:
+            return False
+        calls = [w.call for w in group]
+        last = max(calls, key=block.ops.index)
+        location = last.source_location
+        new_ops = list[models.Op]()
+
+        def assign(name: str, source: models.Intrinsic) -> models.Register:
+            name = _NAME_PREFIX + name
+            version = self.versions.get(name, 0)
+            self.versions[name] = version + 1
+            (ir_type,) = source.types
+            register = models.Register(
+                name=name, version=version, ir_type=ir_type, source_location=location
+            )
+            new_ops.append(
+                models.Assignment(targets=[register], source=source, source_location=location)
+            )
+            return register
+
+        zero_word: models.Register | None = None
+        words = list[models.Value]()
+        for call in calls:
+            value = call.args[1]
+            if not self.memory.is_word(value):
+                # what a word write does to its value before it stores it
+                if zero_word is None:
+                    zero_word = assign(
+                        "zero",
+                        models.Intrinsic(
+                            op=AVMOp.bzero,
+                            args=[models.UInt64Constant(value=_WORD, source_location=location)],
+                            source_location=location,
+                        ),
+                    )
+                value = assign(
+                    "word",
+                    models.Intrinsic(
+                        op=AVMOp.bitwise_or_bytes,
+                        args=[zero_word, value],
+                        source_location=location,
+                    ),
+                )
+            words.append(value)
+        joined = words[0]
+        for word in words[1:]:
+            joined = assign(
+                "words",
+                models.Intrinsic(op=AVMOp.concat, args=[joined, word], source_location=location),
+            )
+        new_ops.append(
+            models.InvokeSubroutine(
+                target=self.write_range, args=[calls[0].args[0], joined], source_location=location
+            )
+        )
+        logger.debug(f"merging {len(calls)} word writes into one range write", location=location)
+        at = block.ops.index(last)
+        block.ops[at : at + 1] = new_ops
+        for call in calls:
+            if call is not last:
+                block.ops.remove(call)
+        return True
+
+
+def _transparent(op: models.Op) -> bool:
+    """True for an assignment that neither reads nor writes scratch space and calls nothing."""
+    if not isinstance(op, models.Assignment):
+        return False
+    source = op.source
+    if isinstance(source, models.Intrinsic):
+        return source.op.code in PURE_AVM_OPS
+    return isinstance(source, _PURE_SOURCES)

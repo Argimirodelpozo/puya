@@ -29,6 +29,12 @@ from puya.ir.optimize.repeated_code_elimination import repeated_expression_elimi
 from puya.ir.optimize.repeated_loads_elimination import (
     constant_reads_and_unobserved_writes_elimination,
 )
+from puya.ir.optimize.scratch_reads import (
+    analyse_scratch_effects,
+    keep_declared_accessors,
+    repeated_scratch_reads_elimination,
+)
+from puya.ir.optimize.scratch_writes import merge_word_writes
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
@@ -93,6 +99,8 @@ def get_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
         SubroutineOptimization.from_function(remove_linear_jumps),
         SubroutineOptimization.from_function(remove_unreachable_blocks),
         SubroutineOptimization.from_function(repeated_expression_elimination),
+        SubroutineOptimization.from_function(repeated_scratch_reads_elimination),
+        SubroutineOptimization.from_function(merge_word_writes),
         SubroutineOptimization.from_function(encode_decode_pair_elimination),
         SubroutineOptimization.from_function(merge_chained_aggregate_reads, min_level=0),
         SubroutineOptimization.from_function(replace_aggregate_box_ops, min_level=0),
@@ -149,10 +157,12 @@ def optimize_program_ir(
         expand_all_bytes=context.options.expand_all_bytes,
         embedded_funcs={PuyaLibIR(s.id): s for s in program.subroutines if s.id in PuyaLibIR},
     )
+    keep_declared_accessors(opt_context, program)
     for pass_num in range(1, MAX_PASSES + 1):
         program_modified = False
         logger.debug(f"Begin optimization pass {pass_num}/{MAX_PASSES}")
         analyse_subroutines_for_inlining(opt_context, program)
+        analyse_scratch_effects(opt_context, program)
         for subroutine in program.all_subroutines:
             logger.debug(f"Optimizing subroutine {subroutine.id}")
             for optimizer in pipeline:

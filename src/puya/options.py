@@ -15,6 +15,30 @@ class LocalsCoalescingStrategy(enum.StrEnum):
 
 
 @attrs.frozen(kw_only=True)
+class LinearMemory:
+    """Subroutines with which a program reads and writes 32-byte words of a byte-addressed
+    memory that it keeps in scratch space, by subroutine id. Declaring them lets the optimizer
+    take a word read from an earlier word write, and join neighbouring word writes.
+
+    * `read_word(address) -> bytes`: the 32 bytes at `address`
+    * `read_word_uint64(address) -> uint64`: the same word as a number, failing if it does not fit
+    * `write_word(address, value)`: puts `value`, left-padded with zero bytes to 32, at `address`
+    * `write_range(address, value)`: puts the bytes of `value` at `address`
+    * `alloc(size) -> uint64`: moves the free-memory pointer and returns its earlier value
+
+    `fresh_allocations` promises that the free-memory pointer is not a word the program reaches
+    through a computed address, so `alloc` leaves what is known about such words alone.
+    """
+
+    read_word: str | None = None
+    read_word_uint64: str | None = None
+    write_word: str | None = None
+    write_range: str | None = None
+    alloc: str | None = None
+    fresh_allocations: bool = False
+
+
+@attrs.frozen(kw_only=True)
 class PuyaOptions:
     output_teal: bool = False
     output_source_map: bool = False
@@ -41,6 +65,7 @@ class PuyaOptions:
     expand_all_bytes: bool = False
     validate_abi_args: bool = True
     validate_abi_return: bool = True
+    linear_memory: LinearMemory | None = None
 
     @cached_property
     def template_variables(self) -> Mapping[str, int | bytes]:
