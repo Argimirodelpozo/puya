@@ -99,6 +99,10 @@ unused, can be removed"""
 DETERMINISTIC: typing.Final = Effect.fails | Effect.reads_txn
 """an operation with no effect outside these gives the same outcome each time it runs with the
 same operands"""
+REPEATABLE: typing.Final = Effect.fails | (READS & ~Effect.reads_budget)
+"""an operation with no effect outside these changes nothing, and gives the same outcome each
+time it runs with the same operands, until something changes what it reads (see `changed_by`).
+The opcode budget is left out, since it never stays the same."""
 
 _BOX_ALLOCATION: typing.Final = Effect.allocates_box | Effect.deletes_box
 _CHANGED_BY: typing.Final[Mapping[Effect, Effect]] = {
@@ -121,6 +125,16 @@ def changed_by(reads: Effect) -> Effect:
         if read & reads:
             result |= writes
     return result
+
+
+def is_repeatable(effects: Effect) -> bool:
+    """True if an operation with the given effects can be run again, with the same operands,
+    for the same outcome: it changes nothing, and it reads nothing that changes by itself.
+
+    If it completed once, it completes again with the same results, as long as no operation
+    in between has one of the effects in `changed_by(effects & READS)`.
+    """
+    return not (effects & ~REPEATABLE)
 
 
 def observers_of(writes: Effect) -> Effect:

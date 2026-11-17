@@ -6,10 +6,12 @@ from puya.ir.optimize.effects import (
     _INTRINSIC_EFFECTS,
     EVERYTHING,
     OBSERVABLE,
+    READS,
     Effect,
     analyse_subroutine_effects,
     changed_by,
     effects_of,
+    is_repeatable,
     observers_of,
 )
 from puya.ir.optimize.sink_single_use_intrinsics import _is_unconditionally_movable
@@ -635,6 +637,29 @@ def test_which_writes_change_which_reads() -> None:
         assert not read & OBSERVABLE
     assert Effect.fails & OBSERVABLE
     assert Effect.exits & OBSERVABLE
+
+
+def test_which_operations_can_be_repeated() -> None:
+    # computing a value, and reading what is fixed while the program runs
+    assert is_repeatable(effects_of(intrinsic(AVMOp.add, _a, _b)))
+    assert is_repeatable(effects_of(intrinsic(AVMOp.txna, immediates=["ApplicationArgs", 1])))
+    # reading state gives the same outcome until that state changes
+    box_read = effects_of(intrinsic(AVMOp.box_extract, _key, _a, _b))
+    assert is_repeatable(box_read)
+    assert changed_by(box_read & READS) & effects_of(intrinsic(AVMOp.box_replace, _key, _a, _data))
+    assert not changed_by(box_read & READS) & effects_of(intrinsic(AVMOp.app_global_put, _key, _a))
+    assert is_repeatable(
+        effects_of(intrinsic(AVMOp.app_global_get, _key, types=[PrimitiveIRType.uint64]))
+    )
+    assert is_repeatable(effects_of(intrinsic(AVMOp.balance, _a)))
+    # the opcode budget is never the same twice
+    assert not is_repeatable(effects_of(intrinsic(AVMOp.global_, immediates=["OpcodeBudget"])))
+    # anything that leaves a trace
+    assert not is_repeatable(effects_of(intrinsic(AVMOp.log, _data)))
+    assert not is_repeatable(effects_of(intrinsic(AVMOp.box_put, _key, _data)))
+    assert not is_repeatable(effects_of(intrinsic(AVMOp.store, _a, immediates=[1])))
+    assert not is_repeatable(effects_of(intrinsic(AVMOp.itxn_submit)))
+    assert not is_repeatable(EVERYTHING)
 
 
 def test_subroutine_summaries() -> None:
