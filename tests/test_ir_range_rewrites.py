@@ -5,7 +5,7 @@ from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.main import SubroutineOptimization
-from puya.ir.optimize.range_rewrites import range_constant_outcomes
+from puya.ir.optimize.range_rewrites import range_constant_outcomes, range_operand_results
 from puya.ir.types_ import PrimitiveIRType
 from tests.utils.ir import (
     assert_,
@@ -51,6 +51,10 @@ def _use(*values: models.Value) -> list[models.Op]:
 
 def _constant_outcomes(ops: Sequence[models.Op]) -> list[str]:
     return optimize_block(range_constant_outcomes, ops, parameters=_PARAMETERS)
+
+
+def _operand_results(ops: Sequence[models.Op]) -> list[str]:
+    return optimize_block(range_operand_results, ops, parameters=_PARAMETERS)
 
 
 def _unchanged(ops: Sequence[models.Op]) -> list[str]:
@@ -252,6 +256,166 @@ def test_checks_of_a_loop_counter() -> None:
         "let bits#0: uint64 = (bitlen next#0)",
         "let fits#0: bool = (<= bits#0 256u)",
         "(assert fits#0)",
+    ]
+
+
+def test_modulo_of_value_below_the_modulus() -> None:
+    small = register("small")
+    again = register("again")
+    total = _bytes("total")
+    wrapped = _bytes("wrapped")
+    ops = [
+        assign(small, intrinsic(AVMOp.mod, _a, uint64(100))),
+        assign(again, intrinsic(AVMOp.mod, small, uint64(256))),
+        *_CONVERTED,
+        assign(total, intrinsic(AVMOp.add_bytes, _a_bytes, _b_bytes)),
+        assign(wrapped, intrinsic(AVMOp.mod_bytes, total, biguint(_WORD))),
+        *_use(again, wrapped),
+    ]
+    result = _operand_results(ops)
+    assert result[1] == "let again#0: uint64 = small#0"
+    # the sum has no leading zero bytes, like the result of the modulo: the same bytes
+    assert result[5] == "let wrapped#0: bytes = total#0"
+    # the first modulo is needed
+    assert result[0] == "let small#0: uint64 = (% a#0 100u)"
+
+
+def test_modulo_of_value_that_may_reach_the_modulus_stays() -> None:
+    total = _bytes("total")
+    wrapped = _bytes("wrapped")
+    narrow = _bytes("narrow")
+    ops = [
+        *_WORDS,
+        assign(total, intrinsic(AVMOp.add_bytes, _a_word, _b_word)),
+        assign(wrapped, intrinsic(AVMOp.mod_bytes, total, biguint(_WORD))),
+        assign(narrow, intrinsic(AVMOp.mod_bytes, _a_word, biguint(2**128))),
+        *_use(wrapped, narrow),
+    ]
+    assert _operand_results(ops) == _unchanged(ops)
+
+
+def test_modulo_of_value_with_leading_zero_bytes() -> None:
+    wrapped = _bytes("wrapped")
+    total = _bytes("total")
+    joined = _bytes("joined")
+    is_small = _condition("is_small")
+    bits = register("bits")
+    modulo = intrinsic(AVMOp.mod_bytes, _a_word, biguint(_WORD))
+    as_number: list[models.Op] = [
+        assign(total, intrinsic(AVMOp.add_bytes, wrapped, biguint(1))),
+        assign(is_small, intrinsic(AVMOp.lt_bytes, wrapped, _b_word)),
+        assign(bits, intrinsic(AVMOp.bitlen, wrapped)),
+        *_use(total, is_small, bits),
+    ]
+    # a word is below 2^256, but it is 32 bytes where the result of the modulo has as many
+    # as it takes: something that reads the bytes of the result can tell
+    for reads_bytes in (
+        _use(wrapped),
+        [assign(bits, intrinsic(AVMOp.len_, wrapped)), *_use(bits)],
+        [assign(joined, intrinsic(AVMOp.concat, wrapped, _b_word)), *_use(joined)],
+        [assign(bits, intrinsic(AVMOp.btoi, wrapped)), *_use(bits)],
+    ):
+        ops = [*_WORDS, assign(wrapped, modulo), *as_number[:2], *reads_bytes]
+        assert _operand_results(ops) == _unchanged(ops)
+    # byte math, its comparisons and bitlen read a number, and cannot
+    ops = [*_WORDS, assign(wrapped, modulo), *as_number]
+    assert _operand_results(ops)[2] == "let wrapped#0: bytes = a_word#0"
+
+
+def test_modulo_that_can_fail_stays() -> None:
+    long = _bytes("long")
+    wrapped = _bytes("wrapped")
+    total = _bytes("total")
+    ops = [
+        *_CONVERTED,
+        # 68 bytes that are a number below 2^64
+        assign(long, intrinsic(AVMOp.concat, bytes_(bytes(60)), _a_bytes)),
+        assign(wrapped, intrinsic(AVMOp.mod_bytes, long, biguint(_WORD))),
+        assign(total, intrinsic(AVMOp.add_bytes, wrapped, biguint(1))),
+        *_use(total),
+    ]
+    assert _operand_results(ops) == _unchanged(ops)
+
+
+def test_masks_that_cover_the_value() -> None:
+    low = register("low")
+    again = register("again")
+    lower = register("lower")
+    masked = _bytes("masked")
+    partly = _bytes("partly")
+    longer = _bytes("longer")
+    ops = [
+        assign(low, intrinsic(AVMOp.bitwise_and, _a, uint64(255))),
+        assign(again, intrinsic(AVMOp.bitwise_and, low, uint64(1023))),
+        assign(lower, intrinsic(AVMOp.bitwise_and, low, uint64(127))),
+        *_WORDS,
+        *_CONVERTED,
+        assign(masked, intrinsic(AVMOp.bitwise_and_bytes, _a_word, bytes_(b"\xff" * 32))),
+        assign(partly, intrinsic(AVMOp.bitwise_and_bytes, _a_word, bytes_(b"\xff" * 8))),
+        # all the bits of the 8 bytes, but the result has the 32 bytes of the mask
+        assign(longer, intrinsic(AVMOp.bitwise_and_bytes, _a_bytes, bytes_(b"\xff" * 32))),
+        *_use(again, lower, masked, partly, longer),
+    ]
+    result = _operand_results(ops)
+    assert result[1] == "let again#0: uint64 = low#0"
+    assert result[7] == "let masked#0: bytes = a_word#0"
+    # the others are as they were
+    assert [result[i] for i in (0, 2, 8, 9)] == [str(ops[i]) for i in (0, 2, 8, 9)]
+
+
+def test_pads_of_values_that_are_long_enough() -> None:
+    zeros = _bytes("zeros")
+    padded = _bytes("padded")
+    padded_short = _bytes("padded_short")
+    total = _bytes("total")
+    ops = [
+        *_WORDS,
+        *_CONVERTED,
+        assign(zeros, intrinsic(AVMOp.bzero, uint64(32))),
+        assign(padded, intrinsic(AVMOp.bitwise_or_bytes, zeros, _a_word)),
+        assign(padded_short, intrinsic(AVMOp.bitwise_or_bytes, _a_bytes, zeros)),
+        *_use(padded, padded_short),
+    ]
+    result = _operand_results(ops)
+    # a word is a word already, and 8 bytes are not
+    assert result[5] == "let padded#0: bytes = a_word#0"
+    assert result[6] == str(ops[6])
+    # unless nothing reads more than a number in the result
+    ops = [
+        *_CONVERTED,
+        assign(zeros, intrinsic(AVMOp.bzero, uint64(32))),
+        assign(padded_short, intrinsic(AVMOp.bitwise_or_bytes, _a_bytes, zeros)),
+        assign(total, intrinsic(AVMOp.add_bytes, padded_short, _b_bytes)),
+        *_use(total),
+    ]
+    assert _operand_results(ops)[3] == "let padded_short#0: bytes = a_bytes#0"
+    # zeros that byte math does not take: the pad makes the addition fail
+    ops[2] = assign(zeros, intrinsic(AVMOp.bzero, uint64(100)))
+    assert _operand_results(ops) == _unchanged(ops)
+
+
+def test_parts_that_are_the_whole() -> None:
+    names = ["rest", "all", "first", "also_all", "sized", "start"]
+    rest, everything, first, also_all, sized, start = map(_bytes, names)
+    ops = [
+        *_WORDS,
+        assign(rest, intrinsic(AVMOp.extract, _data, immediates=[0, 0])),
+        assign(everything, intrinsic(AVMOp.extract, _a_word, immediates=[0, 32])),
+        assign(first, intrinsic(AVMOp.extract, _a_word, immediates=[0, 8])),
+        assign(also_all, intrinsic(AVMOp.substring, _a_word, immediates=[0, 32])),
+        assign(sized, intrinsic(AVMOp.extract3, _a_word, uint64(0), uint64(32))),
+        # may be all of it, or fail
+        assign(start, intrinsic(AVMOp.extract, _data, immediates=[0, 32])),
+        *_use(rest, everything, first, also_all, sized, start),
+    ]
+    result = _operand_results(ops)
+    assert result[2:8] == [
+        "let rest#0: bytes = data#0",
+        "let all#0: bytes = a_word#0",
+        str(ops[4]),
+        "let also_all#0: bytes = a_word#0",
+        "let sized#0: bytes = a_word#0",
+        str(ops[7]),
     ]
 
 
