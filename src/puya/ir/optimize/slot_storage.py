@@ -16,6 +16,7 @@ from collections.abc import Mapping
 import attrs
 
 from puya.ir import models
+from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
 from puya.ir.types_ import IRType
 from puya.options import SlotStorage
@@ -34,6 +35,17 @@ SLOT_ADD: typing.Final = "slot_add"
 
 _HASHES: typing.Final = frozenset(
     (AVMOp.keccak256.code, AVMOp.sha256.code, AVMOp.sha512_256.code, AVMOp.sha3_256.code)
+)
+# ops whose result is a number without leading zero bytes
+_BYTE_MATH: typing.Final = frozenset(
+    (
+        AVMOp.add_bytes,
+        AVMOp.sub_bytes,
+        AVMOp.mul_bytes,
+        AVMOp.div_floor_bytes,
+        AVMOp.mod_bytes,
+        AVMOp.bsqrt,
+    )
 )
 
 
@@ -107,6 +119,10 @@ class SlotValues:
     """the constant pages the subroutine reads or writes words of"""
     versions: dict[str, int]
     """the highest version assigned of each register name"""
+    checked: frozenset[models.Register] = frozenset()
+    """results of byte math that an assert finds to fit a word, see `_checked_to_fit_a_word`"""
+    _words: dict[models.Register, bool] = attrs.field(factory=dict, init=False, eq=False)
+    _fitting: dict[models.Register, bool] = attrs.field(factory=dict, init=False, eq=False)
 
     @classmethod
     def of(cls, subroutine: models.Subroutine, roles: Mapping[str, str]) -> "SlotValues":
@@ -125,7 +141,13 @@ class SlotValues:
                         target=target, args=[models.BytesConstant(value=page), *_]
                     ) if roles.get(target.id) in PAGE_ROLES and len(page) == WORD:
                         pages.add(page)
-        return cls(roles=roles, definitions=definitions, pages=frozenset(pages), versions=versions)
+        return cls(
+            roles=roles,
+            definitions=definitions,
+            pages=frozenset(pages),
+            versions=versions,
+            checked=_checked_to_fit_a_word(subroutine, definitions),
+        )
 
     def fresh(
         self, name: str, ir_type: IRType, location: SourceLocation | None
@@ -291,9 +313,17 @@ class SlotValues:
         value = self.copied(value)
         if isinstance(value, models.BytesConstant):
             return len(value.value) == WORD
-        if not depth:
+        if not isinstance(value, models.Register):
             return False
-        match self.definition(value):
+        try:
+            return self._words[value]
+        except KeyError:
+            pass
+        result = self._words[value] = bool(depth) and self._is_word(value, depth - 1)
+        return result
+
+    def _is_word(self, value: models.Register, depth: int) -> bool:
+        match self.definitions.get(value):
             case models.InvokeSubroutine(target=target):
                 return self.roles.get(target.id) in (*READ_ROLES, SLOT_ADD)
             case models.Intrinsic(op=op) if op.code in _HASHES:
@@ -308,13 +338,126 @@ class SlotValues:
                 op=(AVMOp.replace2 | AVMOp.replace3 | AVMOp.setbyte | AVMOp.setbit),
                 args=[target, *_],
             ):
-                return self.is_word(target, depth=depth - 1)
+                return self.is_word(target, depth=depth)
             case models.Intrinsic(
                 op=(AVMOp.bitwise_or_bytes | AVMOp.bitwise_and_bytes | AVMOp.bitwise_xor_bytes),
                 args=[a, b],
             ):
-                return self.is_word(a, depth=depth - 1) and self.is_word(b, depth=depth - 1)
+                # as long as the longer of the two
+                return (self.is_word(a, depth=depth) and self.fits_word(b, depth=depth)) or (
+                    self.is_word(b, depth=depth) and self.fits_word(a, depth=depth)
+                )
         return False
+
+    def fits_word(self, value: models.Value, *, depth: int = 8) -> bool:
+        """True if the value is certainly at most 32 bytes long."""
+        value = self.copied(value)
+        if isinstance(value, models.Constant):
+            constant = get_bytes_constant(value)
+            return constant is not None and len(constant) <= WORD
+        if not isinstance(value, models.Register):
+            return False
+        try:
+            return self._fitting[value]
+        except KeyError:
+            pass
+        result = self._fitting[value] = (
+            value in self.checked
+            or self.is_word(value, depth=depth)
+            or (bool(depth) and self._fits_word(value, depth - 1))
+        )
+        return result
+
+    def _fits_word(self, value: models.Register, depth: int) -> bool:
+        match self.definitions.get(value):
+            case models.Intrinsic(op=(AVMOp.itob | AVMOp.bsqrt)):
+                # 8 bytes, and the root of a number of at most 64 bytes
+                return True
+            case models.Intrinsic(op=(AVMOp.sub_bytes | AVMOp.div_floor_bytes), args=[a, _]):
+                # no more than the first operand, and without leading zero bytes
+                return self.fits_word(a, depth=depth)
+            case models.Intrinsic(op=AVMOp.mod_bytes, args=[a, b]):
+                # less than the second operand and no more than the first
+                modulus = _number(self.copied(b))
+                if modulus is not None and 0 < modulus <= SLOTS:
+                    return True
+                return self.fits_word(a, depth=depth) or self.fits_word(b, depth=depth)
+            case models.Intrinsic(
+                op=(AVMOp.replace2 | AVMOp.replace3 | AVMOp.setbyte | AVMOp.bitwise_not_bytes),
+                args=[target, *_],
+            ):
+                return self.fits_word(target, depth=depth)
+            case models.Intrinsic(
+                op=(AVMOp.bitwise_or_bytes | AVMOp.bitwise_and_bytes | AVMOp.bitwise_xor_bytes),
+                args=[a, b],
+            ):
+                return self.fits_word(a, depth=depth) and self.fits_word(b, depth=depth)
+            case models.Intrinsic(op=AVMOp.bzero, args=[models.UInt64Constant(value=n)]):
+                return n <= WORD
+            case models.Intrinsic(op=AVMOp.extract3, args=[_, _, models.UInt64Constant(value=n)]):
+                return n <= WORD
+            case models.Intrinsic(op=AVMOp.extract, immediates=[_, int(n)]):
+                return 0 < n <= WORD
+        return False
+
+
+def _checked_to_fit_a_word(
+    subroutine: models.Subroutine, definitions: Mapping[models.Register, models.ValueProvider]
+) -> frozenset[models.Register]:
+    """The results of byte math that an assert, later in the block that computes them, finds
+    to be no more than a number below 2**256, with no call and no `box_replace` in between.
+
+    Byte math gives a number without leading zero bytes, so such a result is at most 32 bytes
+    long once the assert has passed. Whatever uses the result runs after the op that computes
+    it, and so after the assert, unless it is one of the ops between the two: only a call or
+    a `box_replace` is asked whether what it is given is a word.
+    """
+    checked = set[models.Register]()
+    for block in subroutine.body:
+        computed = dict[models.Register, int]()
+        last_use = -1
+        for index, op in enumerate(block.ops):
+            source = op.source if isinstance(op, models.Assignment) else op
+            match op:
+                case models.Assignment(targets=[target], source=models.Intrinsic(op=math)) if (
+                    math in _BYTE_MATH
+                ):
+                    computed[target] = index
+                case models.Assert(condition=models.Register() as condition):
+                    limited = _limited(definitions.get(condition))
+                    if limited is not None:
+                        value, limit = limited
+                        if (
+                            isinstance(value, models.Register)
+                            and limit < SLOTS
+                            and computed.get(value, -1) > last_use
+                        ):
+                            checked.add(value)
+            if isinstance(source, models.InvokeSubroutine) or (
+                isinstance(source, models.Intrinsic) and source.op is AVMOp.box_replace
+            ):
+                last_use = index
+    return frozenset(checked)
+
+
+def _limited(condition: models.ValueProvider | None) -> tuple[models.Value, int] | None:
+    """For a comparison of byte arrays as numbers against a constant: the value that is not
+    above a number if the comparison holds, and that number."""
+    match condition:
+        case models.Intrinsic(op=AVMOp.lte_bytes, args=[value, limit]):
+            strict = False
+        case models.Intrinsic(op=AVMOp.lt_bytes, args=[value, limit]):
+            strict = True
+        case models.Intrinsic(op=AVMOp.gte_bytes, args=[limit, value]):
+            strict = False
+        case models.Intrinsic(op=AVMOp.gt_bytes, args=[limit, value]):
+            strict = True
+        case _:
+            return None
+    number = _number(limit)
+    if number is None:
+        return None
+    return value, number - strict
 
 
 def _number(value: models.Value) -> int | None:

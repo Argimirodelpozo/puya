@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 import attrs
 
 from puya.ir import models
@@ -53,7 +55,9 @@ def _sub(name: str, *ops: models.Op) -> models.Subroutine:
 
 
 def _optimized(
-    ops: list[models.Op], *subroutines: models.Subroutine, storage: SlotStorage | None = STORAGE
+    ops: Sequence[models.Op],
+    *subroutines: models.Subroutine,
+    storage: SlotStorage | None = STORAGE,
 ) -> list[str]:
     return optimize_block(
         repeated_state_reads_elimination,
@@ -289,3 +293,64 @@ def test_program_without_boxes_is_left_as_it_is_unless_storage_is_declared() -> 
         repeated_state_reads_elimination, ops, box_reader, parameters=_parameters
     )
     assert remaining == [str(ops[0]), _FORWARDED]
+
+
+def _padded_write(value_ops: list[models.Op], value: models.Register) -> list[models.Op]:
+    """Reads the word of a slot and of the slot after it, writes a value to the first slot
+    with zeros in front that make it at least a word long, and reads both again."""
+    near = _bytes("near")
+    zeros = _bytes("zeros")
+    padded = _bytes("padded")
+    return [
+        assign(_bytes("first"), call(_read, _slot)),
+        assign(near, call(_add, _slot, uint64(1))),
+        assign(_bytes("neighbour"), call(_read, near)),
+        *value_ops,
+        assign(zeros, intrinsic(AVMOp.bzero, uint64(32))),
+        assign(padded, intrinsic(AVMOp.bitwise_or_bytes, zeros, value)),
+        call(_write, _slot, padded),
+        assign(_bytes("again"), call(_read, _slot)),
+        assign(_bytes("neighbour_again"), call(_read, near)),
+    ]
+
+
+def test_write_of_a_value_that_fits_a_word_is_a_write_of_one_word() -> None:
+    first = _bytes("first")
+    one_word = [
+        "let again#0: bytes = padded#0",
+        "let neighbour_again#0: bytes = neighbour#0",
+    ]
+    # the difference of a word and something is a number that is no more than the word
+    less = _bytes("less")
+    ops = _padded_write([assign(less, intrinsic(AVMOp.sub_bytes, first, _value))], less)
+    assert _optimized(ops) == [*map(str, ops[:-2]), *one_word]
+    # the sum of two words can take more than a word: what is written can reach the slot
+    # after, and the word read back is the first 32 bytes
+    total = _bytes("total")
+    add = assign(total, intrinsic(AVMOp.add_bytes, first, _value))
+    ops = _padded_write([add], total)
+    assert _optimized(ops) == [
+        *map(str, ops[:-2]),
+        str(
+            assign(_bytes("again"), intrinsic(AVMOp.extract, _bytes("padded"), immediates=[0, 32]))
+        ),
+        str(ops[-1]),
+    ]
+    # unless an assert in the same block finds the sum to be a number that fits a word
+    fits = register("fits", PrimitiveIRType.bool)
+    largest = bytes_(b"\xff" * 32)
+    check = [
+        assign(fits, intrinsic(AVMOp.lte_bytes, total, largest)),
+        models.Assert(condition=fits, message=None, explicit=True, source_location=None),
+    ]
+    ops = _padded_write([add, *check], total)
+    assert _optimized(ops) == [*map(str, ops[:-2]), *one_word]
+    # an assert after the write says nothing about the write
+    ops = _padded_write([add], total)
+    ops[-2:-2] = check
+    assert _optimized(ops)[-2:] == [
+        str(
+            assign(_bytes("again"), intrinsic(AVMOp.extract, _bytes("padded"), immediates=[0, 32]))
+        ),
+        str(ops[-1]),
+    ]
