@@ -36,6 +36,7 @@ from puya.ir.optimize.scratch_reads import (
 )
 from puya.ir.optimize.scratch_writes import merge_word_writes, remove_unread_word_writes
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
+from puya.ir.optimize.word_arguments import promote_word_reads, remove_unused_parameters
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
 from puya.utils import attrs_extend
@@ -164,6 +165,10 @@ def optimize_program_ir(
         logger.debug(f"Begin optimization pass {pass_num}/{MAX_PASSES}")
         analyse_subroutines_for_inlining(opt_context, program)
         analyse_scratch_effects(opt_context, program)
+        if promote_word_reads(opt_context, program):
+            program_modified = True
+        if remove_unused_parameters(opt_context, program):
+            program_modified = True
         for subroutine in program.all_subroutines:
             logger.debug(f"Optimizing subroutine {subroutine.id}")
             for optimizer in pipeline:

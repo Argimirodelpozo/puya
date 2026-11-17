@@ -49,17 +49,19 @@ _ZERO_WORD = b"\x00" * _WORD
 def keep_declared_accessors(context: IROptimizationContext, program: models.Program) -> None:
     """A declared word accessor has to stay a call for its calls to be recognised."""
     declared = context.linear_memory = _declaration_for(context, program)
+    accessors = set[str | None]()
     if declared is not None:
-        names = {declared.read_word, declared.read_word_uint64, declared.write_word}
+        accessors = {declared.read_word, declared.read_word_uint64, declared.write_word}
         if declared.fresh_allocations:
-            names.add(declared.alloc)
+            accessors.add(declared.alloc)
         for sub in program.subroutines:
-            if sub.id in names and sub.inline is None:
+            if sub.id in accessors and sub.inline is None:
                 sub.inline = False
-    # experiment switch: subroutines to inline at every call (ids, or prefixes ending in *)
+    # experiment switch: subroutines to inline at every call (ids, or prefixes ending in *),
+    # also where the frontend asked for a call
     forced = [n for n in os.environ.get("PUYA_INLINE_SUBROUTINES", "").split(",") if n]
     for sub in program.subroutines:
-        if sub.inline is None and any(
+        if sub.id not in accessors and any(
             sub.id.startswith(n[:-1]) if n.endswith("*") else sub.id == n for n in forced
         ):
             sub.inline = True
@@ -155,22 +157,19 @@ def repeated_scratch_reads_elimination(
 
 
 def local_objects(subroutine: models.Subroutine, memory: "_Memory") -> frozenset[models.Value]:
-    """The allocations of a subroutine whose pointer is only ever the address of a word access
-    inside the allocation.
+    """The allocations of a subroutine whose pointer is only ever the address of a word access.
 
     Any other use lets the pointer leave: an argument, a stored value, a phi, a result, a
-    comparison, arithmetic other than adding or subtracting a constant. An access outside the
-    allocation reaches something else, so it counts as leaving too.
+    comparison, arithmetic other than adding or subtracting a constant.
     """
     declared = memory.declared
     if declared is None or not declared.fresh_allocations:
         return frozenset()
-    fresh = dict[models.Value, int]()  # the allocation and its extent
-    for register, source in memory.definitions.items():
-        match source:
-            case models.InvokeSubroutine(target=target, args=[models.UInt64Constant(value=size)]):
-                if memory.role(target) == "alloc":
-                    fresh[register] = (size + _WORD - 1) // _WORD * _WORD
+    fresh = {
+        register
+        for register, source in memory.definitions.items()
+        if isinstance(source, models.InvokeSubroutine) and memory.role(source.target) == "alloc"
+    }
     if not fresh:
         return frozenset()
     left = set[models.Value]()
@@ -200,28 +199,15 @@ def local_objects(subroutine: models.Subroutine, memory: "_Memory") -> frozenset
                     models.Intrinsic(op=(AVMOp.add | AVMOp.sub), args=[_, models.UInt64Constant()])
                 ):
                     pass  # an address at a constant distance: its uses decide
-                case models.InvokeSubroutine(target=target, args=[at, *others]) if (
+                case models.InvokeSubroutine(target=target, args=[_, *others]) if (
                     memory.role(target) in accessors
                 ):
                     leave(others)
-                    address = memory.address(at)
-                    extent = fresh.get(address.base) if address.base is not None else None
-                    if extent is not None:
-                        count: int | None = 1
-                        if memory.role(target) == "write_range":
-                            words = memory.words(others[0])
-                            count = None if words is None else len(words)
-                        if (
-                            count is None
-                            or address.offset < 0
-                            or address.offset + _WORD * count > extent
-                        ):
-                            leave([at])  # outside the allocation: it reaches something else
                 case _:
                     leave(reads(node))
         if block.terminator is not None:
             leave(reads(block.terminator))
-    return frozenset(fresh.keys() - left)
+    return frozenset(fresh - left)
 
 
 def _declaration_for(

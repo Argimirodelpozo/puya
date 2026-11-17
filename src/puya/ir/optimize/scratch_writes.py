@@ -94,15 +94,17 @@ def remove_unread_word_writes(
             if not isinstance(op, models.InvokeSubroutine) or len(op.args) != 2:
                 continue
             role = memory.role(op.target)
+            length: int | None
             if role == "write":
                 length = _WORD
-            elif role == "write_range" and (words := memory.words(op.args[1])) is not None:
-                length = _WORD * len(words)
+            elif role == "write_range":
+                words = memory.words(op.args[1])
+                length = None if words is None else _WORD * len(words)  # None: to the end
             else:
                 continue
             address = memory.address(op.args[0])
             if address.base in local and not any(
-                at < address.offset + length and address.offset < at + _WORD
+                (length is None or at < address.offset + length) and address.offset < at + _WORD
                 for at in read.get(address.base, ())
             ):
                 logger.debug(f"removing unread write {op}", location=op.source_location)
