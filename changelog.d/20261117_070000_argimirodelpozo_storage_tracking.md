@@ -1,3 +1,8 @@
 ### Added
 
 - A frontend that keeps its storage in boxes can declare the subroutines with which it reads and writes 32-byte words at 256-bit slots (the option `slot_storage`, see `puya.options.SlotStorage`), and what it promises about them. With a declaration, the IR optimizer follows the words through a subroutine: a word read takes the word that an earlier read or write of the same slot left, a repeated call to a subroutine that only reads takes the earlier result while nothing has changed what it reads, and a word write that a later write to the same slot replaces is removed where nothing can tell that it happened and the later write does the same to the box. A chain that reads a word, changes it and writes it back several times is left with one read and one write. Which words a call may write comes from the summary of the called subroutine in the effect model, so a call only forgets the words that it may write.
+- The IR optimizer follows box ops through a subroutine, across blocks: a repeated `box_len`, `box_get` or `box_extract` takes the earlier result, a `box_extract` of bytes that a `box_replace` put there takes those bytes, and a `box_len` after a `box_create` or a `box_resize` takes the size given. A box op forgets only what it can change (nothing of a box with another constant name, not the length of a box when it only replaces bytes, not another part of the same box), and a call forgets what the summary of the called subroutine says it may change.
+
+### Fixed
+
+- Compiling at optimization level 2 no longer ends with "could not preserve stack manipulations due to entire block deletion" when a whole run of `cover` and `uncover` ops in a block cancels out.
