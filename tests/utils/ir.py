@@ -25,6 +25,10 @@ def bytes_(value: bytes) -> models.BytesConstant:
     )
 
 
+def biguint(value: int) -> models.BigUIntConstant:
+    return models.BigUIntConstant(value=value, source_location=None)
+
+
 def register(name: str, ir_type: IRType = PrimitiveIRType.uint64) -> models.Register:
     return models.Register(name=name, version=0, ir_type=ir_type, source_location=None)
 

@@ -28,7 +28,6 @@ import networkx as nx  # type: ignore[import-untyped]
 
 from puya.avm import AVMType
 from puya.ir import models
-from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.value_bounds import (
     MAX_BIGUINT_BYTES,
@@ -599,19 +598,15 @@ def _byte_math(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     return any(bounds.length(arg)[1] > MAX_BIGUINT_BYTES for arg in op.args)
 
 
-def _byte_math_of_constants(holds: Callable[[int, int], bool]) -> _MayFail:
-    # the outcome depends on the values and not only on their lengths
-    def may_fail(op: models.Intrinsic, _bounds: ValueBounds) -> bool:
-        operands = list[int]()
-        for arg in op.args:
-            constant = get_bytes_constant(arg) if isinstance(arg, models.Constant) else None
-            if constant is None or len(constant) > MAX_BIGUINT_BYTES:
-                return True
-            operands.append(int.from_bytes(constant, "big"))
-        a, b = operands
-        return not holds(a, b)
+def _byte_math_sub(op: models.Intrinsic, bounds: ValueBounds) -> bool:
+    a, b = op.args
+    # the operands are read as numbers, whatever their lengths
+    return _byte_math(op, bounds) or not bounds.not_above(b, a)
 
-    return may_fail
+
+def _byte_math_zero_divisor(op: models.Intrinsic, bounds: ValueBounds) -> bool:
+    _, b = op.args
+    return _byte_math(op, bounds) or bounds.number(b)[0] == 0
 
 
 def _same_type_operands(op: models.Intrinsic, _bounds: ValueBounds) -> bool:
@@ -727,9 +722,9 @@ _MAY_FAIL: typing.Final[Mapping[AVMOp, _MayFail]] = {
         ),
         _byte_math,
     ),
-    AVMOp.sub_bytes: _byte_math_of_constants(lambda a, b: a >= b),
-    AVMOp.div_floor_bytes: _byte_math_of_constants(lambda _, b: b != 0),
-    AVMOp.mod_bytes: _byte_math_of_constants(lambda _, b: b != 0),
+    AVMOp.sub_bytes: _byte_math_sub,
+    AVMOp.div_floor_bytes: _byte_math_zero_divisor,
+    AVMOp.mod_bytes: _byte_math_zero_divisor,
     AVMOp.txn: _txn_field,
     AVMOp.global_: _global_field,
     AVMOp.loads: _scratch_slot,

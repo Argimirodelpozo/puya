@@ -554,7 +554,7 @@ def test_bounds_given_conditions_do_not_reach_through_phi() -> None:
     loop = block(
         1,
         [
-            assign(current, intrinsic(AVMOp.btoi, bytes_(b"12345678"))),
+            assign(current, intrinsic(AVMOp.app_global_get, _key, types=[PrimitiveIRType.uint64])),
             assign(is_small, intrinsic(AVMOp.lt, current, uint64(10))),
         ],
         return_(),
