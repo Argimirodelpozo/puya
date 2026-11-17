@@ -31,11 +31,8 @@ from puya.ir.optimize.repeated_loads_elimination import (
     constant_reads_and_unobserved_writes_elimination,
 )
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
-from puya.ir.optimize.state_reads import (
-    analyse_state_effects,
-    page_reads_merge,
-    repeated_state_reads_elimination,
-)
+from puya.ir.optimize.slot_storage import declared_storage
+from puya.ir.optimize.state_reads import page_reads_merge, repeated_state_reads_elimination
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
 from puya.utils import attrs_extend
@@ -159,6 +156,7 @@ def optimize_program_ir(
 ) -> None:
     pipeline = [o for o in get_subroutine_optimizations() if o.can_optimize(context.options)]
     late = [o for o in get_late_subroutine_optimizations() if o.can_optimize(context.options)]
+    storage = declared_storage(context.options.slot_storage)
     opt_context = attrs_extend(
         IROptimizationContext,
         context,
@@ -173,8 +171,7 @@ def optimize_program_ir(
         # A summary that is out of date still holds: optimizations do not add behaviour to a
         # subroutine, so it can only claim more than the subroutine now does. A pass that
         # misses something for that reason modifies the program, which starts another pass.
-        opt_context.effects = analyse_subroutine_effects(program)
-        analyse_state_effects(opt_context, program)
+        opt_context.effects = analyse_subroutine_effects(program, storage)
         for subroutine in program.all_subroutines:
             logger.debug(f"Optimizing subroutine {subroutine.id}")
             for optimizer in pipeline:
@@ -186,7 +183,8 @@ def optimize_program_ir(
             logger.debug("Unused subroutines removed")
             program_modified = True
         if not program_modified and late:
-            analyse_state_effects(opt_context, program)
+            # nothing changed in this pass, but the summaries are from before it
+            opt_context.effects = analyse_subroutine_effects(program, storage)
             for subroutine in program.all_subroutines:
                 for optimizer in late:
                     logger.debug(f"Late optimizer: {optimizer.desc}")

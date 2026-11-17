@@ -9,6 +9,7 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.effects import analyse_subroutine_effects
 from puya.ir.types_ import AVMBytesEncoding, IRType, PrimitiveIRType
+from puya.options import SlotStorage
 from puya.parse import SourceLocation
 from puya.program_refs import ProgramKind
 
@@ -110,11 +111,24 @@ def optimize_block(
     ops: Sequence[models.Op],
     *subroutines: models.Subroutine,
     parameters: Sequence[models.Parameter] = (),
+    storage: SlotStorage | None = None,
 ) -> list[str]:
     """Runs an optimization over a block of ops that makes up the main subroutine of a
     program, and returns the ops that are left, as text."""
     main = subroutine("main", [block(0, ops, return_())], parameters=parameters)
-    context = Mock(effects=analyse_subroutine_effects(program(main, *subroutines)))
-    optimization(context, main)
-    main.validate_with_ssa()
+    optimize_subroutine(optimization, main, *subroutines, storage=storage)
     return [str(op) for op in main.body[0].ops]
+
+
+def optimize_subroutine(
+    optimization: Callable[[IROptimizationContext, models.Subroutine], bool],
+    main: models.Subroutine,
+    *subroutines: models.Subroutine,
+    storage: SlotStorage | None = None,
+) -> bool:
+    """Runs an optimization over the main subroutine of a program, with the slot storage that
+    is declared for the program, and returns whether it changed anything."""
+    context = Mock(effects=analyse_subroutine_effects(program(main, *subroutines), storage))
+    modified = optimization(context, main)
+    main.validate_with_ssa()
+    return modified

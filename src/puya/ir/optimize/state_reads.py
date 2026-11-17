@@ -1,18 +1,16 @@
 """Boxes and application state outlive a subroutine call, so the optimizer has to know who changes
-them.
+them. What a subroutine may read and change, and whether it can be called again for the same
+outcome, comes from the effect model (`puya.ir.optimize.effects`): its summaries say what a call
+may do, and `changed_by` says which of those effects change what a subroutine reads.
 
-`analyse_state_effects` says, for every subroutine, which kinds of state its outcome depends on,
-which kinds it can change, and whether it is repeatable: free of effects, with an outcome fixed by
-its arguments and by the state it reads.
+`repeated_state_reads_elimination` follows what is known through a subroutine:
 
-`repeated_state_reads_elimination` then follows what is known through a subroutine:
-
-* a repeated call to a repeatable subroutine takes the earlier result, while nothing has changed
-  the state the callee reads;
+* a repeated call to a subroutine that can be repeated takes the earlier result, while nothing
+  has changed the state the callee reads;
 * with `SlotStorage` declared (see `puya.options`), a word read takes the word an earlier read or
   write of the same slot left, and survives writes to slots that are certainly other slots: a
   constant against another constant, one base at another distance, and whatever the declaration
-  promises to be apart.
+  promises to be apart. Which words a call may write is in the summary of its target.
 
 A read that is removed could not have failed: the same slot, or the same call, succeeded earlier
 on every path, and nothing since could have taken its box away.
@@ -35,10 +33,17 @@ from puya.avm import AVMType
 from puya.errors import InternalError
 from puya.ir import models
 from puya.ir.avm_ops import AVMOp
-from puya.ir.optimize.context import IROptimizationContext, StateEffects
-from puya.ir.optimize.effects import DETERMINISTIC, effects_of
+from puya.ir.optimize.context import IROptimizationContext
+from puya.ir.optimize.effects import (
+    BOX_CHANGES,
+    READS,
+    Effect,
+    EffectSummaries,
+    changed_by,
+    effects_of,
+    is_repeatable,
+)
 from puya.ir.optimize.slot_storage import (
-    ANY_SLOT,
     PAGE_ROLES,
     PAGE_WORDS,
     READ_ROLES,
@@ -49,8 +54,6 @@ from puya.ir.optimize.slot_storage import (
     Slot,
     SlotValues,
     SlotWrite,
-    declared_storage,
-    storage_roles,
 )
 from puya.ir.types_ import IRType, PrimitiveIRType
 from puya.parse import SourceLocation
@@ -58,190 +61,10 @@ from puya.utils import not_none
 
 logger = log.get_logger(__name__)
 
-# kinds of state
-_BOX = "box"
-_APP = "app"
-_CHAIN = "chain"
-_BALANCE = "balance"
-_ALL = frozenset((_BOX, _APP, _CHAIN, _BALANCE))
-
-_STATE_READS: typing.Final[Mapping[str, str]] = {
-    AVMOp.box_get.code: _BOX,
-    AVMOp.box_len.code: _BOX,
-    AVMOp.box_extract.code: _BOX,
-    AVMOp.app_global_get.code: _APP,
-    AVMOp.app_global_get_ex.code: _APP,
-    AVMOp.app_local_get.code: _APP,
-    AVMOp.app_local_get_ex.code: _APP,
-    # what only an inner transaction can change
-    AVMOp.app_params_get.code: _CHAIN,
-    AVMOp.asset_params_get.code: _CHAIN,
-    AVMOp.asset_holding_get.code: _CHAIN,
-    AVMOp.app_opted_in.code: _CHAIN,
-    # a minimum balance moves with the boxes of the account
-    AVMOp.balance.code: _BALANCE,
-    AVMOp.min_balance.code: _BALANCE,
-    AVMOp.acct_params_get.code: _BALANCE,
-}
-_STATE_WRITES: typing.Final[Mapping[str, frozenset[str]]] = {
-    **dict.fromkeys(
-        (
-            AVMOp.box_put.code,
-            AVMOp.box_replace.code,
-            AVMOp.box_del.code,
-            AVMOp.box_create.code,
-            AVMOp.box_resize.code,
-            AVMOp.box_splice.code,
-            # a box of another application of the same family can be a box of this one
-            AVMOp.app_box_put.code,
-            AVMOp.app_box_replace.code,
-            AVMOp.app_box_del.code,
-            AVMOp.app_box_create.code,
-            AVMOp.app_box_resize.code,
-            AVMOp.app_box_splice.code,
-        ),
-        frozenset((_BOX, _BALANCE)),
-    ),
-    **dict.fromkeys(
-        (
-            AVMOp.app_global_put.code,
-            AVMOp.app_global_del.code,
-            AVMOp.app_local_put.code,
-            AVMOp.app_local_del.code,
-        ),
-        frozenset((_APP,)),
-    ),
-    # an inner transaction can run any program
-    AVMOp.itxn_submit.code: _ALL,
-}
-_PURE_SOURCES = (
-    models.Value,
-    models.ValueTuple,
-    models.DecodeBytes,
-    models.BytesEncode,
-    models.ExtractValue,
-    models.ReplaceValue,
-    models.ArrayLength,
-    models.ArrayPop,
-    models.ArrayConcat,
-)
-
-# a subroutine nothing is known about
-_UNKNOWN = StateEffects(writes=_ALL, repeatable=False)
-
-
-def analyse_state_effects(context: IROptimizationContext, program: models.Program) -> None:
-    storage = declared_storage(context.options.slot_storage)
-    roles = storage_roles(storage, program) if storage is not None else {}
-    local = dict[str, StateEffects]()
-    callees = dict[str, set[str]]()
-    for sub in program.all_subroutines:
-        role = roles.get(sub.id)
-        if role is None:
-            local[sub.id], callees[sub.id] = _local_effects(sub, SlotValues.of(sub, roles))
-        elif role in READ_ROLES:
-            local[sub.id] = StateEffects(reads=frozenset((_BOX,)))
-        elif role in WRITE_ROLES:
-            local[sub.id] = StateEffects(slot_writes=frozenset((ANY_SLOT,)), repeatable=False)
-        else:
-            local[sub.id] = StateEffects()
-    effects = dict(local)
-    changed = True
-    while changed:
-        changed = False
-        for sub_id, called in callees.items():
-            current = merged = effects[sub_id]
-            for callee in called:
-                other = effects.get(callee, _UNKNOWN)
-                merged = StateEffects(
-                    reads=merged.reads | other.reads,
-                    writes=merged.writes | other.writes,
-                    slot_writes=merged.slot_writes | other.slot_writes,
-                    repeatable=merged.repeatable and other.repeatable,
-                )
-            if merged != current:
-                effects[sub_id] = merged
-                changed = True
-    # a program that keeps nothing in boxes is left as it is
-    boxes = storage is not None or any(
-        _BOX in e.reads or _BOX in e.writes or e.slot_writes for e in effects.values()
-    )
-    context.state_effects = effects if boxes else None
-    context.storage_roles = roles
-    # the page subroutines of a program that keeps its words in the boxes of another
-    # application are declared like any others, but those pages are not boxes of this program
-    context.pages_are_boxes = (
-        storage is not None
-        and storage.pages_are_boxes
-        and all(
-            _uses_own_boxes(sub) for sub in program.subroutines if roles.get(sub.id) in PAGE_ROLES
-        )
-    )
-
-
-def _uses_own_boxes(sub: models.Subroutine) -> bool:
-    """True if the subroutine calls no other and uses no box of another application."""
-    for block in sub.body:
-        for op in block.ops:
-            node = op.source if isinstance(op, models.Assignment) else op
-            if isinstance(node, models.InvokeSubroutine) or (
-                isinstance(node, models.Intrinsic) and node.op.code.startswith("app_box_")
-            ):
-                return False
-    return True
-
-
-def _local_effects(sub: models.Subroutine, values: "SlotValues") -> tuple[StateEffects, set[str]]:
-    reads = set[str]()
-    writes = set[str]()
-    slot_writes = set[SlotWrite]()
-    repeatable = True
-    callees = set[str]()
-    for block in sub.body:
-        if isinstance(block.terminator, models.Fail):
-            continue  # nothing it does outlives the failure
-        for op in block.ops:
-            node: object = op.source if isinstance(op, models.Assignment) else op
-            if isinstance(node, models.InvokeSubroutine):
-                role = values.roles.get(node.target.id)
-                if role in WRITE_ROLES:
-                    written = values.written(role, node)
-                    slot_writes.add(ANY_SLOT if written is None else values.kind(*written))
-                    repeatable = False
-                elif role in READ_ROLES:
-                    reads.add(_BOX)
-                elif role is None:
-                    callees.add(node.target.id)
-            elif isinstance(node, models.Intrinsic):
-                code = node.op.code
-                if code in _STATE_WRITES:
-                    writes |= _STATE_WRITES[code]
-                    repeatable = False
-                elif code in _STATE_READS:
-                    reads.add(_STATE_READS[code])
-                elif not _is_pure(node):
-                    repeatable = False
-            elif isinstance(node, models.BoxRead):
-                reads.add(_BOX)
-            elif isinstance(node, models.BoxWrite):
-                writes |= _STATE_WRITES[AVMOp.box_put.code]
-                repeatable = False
-            elif not isinstance(node, (*_PURE_SOURCES, models.Assert)):
-                repeatable = False
-    return (
-        StateEffects(
-            reads=frozenset(reads),
-            writes=frozenset(writes),
-            slot_writes=frozenset(slot_writes),
-            repeatable=repeatable,
-        ),
-        callees,
-    )
-
-
-def _is_pure(op: models.Intrinsic) -> bool:
-    # computes a value, or reads what is fixed while a program runs
-    return not (effects_of(op) & ~DETERMINISTIC)
+# the effects that can make a box shorter, or take it away
+_CHANGES_BOX_SIZE: typing.Final = Effect.allocates_box | Effect.deletes_box
+# the effects that change something a subroutine may read
+_CHANGES_STATE: typing.Final = changed_by(READS & ~Effect.reads_budget)
 
 
 @attrs.frozen
@@ -316,29 +139,28 @@ def page_reads_merge(context: IROptimizationContext, subroutine: models.Subrouti
     bytes in place, which is all the write subroutine does in that case; otherwise it calls the
     subroutine as before.
     """
-    if not context.pages_are_boxes:
-        return False
     return _eliminate(context, subroutine, pages=True)
+
+
+# a program in which no subroutine has one of these keeps nothing in boxes
+_USES_BOXES: typing.Final = Effect.reads_box | Effect.reads_box_size | BOX_CHANGES
 
 
 def _eliminate(
     context: IROptimizationContext, subroutine: models.Subroutine, *, pages: bool
 ) -> bool:
-    effects = context.state_effects
-    if effects is None:
+    summaries = context.effects
+    if summaries is None:
         return False
-    storage = declared_storage(context.options.slot_storage)
-    if not _has_reads(subroutine, effects):
+    storage = summaries.storage
+    if storage is None:
+        if pages or not summaries.anywhere & _USES_BOXES:
+            return False
+    elif pages and not storage.pages_are_boxes:
         return False
-    follower = _Follower(
-        effects=effects,
-        values=SlotValues.of(subroutine, context.storage_roles),
-        hashed_apart=storage is not None and storage.hashed_slots_apart,
-        page_boxes=context.pages_are_boxes,
-        pages=pages,
-        inline_reads=pages and storage is not None and storage.inline_page_reads,
-        inline_writes=pages and storage is not None and storage.inline_page_writes,
-    )
+    if not _has_reads(subroutine, summaries):
+        return False
+    follower = _Follower.of(summaries, subroutine, pages=pages)
     order = _reverse_post_order(subroutine.body[0])
     at_end = _known_at_block_ends(follower, order)
 
@@ -359,13 +181,12 @@ def _eliminate(
     return modified
 
 
-def _has_reads(subroutine: models.Subroutine, effects: Mapping[str, StateEffects]) -> bool:
+def _has_reads(subroutine: models.Subroutine, summaries: EffectSummaries) -> bool:
     for block in subroutine.body:
         for op in block.ops:
             node = op.source if isinstance(op, models.Assignment) else op
-            if (
-                isinstance(node, models.InvokeSubroutine)
-                and effects.get(node.target.id, _UNKNOWN).repeatable
+            if isinstance(node, models.InvokeSubroutine) and is_repeatable(
+                summaries.of(node.target)
             ):
                 return True
     return False
@@ -454,7 +275,7 @@ def _reverse_post_order(entry: models.BasicBlock) -> Sequence[models.BasicBlock]
 
 @attrs.define
 class _Follower:
-    effects: Mapping[str, StateEffects]
+    summaries: EffectSummaries
     values: SlotValues
     hashed_apart: bool
     page_boxes: bool
@@ -478,6 +299,27 @@ class _Follower:
     )
     """by branch taken: lengths the page boxes are known to have at least, when it is taken"""
     writes_in_place: list["_WriteInPlace"] = attrs.field(factory=list)
+    _changes_calls: dict[str, Effect] = attrs.field(factory=dict)
+    """by subroutine id, for the calls that are remembered: the effects that change what the
+    subroutine reads"""
+    _effects: dict[models.IRVisitable, Effect] = attrs.field(factory=dict)
+    """the effects of the operations seen so far that are not calls"""
+
+    @classmethod
+    def of(
+        cls, summaries: EffectSummaries, subroutine: models.Subroutine, *, pages: bool = False
+    ) -> "_Follower":
+        storage = summaries.storage
+        declaration = storage.declaration if storage is not None else None
+        return cls(
+            summaries=summaries,
+            values=SlotValues.of(subroutine, storage.roles if storage is not None else {}),
+            hashed_apart=declaration is not None and declaration.hashed_slots_apart,
+            page_boxes=storage is not None and storage.pages_are_boxes,
+            pages=pages,
+            inline_reads=pages and declaration is not None and declaration.inline_page_reads,
+            inline_writes=pages and declaration is not None and declaration.inline_page_writes,
+        )
 
     def follow(self, block: models.BasicBlock, known: _Known) -> bool:
         """Takes `known` from the start of the block to its end; returns whether it rewrote."""
@@ -602,7 +444,7 @@ class _Follower:
 
     def _op(self, op: models.Op, known: _Known) -> Sequence[models.Op] | None:
         """Updates `known` for an op; returns what the op becomes if it is not to stay."""
-        node: object = op.source if isinstance(op, models.Assignment) else op
+        node: models.IRVisitable = op.source if isinstance(op, models.Assignment) else op
         if isinstance(node, models.InvokeSubroutine):
             targets = tuple(op.targets) if isinstance(op, models.Assignment) else ()
             role = self.values.roles.get(node.target.id)
@@ -613,17 +455,27 @@ class _Follower:
             elif role in WRITE_ROLES:
                 return self._word_write(role, node, known, statement=op is node)
             return self._call(op, node, targets, known)
-        if isinstance(node, models.Intrinsic):
-            changed = _STATE_WRITES.get(node.op.code)
-            if changed is not None and not self._page_word_replaced(node, known):
-                self._changed(changed, known)
-        elif isinstance(node, models.Assert) and self.page_boxes:
-            self._cover(node.condition, known, known.covered, holds=True)
-        elif isinstance(node, models.BoxWrite):
-            self._changed(_STATE_WRITES[AVMOp.box_put.code], known)
+        if isinstance(node, models.Assert):
+            if self.page_boxes:
+                self._cover(node.condition, known, known.covered, holds=True)
+            return None
+        if isinstance(node, models.Value):
+            return None
+        effects = self.effects_of(node)
+        if effects & BOX_CHANGES and not self._page_word_replaced(node, known):
+            self._boxes_changed(effects, known)
+        self._forget_calls(effects, known)
         return None
 
-    def _page_word_replaced(self, op: models.Intrinsic, known: _Known) -> bool:
+    def effects_of(self, node: models.IRVisitable) -> Effect:
+        """What an operation that is not a call may do, other than fail."""
+        try:
+            return self._effects[node]
+        except KeyError:
+            effects = self._effects[node] = effects_of(node)
+            return effects
+
+    def _page_word_replaced(self, op: models.IRVisitable, known: _Known) -> bool:
         """A `box_replace` of 32 bytes at a word of a page box is a write of that word."""
         replaced = self.values.page_word_replaced(op) if self.page_boxes else None
         if replaced is None:
@@ -632,16 +484,20 @@ class _Follower:
         self._slot_written(slot, 1, _Word(value=value, form="word"), known)
         return True
 
-    def _changed(self, kinds: frozenset[str], known: _Known) -> None:
-        """Something changed state of these kinds, and not through a declared write."""
-        if _BOX in kinds:
-            known.words.clear()
-            known.pages.clear()
+    def _boxes_changed(self, effects: Effect, known: _Known) -> None:
+        """An operation with the given effects may have changed any box, and not through a
+        declared write."""
+        known.words.clear()
+        known.pages.clear()
+        if effects & _CHANGES_BOX_SIZE:
             known.covered.clear()
-        self._forget_calls(kinds, known)
 
-    def _forget_calls(self, kinds: frozenset[str], known: _Known) -> None:
-        for key in [k for k in known.calls if self.effects.get(k[0], _UNKNOWN).reads & kinds]:
+    def _forget_calls(self, effects: Effect, known: _Known) -> None:
+        """Forgets the results of the calls that an operation with the given effects may have
+        changed the outcome of."""
+        if not effects & _CHANGES_STATE:
+            return
+        for key in [k for k in known.calls if self._changes_calls[k[0]] & effects]:
             del known.calls[key]
 
     def _call(
@@ -651,23 +507,26 @@ class _Follower:
         targets: tuple[models.Register, ...],
         known: _Known,
     ) -> Sequence[models.Op] | None:
-        effects = self.effects.get(call.target.id, _UNKNOWN)
-        if effects.writes:
-            self._changed(effects.writes, known)
-        if effects.slot_writes:
-            for slot in [
-                s for s in known.words if not all(self._apart(s, w) for w in effects.slot_writes)
-            ]:
-                del known.words[slot]
-            for write in effects.slot_writes:
-                self._pages_written(write, known)
-            self._forget_calls(_STATE_WRITES[AVMOp.box_put.code], known)
-        if not effects.repeatable or any(isinstance(a, models.Undefined) for a in call.args):
+        effects = self.summaries.of(call.target)
+        if effects & BOX_CHANGES:
+            changes = self.summaries.box_changes(call.target)
+            if changes.other:
+                self._boxes_changed(effects, known)
+            else:
+                for slot in [
+                    s for s in known.words if not all(self._apart(s, w) for w in changes.words)
+                ]:
+                    del known.words[slot]
+                for write in changes.words:
+                    self._pages_written(write, known)
+        self._forget_calls(effects, known)
+        if not is_repeatable(effects) or any(isinstance(a, models.Undefined) for a in call.args):
             return None
         key = (call.target.id, tuple(call.args))
         earlier = known.calls.get(key)
         if earlier is None or (targets and not earlier):
             known.calls[key] = targets
+            self._changes_calls[call.target.id] = changed_by(effects & READS)
             return None
         if not targets:
             # a call for its failure alone: the earlier identical call did not fail
@@ -776,9 +635,9 @@ class _Follower:
     def _word_write(
         self, role: str, call: models.InvokeSubroutine, known: _Known, *, statement: bool
     ) -> Sequence[models.Op] | None:
+        self._forget_calls(self.summaries.of(call.target), known)
         written = self.values.written(role, call)
         if written is None:
-            self._forget_calls(_STATE_WRITES[AVMOp.box_put.code], known)
             known.words.clear()
             known.pages.clear()
             return None
@@ -840,7 +699,6 @@ class _Follower:
             )
 
     def _slot_written(self, slot: Slot, count: int, word: _Word, known: _Known) -> None:
-        self._forget_calls(_STATE_WRITES[AVMOp.box_put.code], known)
         kind = self.values.kind(slot, count)
         for other in [
             s
