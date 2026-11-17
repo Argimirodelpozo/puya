@@ -17,6 +17,11 @@ different: a subroutine with a loop or recursion may fail.
 
 `analyse_subroutine_effects` summarises every subroutine of a program, so a call can be
 treated as the union of what its target may do.
+
+For a program that declares slot storage (see `puya.options.SlotStorage`), a summary also says
+which words of that storage a subroutine may write (`BoxChanges`): a flag can only say that
+some box may change, and a program that keeps all of its storage in boxes would then lose
+what it knows about every word at every call.
 """
 
 import enum
@@ -26,16 +31,31 @@ from collections.abc import Callable, Iterable, Mapping
 import attrs
 import networkx as nx  # type: ignore[import-untyped]
 
+from puya import log
 from puya.avm import AVMType
 from puya.ir import models
 from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
+from puya.ir.optimize.slot_storage import (
+    ANY_SLOT,
+    PAGE_ROLES,
+    READ_ROLES,
+    SLOT_ADD,
+    WRITE_ROLES,
+    DeclaredStorage,
+    SlotValues,
+    SlotWrite,
+    storage_roles,
+)
 from puya.ir.optimize.value_bounds import (
     MAX_BIGUINT_BYTES,
     MAX_BYTES_LENGTH,
     MAX_UINT64,
     ValueBounds,
 )
+from puya.options import SlotStorage
+
+logger = log.get_logger(__name__)
 
 
 class Effect(enum.Flag):
@@ -105,6 +125,9 @@ time it runs with the same operands, until something changes what it reads (see 
 The opcode budget is left out, since it never stays the same."""
 
 _BOX_ALLOCATION: typing.Final = Effect.allocates_box | Effect.deletes_box
+BOX_CHANGES: typing.Final = Effect.writes_box | _BOX_ALLOCATION
+"""the effects that change a box of the application: its contents, its size, or whether it
+exists"""
 _CHANGED_BY: typing.Final[Mapping[Effect, Effect]] = {
     Effect.reads_scratch: Effect.writes_scratch,
     Effect.reads_global: Effect.writes_global,
@@ -755,15 +778,55 @@ _MAY_FAIL: typing.Final[Mapping[AVMOp, _MayFail]] = {
 _CONSTANTS_ONLY: typing.Final = ValueBounds()
 
 
+@attrs.frozen(kw_only=True)
+class BoxChanges:
+    """What a subroutine may change in the boxes of the application, told apart further than
+    `BOX_CHANGES` does."""
+
+    words: frozenset[SlotWrite] = frozenset()
+    """its writes of words of declared slot storage"""
+    other: bool = False
+    """True if it may change a box in any other way: nothing is known about the boxes of the
+    application after it"""
+
+    def __or__(self, other: "BoxChanges") -> "BoxChanges":
+        return BoxChanges(words=self.words | other.words, other=self.other or other.other)
+
+
+NO_BOX_CHANGE: typing.Final = BoxChanges()
+ANY_BOX_CHANGE: typing.Final = BoxChanges(other=True)
+
+
 @attrs.frozen
 class EffectSummaries:
     """What a call to each subroutine of a program may do."""
 
     _by_id: Mapping[str, Effect]
+    _box_changes: Mapping[str, BoxChanges] = attrs.field(factory=dict)
+    storage: DeclaredStorage | None = None
+    """the slot storage that is declared for the program, with the subroutines that have a
+    role in it"""
+    anywhere: Effect = attrs.field(init=False)
+    """what some subroutine of the program may do"""
+
+    @anywhere.default
+    def _anywhere_default(self) -> Effect:
+        result = Effect.none
+        for effects in self._by_id.values():
+            result |= effects
+        return result
 
     def of(self, subroutine: models.Subroutine) -> Effect:
         # a subroutine that was not analysed may do everything
         return self._by_id.get(subroutine.id, EVERYTHING)
+
+    def box_changes(self, subroutine: models.Subroutine) -> BoxChanges:
+        """What a call to a subroutine may change in the boxes of the application."""
+        try:
+            return self._box_changes[subroutine.id]
+        except KeyError:
+            # not followed further than its effects
+            return ANY_BOX_CHANGE if self.of(subroutine) & BOX_CHANGES else NO_BOX_CHANGE
 
 
 def effects_of(
@@ -877,12 +940,17 @@ def _is_running_app(app: models.Value) -> bool:
     return isinstance(app, models.UInt64Constant) and app.value == 0
 
 
-def analyse_subroutine_effects(program: models.Program) -> EffectSummaries:
+def analyse_subroutine_effects(
+    program: models.Program, storage: SlotStorage | None = None
+) -> EffectSummaries:
     """Summarise what a call to each subroutine may do: what its own operations may do, and
     what the subroutines it calls may do.
 
     Subroutines that call each other, directly or not, share one summary: the union over all
     of them, which is the least summary that is closed under their calls.
+
+    With `storage`, the slot storage that is declared for the program, the summaries also say
+    which subroutines have a role in it and which of its words each subroutine may write.
     """
     local = dict[str, Effect]()
     graph = nx.DiGraph()
@@ -911,7 +979,109 @@ def analyse_subroutine_effects(program: models.Program) -> EffectSummaries:
         component_effects[component] = effects
         for member in members:
             summaries[member] = effects
-    return EffectSummaries(summaries)
+    if storage is None:
+        return EffectSummaries(summaries)
+    declared = _declared_storage(storage, program, summaries)
+    return EffectSummaries(summaries, _box_changes(program, declared, summaries), declared)
+
+
+# what the page subroutines of a program do if its pages are boxes of another application,
+# or if they are more than reads and writes of boxes
+_NOT_OWN_BOXES: typing.Final = Effect.reads_ledger | Effect.writes_ledger | Effect.submits_itxn
+
+
+def _declared_storage(
+    storage: SlotStorage, program: models.Program, summaries: Mapping[str, Effect]
+) -> DeclaredStorage:
+    """The roles that the subroutines of a program have in a declaration of slot storage.
+
+    What a subroutine does is taken from its summary and not from the declaration: a
+    subroutine that is declared to read words but does more than read, or one that is
+    declared to add to a slot but does more than compute, is a subroutine like any other.
+    """
+    roles = storage_roles(storage, program)
+    for sub_id, role in list(roles.items()):
+        effects = summaries.get(sub_id, EVERYTHING)
+        if (role in READ_ROLES and not is_repeatable(effects)) or (
+            role == SLOT_ADD and effects & ~DETERMINISTIC
+        ):
+            logger.debug(f"{sub_id} does more than its declared role {role} allows: role ignored")
+            del roles[sub_id]
+    pages_are_boxes = storage.pages_are_boxes and not any(
+        summaries.get(sub_id, EVERYTHING) & _NOT_OWN_BOXES
+        for sub_id, role in roles.items()
+        if role in PAGE_ROLES
+    )
+    return DeclaredStorage(declaration=storage, roles=roles, pages_are_boxes=pages_are_boxes)
+
+
+def _box_changes(
+    program: models.Program, storage: DeclaredStorage, summaries: Mapping[str, Effect]
+) -> dict[str, BoxChanges]:
+    """What each subroutine may change in boxes: itself, and through the subroutines it
+    calls."""
+    changes = dict[str, BoxChanges]()
+    callees = dict[str, set[str]]()
+    for subroutine in program.all_subroutines:
+        if summaries.get(subroutine.id, EVERYTHING) & BOX_CHANGES:
+            changes[subroutine.id], callees[subroutine.id] = _local_box_changes(
+                subroutine, storage, summaries
+            )
+        else:
+            changes[subroutine.id] = NO_BOX_CHANGE
+    changed = True
+    while changed:
+        changed = False
+        for sub_id, called in callees.items():
+            merged = changes[sub_id]
+            for callee in called:
+                merged |= changes.get(callee, ANY_BOX_CHANGE)
+            if merged != changes[sub_id]:
+                changes[sub_id] = merged
+                changed = True
+    return changes
+
+
+def _local_box_changes(
+    subroutine: models.Subroutine, storage: DeclaredStorage, summaries: Mapping[str, Effect]
+) -> tuple[BoxChanges, set[str]]:
+    """What the operations of a subroutine may change in boxes, and the subroutines it calls
+    that may change boxes in ways that are theirs to tell."""
+    values = SlotValues.of(subroutine, storage.roles)
+    result = NO_BOX_CHANGE
+    callees = set[str]()
+    for block in subroutine.body:
+        words = set[SlotWrite]()
+        other = False
+        block_callees = set[str]()
+        may_exit = False
+        for op in block.ops:
+            node = op.source if isinstance(op, models.Assignment) else op
+            if isinstance(node, models.InvokeSubroutine):
+                target = node.target.id
+                effects = summaries.get(target, EVERYTHING)
+                may_exit = may_exit or Effect.exits in effects
+                role = storage.roles.get(target)
+                if role in WRITE_ROLES:
+                    # a write through a declared subroutine changes the words it names and
+                    # no others, whatever the subroutine does to boxes to get there
+                    written = values.written(role, node)
+                    words.add(ANY_SLOT if written is None else values.kind(*written))
+                elif effects & BOX_CHANGES:
+                    block_callees.add(target)
+            elif effects_of(node) & BOX_CHANGES:
+                replaced = values.page_word_replaced(node) if storage.pages_are_boxes else None
+                if replaced is None:
+                    other = True
+                else:
+                    slot, _ = replaced
+                    words.add(values.kind(slot, 1))
+        if isinstance(block.terminator, models.Fail) and not may_exit:
+            # everything a failing program did is undone
+            continue
+        result |= BoxChanges(words=frozenset(words), other=other)
+        callees |= block_callees
+    return result, callees
 
 
 def _local_effects(subroutine: models.Subroutine) -> tuple[Effect, set[str]]:
