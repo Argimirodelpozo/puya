@@ -1,4 +1,5 @@
-from collections.abc import Sequence
+import copy
+from collections.abc import Callable, Sequence
 from unittest.mock import Mock
 
 from puya.ir import models
@@ -55,15 +56,22 @@ def _use(*values: models.Value) -> list[models.Op]:
 
 
 def _constant_outcomes(ops: Sequence[models.Op]) -> list[str]:
-    return optimize_block(range_constant_outcomes, ops, parameters=_PARAMETERS)
+    return _rewritten(range_constant_outcomes, ops)
 
 
 def _operand_results(ops: Sequence[models.Op]) -> list[str]:
-    return optimize_block(range_operand_results, ops, parameters=_PARAMETERS)
+    return _rewritten(range_operand_results, ops)
 
 
 def _cheaper_forms(ops: Sequence[models.Op]) -> list[str]:
-    return optimize_block(range_cheaper_forms, ops, parameters=_PARAMETERS)
+    return _rewritten(range_cheaper_forms, ops)
+
+
+def _rewritten(
+    rewrite: Callable[[IROptimizationContext, models.Subroutine], bool], ops: Sequence[models.Op]
+) -> list[str]:
+    # on a copy: a rewrite changes the ops it is given, which are compared with the result
+    return optimize_block(rewrite, copy.deepcopy(list(ops)), parameters=_PARAMETERS)
 
 
 def _unchanged(ops: Sequence[models.Op]) -> list[str]:
@@ -599,7 +607,7 @@ def test_groups_of_rewrites() -> None:
             context.options.optimizations_override = switches
             return range_rewrites(context, subroutine)
 
-        return optimize_block(with_switches, list(ops), parameters=_PARAMETERS)
+        return _rewritten(with_switches, ops)
 
     # one pass over the subroutine does the rewrites of all groups
     expected = _unchanged(ops)
