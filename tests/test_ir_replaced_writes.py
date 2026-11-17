@@ -237,6 +237,31 @@ def test_write_is_kept_if_a_call_before_the_later_write_can_tell() -> None:
     assert left == [str(ops[1]), str(ops[2])]
 
 
+def test_write_is_kept_or_not_by_the_words_a_call_before_the_later_write_uses() -> None:
+    reads_same = _sub("reads_same", assign(_bytes("read"), call(_read_page, PAGE, _AT)))
+    reads_other = _sub("reads_other", assign(_bytes("read"), call(_read, word(9))))
+    writes_other = _sub("writes_other", call(_write_page, PAGE, uint64(64), word(7)))
+    writes_far = _sub("writes_far", call(_write, word(1000), word(0)))
+    subroutines = (reads_same, reads_other, writes_other, writes_far)
+
+    def is_kept(target: models.Subroutine) -> bool:
+        ops = _page_writes(call(target))
+        left = _optimized(ops, *subroutines, storage=_PAGES)
+        if left == [str(op) for op in ops]:
+            return True
+        assert left == [str(ops[1]), str(ops[2])]
+        return False
+
+    # the summary of a subroutine says which words it may read
+    assert is_kept(reads_same)
+    assert not is_kept(reads_other)
+    # a write of another word reads none
+    assert not is_kept(writes_other)
+    # but a write that is not a word write of a page may delete a box, and then the later
+    # write is not known to count as much against what the transaction may write
+    assert is_kept(writes_far)
+
+
 def _branches(
     then_ops: list[models.Op], else_ops: list[models.Op], else_terminator: models.ControlOp
 ) -> tuple[models.Subroutine, models.Op]:

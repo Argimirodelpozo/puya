@@ -800,13 +800,40 @@ class BoxChanges:
     other: bool = False
     """True if it may change a box in any other way: nothing is known about the boxes of the
     application after it"""
+    shrinks: bool = False
+    """True if one of its writes of words may delete a box or make one shorter: a write
+    that is not a word write of a page"""
 
     def __or__(self, other: "BoxChanges") -> "BoxChanges":
-        return BoxChanges(words=self.words | other.words, other=self.other or other.other)
+        return BoxChanges(
+            words=self.words | other.words,
+            other=self.other or other.other,
+            shrinks=self.shrinks or other.shrinks,
+        )
 
 
 NO_BOX_CHANGE: typing.Final = BoxChanges()
 ANY_BOX_CHANGE: typing.Final = BoxChanges(other=True)
+
+
+@attrs.frozen(kw_only=True)
+class BoxReads:
+    """What a subroutine may read of the boxes of the application, told apart further than
+    `Effect.reads_box` and `Effect.reads_box_size` do."""
+
+    words: frozenset[SlotWrite] = frozenset()
+    """its reads of words of declared slot storage, each described as a write of those words
+    would be"""
+    other: bool = False
+    """True if it may read a box in any other way: it may see any change to a box"""
+
+    def __or__(self, other: "BoxReads") -> "BoxReads":
+        return BoxReads(words=self.words | other.words, other=self.other or other.other)
+
+
+NO_BOX_READ: typing.Final = BoxReads()
+ANY_BOX_READ: typing.Final = BoxReads(other=True)
+_READS_BOXES: typing.Final = Effect.reads_box | Effect.reads_box_size
 
 
 @attrs.frozen
@@ -815,6 +842,7 @@ class EffectSummaries:
 
     _by_id: Mapping[str, Effect]
     _box_changes: Mapping[str, BoxChanges] = attrs.field(factory=dict)
+    _box_reads: Mapping[str, BoxReads] = attrs.field(factory=dict)
     storage: DeclaredStorage | None = None
     """the slot storage that is declared for the program, with the subroutines that have a
     role in it"""
@@ -839,6 +867,14 @@ class EffectSummaries:
         except KeyError:
             # not followed further than its effects
             return ANY_BOX_CHANGE if self.of(subroutine) & BOX_CHANGES else NO_BOX_CHANGE
+
+    def box_reads(self, subroutine: models.Subroutine) -> BoxReads:
+        """What a call to a subroutine may read of the boxes of the application."""
+        try:
+            return self._box_reads[subroutine.id]
+        except KeyError:
+            # not followed further than its effects
+            return ANY_BOX_READ if self.of(subroutine) & _READS_BOXES else NO_BOX_READ
 
 
 def effects_of(
@@ -994,7 +1030,8 @@ def analyse_subroutine_effects(
     if storage is None:
         return EffectSummaries(summaries)
     declared = _declared_storage(storage, program, summaries)
-    return EffectSummaries(summaries, _box_changes(program, declared, summaries), declared)
+    changes, reads = _box_changes_and_reads(program, declared, summaries)
+    return EffectSummaries(summaries, changes, reads, declared)
 
 
 # what the page subroutines of a program do if its pages are boxes of another application,
@@ -1027,44 +1064,52 @@ def _declared_storage(
     return DeclaredStorage(declaration=storage, roles=roles, pages_are_boxes=pages_are_boxes)
 
 
-def _box_changes(
+def _box_changes_and_reads(
     program: models.Program, storage: DeclaredStorage, summaries: Mapping[str, Effect]
-) -> dict[str, BoxChanges]:
-    """What each subroutine may change in boxes: itself, and through the subroutines it
-    calls."""
+) -> tuple[dict[str, BoxChanges], dict[str, BoxReads]]:
+    """What each subroutine may change in boxes and what it may read of them: itself, and
+    through the subroutines it calls."""
     changes = dict[str, BoxChanges]()
+    reads = dict[str, BoxReads]()
     callees = dict[str, set[str]]()
+    uses_boxes = BOX_CHANGES | _READS_BOXES
     for subroutine in program.all_subroutines:
-        if summaries.get(subroutine.id, EVERYTHING) & BOX_CHANGES:
-            changes[subroutine.id], callees[subroutine.id] = _local_box_changes(
+        if summaries.get(subroutine.id, EVERYTHING) & uses_boxes:
+            changes[subroutine.id], reads[subroutine.id], callees[subroutine.id] = _local_box_use(
                 subroutine, storage, summaries
             )
         else:
             changes[subroutine.id] = NO_BOX_CHANGE
+            reads[subroutine.id] = NO_BOX_READ
     changed = True
     while changed:
         changed = False
         for sub_id, called in callees.items():
-            merged = changes[sub_id]
+            merged_changes = changes[sub_id]
+            merged_reads = reads[sub_id]
             for callee in called:
-                merged |= changes.get(callee, ANY_BOX_CHANGE)
-            if merged != changes[sub_id]:
-                changes[sub_id] = merged
+                merged_changes |= changes.get(callee, ANY_BOX_CHANGE)
+                merged_reads |= reads.get(callee, ANY_BOX_READ)
+            if merged_changes != changes[sub_id] or merged_reads != reads[sub_id]:
+                changes[sub_id] = merged_changes
+                reads[sub_id] = merged_reads
                 changed = True
-    return changes
+    return changes, reads
 
 
-def _local_box_changes(
+def _local_box_use(
     subroutine: models.Subroutine, storage: DeclaredStorage, summaries: Mapping[str, Effect]
-) -> tuple[BoxChanges, set[str]]:
-    """What the operations of a subroutine may change in boxes, and the subroutines it calls
-    that may change boxes in ways that are theirs to tell."""
+) -> tuple[BoxChanges, BoxReads, set[str]]:
+    """What the operations of a subroutine may change in boxes and read of them, and the
+    subroutines it calls that use boxes in ways that are theirs to tell."""
     values = SlotValues.of(subroutine, storage.roles)
-    result = NO_BOX_CHANGE
+    changes = NO_BOX_CHANGE
+    reads = NO_BOX_READ
     callees = set[str]()
     for block in subroutine.body:
-        words = set[SlotWrite]()
-        other = False
+        written = set[SlotWrite]()
+        read = set[SlotWrite]()
+        other_change = other_read = shrinks = False
         block_callees = set[str]()
         may_exit = False
         for op in block.ops:
@@ -1076,24 +1121,36 @@ def _local_box_changes(
                 role = storage.roles.get(target)
                 if role in WRITE_ROLES:
                     # a write through a declared subroutine changes the words it names and
-                    # no others, whatever the subroutine does to boxes to get there
-                    written = values.written(role, node)
-                    words.add(ANY_SLOT if written is None else values.kind(*written))
-                elif effects & BOX_CHANGES:
+                    # no others, whatever the subroutine does to boxes to get there, and
+                    # it reads none
+                    slots = values.written(role, node)
+                    written.add(ANY_SLOT if slots is None else values.kind(*slots))
+                    shrinks = shrinks or role != "write_page_word"
+                elif role in READ_ROLES:
+                    slot = values.accessed(role, node)
+                    read.add(ANY_SLOT if slot is None else values.kind(slot, 1))
+                elif effects & (BOX_CHANGES | _READS_BOXES):
                     block_callees.add(target)
-            elif effects_of(node) & BOX_CHANGES:
-                replaced = values.page_word_replaced(node) if storage.pages_are_boxes else None
-                if replaced is None:
-                    other = True
-                else:
-                    slot, _ = replaced
-                    words.add(values.kind(slot, 1))
+            else:
+                effects = effects_of(node)
+                if effects & BOX_CHANGES:
+                    replaced = values.page_word_replaced(node) if storage.pages_are_boxes else None
+                    if replaced is None:
+                        other_change = True
+                    else:
+                        slot, _ = replaced
+                        written.add(values.kind(slot, 1))
+                if effects & _READS_BOXES:
+                    # this includes every op that changes a box: each fails or not by the
+                    # size of the box
+                    other_read = True
         if isinstance(block.terminator, models.Fail) and not may_exit:
-            # everything a failing program did is undone
+            # everything a failing program did is undone, and nothing it read is of use
             continue
-        result |= BoxChanges(words=frozenset(words), other=other)
+        changes |= BoxChanges(words=frozenset(written), other=other_change, shrinks=shrinks)
+        reads |= BoxReads(words=frozenset(read), other=other_read)
         callees |= block_callees
-    return result, callees
+    return changes, reads, callees
 
 
 def _local_effects(subroutine: models.Subroutine) -> tuple[Effect, set[str]]:

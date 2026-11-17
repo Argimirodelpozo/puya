@@ -4,8 +4,11 @@ from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.effects import (
     ANY_BOX_CHANGE,
+    ANY_BOX_READ,
     NO_BOX_CHANGE,
+    NO_BOX_READ,
     BoxChanges,
+    BoxReads,
     analyse_subroutine_effects,
 )
 from puya.ir.optimize.slot_storage import ANY_SLOT, SlotWrite
@@ -24,6 +27,7 @@ from tests.utils.ir import (
     uint64,
 )
 from tests.utils.slot_storage import (
+    PAGE,
     STORAGE,
     read_page_word,
     read_word,
@@ -192,18 +196,58 @@ def test_summary_says_which_words_a_subroutine_may_write() -> None:
         STORAGE,
     )
     slot_five = SlotWrite(constant=5)
-    assert summaries.box_changes(constant_writer) == BoxChanges(words=frozenset({slot_five}))
-    assert summaries.box_changes(unknown_writer) == BoxChanges(words=frozenset({ANY_SLOT}))
-    assert summaries.box_changes(hashed_writer) == BoxChanges(
-        words=frozenset({SlotWrite(ending=b"balances")})
-    )
+
+    def writes(*words: SlotWrite, other: bool = False) -> BoxChanges:
+        # a write that is not a word write of a page may delete a box or make one shorter
+        return BoxChanges(words=frozenset(words), other=other, shrinks=True)
+
+    assert summaries.box_changes(constant_writer) == writes(slot_five)
+    assert summaries.box_changes(unknown_writer) == writes(ANY_SLOT)
+    assert summaries.box_changes(hashed_writer) == writes(SlotWrite(ending=b"balances"))
     assert summaries.box_changes(box_writer) == ANY_BOX_CHANGE
     assert summaries.box_changes(reader) == NO_BOX_CHANGE
-    assert summaries.box_changes(indirect_writer) == BoxChanges(words=frozenset({slot_five}))
-    assert summaries.box_changes(both) == BoxChanges(words=frozenset({slot_five}), other=True)
+    assert summaries.box_changes(indirect_writer) == writes(slot_five)
+    assert summaries.box_changes(both) == writes(slot_five, other=True)
     assert summaries.box_changes(failing_writer) == NO_BOX_CHANGE
+    # what each of them may read of boxes
+    assert summaries.box_reads(reader) == BoxReads(words=frozenset({slot_five}))
+    assert summaries.box_reads(indirect_writer) == BoxReads(words=frozenset({slot_five}))
+    # a write through a declared subroutine reads no word
+    assert summaries.box_reads(constant_writer) == NO_BOX_READ
+    # an op that changes a box fails or not by what the box is
+    assert summaries.box_reads(box_writer) == ANY_BOX_READ
+    assert summaries.box_reads(both) == ANY_BOX_READ
     # without a declaration, a subroutine that may change a box may change any
     summaries = analyse_subroutine_effects(program(_sub("main"), *_declared, constant_writer))
     assert summaries.storage is None
     assert summaries.box_changes(constant_writer) == ANY_BOX_CHANGE
     assert summaries.box_changes(_read) == NO_BOX_CHANGE
+    assert summaries.box_reads(constant_writer) == ANY_BOX_READ
+
+
+def test_summary_says_which_words_a_subroutine_may_read() -> None:
+    slot = parameter("slot", PrimitiveIRType.bytes)
+    reads_any = subroutine(
+        "reads_any",
+        [block(0, [assign(_bytes("read"), call(_read, slot))], return_())],
+        parameters=[slot],
+    )
+    reads_page = _sub("reads_page", assign(_bytes("read"), call(_read_page, PAGE, uint64(64))))
+    writes_page = _sub("writes_page", call(_write_page, PAGE, uint64(64), word(1)))
+    reads_box = _sub("reads_box", _box_get(bytes_(b"key")))
+    computes = _sub(
+        "computes", assign(register("sum"), intrinsic(AVMOp.add, uint64(1), uint64(2)))
+    )
+    summaries = analyse_subroutine_effects(
+        program(_sub("main"), *_declared, reads_any, reads_page, writes_page, reads_box, computes),
+        STORAGE,
+    )
+    assert summaries.box_reads(reads_any) == BoxReads(words=frozenset({ANY_SLOT}))
+    assert summaries.box_reads(reads_page) == BoxReads(words=frozenset({SlotWrite(constant=2)}))
+    assert summaries.box_reads(reads_box) == ANY_BOX_READ
+    assert summaries.box_reads(computes) == NO_BOX_READ
+    # a word write of a page makes no box shorter
+    assert summaries.box_changes(writes_page) == BoxChanges(
+        words=frozenset({SlotWrite(constant=2)})
+    )
+    assert summaries.box_reads(writes_page) == NO_BOX_READ

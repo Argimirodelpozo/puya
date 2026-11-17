@@ -260,9 +260,33 @@ class SlotValues:
         slot = self.accessed(role, call)
         if slot is None:
             return None
-        if role == "write_words" and not self.is_word(call.args[1]):
+        if role == "write_words" and not self.is_one_word(call.args[1]):
             return slot, PAGE_WORDS
         return slot, 1
+
+    def is_one_word(self, words: models.Value) -> bool:
+        """True if what is passed to a write of words is certainly one word. It is declared
+        to be a whole number of words, and at least one, so it is one word if it is less than
+        64 bytes long: the sum of two values of at most 32 bytes takes 33 bytes at most, and
+        a bitwise op gives as many bytes as its longer operand has."""
+        return self.is_word(words) or self._under_two_words(words, depth=8)
+
+    def _under_two_words(self, value: models.Value, *, depth: int) -> bool:
+        if self.fits_word(value):
+            return True
+        if not depth:
+            return False
+        match self.definition(value):
+            case models.Intrinsic(op=AVMOp.add_bytes, args=[a, b]):
+                return self.fits_word(a) and self.fits_word(b)
+            case models.Intrinsic(
+                op=(AVMOp.bitwise_or_bytes | AVMOp.bitwise_and_bytes | AVMOp.bitwise_xor_bytes),
+                args=[a, b],
+            ):
+                return self._under_two_words(a, depth=depth - 1) and self._under_two_words(
+                    b, depth=depth - 1
+                )
+        return False
 
     def page_word_replaced(self, op: models.IRVisitable) -> tuple[Slot, models.Value] | None:
         """For a `box_replace` of 32 bytes at a word of a box that can be a page: the slot of

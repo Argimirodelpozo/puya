@@ -29,7 +29,7 @@ nothing in boxes, and declares nothing, is left as it is.
 """
 
 import typing
-from collections.abc import Callable, Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 
 import attrs
 
@@ -41,8 +41,10 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.effects import (
     BOX_CHANGES,
+    NO_BOX_READ,
     OBSERVABLE,
     READS,
+    BoxReads,
     Effect,
     EffectSummaries,
     changed_by,
@@ -51,6 +53,7 @@ from puya.ir.optimize.effects import (
     observers_of,
 )
 from puya.ir.optimize.slot_storage import (
+    ANY_SLOT,
     PAGE_ROLES,
     PAGE_WORDS,
     READ_ROLES,
@@ -72,6 +75,7 @@ logger = log.get_logger(__name__)
 _CHANGES_BOX_SIZE: typing.Final = Effect.allocates_box | Effect.deletes_box
 # the effects that change something a subroutine may read
 _CHANGES_STATE: typing.Final = changed_by(READS & ~Effect.reads_budget)
+_READS_BOXES: typing.Final = Effect.reads_box | Effect.reads_box_size
 # the effects of an operation that can tell whether a box has changed: it reads a box, or a
 # balance, where the minimum balance of the application account follows the sizes of its boxes
 _TELLS_BOX_CHANGES: typing.Final = observers_of(BOX_CHANGES)
@@ -424,7 +428,10 @@ class _Follower:
     writes_in_place: list["_WriteInPlace"] = attrs.field(factory=list)
     _changes_calls: dict[str, Effect] = attrs.field(factory=dict)
     """by subroutine id, for the calls that are remembered: the effects that change what the
-    subroutine reads"""
+    subroutine reads, other than of boxes"""
+    _reads_calls: dict[str, BoxReads] = attrs.field(factory=dict)
+    """by subroutine id, for the calls that are remembered: what the subroutine reads of
+    boxes"""
     _effects: dict[models.IRVisitable, Effect] = attrs.field(factory=dict)
     """the effects of the operations seen so far that are not calls"""
 
@@ -615,13 +622,51 @@ class _Follower:
         if effects & _CHANGES_BOX_SIZE:
             known.covered.clear()
 
-    def _forget_calls(self, effects: Effect, known: _Known) -> None:
+    def _forget_calls(
+        self, effects: Effect, known: _Known, written: Iterable[SlotWrite] | None = None
+    ) -> None:
         """Forgets the results of the calls that an operation with the given effects may have
-        changed the outcome of."""
+        changed the outcome of. `written` is given for an operation that changes boxes by
+        writing words of declared storage and in no other way: a call that reads boxes only
+        to read other words still has the same outcome."""
         if not effects & _CHANGES_STATE:
             return
-        for key in [k for k in known.calls if self._changes_calls[k[0]] & effects]:
-            del known.calls[key]
+        changes_boxes = bool(effects & BOX_CHANGES)
+        for key in list(known.calls):
+            reads = self._reads_calls[key[0]]
+            if self._changes_calls[key[0]] & effects or (
+                changes_boxes
+                and (
+                    reads.other
+                    or (
+                        bool(reads.words)
+                        if written is None
+                        else any(not self._all_apart(read, written) for read in reads.words)
+                    )
+                )
+            ):
+                del known.calls[key]
+
+    def _all_apart(self, words: SlotWrite, others: Iterable[SlotWrite]) -> bool:
+        """True if none of some words are among any of the others."""
+        return all(self._words_apart(words, other) for other in others)
+
+    def _words_apart(self, a: SlotWrite, b: SlotWrite) -> bool:
+        if a.constant is not None and b.constant is not None:
+            return (b.constant - a.constant) % SLOTS >= a.count and (
+                a.constant - b.constant
+            ) % SLOTS >= b.count
+        if not self.hashed_apart:
+            return False
+        if a.constant is not None or b.constant is not None:
+            # a slot below 2**64 against a hash plus a number below 2**64
+            constant, other = (a, b) if a.constant is not None else (b, a)
+            assert constant.constant is not None
+            return other.ending is not None and constant.constant + constant.count <= SMALL
+        if a.ending is None or b.ending is None:
+            return False
+        shared = min(len(a.ending), len(b.ending))
+        return shared > 0 and a.ending[-shared:] != b.ending[-shared:]
 
     def _call(
         self,
@@ -631,25 +676,30 @@ class _Follower:
         known: _Known,
     ) -> Sequence[models.Op] | None:
         effects = self.summaries.of(call.target)
+        written = None
         if effects & BOX_CHANGES:
             changes = self.summaries.box_changes(call.target)
             if changes.other:
                 self._boxes_changed(effects, known)
             else:
+                written = changes.words
                 for slot in [
                     s for s in known.words if not all(self._apart(s, w) for w in changes.words)
                 ]:
                     del known.words[slot]
                 for write in changes.words:
                     self._pages_written(write, known)
-        self._forget_calls(effects, known)
+        self._forget_calls(effects, known, written)
         if not is_repeatable(effects) or any(isinstance(a, models.Undefined) for a in call.args):
             return None
         key = (call.target.id, tuple(call.args))
         earlier = known.calls.get(key)
         if earlier is None or (targets and not earlier):
             known.calls[key] = targets
-            self._changes_calls[call.target.id] = changed_by(effects & READS)
+            self._changes_calls[call.target.id] = changed_by(effects & READS & ~_READS_BOXES)
+            self._reads_calls[call.target.id] = (
+                self.summaries.box_reads(call.target) if effects & _READS_BOXES else NO_BOX_READ
+            )
             return None
         if not targets:
             # a call for its failure alone: the earlier identical call did not fail
@@ -758,20 +808,21 @@ class _Follower:
     def _word_write(
         self, role: str, call: models.InvokeSubroutine, known: _Known, *, statement: bool
     ) -> Sequence[models.Op] | None:
-        self._forget_calls(self.summaries.of(call.target), known)
         written = self.values.written(role, call)
+        effects = self.summaries.of(call.target)
         if written is None:
+            self._forget_calls(effects, known, [ANY_SLOT])
             known.words.clear()
             known.pages.clear()
             return None
         slot, count = written
+        self._forget_calls(effects, known, [self.values.kind(slot, count)])
         value = call.args[-1]
         if count > 1:
             form = "head"
-        elif self.values.is_word(value):
+        elif role == "write_words" or self.values.is_word(value):
+            # what is passed to a write of words that is one word is that word
             form = "word"
-        elif role == "write_words":
-            form = "head"
         else:
             form = "pad"
         # what is known of the word if its box does not reach it, see `_Word.outside_zero`
@@ -873,6 +924,10 @@ class _Follower:
                     known.pages[key] = _Page(reader=page.reader, written=page.written | positions)
             elif not self._apart(Slot(base=None, offset=first), write):
                 del known.pages[key]
+
+    def all_apart(self, slot: Slot, words: Iterable[SlotWrite]) -> bool:
+        """True if the word of a slot is certainly none of the given words."""
+        return all(self._apart(slot, word) for word in words)
 
     def slots_apart(self, slot: Slot, other: Slot) -> bool:
         """True if two slots are certainly not the same."""
@@ -1154,14 +1209,27 @@ class _ReplacedWrites:
             return state
         if role in READ_ROLES:
             read = follower.values.accessed(role, call)
-            if read is not None:
-                return {
-                    slot: replacing
-                    for slot, replacing in state.items()
-                    if follower.slots_apart(slot, read)
-                }
-        if effects & _TELLS_BOX_CHANGES:
+            if read is None:
+                return {}
+            return {
+                slot: replacing
+                for slot, replacing in state.items()
+                if follower.slots_apart(slot, read)
+            }
+        if effects & Effect.reads_balance:
             return {}
+        if effects & _READS_BOXES:
+            # the summary of the subroutine says which words it may read
+            reads = follower.summaries.box_reads(call.target)
+            if reads.other:
+                return {}
+            state = {
+                slot: replacing
+                for slot, replacing in state.items()
+                if follower.all_apart(slot, reads.words)
+            }
+        if state and effects & BOX_CHANGES and follower.summaries.box_changes(call.target).shrinks:
+            state = {slot: attrs.evolve(known, shrinks=True) for slot, known in state.items()}
         return state
 
     def _before_write(

@@ -276,6 +276,33 @@ def test_repeated_call_takes_the_earlier_result_until_what_it_reads_changes() ->
     assert _optimized(ops, box_reader) == [str(op) for op in ops]
 
 
+def test_repeated_call_is_kept_across_a_write_of_a_word_that_it_does_not_read() -> None:
+    result = _bytes("result")
+    reads_five = subroutine(
+        "reads_five",
+        [block(0, [assign(result, call(_read, word(5)))], return_(result))],
+        returns=[PrimitiveIRType.bytes],
+    )
+
+    def last(between: models.Op) -> tuple[str, str]:
+        ops = [
+            assign(_bytes("first"), call(reads_five)),
+            between,
+            assign(_bytes("again"), call(reads_five)),
+        ]
+        return _optimized(ops, reads_five)[-1], str(ops[-1])
+
+    # the summary of the subroutine says which word it reads
+    remaining, _ = last(call(_write, word(7), word(1)))
+    assert remaining == _FORWARDED
+    remaining, repeated = last(call(_write, word(5), word(1)))
+    assert remaining == repeated
+    remaining, repeated = last(call(_write, _slot, word(1)))
+    assert remaining == repeated
+    remaining, repeated = last(intrinsic(AVMOp.box_put, _value, _value))
+    assert remaining == repeated
+
+
 def test_program_without_boxes_is_left_as_it_is_unless_storage_is_declared() -> None:
     reader = _global_reader()
     ops = [assign(register("first"), call(reader)), assign(register("again"), call(reader))]
@@ -324,8 +351,8 @@ def test_write_of_a_value_that_fits_a_word_is_a_write_of_one_word() -> None:
     less = _bytes("less")
     ops = _padded_write([assign(less, intrinsic(AVMOp.sub_bytes, first, _value))], less)
     assert _optimized(ops) == [*map(str, ops[:-2]), *one_word]
-    # the sum of two words can take more than a word: what is written can reach the slot
-    # after, and the word read back is the first 32 bytes
+    # the sum of a word and a value of any length can take more than a word: what is written
+    # can reach the slot after, and the word read back is the first 32 bytes
     total = _bytes("total")
     add = assign(total, intrinsic(AVMOp.add_bytes, first, _value))
     ops = _padded_write([add], total)
@@ -336,7 +363,12 @@ def test_write_of_a_value_that_fits_a_word_is_a_write_of_one_word() -> None:
         ),
         str(ops[-1]),
     ]
-    # unless an assert in the same block finds the sum to be a number that fits a word
+    # The sum of two words takes 33 bytes at most, and what is passed to a write of words
+    # is declared to be a whole number of words: one, then.
+    both = assign(total, intrinsic(AVMOp.add_bytes, first, _bytes("neighbour")))
+    ops = _padded_write([both], total)
+    assert _optimized(ops) == [*map(str, ops[:-2]), *one_word]
+    # a sum that an assert in the same block finds to fit a word is one word as well
     fits = register("fits", PrimitiveIRType.bool)
     largest = bytes_(b"\xff" * 32)
     check = [

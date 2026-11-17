@@ -32,7 +32,8 @@ class SlotStorage:
 
     Declaring them promises that:
 
-    * a `value` that is passed to a write is at most 32 bytes long, and a read returns the 32
+    * a `value` that is passed to a write is at most 32 bytes long, the `words` that are
+      passed to `write_words` are a whole number of 32-byte pieces, and a read returns the 32
       bytes last written to its slot by any of the writers, where a `value` is stored
       left-padded with zero bytes;
     * a write changes the word of no other slot;
