@@ -17,7 +17,8 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.models import Intrinsic, UInt64Constant
 from puya.ir.optimize._utils import SSAReadTracker
 from puya.ir.optimize.context import IROptimizationContext
-from puya.ir.optimize.dead_code_elimination import SIDE_EFFECT_FREE_AVM_OPS
+from puya.ir.optimize.effects import EffectSummaries, lost_if_removed
+from puya.ir.optimize.value_bounds import ValueBounds
 from puya.ir.types_ import AVMBytesEncoding, PrimitiveIRType
 from puya.ir.visitor_mutator import IRMutator
 from puya.parse import SourceLocation, sequential_source_locations_merge
@@ -221,7 +222,9 @@ def intrinsic_simplifier(context: IROptimizationContext, subroutine: models.Subr
         if isinstance(ass.source, models.Intrinsic)
     }
     modified += _simplify_conditional_branches(subroutine, register_intrinsics)
-    modified += _simplify_non_returning_intrinsics(subroutine, register_intrinsics)
+    modified += _simplify_non_returning_intrinsics(
+        context.effects, subroutine, register_intrinsics
+    )
     return modified > 0
 
 
@@ -301,15 +304,21 @@ def _simplify_conditional_branches(
 
 
 def _simplify_non_returning_intrinsics(
-    subroutine: models.Subroutine, register_intrinsics: Mapping[models.Value, models.Intrinsic]
+    summaries: EffectSummaries | None,
+    subroutine: models.Subroutine,
+    register_intrinsics: Mapping[models.Value, models.Intrinsic],
 ) -> int:
+    @functools.cache
+    def bounds() -> ValueBounds:
+        return ValueBounds.of(subroutine)
+
     modified = 0
     for block in subroutine.body:
         ops = list[models.Op]()
         result: models.Op | None
         for op in block.ops:
             if isinstance(op, models.Intrinsic):
-                result = _visit_intrinsic_op(op)
+                result = _visit_intrinsic_op(op, summaries, bounds)
                 if result is not op:
                     modified += 1
                 if result is not None:
@@ -347,7 +356,9 @@ def _simplify_assert(
     return result
 
 
-def _visit_intrinsic_op(intrinsic: Intrinsic) -> Intrinsic | None:
+def _visit_intrinsic_op(
+    intrinsic: Intrinsic, summaries: EffectSummaries | None, bounds: Callable[[], ValueBounds]
+) -> Intrinsic | None:
     # if we get here, it means either the intrinsic doesn't have a return or it's ignored,
     # in either case, the result has to be either an Op or None (ie delete),
     # so we don't invoke _try_fold_intrinsic here
@@ -358,8 +369,8 @@ def _visit_intrinsic_op(intrinsic: Intrinsic) -> Intrinsic | None:
             if isinstance(page_value, models.BytesConstant) and page_value.value == b"":
                 return None
         return intrinsic
-    elif intrinsic.op.code in SIDE_EFFECT_FREE_AVM_OPS:
-        logger.debug(f"Removing unused pure op {intrinsic}")
+    elif not lost_if_removed(intrinsic, summaries=summaries, bounds=bounds):
+        logger.debug(f"Removing unused op {intrinsic}")
         return None
     elif intrinsic.args:
         simplified = _try_convert_stack_args_to_immediates(intrinsic)
