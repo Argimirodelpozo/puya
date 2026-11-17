@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 import attrs
 
 from puya.ir import models
@@ -70,7 +72,7 @@ def _fail() -> models.Fail:
 
 
 def _optimized(
-    ops: list[models.Op], *subroutines: models.Subroutine, storage: SlotStorage
+    ops: Sequence[models.Op], *subroutines: models.Subroutine, storage: SlotStorage
 ) -> list[str]:
     return optimize_block(
         replaced_word_writes_elimination,
@@ -120,7 +122,7 @@ def test_page_word_write_is_kept_if_its_allocation_could_be_lost() -> None:
     # The first write makes the box long enough to hold the word unless its value is zero,
     # and the second one does not if its value is zero: with the first one gone, the box
     # could stay shorter.
-    ops = [
+    ops: list[models.Op] = [
         call(_write_page, PAGE, _AT, _value),
         call(_write_page, PAGE, _AT, _other_value),
     ]

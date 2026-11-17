@@ -188,8 +188,7 @@ def optimize_program_ir(
             logger.debug("Unused subroutines removed")
             program_modified = True
         if not program_modified and late:
-            # nothing changed in this pass, but the summaries are from before it
-            opt_context.effects = analyse_subroutine_effects(program, storage)
+            # nothing changed in this pass, so the summaries still say what each subroutine does
             for subroutine in program.all_subroutines:
                 for optimizer in late:
                     logger.debug(f"Late optimizer: {optimizer.desc}")
