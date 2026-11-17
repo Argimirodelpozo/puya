@@ -1,16 +1,20 @@
 import enum
+import functools
 import typing
 from collections import defaultdict
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 
 import attrs
 
 from puya import log
-from puya.context import CompileContext
+from puya.avm import AVMType
 from puya.ir import models
 from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize._utils import HasHighLevelOps
+from puya.ir.optimize.context import IROptimizationContext
+from puya.ir.optimize.effects import Effect, EffectSummaries, effects_of, observers_of
+from puya.ir.optimize.value_bounds import ValueBounds
 from puya.ir.types_ import PrimitiveIRType
 from puya.ir.visitor import NoOpIRVisitor
 
@@ -18,14 +22,18 @@ logger = log.get_logger(__name__)
 
 
 def constant_reads_and_unobserved_writes_elimination(
-    _: CompileContext, subroutine: models.Subroutine
+    context: IROptimizationContext, subroutine: models.Subroutine
 ) -> bool:
     if HasHighLevelOps.check(subroutine.body):
         return False
 
+    @functools.cache
+    def bounds() -> ValueBounds:
+        return ValueBounds.of(subroutine)
+
     any_modified = False
     for block in subroutine.body:
-        while _StateTrackingVisitor.optimise(block):
+        while _StateTrackingVisitor.optimise(block, context.effects, bounds):
             any_modified = True
     return any_modified
 
@@ -38,6 +46,16 @@ class _StateType(enum.Enum):
     slot = enum.auto()
 
 
+# the effects that change each type of state
+_WRITES: typing.Final = {
+    _StateType.box: Effect.writes_box | Effect.allocates_box | Effect.deletes_box,
+    _StateType.app_global: Effect.writes_global,
+    _StateType.app_local: Effect.writes_local,
+    _StateType.slot: Effect.writes_scratch,
+}
+# the effects of operations that can tell whether a write to each type of state has happened
+_OBSERVES: typing.Final = {typ: observers_of(writes) for typ, writes in _WRITES.items()}
+
 _ReadType = typing.Literal["rw", "len", "extract"]
 
 _StateKey = tuple[models.Value | bytes | _ReadType, ...]
@@ -47,14 +65,21 @@ _StateKey = tuple[models.Value | bytes | _ReadType, ...]
 class _StateTrackingVisitor(NoOpIRVisitor[None]):
     modified: bool = attrs.field(default=False, init=False)
     _block: models.BasicBlock
+    _summaries: EffectSummaries | None
+    _bounds: Callable[[], ValueBounds]
     _read_results: defaultdict[_StateType, dict[_StateKey, Sequence[models.Value]]] = attrs.field(
         factory=lambda: defaultdict(dict)
     )
     _last_write: dict[_StateType, tuple[_StateKey, models.Op]] = attrs.field(factory=dict)
 
     @classmethod
-    def optimise(cls, block: models.BasicBlock) -> bool:
-        visitor = cls(block=block)
+    def optimise(
+        cls,
+        block: models.BasicBlock,
+        summaries: EffectSummaries | None,
+        bounds: Callable[[], ValueBounds],
+    ) -> bool:
+        visitor = cls(block=block, summaries=summaries, bounds=bounds)
         # iterate over a copy b.c. visiting may
         # remove ops. (see _handle_write() below)
         for op in block.ops.copy():
@@ -115,9 +140,9 @@ class _StateTrackingVisitor(NoOpIRVisitor[None]):
         except KeyError:
             pass
         else:
-            if last_write_key == normalized_key:
-                # remove last_write if it is overwritten with another write, and there
-                # are no intervening reads
+            if last_write_key == normalized_key and self._is_redundant(last_write_op, op):
+                # remove last_write if it is overwritten with another write, there
+                # are no intervening reads, and the program ends the same way without it
                 logger.debug(
                     f"removing unobserved {typ.name} write to key: {_key_str(key)}",
                     location=last_write_op.source_location,
@@ -126,13 +151,72 @@ class _StateTrackingVisitor(NoOpIRVisitor[None]):
                 self.modified = True
         self._last_write[typ] = (normalized_key, op)
 
-    def _invalidate(self, typ: _StateType | typing.Literal["all"]) -> None:
-        if typ == "all":
-            self._read_results.clear()
+    def _is_redundant(self, first: models.Op, second: models.Op) -> bool:
+        """Given two writes to the same key with nothing in between that can tell if the first
+        has happened: True if the second alone succeeds exactly when both do. Then both ways
+        leave the same state, and the first write can go."""
+        match first, second:
+            case models.WriteSlot(), models.WriteSlot():
+                return True
+            case (
+                (
+                    models.Intrinsic(op=AVMOp.app_global_put, args=[_, a]),
+                    models.Intrinsic(op=AVMOp.app_global_put, args=[_, b]),
+                )
+                | (
+                    models.Intrinsic(op=AVMOp.app_local_put, args=[_, _, a]),
+                    models.Intrinsic(op=AVMOp.app_local_put, args=[_, _, b]),
+                )
+            ):
+                return self._fits_where_fits(a, b)
+            case (
+                models.Intrinsic(op=AVMOp.box_put, args=[_, a]),
+                models.Intrinsic(op=AVMOp.box_put, args=[_, b]),
+            ):
+                return self._same_length(a, b)
+            case (
+                models.BoxWrite(value=a, delete_first=a_delete_first),
+                models.BoxWrite(value=b, delete_first=b_delete_first),
+            ):
+                # Writing over a box fails if the size differs, writing after a delete does not.
+                # A larger value in between can also exceed what the transaction may write.
+                return a_delete_first == b_delete_first and self._same_length(a, b)
+            case _:
+                return False
+
+    def _same_length(self, a: models.Value, b: models.Value) -> bool:
+        # A box takes a value of the size it has, or any value if it is created by the write.
+        # With equal sizes, the first write fails exactly when the second alone does, and the
+        # size of the box, which the minimum balance follows, is the same after each of them.
+        a_min, a_max = self._bounds().length(a)
+        return a_min == a_max and (a_min, a_max) == self._bounds().length(b)
+
+    def _fits_where_fits(self, a: models.Value, b: models.Value) -> bool:
+        # A state value has a type, counted against the schema, and a size limit shared with
+        # its key. The first write must not hit a limit that the second stays within.
+        match a.ir_type.maybe_avm_type, b.ir_type.maybe_avm_type:
+            case AVMType.uint64, AVMType.uint64:
+                return True
+            case AVMType.bytes, AVMType.bytes:
+                return self._bounds().length(a)[1] <= self._bounds().length(b)[0]
+            case _:
+                return False
+
+    def _invalidate(self, typ: _StateType) -> None:
+        self._read_results[typ].clear()
+        self._last_write.pop(typ, None)
+
+    def _apply(self, effects: Effect) -> None:
+        """Forget what an operation with the given effects may have changed, and keep the
+        writes it may have seen."""
+        for typ in _StateType:
+            if effects & _WRITES[typ]:
+                self._invalidate(typ)
+            elif effects & _OBSERVES[typ]:
+                self._last_write.pop(typ, None)
+        if Effect.exits in effects:
+            # the program may end here, with every write so far in place
             self._last_write.clear()
-        else:
-            self._read_results[typ].clear()
-            self._last_write.pop(typ, None)
 
     @typing.override
     def visit_assignment(self, op: models.Assignment) -> None:
@@ -187,16 +271,12 @@ class _StateTrackingVisitor(NoOpIRVisitor[None]):
                 self._handle_write(
                     op, _StateType.app_global, key=(key,), values=(value, _const_true())
                 )
-            case AVMOp.app_global_del:
-                self._invalidate(_StateType.app_global)
             # LOCAL STATE
             case AVMOp.app_local_put:
                 (account, key, value) = op.args
                 self._handle_write(
                     op, _StateType.app_local, key=(account, key), values=(value, _const_true())
                 )
-            case AVMOp.app_local_del:
-                self._invalidate(_StateType.app_local)
             # BOX
             case AVMOp.box_put:
                 key, value = op.args
@@ -205,29 +285,25 @@ class _StateTrackingVisitor(NoOpIRVisitor[None]):
                 self._invalidate(_StateType.box)
                 key, len_ = op.args
                 self._cache_box_len(key=key, length=len_)
-            case AVMOp.box_del | AVMOp.box_splice | AVMOp.box_resize | AVMOp.box_replace:
-                self._invalidate(_StateType.box)
-            case (
-                AVMOp.app_box_create
-                | AVMOp.app_box_del
-                | AVMOp.app_box_put
-                | AVMOp.app_box_splice
-                | AVMOp.app_box_resize
-                | AVMOp.app_box_replace
-            ):
-                # Remote box modifications can be made on the current APP ID (and therefore modify
-                # local boxes)
-                self._invalidate(_StateType.box)
-            case AVMOp.itxn_submit:
-                # If box family writes are enabled then performing an inner transaction to another
-                # app on our own family can modify our boxes.
-                self._invalidate(_StateType.box)
+            # SLOTS
+            case AVMOp.load | AVMOp.store:
+                # a scratch slot that an op names is reserved, so it is never a slot
+                # that the reads and writes followed here refer to
+                pass
+            # OTHER
+            case _:
+                # Among others, this forgets:
+                # - global and local state at a delete
+                # - boxes at any other box op, including one on an application given by id,
+                #   which can be this one
+                # - boxes at an inner transaction: another application may share box access
+                # and keeps the last write to state that the op may have seen, as an inner
+                # transaction may see all of it, and a minimum balance follows the boxes
+                self._apply(effects_of(op))
 
     @typing.override
     def visit_invoke_subroutine(self, callsub: models.InvokeSubroutine) -> None:
-        # be conservative and treat any subroutine call as a barrier
-        if not callsub.target.pure:
-            self._invalidate("all")
+        self._apply(effects_of(callsub, summaries=self._summaries))
 
     def _handle_box_put_or_write(
         self, op: models.Intrinsic | models.BoxWrite, *, key: models.Value, value: models.Value
