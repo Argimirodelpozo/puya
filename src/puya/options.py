@@ -15,6 +15,65 @@ class LocalsCoalescingStrategy(enum.StrEnum):
 
 
 @attrs.frozen(kw_only=True)
+class SlotStorage:
+    """Subroutines with which a program keeps 32-byte words in boxes, by subroutine id (a name
+    also stands for the subroutines whose id is that name, a `.` and a qualifier). Each word has
+    a slot, a number below 2**256; a slot that was never written holds 32 zero bytes.
+
+    * `read_page_word(page, at) -> bytes`: the word of slot `page + at / 32`, where `page` is 32
+      bytes read as a number and `at` a multiple of 32
+    * `write_page_word(page, at, value)`: sets the word of that slot to `value`
+    * `read_word(slot) -> bytes`: the word of `slot`, 32 bytes read as a number
+    * `write_words(slot, words)`: sets the words of `slot` and of the slots after it to the
+      32-byte pieces of `words`, which holds between 1 and 64 of them
+    * `read_slot(number) -> bytes`, `write_slot(number, value)`: the same for the slot
+      `number` modulo 2**256
+    * `slot_add(slot, n) -> bytes`: the 32 bytes of `slot + n` modulo 2**256, with no effect
+
+    Declaring them promises that:
+
+    * a read returns the 32 bytes last written to its slot by any of the writers, where a
+      `value` is at most 32 bytes long and is stored left-padded with zero bytes;
+    * a write changes the word of no other slot;
+    * a read has no effect, and does not fail once a read or a write of the same slot has
+      succeeded in the same transaction;
+    * nothing else in the program changes these words, except through box operations and
+      inner transactions that the optimizer can see.
+
+    `pages_are_boxes` promises that the words the page subroutines reach are the bytes of the
+    box named `page` of the application itself, 32 for each word from byte 0, that a word past
+    the end of the box or of a box that does not exist is zero, that such a box is at most 2048
+    bytes long, and that no write through these subroutines makes it shorter. Word reads of one
+    page can then share one read of its box, and a word write can replace the bytes in the box
+    itself where the box is known to hold the word. It is ignored for a program whose page
+    subroutines call another subroutine or use the boxes of another application.
+
+    Two requests trade program size for fewer operations run. `inline_page_reads` asks for a
+    word read of a page to read the box itself even where no other read shares it.
+    `inline_page_writes` asks for a word write of a page whose box was read to compare the
+    length read with the position of the word, and to replace the bytes in place where the box
+    holds it.
+
+    `hashed_slots_apart` promises that the program does not depend on two slots being the same
+    when they are derived differently: the result of a hash op, plus a number below 2**64, is
+    no slot below 2**64, and is not the result of hashing bytes with another constant ending,
+    plus a number below 2**64.
+    """
+
+    read_page_word: str | None = None
+    write_page_word: str | None = None
+    read_word: str | None = None
+    write_words: str | None = None
+    read_slot: str | None = None
+    write_slot: str | None = None
+    slot_add: str | None = None
+    pages_are_boxes: bool = False
+    inline_page_reads: bool = False
+    inline_page_writes: bool = False
+    hashed_slots_apart: bool = False
+
+
+@attrs.frozen(kw_only=True)
 class PuyaOptions:
     output_teal: bool = False
     output_source_map: bool = False
@@ -41,6 +100,7 @@ class PuyaOptions:
     expand_all_bytes: bool = False
     validate_abi_args: bool = True
     validate_abi_return: bool = True
+    slot_storage: SlotStorage | None = None
 
     @cached_property
     def template_variables(self) -> Mapping[str, int | bytes]:
