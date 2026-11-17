@@ -3,6 +3,7 @@ from unittest.mock import Mock
 from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.dead_code_elimination import remove_unused_variables
+from puya.ir.optimize.intrinsic_simplification import intrinsic_simplifier
 from puya.ir.types_ import PrimitiveIRType
 from tests.utils.ir import (
     assign,
@@ -294,3 +295,24 @@ def test_unused_operation_is_kept_if_condition_holds_on_one_way_in_only() -> Non
     sub = subroutine("join", [entry, checked, join], parameters=_parameters)
     remove_unused_variables(Mock(effects=None), sub)
     assert [str(op) for op in join.ops] == ["let left#0: uint64 = (- a#0 b#0)"]
+
+
+def test_intrinsic_with_ignored_results_is_kept_if_it_can_fail() -> None:
+    small = assign(register("small"), intrinsic(AVMOp.mod, _a, uint64(8)))
+    kept = [
+        intrinsic(AVMOp.add, _a, _b),
+        intrinsic(AVMOp.btoi, _data),
+        intrinsic(AVMOp.box_len, _key),
+        intrinsic(AVMOp.log, _data),
+        intrinsic(AVMOp.app_global_put, _key, small.targets[0]),
+    ]
+    removed = [
+        intrinsic(AVMOp.itob, _a),
+        intrinsic(AVMOp.add, small.targets[0], small.targets[0]),
+        intrinsic(AVMOp.app_global_get, _key, types=[PrimitiveIRType.uint64]),
+    ]
+    main = subroutine(
+        "main", [block(0, [small, *removed, *kept], return_())], parameters=_parameters
+    )
+    intrinsic_simplifier(Mock(effects=None, expand_all_bytes=False), main)
+    assert [str(op) for op in main.body[0].ops] == [str(op) for op in (small, *kept)]
