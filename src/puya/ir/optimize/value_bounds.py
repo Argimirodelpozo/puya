@@ -87,6 +87,10 @@ class ValueBounds:
     _given_length: dict[models.Register, Bounds] = attrs.field(factory=dict, init=False)
     # pairs of values of which the first is not above the second
     _given_ordered: set[tuple[models.Value, models.Value]] = attrs.field(factory=set, init=False)
+    # a byte array, a start and a size, where the start plus the size is within the byte array
+    _given_within: set[tuple[models.Value, models.Value, models.Value | int]] = attrs.field(
+        factory=set, init=False
+    )
     # the bounds without those conditions
     _unconditional: "ValueBounds | None" = attrs.field(default=None, init=False)
     # registers that hold the same value as an earlier register, with that register
@@ -145,6 +149,7 @@ class ValueBounds:
                     self._narrow_length(a, (start + length, MAX_BYTES_LENGTH))
             case AVMOp.extract3, [a, b, c]:
                 self._narrow_length(a, (self.uint64(b)[0] + self.uint64(c)[0], MAX_BYTES_LENGTH))
+                self._within(a, b, c)
             case AVMOp.substring, [a]:
                 _, end = op.immediates
                 if isinstance(end, int):
@@ -152,14 +157,19 @@ class ValueBounds:
             case AVMOp.substring3, [a, b, c]:
                 self._narrow_length(a, (self.uint64(c)[0], MAX_BYTES_LENGTH))
                 self._ordered(b, c)
+                self._within(a, c, 0)
             case AVMOp.extract_uint16, [a, b]:
                 self._narrow_length(a, (self.uint64(b)[0] + 2, MAX_BYTES_LENGTH))
+                self._within(a, b, 2)
             case AVMOp.extract_uint32, [a, b]:
                 self._narrow_length(a, (self.uint64(b)[0] + 4, MAX_BYTES_LENGTH))
+                self._within(a, b, 4)
             case AVMOp.extract_uint64, [a, b]:
                 self._narrow_length(a, (self.uint64(b)[0] + 8, MAX_BYTES_LENGTH))
+                self._within(a, b, 8)
             case ((AVMOp.getbyte | AVMOp.setbyte), [a, b, *_]):
                 self._narrow_length(a, (self.uint64(b)[0] + 1, MAX_BYTES_LENGTH))
+                self._within(a, b, 1)
             case AVMOp.btoi, [a]:
                 self._narrow_length(a, (0, 8))
             case AVMOp.concat, [a, b]:
@@ -208,6 +218,24 @@ class ValueBounds:
 
     def _ordered(self, low: models.Value, high: models.Value) -> None:
         self._given_ordered.add((self.same_value(low), self.same_value(high)))
+
+    def _within(self, array: models.Value, start: models.Value, size: models.Value | int) -> None:
+        self._given_within.add((self.same_value(array), self.same_value(start), self._plain(size)))
+
+    def _plain(self, value: models.Value | int) -> models.Value | int:
+        if isinstance(value, models.UInt64Constant):
+            return value.value
+        if isinstance(value, models.Value):
+            return self.same_value(value)
+        return value
+
+    def _covers(self, known: models.Value | int, size: models.Value | int) -> bool:
+        """True if the first of two sizes is at least the second."""
+        if known == size:
+            return True
+        known_low = known if isinstance(known, int) else self.uint64(known)[0]
+        size_high = size if isinstance(size, int) else self.uint64(size)[1]
+        return known_low >= size_high
 
     def _narrow_length(self, value: models.Value, bounds: Bounds) -> None:
         value = self.same_value(value)
@@ -311,20 +339,33 @@ class ValueBounds:
         b = self.same_value(b)
         return a == b or (a, b) in self._given_ordered or self.uint64(a)[1] <= self.uint64(b)[0]
 
-    def sum_within(self, a: models.Value, b: models.Value, array: models.Value) -> bool:
-        """True if the sum of the uint64 values `a` and `b` is known to be at most the length
-        of a byte array."""
-        if self.uint64(a)[1] + self.uint64(b)[1] <= self.length(array)[0]:
+    def within(
+        self, array: models.Value, start: models.Value, size: models.Value | int = 0
+    ) -> bool:
+        """True if the uint64 value `start`, plus `size`, is known to be at most the length of
+        a byte array."""
+        size = self._plain(size)
+        size_high = size if isinstance(size, int) else self.uint64(size)[1]
+        if self.uint64(start)[1] + size_high <= self.length(array)[0]:
             return True
         array = self.same_value(array)
-        # a register that holds the sum, and is not above one that holds the length
+        start = self.same_value(start)
+        # an operation that has completed took at least as much of the array from that start
+        for known_array, known_start, known_size in self._given_within:
+            if known_array == array and known_start == start and self._covers(known_size, size):
+                return True
+        # a register that holds a sum is not above a register that holds the length
         for total, length in self._given_ordered:
             match self._intrinsic(total), self._intrinsic(length):
                 case (
                     models.Intrinsic(op=AVMOp.add, args=[x, y]),
                     models.Intrinsic(op=AVMOp.len_, args=[measured]),
-                ) if (x, y) in ((a, b), (b, a)) and self.same_value(measured) == array:
-                    return True
+                ) if self.same_value(measured) == array:
+                    for first, second in ((x, y), (y, x)):
+                        if self.same_value(first) == start and self._covers(
+                            self._plain(second), size
+                        ):
+                            return True
         return False
 
     def _intrinsic(self, value: models.Value) -> models.Intrinsic | None:

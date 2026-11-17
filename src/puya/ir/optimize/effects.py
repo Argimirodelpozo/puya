@@ -527,7 +527,7 @@ def _extract(op: models.Intrinsic, bounds: ValueBounds) -> bool:
 
 def _extract3(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     a, b, c = op.args
-    return not bounds.sum_within(b, c, a)
+    return not bounds.within(a, b, c)
 
 
 def _substring(op: models.Intrinsic, bounds: ValueBounds) -> bool:
@@ -540,26 +540,25 @@ def _substring(op: models.Intrinsic, bounds: ValueBounds) -> bool:
 
 def _substring3(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     a, b, c = op.args
-    c_low, c_high = bounds.uint64(c)
-    return bounds.uint64(b)[1] > c_low or c_high > bounds.length(a)[0]
+    return not (bounds.not_above(b, c) and bounds.within(a, c))
 
 
 def _extract_uint(num_bytes: int) -> _MayFail:
     def may_fail(op: models.Intrinsic, bounds: ValueBounds) -> bool:
         a, b = op.args
-        return bounds.uint64(b)[1] + num_bytes > bounds.length(a)[0]
+        return not bounds.within(a, b, num_bytes)
 
     return may_fail
 
 
 def _getbyte(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     a, b = op.args
-    return bounds.uint64(b)[1] >= bounds.length(a)[0]
+    return not bounds.within(a, b, 1)
 
 
 def _setbyte(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     a, b, c = op.args
-    return bounds.uint64(b)[1] >= bounds.length(a)[0] or bounds.uint64(c)[1] > 255
+    return not bounds.within(a, b, 1) or bounds.uint64(c)[1] > 255
 
 
 def _bit_index_outside(a: models.Value, b: models.Value, bounds: ValueBounds) -> bool:

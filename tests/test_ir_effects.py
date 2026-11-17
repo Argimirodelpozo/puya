@@ -495,19 +495,53 @@ def test_sum_within_length() -> None:
     part = intrinsic(AVMOp.extract3, data, start, size)
     assert Effect.fails in effects_of(part, bounds=bounds)
     given = bounds.given(non_zero=[fits])
-    assert given.sum_within(start, size, data)
-    assert given.sum_within(size, start, data)
+    assert given.within(data, start, size)
+    assert given.within(data, size, start)
     assert Effect.fails not in effects_of(part, bounds=given)
     # it is this sum and this byte array that the condition is about
-    assert not given.sum_within(start, start, data)
-    assert not given.sum_within(start, size, other)
+    assert not given.within(data, start, start)
+    assert not given.within(other, start, size)
     assert Effect.fails in effects_of(intrinsic(AVMOp.extract3, other, start, size), bounds=given)
     assert Effect.fails in effects_of(intrinsic(AVMOp.extract3, data, size, size), bounds=given)
     # and it has to hold
-    assert not bounds.given(zero=[fits]).sum_within(start, size, data)
+    assert not bounds.given(zero=[fits]).within(data, start, size)
     # bounds on the operands are enough as well
-    assert bounds.sum_within(uint64(2), uint64(2), bytes_(b"1234"))
-    assert not bounds.sum_within(uint64(2), uint64(3), bytes_(b"1234"))
+    assert bounds.within(bytes_(b"1234"), uint64(2), uint64(2))
+    assert not bounds.within(bytes_(b"1234"), uint64(2), uint64(3))
+
+
+def test_within_what_a_completed_operation_took() -> None:
+    index = parameter("index")
+    size = parameter("size")
+    data = parameter("data", PrimitiveIRType.bytes)
+    other = parameter("other", PrimitiveIRType.bytes)
+    bounds = ValueBounds.of(
+        subroutine("s", [block(0, [], return_())], parameters=[index, size, data, other])
+    )
+
+    def may_fail(op: models.Intrinsic, *completed: models.Intrinsic) -> bool:
+        return Effect.fails in effects_of(op, bounds=bounds.given(completed=completed))
+
+    number = intrinsic(AVMOp.extract_uint64, data, index)
+    word = intrinsic(AVMOp.extract3, data, index, uint64(8))
+    # taking 8 bytes at an index fails exactly when reading a uint64 there does
+    assert may_fail(word)
+    assert not may_fail(word, number)
+    assert not may_fail(number, word)
+    # and whenever taking less from there does
+    assert not may_fail(intrinsic(AVMOp.extract_uint32, data, index), number)
+    assert not may_fail(intrinsic(AVMOp.getbyte, data, index), number)
+    assert not may_fail(intrinsic(AVMOp.extract3, data, index, uint64(7)), number)
+    # but not when taking more, or from another byte array, or at another index
+    assert may_fail(intrinsic(AVMOp.extract3, data, index, uint64(9)), number)
+    assert may_fail(number, intrinsic(AVMOp.extract_uint32, data, index))
+    assert may_fail(intrinsic(AVMOp.extract3, other, index, uint64(8)), number)
+    assert may_fail(intrinsic(AVMOp.extract3, data, size, uint64(8)), number)
+    # a size that is not a constant counts for itself, and for what it is at least
+    part = intrinsic(AVMOp.extract3, data, index, size)
+    assert not may_fail(part, part)
+    assert may_fail(number, part)
+    assert not may_fail(intrinsic(AVMOp.substring3, data, uint64(0), index), part)
 
 
 def test_bounds_given_conditions_do_not_reach_through_phi() -> None:
