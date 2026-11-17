@@ -24,6 +24,8 @@ logger = log.get_logger(__name__)
 
 # two words joined and padded cost what the second call cost
 _MIN_WORDS = 3
+# instructions at a call site of a word write: the address, the value, the call
+_CALL_COST = 5
 # a range write takes one stack value
 _MAX_WORDS = 4096 // _WORD
 _PURE_SOURCES = (
@@ -51,6 +53,7 @@ def merge_word_writes(context: IROptimizationContext, subroutine: models.Subrout
             if isinstance(op, models.Assignment) and len(op.targets) == 1:
                 definitions[op.targets[0]] = op.source
     merger = _Merger(
+        context=context,
         memory=_Memory(declared, definitions),
         write_range=write_range,
         versions=_next_versions(subroutine),
@@ -80,9 +83,34 @@ class _Write:
 
 @attrs.define
 class _Merger:
+    context: IROptimizationContext
     memory: _Memory
     write_range: models.Subroutine
     versions: dict[str, int]
+    _shared: bool | None = None
+
+    def _range_writer_is_shared(self) -> bool:
+        """A merge adds a call to the range writer, which then has to stay a subroutine. If nothing
+        calls it (unused, or already inlined at its one caller), the merge would pay for a copy of
+        its body.
+        """
+        if self._shared is None:
+            subroutines = self.context.program_subroutines or {}
+            self._shared = any(
+                _called(op) is self.write_range
+                for sub in subroutines.values()
+                for block in sub.body
+                for op in block.ops
+            )
+            if self._shared:
+                # from here on its calls stay calls
+                self.write_range.inline = False
+                self.context.inlineable_calls -= {
+                    pair
+                    for pair in self.context.inlineable_calls
+                    if pair[1] == self.write_range.id
+                }
+        return self._shared
 
     def merge(self, block: models.BasicBlock) -> bool:
         runs = list[list[_Write]]()
@@ -125,6 +153,11 @@ class _Merger:
         if len(group) < _MIN_WORDS:
             return False
         calls = [w.call for w in group]
+        padded = sum(not self.memory.is_word(call.args[1]) for call in calls)
+        if _joined_cost(words=len(calls), padded=padded) >= _CALL_COST * len(calls):
+            return False
+        if not self._range_writer_is_shared():
+            return False
         last = max(calls, key=block.ops.index)
         location = last.source_location
         new_ops = list[models.Op]()
@@ -184,6 +217,17 @@ class _Merger:
             if call is not last:
                 block.ops.remove(call)
         return True
+
+
+def _called(op: models.Op) -> models.Subroutine | None:
+    node = op.source if isinstance(op, models.Assignment) else op
+    return node.target if isinstance(node, models.InvokeSubroutine) else None
+
+
+def _joined_cost(*, words: int, padded: int) -> int:
+    """Instructions that replace the call sites of a run: one call, the joins, and for every value
+    not known to be a word its padding, with the zero word made once."""
+    return _CALL_COST + (words - 1) + (words - padded) + 3 * padded + (2 if padded else 0)
 
 
 def _transparent(op: models.Op) -> bool:
