@@ -30,6 +30,11 @@ from puya.ir.optimize.repeated_loads_elimination import (
     constant_reads_and_unobserved_writes_elimination,
 )
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
+from puya.ir.optimize.state_reads import (
+    analyse_state_effects,
+    page_reads_merge,
+    repeated_state_reads_elimination,
+)
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
 from puya.utils import attrs_extend
@@ -93,11 +98,20 @@ def get_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
         SubroutineOptimization.from_function(remove_linear_jumps),
         SubroutineOptimization.from_function(remove_unreachable_blocks),
         SubroutineOptimization.from_function(repeated_expression_elimination),
+        SubroutineOptimization.from_function(repeated_state_reads_elimination),
         SubroutineOptimization.from_function(encode_decode_pair_elimination),
         SubroutineOptimization.from_function(merge_chained_aggregate_reads, min_level=0),
         SubroutineOptimization.from_function(replace_aggregate_box_ops, min_level=0),
         SubroutineOptimization.from_function(minimize_box_exist_asserts),
         SubroutineOptimization.from_function(constant_reads_and_unobserved_writes_elimination),
+    ]
+
+
+def get_late_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
+    """Optimizations to run once the others find nothing more to do: what they rewrite, the
+    others would no longer recognise."""
+    return [
+        SubroutineOptimization.from_function(page_reads_merge),
     ]
 
 
@@ -143,6 +157,7 @@ def optimize_program_ir(
     qualifier: str,
 ) -> None:
     pipeline = [o for o in get_subroutine_optimizations() if o.can_optimize(context.options)]
+    late = [o for o in get_late_subroutine_optimizations() if o.can_optimize(context.options)]
     opt_context = attrs_extend(
         IROptimizationContext,
         context,
@@ -153,6 +168,7 @@ def optimize_program_ir(
         program_modified = False
         logger.debug(f"Begin optimization pass {pass_num}/{MAX_PASSES}")
         analyse_subroutines_for_inlining(opt_context, program)
+        analyse_state_effects(opt_context, program)
         for subroutine in program.all_subroutines:
             logger.debug(f"Optimizing subroutine {subroutine.id}")
             for optimizer in pipeline:
@@ -163,6 +179,14 @@ def optimize_program_ir(
         if remove_unused_subroutines(program):
             logger.debug("Unused subroutines removed")
             program_modified = True
+        if not program_modified and late:
+            analyse_state_effects(opt_context, program)
+            for subroutine in program.all_subroutines:
+                for optimizer in late:
+                    logger.debug(f"Late optimizer: {optimizer.desc}")
+                    if optimizer.optimize(opt_context, subroutine):
+                        program_modified = True
+                subroutine.validate_with_ssa()
         if not program_modified:
             logger.debug(f"No optimizations performed in pass {pass_num}, ending loop")
             break
