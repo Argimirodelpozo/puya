@@ -2221,7 +2221,8 @@ debug: Copy propagation made 2 modifications
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
 debug: Removing unused variable tmp%1#2
-debug: Removing unused variable tmp%2#1
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -2705,6 +2706,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -3170,6 +3172,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -3596,6 +3599,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
@@ -4048,6 +4052,7 @@ debug: Optimizer: Constant Replacer
 debug: Optimizer: Copy Propagation
 debug: Optimizer: Elide Itxn Field Calls
 debug: Optimizer: Remove Unused Variables
+debug: Not removing unused assignment since its source has effects (fails): let tmp%2#1: uint64 = (extract_uint16 array_head_and_tail#0 0u)
 debug: Optimizer: Intrinsic Simplifier
 debug: Optimizer: Inner Txn Field Replacer
 debug: Optimizer: Replace Compiled References
