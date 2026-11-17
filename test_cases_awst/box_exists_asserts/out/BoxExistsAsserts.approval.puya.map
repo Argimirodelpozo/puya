@@ -1,0 +1,567 @@
+{
+  "version": 3,
+  "sources": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "Effects::BoxExistsAsserts.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 8"
+    },
+    "5": {
+      "op": "bytecblock \"box\""
+    },
+    "11": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "13": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": []
+    },
+    "16": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "17": {
+      "op": "return",
+      "stack_out": []
+    },
+    "18": {
+      "block": "main_after_if_else@2",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "21": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "22": {
+      "op": "dup",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0"
+      ]
+    },
+    "23": {
+      "op": "bnz main_after_if_else@4",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "26": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\"",
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "27": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "\"box\"",
+        "8",
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "\"box\"",
+        "8"
+      ]
+    },
+    "28": {
+      "op": "box_create",
+      "defined_out": [
+        "which#0",
+        "{box_create}"
+      ],
+      "stack_out": [
+        "which#0",
+        "{box_create}"
+      ]
+    },
+    "29": {
+      "op": "pop",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "30": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "31": {
+      "op": "box_del",
+      "defined_out": [
+        "which#0",
+        "{box_del}"
+      ],
+      "stack_out": [
+        "which#0",
+        "{box_del}"
+      ]
+    },
+    "32": {
+      "op": "pop",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "33": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "34": {
+      "op": "box_len",
+      "defined_out": [
+        "tmp%7#0",
+        "tmp%8#0",
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%7#0",
+        "tmp%8#0"
+      ]
+    },
+    "35": {
+      "op": "bury 1",
+      "stack_out": [
+        "which#0",
+        "tmp%8#0"
+      ]
+    },
+    "37": {
+      "error": "box exists after box_del",
+      "op": "assert // box exists after box_del",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "38": {
+      "block": "main_after_if_else@4",
+      "stack_in": [
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "39": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0 (copy)",
+        "1"
+      ]
+    },
+    "40": {
+      "op": "==",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%9#0"
+      ]
+    },
+    "41": {
+      "op": "bz main_after_if_else@6",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "44": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\""
+      ],
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "45": {
+      "op": "box_len",
+      "defined_out": [
+        "existed#1",
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%10#0",
+        "existed#1"
+      ]
+    },
+    "46": {
+      "op": "bury 1",
+      "stack_out": [
+        "which#0",
+        "existed#1"
+      ]
+    },
+    "48": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "which#0",
+        "existed#1",
+        "\"box\""
+      ]
+    },
+    "49": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "\"box\"",
+        "8",
+        "existed#1"
+      ],
+      "stack_out": [
+        "which#0",
+        "existed#1",
+        "\"box\"",
+        "8"
+      ]
+    },
+    "50": {
+      "op": "box_create",
+      "defined_out": [
+        "existed#1",
+        "{box_create}"
+      ],
+      "stack_out": [
+        "which#0",
+        "existed#1",
+        "{box_create}"
+      ]
+    },
+    "51": {
+      "op": "pop",
+      "stack_out": [
+        "which#0",
+        "existed#1"
+      ]
+    },
+    "52": {
+      "error": "box existed before box_create",
+      "op": "assert // box existed before box_create",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "53": {
+      "block": "main_after_if_else@6",
+      "stack_in": [
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "54": {
+      "op": "pushint 2",
+      "defined_out": [
+        "2",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0 (copy)",
+        "2"
+      ]
+    },
+    "56": {
+      "op": "==",
+      "defined_out": [
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%12#0"
+      ]
+    },
+    "57": {
+      "op": "bz main_after_if_else@8",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "60": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\""
+      ],
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "61": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "\"box\"",
+        "8"
+      ],
+      "stack_out": [
+        "which#0",
+        "\"box\"",
+        "8"
+      ]
+    },
+    "62": {
+      "op": "box_create",
+      "defined_out": [
+        "{box_create}"
+      ],
+      "stack_out": [
+        "which#0",
+        "{box_create}"
+      ]
+    },
+    "63": {
+      "op": "pop",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "64": {
+      "op": "itxn_begin"
+    },
+    "65": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "which#0",
+        "1"
+      ]
+    },
+    "66": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "68": {
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%13#0"
+      ]
+    },
+    "70": {
+      "op": "itxn_field Receiver",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "72": {
+      "op": "itxn_submit"
+    },
+    "73": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "74": {
+      "op": "box_len",
+      "defined_out": [
+        "tmp%14#0",
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "tmp%14#0",
+        "tmp%15#0"
+      ]
+    },
+    "75": {
+      "op": "bury 1",
+      "stack_out": [
+        "which#0",
+        "tmp%15#0"
+      ]
+    },
+    "77": {
+      "error": "box exists after inner transaction",
+      "op": "assert // box exists after inner transaction",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "78": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "79": {
+      "op": "box_del",
+      "defined_out": [
+        "{box_del}"
+      ],
+      "stack_out": [
+        "which#0",
+        "{box_del}"
+      ]
+    },
+    "80": {
+      "op": "pop",
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "81": {
+      "block": "main_after_if_else@8",
+      "stack_in": [
+        "which#0"
+      ],
+      "op": "pushint 3",
+      "defined_out": [
+        "3",
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "3"
+      ]
+    },
+    "83": {
+      "op": "==",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "tmp%16#0"
+      ]
+    },
+    "84": {
+      "op": "bz main_after_if_else@10",
+      "stack_out": []
+    },
+    "87": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\""
+      ],
+      "stack_out": [
+        "\"box\""
+      ]
+    },
+    "88": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "\"box\"",
+        "8"
+      ],
+      "stack_out": [
+        "\"box\"",
+        "8"
+      ]
+    },
+    "89": {
+      "op": "box_create",
+      "defined_out": [
+        "{box_create}"
+      ],
+      "stack_out": [
+        "{box_create}"
+      ]
+    },
+    "90": {
+      "op": "pop",
+      "stack_out": []
+    },
+    "91": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "\"box\""
+      ]
+    },
+    "92": {
+      "op": "box_del",
+      "defined_out": [
+        "{box_del}"
+      ],
+      "stack_out": [
+        "{box_del}"
+      ]
+    },
+    "93": {
+      "op": "pop",
+      "stack_out": []
+    },
+    "94": {
+      "block": "main_after_if_else@10",
+      "stack_in": [],
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "95": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}

@@ -1,0 +1,3 @@
+main Effects::UnusedFallibleOps.clearStateProgram:
+    block@0: // L1
+        return 1u

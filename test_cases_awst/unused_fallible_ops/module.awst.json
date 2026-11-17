@@ -1,0 +1,1811 @@
+[
+  {
+    "source_location": {
+      "file": null,
+      "line": 1,
+      "end_line": 1,
+      "comment_lines": 0,
+      "column": null,
+      "end_column": null
+    },
+    "id": "Effects::UnusedFallibleOps",
+    "name": "UnusedFallibleOps",
+    "description": null,
+    "method_resolution_order": [],
+    "approval_program": {
+      "source_location": {
+        "file": null,
+        "line": 1,
+        "end_line": 1,
+        "comment_lines": 0,
+        "column": null,
+        "end_column": null
+      },
+      "args": [],
+      "return_type": {
+        "name": "bool",
+        "immutable": true,
+        "_type": "WType"
+      },
+      "body": {
+        "source_location": {
+          "file": null,
+          "line": 1,
+          "end_line": 1,
+          "comment_lines": 0,
+          "column": null,
+          "end_column": null
+        },
+        "body": [
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "target": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "name": "which",
+              "_type": "VarExpression"
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "op_code": "btoi",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "length": null,
+                    "_type": "BytesWType"
+                  },
+                  "op_code": "txna",
+                  "immediates": [
+                    "ApplicationArgs",
+                    0
+                  ],
+                  "stack_args": [],
+                  "_type": "IntrinsicCall"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "AssignmentStatement"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "target": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "name": "x",
+              "_type": "VarExpression"
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "op_code": "btoi",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "length": null,
+                    "_type": "BytesWType"
+                  },
+                  "op_code": "txna",
+                  "immediates": [
+                    "ApplicationArgs",
+                    1
+                  ],
+                  "stack_args": [],
+                  "_type": "IntrinsicCall"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "AssignmentStatement"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "target": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "name": "y",
+              "_type": "VarExpression"
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "op_code": "btoi",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "length": null,
+                    "_type": "BytesWType"
+                  },
+                  "op_code": "txna",
+                  "immediates": [
+                    "ApplicationArgs",
+                    2
+                  ],
+                  "stack_args": [],
+                  "_type": "IntrinsicCall"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "AssignmentStatement"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 0,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "left": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "x",
+                      "_type": "VarExpression"
+                    },
+                    "op": "-",
+                    "right": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "y",
+                      "_type": "VarExpression"
+                    },
+                    "_type": "UInt64BinaryOperation"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 1,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "left": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "x",
+                      "_type": "VarExpression"
+                    },
+                    "op": "+",
+                    "right": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "y",
+                      "_type": "VarExpression"
+                    },
+                    "_type": "UInt64BinaryOperation"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 2,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "target": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "uint64",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "name": "unused",
+                    "_type": "VarExpression"
+                  },
+                  "value": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "left": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "x",
+                      "_type": "VarExpression"
+                    },
+                    "op": "*",
+                    "right": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "y",
+                      "_type": "VarExpression"
+                    },
+                    "_type": "UInt64BinaryOperation"
+                  },
+                  "_type": "AssignmentStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 3,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "left": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "x",
+                      "_type": "VarExpression"
+                    },
+                    "op": "**",
+                    "right": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "y",
+                      "_type": "VarExpression"
+                    },
+                    "_type": "UInt64BinaryOperation"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 4,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "uint64",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "/",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "x",
+                        "_type": "VarExpression"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "y",
+                        "_type": "VarExpression"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 5,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "uint64",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "shl",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "x",
+                        "_type": "VarExpression"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "y",
+                        "_type": "VarExpression"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 6,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "uint64",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "btoi",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "op_code": "txna",
+                        "immediates": [
+                          "ApplicationArgs",
+                          3
+                        ],
+                        "stack_args": [],
+                        "_type": "IntrinsicCall"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 7,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "length": null,
+                      "_type": "BytesWType"
+                    },
+                    "op_code": "extract3",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "op_code": "txna",
+                        "immediates": [
+                          "ApplicationArgs",
+                          3
+                        ],
+                        "stack_args": [],
+                        "_type": "IntrinsicCall"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "x",
+                        "_type": "VarExpression"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "name": "y",
+                        "_type": "VarExpression"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 8,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "biguint",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "b+",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "op_code": "txna",
+                        "immediates": [
+                          "ApplicationArgs",
+                          3
+                        ],
+                        "stack_args": [],
+                        "_type": "IntrinsicCall"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "op_code": "txna",
+                        "immediates": [
+                          "ApplicationArgs",
+                          3
+                        ],
+                        "stack_args": [],
+                        "_type": "IntrinsicCall"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "expr": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "length": null,
+                "_type": "BytesWType"
+              },
+              "op_code": "itob",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "name": "uint64",
+                    "immutable": true,
+                    "_type": "WType"
+                  },
+                  "name": "x",
+                  "_type": "VarExpression"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "ExpressionStatement"
+          },
+          {
+            "expr": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "length": null,
+                "_type": "BytesWType"
+              },
+              "op_code": "sha256",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "length": null,
+                    "_type": "BytesWType"
+                  },
+                  "op_code": "itob",
+                  "immediates": [],
+                  "stack_args": [
+                    {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "uint64",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "y",
+                      "_type": "VarExpression"
+                    }
+                  ],
+                  "_type": "IntrinsicCall"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "ExpressionStatement"
+          },
+          {
+            "expr": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "left": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "x",
+                "_type": "VarExpression"
+              },
+              "op": "//",
+              "right": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 2,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "UInt64BinaryOperation"
+            },
+            "_type": "ExpressionStatement"
+          },
+          {
+            "expr": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "left": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "left": {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "name": "uint64",
+                    "immutable": true,
+                    "_type": "WType"
+                  },
+                  "name": "x",
+                  "_type": "VarExpression"
+                },
+                "op": "%",
+                "right": {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "name": "uint64",
+                    "immutable": true,
+                    "_type": "WType"
+                  },
+                  "value": 16,
+                  "teal_alias": null,
+                  "_type": "IntegerConstant"
+                },
+                "_type": "UInt64BinaryOperation"
+              },
+              "op": "+",
+              "right": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "left": {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "name": "uint64",
+                    "immutable": true,
+                    "_type": "WType"
+                  },
+                  "name": "y",
+                  "_type": "VarExpression"
+                },
+                "op": "%",
+                "right": {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "name": "uint64",
+                    "immutable": true,
+                    "_type": "WType"
+                  },
+                  "value": 16,
+                  "teal_alias": null,
+                  "_type": "IntegerConstant"
+                },
+                "_type": "UInt64BinaryOperation"
+              },
+              "_type": "UInt64BinaryOperation"
+            },
+            "_type": "ExpressionStatement"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "value": true,
+              "wtype": {
+                "name": "bool",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "_type": "BoolConstant"
+            },
+            "_type": "ReturnStatement"
+          }
+        ],
+        "label": null,
+        "comment": null,
+        "_type": "Block"
+      },
+      "documentation": {
+        "description": null,
+        "args": {},
+        "returns": null
+      },
+      "inline": null,
+      "pure": false,
+      "cref": "Effects::UnusedFallibleOps",
+      "member_name": "approvalProgram",
+      "arc4_method_config": null
+    },
+    "clear_program": {
+      "source_location": {
+        "file": null,
+        "line": 1,
+        "end_line": 1,
+        "comment_lines": 0,
+        "column": null,
+        "end_column": null
+      },
+      "args": [],
+      "return_type": {
+        "name": "bool",
+        "immutable": true,
+        "_type": "WType"
+      },
+      "body": {
+        "source_location": {
+          "file": null,
+          "line": 1,
+          "end_line": 1,
+          "comment_lines": 0,
+          "column": null,
+          "end_column": null
+        },
+        "body": [
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "value": true,
+              "wtype": {
+                "name": "bool",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "_type": "BoolConstant"
+            },
+            "_type": "ReturnStatement"
+          }
+        ],
+        "label": null,
+        "comment": null,
+        "_type": "Block"
+      },
+      "documentation": {
+        "description": null,
+        "args": {},
+        "returns": null
+      },
+      "inline": null,
+      "pure": false,
+      "cref": "Effects::UnusedFallibleOps",
+      "member_name": "clearStateProgram",
+      "arc4_method_config": null
+    },
+    "methods": [],
+    "app_state": [],
+    "state_totals": null,
+    "reserved_scratch_space": [],
+    "avm_version": null,
+    "autosalt": null,
+    "_type": "Contract"
+  }
+]

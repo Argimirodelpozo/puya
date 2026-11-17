@@ -1,0 +1,970 @@
+{
+  "version": 3,
+  "sources": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "Effects::UnusedFallibleOps.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "4": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0"
+      ]
+    },
+    "5": {
+      "op": "dup",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0"
+      ]
+    },
+    "6": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%2#0",
+        "which#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0",
+        "tmp%2#0"
+      ]
+    },
+    "9": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "which#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "10": {
+      "op": "cover 2",
+      "defined_out": [
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0"
+      ]
+    },
+    "12": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "tmp%4#0",
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0",
+        "tmp%4#0"
+      ]
+    },
+    "15": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0",
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0",
+        "y#0"
+      ]
+    },
+    "16": {
+      "op": "cover 2",
+      "defined_out": [
+        "which#0",
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0"
+      ]
+    },
+    "18": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "21": {
+      "op": "dig 2",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "23": {
+      "op": "dig 2",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "25": {
+      "op": "-",
+      "defined_out": [
+        "which#0",
+        "x#0",
+        "y#0",
+        "{-}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{-}"
+      ]
+    },
+    "26": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "27": {
+      "block": "main_after_if_else@2",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "28": {
+      "op": "pushint 1",
+      "defined_out": [
+        "1",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "1"
+      ]
+    },
+    "30": {
+      "op": "==",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%7#0"
+      ]
+    },
+    "31": {
+      "op": "bz main_after_if_else@4",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "34": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "36": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "38": {
+      "op": "+",
+      "defined_out": [
+        "x#0",
+        "y#0",
+        "{+}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{+}"
+      ]
+    },
+    "39": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "40": {
+      "block": "main_after_if_else@4",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "41": {
+      "op": "pushint 2",
+      "defined_out": [
+        "2",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "2"
+      ]
+    },
+    "43": {
+      "op": "==",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%8#0"
+      ]
+    },
+    "44": {
+      "op": "bz main_after_if_else@6",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "47": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "49": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "51": {
+      "op": "*",
+      "defined_out": [
+        "unused#0",
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "unused#0"
+      ]
+    },
+    "52": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "53": {
+      "block": "main_after_if_else@6",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "54": {
+      "op": "pushint 3",
+      "defined_out": [
+        "3",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "3"
+      ]
+    },
+    "56": {
+      "op": "==",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%10#0"
+      ]
+    },
+    "57": {
+      "op": "bz main_after_if_else@8",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "60": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "62": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "64": {
+      "op": "exp",
+      "defined_out": [
+        "x#0",
+        "y#0",
+        "{exp}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{exp}"
+      ]
+    },
+    "65": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "66": {
+      "block": "main_after_if_else@8",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "67": {
+      "op": "pushint 4",
+      "defined_out": [
+        "4",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "4"
+      ]
+    },
+    "69": {
+      "op": "==",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%11#0"
+      ]
+    },
+    "70": {
+      "op": "bz main_after_if_else@10",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "73": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "75": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "77": {
+      "op": "/",
+      "defined_out": [
+        "x#0",
+        "y#0",
+        "{/}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{/}"
+      ]
+    },
+    "78": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "79": {
+      "block": "main_after_if_else@10",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "80": {
+      "op": "pushint 5",
+      "defined_out": [
+        "5",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "5"
+      ]
+    },
+    "82": {
+      "op": "==",
+      "defined_out": [
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%12#0"
+      ]
+    },
+    "83": {
+      "op": "bz main_after_if_else@12",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "86": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "88": {
+      "op": "dig 2",
+      "defined_out": [
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "90": {
+      "op": "shl",
+      "defined_out": [
+        "x#0",
+        "y#0",
+        "{shl}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{shl}"
+      ]
+    },
+    "91": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "92": {
+      "block": "main_after_if_else@12",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "93": {
+      "op": "pushint 6",
+      "defined_out": [
+        "6",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "6"
+      ]
+    },
+    "95": {
+      "op": "==",
+      "defined_out": [
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%13#0"
+      ]
+    },
+    "96": {
+      "op": "bz main_after_if_else@14",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "99": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%14#0"
+      ]
+    },
+    "102": {
+      "op": "btoi",
+      "defined_out": [
+        "{btoi}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{btoi}"
+      ]
+    },
+    "103": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "104": {
+      "block": "main_after_if_else@14",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "105": {
+      "op": "pushint 7",
+      "defined_out": [
+        "7",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "which#0 (copy)",
+        "7"
+      ]
+    },
+    "107": {
+      "op": "==",
+      "defined_out": [
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%15#0"
+      ]
+    },
+    "108": {
+      "op": "bz main_after_if_else@16",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "111": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%16#0"
+      ]
+    },
+    "114": {
+      "op": "dig 3",
+      "defined_out": [
+        "tmp%16#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%16#0",
+        "x#0"
+      ]
+    },
+    "116": {
+      "op": "dig 3",
+      "defined_out": [
+        "tmp%16#0",
+        "x#0",
+        "y#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "tmp%16#0",
+        "x#0",
+        "y#0"
+      ]
+    },
+    "118": {
+      "op": "extract3",
+      "defined_out": [
+        "x#0",
+        "y#0",
+        "{extract3}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "{extract3}"
+      ]
+    },
+    "119": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ]
+    },
+    "120": {
+      "block": "main_after_if_else@16",
+      "stack_in": [
+        "x#0",
+        "y#0",
+        "which#0"
+      ],
+      "op": "pushint 8",
+      "defined_out": [
+        "8",
+        "which#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "which#0",
+        "8"
+      ]
+    },
+    "122": {
+      "op": "==",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "tmp%17#0"
+      ]
+    },
+    "123": {
+      "op": "bz main_after_if_else@18",
+      "stack_out": [
+        "x#0",
+        "y#0"
+      ]
+    },
+    "126": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "tmp%18#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "tmp%18#0"
+      ]
+    },
+    "129": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%18#0",
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "tmp%18#0",
+        "tmp%19#0"
+      ]
+    },
+    "130": {
+      "op": "b+",
+      "defined_out": [
+        "{b+}"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "{b+}"
+      ]
+    },
+    "131": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "y#0"
+      ]
+    },
+    "132": {
+      "block": "main_after_if_else@18",
+      "stack_in": [
+        "x#0",
+        "y#0"
+      ],
+      "op": "pushint 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "x#0",
+        "y#0",
+        "1"
+      ]
+    },
+    "134": {
+      "op": "return",
+      "stack_out": [
+        "x#0",
+        "y#0"
+      ]
+    }
+  }
+}

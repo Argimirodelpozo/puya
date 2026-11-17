@@ -1,0 +1,116 @@
+|  PC | TEAL Bytes              | TEAL                                             | Source | Location                                               |
+|---: | :-----------------------| :------------------------------------------------| :------| :------------------------------------------------------|
+|   0 | 0b                      | #pragma version 11                               |        |                                                        |
+|     | # main                  | main:                                            |        | Effects::BoxExistsAsserts.approvalProgram() -> uint64: |
+|   1 | 20 03 01 08 00          |     intcblock 1 8 0                              |        |                                                        |
+|   6 | 26 02 03 62 6f 78 00    |     bytecblock "box" ""                          |        |                                                        |
+|  13 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  14 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  15 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  16 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  17 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  18 | 29                      |     bytec_1 // ""                                |        |                                                        |
+|  19 | 42 00 00                |     b main_block@0                               |        |                                                        |
+|     | # main_block@0          | main_block@0:                                    |        |                                                        |
+|  22 | 31 18                   |     txn ApplicationID                            |        | INTERNAL:1                                             |
+|  24 | 24                      |     intc_2 // 0                                  |        | INTERNAL:1                                             |
+|  25 | 12                      |     ==                                           |        | INTERNAL:1                                             |
+|  26 | 41 00 05                |     bz main_after_if_else@2                      |        | INTERNAL:1                                             |
+|  29 | 42 00 00                |     b main_if_body@1                             |        | INTERNAL:1                                             |
+|     | # main_if_body@1        | main_if_body@1:                                  |        |                                                        |
+|  32 | 22                      |     intc_0 // 1                                  |        | INTERNAL:1                                             |
+|  33 | 43                      |     return                                       |        | INTERNAL:1                                             |
+|     | # main_after_if_else@2  | main_after_if_else@2:                            |        |                                                        |
+|  34 | 36 1a 00                |     txna ApplicationArgs 0                       |        | INTERNAL:1                                             |
+|  37 | 17                      |     btoi                                         |        | INTERNAL:1                                             |
+|  38 | 49                      |     dup                                          |        | INTERNAL:1                                             |
+|  39 | 45 02                   |     bury 2                                       |        | INTERNAL:1                                             |
+|  41 | 24                      |     intc_2 // 0                                  |        | INTERNAL:1                                             |
+|  42 | 12                      |     ==                                           |        | INTERNAL:1                                             |
+|  43 | 41 00 1b                |     bz main_after_if_else@4                      |        | INTERNAL:1                                             |
+|  46 | 42 00 00                |     b main_if_body@3                             |        | INTERNAL:1                                             |
+|     | # main_if_body@3        | main_if_body@3:                                  |        |                                                        |
+|  49 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  50 | 23                      |     intc_1 // 8                                  |        | INTERNAL:1                                             |
+|  51 | b9                      |     box_create                                   |        | INTERNAL:1                                             |
+|  52 | 48                      |     pop                                          |        |                                                        |
+|  53 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  54 | bd                      |     box_len                                      |        | INTERNAL:1                                             |
+|  55 | 4e 01                   |     cover 1                                      |        | INTERNAL:1                                             |
+|  57 | 45 04                   |     bury 4                                       |        | INTERNAL:1                                             |
+|  59 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  60 | bc                      |     box_del                                      |        | INTERNAL:1                                             |
+|  61 | 48                      |     pop                                          |        |                                                        |
+|  62 | 44                      |     assert // box existed                        |        | INTERNAL:1                                             |
+|  63 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  64 | bd                      |     box_len                                      |        | INTERNAL:1                                             |
+|  65 | 4e 01                   |     cover 1                                      |        | INTERNAL:1                                             |
+|  67 | 45 03                   |     bury 3                                       |        | INTERNAL:1                                             |
+|  69 | 44                      |     assert // box exists after box_del           |        | INTERNAL:1                                             |
+|  70 | 42 00 00                |     b main_after_if_else@4                       |        |                                                        |
+|     | # main_after_if_else@4  | main_after_if_else@4:                            |        |                                                        |
+|  73 | 49                      |     dup                                          |        | INTERNAL:1                                             |
+|  74 | 22                      |     intc_0 // 1                                  |        | INTERNAL:1                                             |
+|  75 | 12                      |     ==                                           |        | INTERNAL:1                                             |
+|  76 | 41 00 11                |     bz main_after_if_else@6                      |        | INTERNAL:1                                             |
+|  79 | 42 00 00                |     b main_if_body@5                             |        | INTERNAL:1                                             |
+|     | # main_if_body@5        | main_if_body@5:                                  |        |                                                        |
+|  82 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  83 | bd                      |     box_len                                      |        | INTERNAL:1                                             |
+|  84 | 4e 01                   |     cover 1                                      |        | INTERNAL:1                                             |
+|  86 | 45 07                   |     bury 7                                       |        | INTERNAL:1                                             |
+|  88 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+|  89 | 23                      |     intc_1 // 8                                  |        | INTERNAL:1                                             |
+|  90 | b9                      |     box_create                                   |        | INTERNAL:1                                             |
+|  91 | 48                      |     pop                                          |        |                                                        |
+|  92 | 44                      |     assert // box existed before box_create      |        | INTERNAL:1                                             |
+|  93 | 42 00 00                |     b main_after_if_else@6                       |        |                                                        |
+|     | # main_after_if_else@6  | main_after_if_else@6:                            |        |                                                        |
+|  96 | 49                      |     dup                                          |        | INTERNAL:1                                             |
+|  97 | 81 02                   |     pushint 2                                    |        | INTERNAL:1                                             |
+|  99 | 12                      |     ==                                           |        | INTERNAL:1                                             |
+| 100 | 41 00 1d                |     bz main_after_if_else@8                      |        | INTERNAL:1                                             |
+| 103 | 42 00 00                |     b main_if_body@7                             |        | INTERNAL:1                                             |
+|     | # main_if_body@7        | main_if_body@7:                                  |        |                                                        |
+| 106 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 107 | 23                      |     intc_1 // 8                                  |        | INTERNAL:1                                             |
+| 108 | b9                      |     box_create                                   |        | INTERNAL:1                                             |
+| 109 | 48                      |     pop                                          |        |                                                        |
+| 110 | b1                      |     itxn_begin                                   |        | INTERNAL:1                                             |
+| 111 | 22                      |     intc_0 // 1                                  |        | INTERNAL:1                                             |
+| 112 | b2 10                   |     itxn_field TypeEnum                          |        | INTERNAL:1                                             |
+| 114 | 31 00                   |     txn Sender                                   |        | INTERNAL:1                                             |
+| 116 | b2 07                   |     itxn_field Receiver                          |        | INTERNAL:1                                             |
+| 118 | b3                      |     itxn_submit                                  |        | INTERNAL:1                                             |
+| 119 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 120 | bd                      |     box_len                                      |        | INTERNAL:1                                             |
+| 121 | 4e 01                   |     cover 1                                      |        | INTERNAL:1                                             |
+| 123 | 45 06                   |     bury 6                                       |        | INTERNAL:1                                             |
+| 125 | 44                      |     assert // box exists after inner transaction |        | INTERNAL:1                                             |
+| 126 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 127 | bc                      |     box_del                                      |        | INTERNAL:1                                             |
+| 128 | 48                      |     pop                                          |        |                                                        |
+| 129 | 42 00 00                |     b main_after_if_else@8                       |        |                                                        |
+|     | # main_after_if_else@8  | main_after_if_else@8:                            |        |                                                        |
+| 132 | 49                      |     dup                                          |        | INTERNAL:1                                             |
+| 133 | 81 03                   |     pushint 3                                    |        | INTERNAL:1                                             |
+| 135 | 12                      |     ==                                           |        | INTERNAL:1                                             |
+| 136 | 41 00 14                |     bz main_after_if_else@10                     |        | INTERNAL:1                                             |
+| 139 | 42 00 00                |     b main_if_body@9                             |        | INTERNAL:1                                             |
+|     | # main_if_body@9        | main_if_body@9:                                  |        |                                                        |
+| 142 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 143 | 23                      |     intc_1 // 8                                  |        | INTERNAL:1                                             |
+| 144 | b9                      |     box_create                                   |        | INTERNAL:1                                             |
+| 145 | 48                      |     pop                                          |        |                                                        |
+| 146 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 147 | bd                      |     box_len                                      |        | INTERNAL:1                                             |
+| 148 | 4e 01                   |     cover 1                                      |        | INTERNAL:1                                             |
+| 150 | 45 05                   |     bury 5                                       |        | INTERNAL:1                                             |
+| 152 | 44                      |     assert // box exists after box_create        |        | INTERNAL:1                                             |
+| 153 | 28                      |     bytec_0 // "box"                             |        | INTERNAL:1                                             |
+| 154 | bc                      |     box_del                                      |        | INTERNAL:1                                             |
+| 155 | 48                      |     pop                                          |        |                                                        |
+| 156 | 42 00 00                |     b main_after_if_else@10                      |        |                                                        |
+|     | # main_after_if_else@10 | main_after_if_else@10:                           |        |                                                        |
+| 159 | 22                      |     intc_0 // 1                                  |        | INTERNAL:1                                             |
+| 160 | 43                      |     return                                       |        | INTERNAL:1                                             |

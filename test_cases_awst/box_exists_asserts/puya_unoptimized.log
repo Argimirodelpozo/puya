@@ -1,0 +1,890 @@
+debug: Building IR for function _puya_lib.util.ensure_budget
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'required_budget_with_buffer' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let required_budget_with_buffer#1: uint64 = undefined while trying to resolve 'required_budget_with_buffer' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Looking for 'fee_source' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let fee_source#1: uint64 = undefined while trying to resolve 'fee_source' in block@1
+debug: Terminated block@2
+debug: Terminated block@3
+debug: Terminated block@4
+debug: Sealing block@5
+debug: Terminated block@5
+debug: Sealing block@1
+debug: Added required_budget_with_buffer#0 to Phi node: let required_budget_with_buffer#1: uint64 = φ(required_budget_with_buffer#0 <- block@0) in block@0
+debug: Created Phi assignment: let required_budget_with_buffer#2: uint64 = undefined while trying to resolve 'required_budget_with_buffer' in block@5
+debug: Added required_budget_with_buffer#1 to Phi node: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2) in block@2
+debug: Looking for 'required_budget_with_buffer' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let required_budget_with_buffer#3: uint64 = undefined while trying to resolve 'required_budget_with_buffer' in block@3
+debug: Added required_budget_with_buffer#3 to Phi node: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2, required_budget_with_buffer#3 <- block@3) in block@3
+debug: Looking for 'required_budget_with_buffer' in an unsealed block creating an incomplete Phi: block@4
+debug: Created Phi assignment: let required_budget_with_buffer#4: uint64 = undefined while trying to resolve 'required_budget_with_buffer' in block@4
+debug: Added required_budget_with_buffer#4 to Phi node: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2, required_budget_with_buffer#3 <- block@3, required_budget_with_buffer#4 <- block@4) in block@4
+debug: Added required_budget_with_buffer#2 to Phi node: let required_budget_with_buffer#1: uint64 = φ(required_budget_with_buffer#0 <- block@0, required_budget_with_buffer#2 <- block@5) in block@5
+debug: Added fee_source#0 to Phi node: let fee_source#1: uint64 = φ(fee_source#0 <- block@0) in block@0
+debug: Created Phi assignment: let fee_source#2: uint64 = undefined while trying to resolve 'fee_source' in block@5
+debug: Added fee_source#1 to Phi node: let fee_source#2: uint64 = φ(fee_source#1 <- block@2) in block@2
+debug: Looking for 'fee_source' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let fee_source#3: uint64 = undefined while trying to resolve 'fee_source' in block@3
+debug: Added fee_source#3 to Phi node: let fee_source#2: uint64 = φ(fee_source#1 <- block@2, fee_source#3 <- block@3) in block@3
+debug: Looking for 'fee_source' in an unsealed block creating an incomplete Phi: block@4
+debug: Created Phi assignment: let fee_source#4: uint64 = undefined while trying to resolve 'fee_source' in block@4
+debug: Added fee_source#4 to Phi node: let fee_source#2: uint64 = φ(fee_source#1 <- block@2, fee_source#3 <- block@3, fee_source#4 <- block@4) in block@4
+debug: Added fee_source#2 to Phi node: let fee_source#1: uint64 = φ(fee_source#0 <- block@0, fee_source#2 <- block@5) in block@5
+debug: Sealing block@6
+debug: Terminated block@6
+debug: Sealing block@3
+debug: Added required_budget_with_buffer#1 to Phi node: let required_budget_with_buffer#3: uint64 = φ(required_budget_with_buffer#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let required_budget_with_buffer#3: uint64 = φ(required_budget_with_buffer#1 <- block@2) (required_budget_with_buffer#3) with required_budget_with_buffer#1
+debug: Deleting Phi assignment: let required_budget_with_buffer#3: uint64 = φ(required_budget_with_buffer#1 <- block@2)
+debug: Replaced trivial Phi node: let required_budget_with_buffer#3: uint64 = φ(required_budget_with_buffer#1 <- block@2) (required_budget_with_buffer#3) with required_budget_with_buffer#1 in current definition for 1 blocks
+debug: Added fee_source#1 to Phi node: let fee_source#3: uint64 = φ(fee_source#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let fee_source#3: uint64 = φ(fee_source#1 <- block@2) (fee_source#3) with fee_source#1
+debug: Deleting Phi assignment: let fee_source#3: uint64 = φ(fee_source#1 <- block@2)
+debug: Replaced trivial Phi node: let fee_source#3: uint64 = φ(fee_source#1 <- block@2) (fee_source#3) with fee_source#1 in current definition for 1 blocks
+debug: Sealing block@4
+debug: Added required_budget_with_buffer#1 to Phi node: let required_budget_with_buffer#4: uint64 = φ(required_budget_with_buffer#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let required_budget_with_buffer#4: uint64 = φ(required_budget_with_buffer#1 <- block@2) (required_budget_with_buffer#4) with required_budget_with_buffer#1
+debug: Deleting Phi assignment: let required_budget_with_buffer#4: uint64 = φ(required_budget_with_buffer#1 <- block@2)
+debug: Replacing trivial Phi node: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2, required_budget_with_buffer#1 <- block@3, required_budget_with_buffer#1 <- block@4) (required_budget_with_buffer#2) with required_budget_with_buffer#1
+debug: Deleting Phi assignment: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2, required_budget_with_buffer#1 <- block@3, required_budget_with_buffer#1 <- block@4)
+debug: Replacing trivial Phi node: let required_budget_with_buffer#1: uint64 = φ(required_budget_with_buffer#0 <- block@0, required_budget_with_buffer#1 <- block@5) (required_budget_with_buffer#1) with required_budget_with_buffer#0
+debug: Deleting Phi assignment: let required_budget_with_buffer#1: uint64 = φ(required_budget_with_buffer#0 <- block@0, required_budget_with_buffer#1 <- block@5)
+debug: Replaced trivial Phi node: let required_budget_with_buffer#4: uint64 = φ(required_budget_with_buffer#1 <- block@2) (required_budget_with_buffer#4) with required_budget_with_buffer#1 in current definition for 1 blocks
+debug: Replaced trivial Phi node: let required_budget_with_buffer#2: uint64 = φ(required_budget_with_buffer#1 <- block@2, required_budget_with_buffer#1 <- block@3, required_budget_with_buffer#1 <- block@4) (required_budget_with_buffer#2) with required_budget_with_buffer#1 in current definition for 1 blocks
+debug: Replaced trivial Phi node: let required_budget_with_buffer#1: uint64 = φ(required_budget_with_buffer#0 <- block@0, required_budget_with_buffer#1 <- block@5) (required_budget_with_buffer#1) with required_budget_with_buffer#0 in current definition for 5 blocks
+debug: Added fee_source#1 to Phi node: let fee_source#4: uint64 = φ(fee_source#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let fee_source#4: uint64 = φ(fee_source#1 <- block@2) (fee_source#4) with fee_source#1
+debug: Deleting Phi assignment: let fee_source#4: uint64 = φ(fee_source#1 <- block@2)
+debug: Replacing trivial Phi node: let fee_source#2: uint64 = φ(fee_source#1 <- block@2, fee_source#1 <- block@3, fee_source#1 <- block@4) (fee_source#2) with fee_source#1
+debug: Deleting Phi assignment: let fee_source#2: uint64 = φ(fee_source#1 <- block@2, fee_source#1 <- block@3, fee_source#1 <- block@4)
+debug: Replacing trivial Phi node: let fee_source#1: uint64 = φ(fee_source#0 <- block@0, fee_source#1 <- block@5) (fee_source#1) with fee_source#0
+debug: Deleting Phi assignment: let fee_source#1: uint64 = φ(fee_source#0 <- block@0, fee_source#1 <- block@5)
+debug: Replaced trivial Phi node: let fee_source#4: uint64 = φ(fee_source#1 <- block@2) (fee_source#4) with fee_source#1 in current definition for 1 blocks
+debug: Replaced trivial Phi node: let fee_source#2: uint64 = φ(fee_source#1 <- block@2, fee_source#1 <- block@3, fee_source#1 <- block@4) (fee_source#2) with fee_source#1 in current definition for 1 blocks
+debug: Replaced trivial Phi node: let fee_source#1: uint64 = φ(fee_source#0 <- block@0, fee_source#1 <- block@5) (fee_source#1) with fee_source#0 in current definition for 5 blocks
+debug: Building IR for function _puya_lib.bytes_.is_substring
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'start' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let start#1: uint64 = undefined while trying to resolve 'start' in block@1
+debug: Looking for 'item' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let item#1: bytes = undefined while trying to resolve 'item' in block@1
+debug: Looking for 'sequence' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let sequence#1: bytes = undefined while trying to resolve 'sequence' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Terminated block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Sealing block@4
+debug: Terminated block@4
+debug: Sealing block@1
+debug: Added start#0 to Phi node: let start#1: uint64 = φ(start#0 <- block@0) in block@0
+debug: Added start#2 to Phi node: let start#1: uint64 = φ(start#0 <- block@0, start#2 <- block@4) in block@4
+debug: Added item#0 to Phi node: let item#1: bytes = φ(item#0 <- block@0) in block@0
+debug: Added item#1 to Phi node: let item#1: bytes = φ(item#0 <- block@0, item#1 <- block@4) in block@4
+debug: Replacing trivial Phi node: let item#1: bytes = φ(item#0 <- block@0, item#1 <- block@4) (item#1) with item#0
+debug: Deleting Phi assignment: let item#1: bytes = φ(item#0 <- block@0, item#1 <- block@4)
+debug: Replaced trivial Phi node: let item#1: bytes = φ(item#0 <- block@0, item#1 <- block@4) (item#1) with item#0 in current definition for 3 blocks
+debug: Added sequence#0 to Phi node: let sequence#1: bytes = φ(sequence#0 <- block@0) in block@0
+debug: Added sequence#1 to Phi node: let sequence#1: bytes = φ(sequence#0 <- block@0, sequence#1 <- block@4) in block@4
+debug: Replacing trivial Phi node: let sequence#1: bytes = φ(sequence#0 <- block@0, sequence#1 <- block@4) (sequence#1) with sequence#0
+debug: Deleting Phi assignment: let sequence#1: bytes = φ(sequence#0 <- block@0, sequence#1 <- block@4)
+debug: Replaced trivial Phi node: let sequence#1: bytes = φ(sequence#0 <- block@0, sequence#1 <- block@4) (sequence#1) with sequence#0 in current definition for 3 blocks
+debug: Sealing block@5
+debug: Terminated block@5
+debug: Building IR for function _puya_lib.box_arc4.box_dynamic_array_pop_fixed_size
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4.box_dynamic_array_concat_fixed
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4.box_update_offset_dec
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4.box_update_offset_inc
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4._box_extract_u16
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4._as_uint16
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4._bits_to_bytes
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.box_arc4.box_dynamic_array_pop_bit
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Sealing block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Terminated block@2
+debug: Building IR for function _puya_lib.box_arc4.box_dynamic_array_concat_bits
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Sealing block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Created Phi assignment: let new_arr_len#1: uint64 = undefined while trying to resolve 'new_arr_len' in block@2
+debug: Added new_arr_len#0 to Phi node: let new_arr_len#1: uint64 = φ(new_arr_len#0 <- block@0) in block@0
+debug: Added new_arr_len#0 to Phi node: let new_arr_len#1: uint64 = φ(new_arr_len#0 <- block@0, new_arr_len#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let new_arr_len#1: uint64 = φ(new_arr_len#0 <- block@0, new_arr_len#0 <- block@1) (new_arr_len#1) with new_arr_len#0
+debug: Deleting Phi assignment: let new_arr_len#1: uint64 = φ(new_arr_len#0 <- block@0, new_arr_len#0 <- block@1)
+debug: Replaced trivial Phi node: let new_arr_len#1: uint64 = φ(new_arr_len#0 <- block@0, new_arr_len#0 <- block@1) (new_arr_len#1) with new_arr_len#0 in current definition for 1 blocks
+debug: Created Phi assignment: let box_key#1: bytes = undefined while trying to resolve 'box_key' in block@2
+debug: Added box_key#0 to Phi node: let box_key#1: bytes = φ(box_key#0 <- block@0) in block@0
+debug: Added box_key#0 to Phi node: let box_key#1: bytes = φ(box_key#0 <- block@0, box_key#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let box_key#1: bytes = φ(box_key#0 <- block@0, box_key#0 <- block@1) (box_key#1) with box_key#0
+debug: Deleting Phi assignment: let box_key#1: bytes = φ(box_key#0 <- block@0, box_key#0 <- block@1)
+debug: Replaced trivial Phi node: let box_key#1: bytes = φ(box_key#0 <- block@0, box_key#0 <- block@1) (box_key#1) with box_key#0 in current definition for 1 blocks
+debug: Created Phi assignment: let array_offset#1: uint64 = undefined while trying to resolve 'array_offset' in block@2
+debug: Added array_offset#0 to Phi node: let array_offset#1: uint64 = φ(array_offset#0 <- block@0) in block@0
+debug: Added array_offset#0 to Phi node: let array_offset#1: uint64 = φ(array_offset#0 <- block@0, array_offset#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let array_offset#1: uint64 = φ(array_offset#0 <- block@0, array_offset#0 <- block@1) (array_offset#1) with array_offset#0
+debug: Deleting Phi assignment: let array_offset#1: uint64 = φ(array_offset#0 <- block@0, array_offset#0 <- block@1)
+debug: Replaced trivial Phi node: let array_offset#1: uint64 = φ(array_offset#0 <- block@0, array_offset#0 <- block@1) (array_offset#1) with array_offset#0 in current definition for 1 blocks
+debug: Created Phi assignment: let arr_len#1: uint64 = undefined while trying to resolve 'arr_len' in block@2
+debug: Added arr_len#0 to Phi node: let arr_len#1: uint64 = φ(arr_len#0 <- block@0) in block@0
+debug: Added arr_len#0 to Phi node: let arr_len#1: uint64 = φ(arr_len#0 <- block@0, arr_len#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let arr_len#1: uint64 = φ(arr_len#0 <- block@0, arr_len#0 <- block@1) (arr_len#1) with arr_len#0
+debug: Deleting Phi assignment: let arr_len#1: uint64 = φ(arr_len#0 <- block@0, arr_len#0 <- block@1)
+debug: Replaced trivial Phi node: let arr_len#1: uint64 = φ(arr_len#0 <- block@0, arr_len#0 <- block@1) (arr_len#1) with arr_len#0 in current definition for 1 blocks
+debug: Terminated block@2
+debug: Looking for 'write_offset' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let write_offset#1: uint64 = undefined while trying to resolve 'write_offset' in block@3
+debug: Looking for 'new_arr_len' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let new_arr_len#2: uint64 = undefined while trying to resolve 'new_arr_len' in block@3
+debug: Terminated block@3
+debug: Sealing block@4
+debug: Looking for 'data_offset' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let data_offset#1: uint64 = undefined while trying to resolve 'data_offset' in block@3
+debug: Looking for 'box_key' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let box_key#2: bytes = undefined while trying to resolve 'box_key' in block@3
+debug: Terminated block@4
+debug: Looking for 'bit_offset' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let bit_offset#1: uint64 = undefined while trying to resolve 'bit_offset' in block@5
+debug: Terminated block@5
+debug: Sealing block@6
+debug: Looking for 'write_offset' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let write_offset#2: uint64 = undefined while trying to resolve 'write_offset' in block@5
+debug: Looking for 'new_arr_len' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let new_arr_len#3: uint64 = undefined while trying to resolve 'new_arr_len' in block@5
+debug: Terminated block@6
+debug: Sealing block@7
+debug: Looking for 'byte' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let byte#1: bytes = undefined while trying to resolve 'byte' in block@5
+debug: Looking for 'new_items_bytes' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let new_items_bytes#1: bytes = undefined while trying to resolve 'new_items_bytes' in block@5
+debug: Looking for 'read_offset' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let read_offset#1: uint64 = undefined while trying to resolve 'read_offset' in block@5
+debug: Looking for 'read_step' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let read_step#1: uint64 = undefined while trying to resolve 'read_step' in block@5
+debug: Terminated block@7
+debug: Sealing block@5
+debug: Added bit_offset#0 to Phi node: let bit_offset#1: uint64 = φ(bit_offset#0 <- block@4) in block@4
+debug: Added bit_offset#2 to Phi node: let bit_offset#1: uint64 = φ(bit_offset#0 <- block@4, bit_offset#2 <- block@7) in block@7
+debug: Added write_offset#1 to Phi node: let write_offset#2: uint64 = φ(write_offset#1 <- block@4) in block@4
+debug: Added write_offset#3 to Phi node: let write_offset#2: uint64 = φ(write_offset#1 <- block@4, write_offset#3 <- block@7) in block@7
+debug: Added new_arr_len#2 to Phi node: let new_arr_len#3: uint64 = φ(new_arr_len#2 <- block@4) in block@4
+debug: Added new_arr_len#3 to Phi node: let new_arr_len#3: uint64 = φ(new_arr_len#2 <- block@4, new_arr_len#3 <- block@7) in block@7
+debug: Replacing trivial Phi node: let new_arr_len#3: uint64 = φ(new_arr_len#2 <- block@4, new_arr_len#3 <- block@7) (new_arr_len#3) with new_arr_len#2
+debug: Deleting Phi assignment: let new_arr_len#3: uint64 = φ(new_arr_len#2 <- block@4, new_arr_len#3 <- block@7)
+debug: Replaced trivial Phi node: let new_arr_len#3: uint64 = φ(new_arr_len#2 <- block@4, new_arr_len#3 <- block@7) (new_arr_len#3) with new_arr_len#2 in current definition for 3 blocks
+debug: Added byte#0 to Phi node: let byte#1: bytes = φ(byte#0 <- block@4) in block@4
+debug: Added byte#2 to Phi node: let byte#1: bytes = φ(byte#0 <- block@4, byte#2 <- block@7) in block@7
+debug: Looking for 'new_items_bytes' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let new_items_bytes#2: bytes = undefined while trying to resolve 'new_items_bytes' in block@3
+debug: Added new_items_bytes#2 to Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#2 <- block@4) in block@4
+debug: Added new_items_bytes#1 to Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#2 <- block@4, new_items_bytes#1 <- block@7) in block@7
+debug: Replacing trivial Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#2 <- block@4, new_items_bytes#1 <- block@7) (new_items_bytes#1) with new_items_bytes#2
+debug: Deleting Phi assignment: let new_items_bytes#1: bytes = φ(new_items_bytes#2 <- block@4, new_items_bytes#1 <- block@7)
+debug: Replaced trivial Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#2 <- block@4, new_items_bytes#1 <- block@7) (new_items_bytes#1) with new_items_bytes#2 in current definition for 3 blocks
+debug: Looking for 'read_offset' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let read_offset#3: uint64 = undefined while trying to resolve 'read_offset' in block@3
+debug: Added read_offset#3 to Phi node: let read_offset#1: uint64 = φ(read_offset#3 <- block@4) in block@4
+debug: Added read_offset#2 to Phi node: let read_offset#1: uint64 = φ(read_offset#3 <- block@4, read_offset#2 <- block@7) in block@7
+debug: Looking for 'read_step' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let read_step#2: uint64 = undefined while trying to resolve 'read_step' in block@3
+debug: Added read_step#2 to Phi node: let read_step#1: uint64 = φ(read_step#2 <- block@4) in block@4
+debug: Added read_step#1 to Phi node: let read_step#1: uint64 = φ(read_step#2 <- block@4, read_step#1 <- block@7) in block@7
+debug: Replacing trivial Phi node: let read_step#1: uint64 = φ(read_step#2 <- block@4, read_step#1 <- block@7) (read_step#1) with read_step#2
+debug: Deleting Phi assignment: let read_step#1: uint64 = φ(read_step#2 <- block@4, read_step#1 <- block@7)
+debug: Replaced trivial Phi node: let read_step#1: uint64 = φ(read_step#2 <- block@4, read_step#1 <- block@7) (read_step#1) with read_step#2 in current definition for 3 blocks
+debug: Sealing block@8
+debug: Created Phi assignment: let box_key#3: bytes = undefined while trying to resolve 'box_key' in block@8
+debug: Created Phi assignment: let box_key#4: bytes = undefined while trying to resolve 'box_key' in block@5
+debug: Added box_key#2 to Phi node: let box_key#4: bytes = φ(box_key#2 <- block@4) in block@4
+debug: Added box_key#4 to Phi node: let box_key#4: bytes = φ(box_key#2 <- block@4, box_key#4 <- block@7) in block@7
+debug: Replacing trivial Phi node: let box_key#4: bytes = φ(box_key#2 <- block@4, box_key#4 <- block@7) (box_key#4) with box_key#2
+debug: Deleting Phi assignment: let box_key#4: bytes = φ(box_key#2 <- block@4, box_key#4 <- block@7)
+debug: Replaced trivial Phi node: let box_key#4: bytes = φ(box_key#2 <- block@4, box_key#4 <- block@7) (box_key#4) with box_key#2 in current definition for 3 blocks
+debug: Added box_key#2 to Phi node: let box_key#3: bytes = φ(box_key#2 <- block@5) in block@5
+debug: Added box_key#2 to Phi node: let box_key#3: bytes = φ(box_key#2 <- block@5, box_key#2 <- block@6) in block@6
+debug: Replacing trivial Phi node: let box_key#3: bytes = φ(box_key#2 <- block@5, box_key#2 <- block@6) (box_key#3) with box_key#2
+debug: Deleting Phi assignment: let box_key#3: bytes = φ(box_key#2 <- block@5, box_key#2 <- block@6)
+debug: Replaced trivial Phi node: let box_key#3: bytes = φ(box_key#2 <- block@5, box_key#2 <- block@6) (box_key#3) with box_key#2 in current definition for 1 blocks
+debug: Created Phi assignment: let byte_offset#1: uint64 = undefined while trying to resolve 'byte_offset' in block@8
+debug: Created Phi assignment: let byte_offset#2: uint64 = undefined while trying to resolve 'byte_offset' in block@5
+debug: Added byte_offset#0 to Phi node: let byte_offset#2: uint64 = φ(byte_offset#0 <- block@4) in block@4
+debug: Added byte_offset#2 to Phi node: let byte_offset#2: uint64 = φ(byte_offset#0 <- block@4, byte_offset#2 <- block@7) in block@7
+debug: Replacing trivial Phi node: let byte_offset#2: uint64 = φ(byte_offset#0 <- block@4, byte_offset#2 <- block@7) (byte_offset#2) with byte_offset#0
+debug: Deleting Phi assignment: let byte_offset#2: uint64 = φ(byte_offset#0 <- block@4, byte_offset#2 <- block@7)
+debug: Replaced trivial Phi node: let byte_offset#2: uint64 = φ(byte_offset#0 <- block@4, byte_offset#2 <- block@7) (byte_offset#2) with byte_offset#0 in current definition for 3 blocks
+debug: Added byte_offset#0 to Phi node: let byte_offset#1: uint64 = φ(byte_offset#0 <- block@5) in block@5
+debug: Added byte_offset#0 to Phi node: let byte_offset#1: uint64 = φ(byte_offset#0 <- block@5, byte_offset#0 <- block@6) in block@6
+debug: Replacing trivial Phi node: let byte_offset#1: uint64 = φ(byte_offset#0 <- block@5, byte_offset#0 <- block@6) (byte_offset#1) with byte_offset#0
+debug: Deleting Phi assignment: let byte_offset#1: uint64 = φ(byte_offset#0 <- block@5, byte_offset#0 <- block@6)
+debug: Replaced trivial Phi node: let byte_offset#1: uint64 = φ(byte_offset#0 <- block@5, byte_offset#0 <- block@6) (byte_offset#1) with byte_offset#0 in current definition for 1 blocks
+debug: Created Phi assignment: let byte#3: bytes = undefined while trying to resolve 'byte' in block@8
+debug: Added byte#1 to Phi node: let byte#3: bytes = φ(byte#1 <- block@5) in block@5
+debug: Added byte#1 to Phi node: let byte#3: bytes = φ(byte#1 <- block@5, byte#1 <- block@6) in block@6
+debug: Replacing trivial Phi node: let byte#3: bytes = φ(byte#1 <- block@5, byte#1 <- block@6) (byte#3) with byte#1
+debug: Deleting Phi assignment: let byte#3: bytes = φ(byte#1 <- block@5, byte#1 <- block@6)
+debug: Replaced trivial Phi node: let byte#3: bytes = φ(byte#1 <- block@5, byte#1 <- block@6) (byte#3) with byte#1 in current definition for 1 blocks
+debug: Terminated block@8
+debug: Sealing block@3
+debug: Added write_offset#0 to Phi node: let write_offset#1: uint64 = φ(write_offset#0 <- block@2) in block@2
+debug: Created Phi assignment: let write_offset#4: uint64 = undefined while trying to resolve 'write_offset' in block@8
+debug: Added write_offset#2 to Phi node: let write_offset#4: uint64 = φ(write_offset#2 <- block@5) in block@5
+debug: Added write_offset#2 to Phi node: let write_offset#4: uint64 = φ(write_offset#2 <- block@5, write_offset#2 <- block@6) in block@6
+debug: Replacing trivial Phi node: let write_offset#4: uint64 = φ(write_offset#2 <- block@5, write_offset#2 <- block@6) (write_offset#4) with write_offset#2
+debug: Deleting Phi assignment: let write_offset#4: uint64 = φ(write_offset#2 <- block@5, write_offset#2 <- block@6)
+debug: Replaced trivial Phi node: let write_offset#4: uint64 = φ(write_offset#2 <- block@5, write_offset#2 <- block@6) (write_offset#4) with write_offset#2 in current definition for 1 blocks
+debug: Added write_offset#2 to Phi node: let write_offset#1: uint64 = φ(write_offset#0 <- block@2, write_offset#2 <- block@8) in block@8
+debug: Added new_arr_len#0 to Phi node: let new_arr_len#2: uint64 = φ(new_arr_len#0 <- block@2) in block@2
+debug: Created Phi assignment: let new_arr_len#4: uint64 = undefined while trying to resolve 'new_arr_len' in block@8
+debug: Added new_arr_len#2 to Phi node: let new_arr_len#4: uint64 = φ(new_arr_len#2 <- block@5) in block@5
+debug: Added new_arr_len#2 to Phi node: let new_arr_len#4: uint64 = φ(new_arr_len#2 <- block@5, new_arr_len#2 <- block@6) in block@6
+debug: Replacing trivial Phi node: let new_arr_len#4: uint64 = φ(new_arr_len#2 <- block@5, new_arr_len#2 <- block@6) (new_arr_len#4) with new_arr_len#2
+debug: Deleting Phi assignment: let new_arr_len#4: uint64 = φ(new_arr_len#2 <- block@5, new_arr_len#2 <- block@6)
+debug: Replaced trivial Phi node: let new_arr_len#4: uint64 = φ(new_arr_len#2 <- block@5, new_arr_len#2 <- block@6) (new_arr_len#4) with new_arr_len#2 in current definition for 1 blocks
+debug: Added new_arr_len#2 to Phi node: let new_arr_len#2: uint64 = φ(new_arr_len#0 <- block@2, new_arr_len#2 <- block@8) in block@8
+debug: Replacing trivial Phi node: let new_arr_len#2: uint64 = φ(new_arr_len#0 <- block@2, new_arr_len#2 <- block@8) (new_arr_len#2) with new_arr_len#0
+debug: Deleting Phi assignment: let new_arr_len#2: uint64 = φ(new_arr_len#0 <- block@2, new_arr_len#2 <- block@8)
+debug: Replaced trivial Phi node: let new_arr_len#2: uint64 = φ(new_arr_len#0 <- block@2, new_arr_len#2 <- block@8) (new_arr_len#2) with new_arr_len#0 in current definition for 6 blocks
+debug: Created Phi assignment: let data_offset#2: uint64 = undefined while trying to resolve 'data_offset' in block@2
+debug: Added data_offset#0 to Phi node: let data_offset#2: uint64 = φ(data_offset#0 <- block@0) in block@0
+debug: Added data_offset#0 to Phi node: let data_offset#2: uint64 = φ(data_offset#0 <- block@0, data_offset#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let data_offset#2: uint64 = φ(data_offset#0 <- block@0, data_offset#0 <- block@1) (data_offset#2) with data_offset#0
+debug: Deleting Phi assignment: let data_offset#2: uint64 = φ(data_offset#0 <- block@0, data_offset#0 <- block@1)
+debug: Replaced trivial Phi node: let data_offset#2: uint64 = φ(data_offset#0 <- block@0, data_offset#0 <- block@1) (data_offset#2) with data_offset#0 in current definition for 1 blocks
+debug: Added data_offset#0 to Phi node: let data_offset#1: uint64 = φ(data_offset#0 <- block@2) in block@2
+debug: Created Phi assignment: let data_offset#3: uint64 = undefined while trying to resolve 'data_offset' in block@8
+debug: Created Phi assignment: let data_offset#4: uint64 = undefined while trying to resolve 'data_offset' in block@5
+debug: Added data_offset#1 to Phi node: let data_offset#4: uint64 = φ(data_offset#1 <- block@4) in block@4
+debug: Added data_offset#4 to Phi node: let data_offset#4: uint64 = φ(data_offset#1 <- block@4, data_offset#4 <- block@7) in block@7
+debug: Replacing trivial Phi node: let data_offset#4: uint64 = φ(data_offset#1 <- block@4, data_offset#4 <- block@7) (data_offset#4) with data_offset#1
+debug: Deleting Phi assignment: let data_offset#4: uint64 = φ(data_offset#1 <- block@4, data_offset#4 <- block@7)
+debug: Replaced trivial Phi node: let data_offset#4: uint64 = φ(data_offset#1 <- block@4, data_offset#4 <- block@7) (data_offset#4) with data_offset#1 in current definition for 3 blocks
+debug: Added data_offset#1 to Phi node: let data_offset#3: uint64 = φ(data_offset#1 <- block@5) in block@5
+debug: Added data_offset#1 to Phi node: let data_offset#3: uint64 = φ(data_offset#1 <- block@5, data_offset#1 <- block@6) in block@6
+debug: Replacing trivial Phi node: let data_offset#3: uint64 = φ(data_offset#1 <- block@5, data_offset#1 <- block@6) (data_offset#3) with data_offset#1
+debug: Deleting Phi assignment: let data_offset#3: uint64 = φ(data_offset#1 <- block@5, data_offset#1 <- block@6)
+debug: Replaced trivial Phi node: let data_offset#3: uint64 = φ(data_offset#1 <- block@5, data_offset#1 <- block@6) (data_offset#3) with data_offset#1 in current definition for 1 blocks
+debug: Added data_offset#1 to Phi node: let data_offset#1: uint64 = φ(data_offset#0 <- block@2, data_offset#1 <- block@8) in block@8
+debug: Replacing trivial Phi node: let data_offset#1: uint64 = φ(data_offset#0 <- block@2, data_offset#1 <- block@8) (data_offset#1) with data_offset#0
+debug: Deleting Phi assignment: let data_offset#1: uint64 = φ(data_offset#0 <- block@2, data_offset#1 <- block@8)
+debug: Replaced trivial Phi node: let data_offset#1: uint64 = φ(data_offset#0 <- block@2, data_offset#1 <- block@8) (data_offset#1) with data_offset#0 in current definition for 6 blocks
+debug: Added box_key#0 to Phi node: let box_key#2: bytes = φ(box_key#0 <- block@2) in block@2
+debug: Added box_key#2 to Phi node: let box_key#2: bytes = φ(box_key#0 <- block@2, box_key#2 <- block@8) in block@8
+debug: Replacing trivial Phi node: let box_key#2: bytes = φ(box_key#0 <- block@2, box_key#2 <- block@8) (box_key#2) with box_key#0
+debug: Deleting Phi assignment: let box_key#2: bytes = φ(box_key#0 <- block@2, box_key#2 <- block@8)
+debug: Replaced trivial Phi node: let box_key#2: bytes = φ(box_key#0 <- block@2, box_key#2 <- block@8) (box_key#2) with box_key#0 in current definition for 6 blocks
+debug: Created Phi assignment: let new_items_bytes#3: bytes = undefined while trying to resolve 'new_items_bytes' in block@2
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#3: bytes = φ(new_items_bytes#0 <- block@0) in block@0
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#3: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let new_items_bytes#3: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) (new_items_bytes#3) with new_items_bytes#0
+debug: Deleting Phi assignment: let new_items_bytes#3: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1)
+debug: Replaced trivial Phi node: let new_items_bytes#3: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) (new_items_bytes#3) with new_items_bytes#0 in current definition for 1 blocks
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@2) in block@2
+debug: Created Phi assignment: let new_items_bytes#4: bytes = undefined while trying to resolve 'new_items_bytes' in block@8
+debug: Added new_items_bytes#2 to Phi node: let new_items_bytes#4: bytes = φ(new_items_bytes#2 <- block@5) in block@5
+debug: Added new_items_bytes#2 to Phi node: let new_items_bytes#4: bytes = φ(new_items_bytes#2 <- block@5, new_items_bytes#2 <- block@6) in block@6
+debug: Replacing trivial Phi node: let new_items_bytes#4: bytes = φ(new_items_bytes#2 <- block@5, new_items_bytes#2 <- block@6) (new_items_bytes#4) with new_items_bytes#2
+debug: Deleting Phi assignment: let new_items_bytes#4: bytes = φ(new_items_bytes#2 <- block@5, new_items_bytes#2 <- block@6)
+debug: Replaced trivial Phi node: let new_items_bytes#4: bytes = φ(new_items_bytes#2 <- block@5, new_items_bytes#2 <- block@6) (new_items_bytes#4) with new_items_bytes#2 in current definition for 1 blocks
+debug: Added new_items_bytes#2 to Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#2 <- block@8) in block@8
+debug: Replacing trivial Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#2 <- block@8) (new_items_bytes#2) with new_items_bytes#0
+debug: Deleting Phi assignment: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#2 <- block@8)
+debug: Replaced trivial Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#2 <- block@8) (new_items_bytes#2) with new_items_bytes#0 in current definition for 6 blocks
+debug: Added read_offset#0 to Phi node: let read_offset#3: uint64 = φ(read_offset#0 <- block@2) in block@2
+debug: Created Phi assignment: let read_offset#4: uint64 = undefined while trying to resolve 'read_offset' in block@8
+debug: Added read_offset#1 to Phi node: let read_offset#4: uint64 = φ(read_offset#1 <- block@5) in block@5
+debug: Added read_offset#1 to Phi node: let read_offset#4: uint64 = φ(read_offset#1 <- block@5, read_offset#1 <- block@6) in block@6
+debug: Replacing trivial Phi node: let read_offset#4: uint64 = φ(read_offset#1 <- block@5, read_offset#1 <- block@6) (read_offset#4) with read_offset#1
+debug: Deleting Phi assignment: let read_offset#4: uint64 = φ(read_offset#1 <- block@5, read_offset#1 <- block@6)
+debug: Replaced trivial Phi node: let read_offset#4: uint64 = φ(read_offset#1 <- block@5, read_offset#1 <- block@6) (read_offset#4) with read_offset#1 in current definition for 1 blocks
+debug: Added read_offset#1 to Phi node: let read_offset#3: uint64 = φ(read_offset#0 <- block@2, read_offset#1 <- block@8) in block@8
+debug: Created Phi assignment: let read_step#3: uint64 = undefined while trying to resolve 'read_step' in block@2
+debug: Added read_step#0 to Phi node: let read_step#3: uint64 = φ(read_step#0 <- block@0) in block@0
+debug: Added read_step#0 to Phi node: let read_step#3: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let read_step#3: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) (read_step#3) with read_step#0
+debug: Deleting Phi assignment: let read_step#3: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1)
+debug: Replaced trivial Phi node: let read_step#3: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) (read_step#3) with read_step#0 in current definition for 1 blocks
+debug: Added read_step#0 to Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@2) in block@2
+debug: Created Phi assignment: let read_step#4: uint64 = undefined while trying to resolve 'read_step' in block@8
+debug: Added read_step#2 to Phi node: let read_step#4: uint64 = φ(read_step#2 <- block@5) in block@5
+debug: Added read_step#2 to Phi node: let read_step#4: uint64 = φ(read_step#2 <- block@5, read_step#2 <- block@6) in block@6
+debug: Replacing trivial Phi node: let read_step#4: uint64 = φ(read_step#2 <- block@5, read_step#2 <- block@6) (read_step#4) with read_step#2
+debug: Deleting Phi assignment: let read_step#4: uint64 = φ(read_step#2 <- block@5, read_step#2 <- block@6)
+debug: Replaced trivial Phi node: let read_step#4: uint64 = φ(read_step#2 <- block@5, read_step#2 <- block@6) (read_step#4) with read_step#2 in current definition for 1 blocks
+debug: Added read_step#2 to Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@2, read_step#2 <- block@8) in block@8
+debug: Replacing trivial Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@2, read_step#2 <- block@8) (read_step#2) with read_step#0
+debug: Deleting Phi assignment: let read_step#2: uint64 = φ(read_step#0 <- block@2, read_step#2 <- block@8)
+debug: Replaced trivial Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@2, read_step#2 <- block@8) (read_step#2) with read_step#0 in current definition for 6 blocks
+debug: Sealing block@9
+debug: Created Phi assignment: let extra_bytes#1: uint64 = undefined while trying to resolve 'extra_bytes' in block@3
+debug: Created Phi assignment: let extra_bytes#2: uint64 = undefined while trying to resolve 'extra_bytes' in block@2
+debug: Added extra_bytes#0 to Phi node: let extra_bytes#2: uint64 = φ(extra_bytes#0 <- block@0) in block@0
+debug: Added extra_bytes#0 to Phi node: let extra_bytes#2: uint64 = φ(extra_bytes#0 <- block@0, extra_bytes#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let extra_bytes#2: uint64 = φ(extra_bytes#0 <- block@0, extra_bytes#0 <- block@1) (extra_bytes#2) with extra_bytes#0
+debug: Deleting Phi assignment: let extra_bytes#2: uint64 = φ(extra_bytes#0 <- block@0, extra_bytes#0 <- block@1)
+debug: Replaced trivial Phi node: let extra_bytes#2: uint64 = φ(extra_bytes#0 <- block@0, extra_bytes#0 <- block@1) (extra_bytes#2) with extra_bytes#0 in current definition for 1 blocks
+debug: Added extra_bytes#0 to Phi node: let extra_bytes#1: uint64 = φ(extra_bytes#0 <- block@2) in block@2
+debug: Created Phi assignment: let extra_bytes#3: uint64 = undefined while trying to resolve 'extra_bytes' in block@8
+debug: Created Phi assignment: let extra_bytes#4: uint64 = undefined while trying to resolve 'extra_bytes' in block@5
+debug: Added extra_bytes#1 to Phi node: let extra_bytes#4: uint64 = φ(extra_bytes#1 <- block@4) in block@4
+debug: Added extra_bytes#4 to Phi node: let extra_bytes#4: uint64 = φ(extra_bytes#1 <- block@4, extra_bytes#4 <- block@7) in block@7
+debug: Replacing trivial Phi node: let extra_bytes#4: uint64 = φ(extra_bytes#1 <- block@4, extra_bytes#4 <- block@7) (extra_bytes#4) with extra_bytes#1
+debug: Deleting Phi assignment: let extra_bytes#4: uint64 = φ(extra_bytes#1 <- block@4, extra_bytes#4 <- block@7)
+debug: Replaced trivial Phi node: let extra_bytes#4: uint64 = φ(extra_bytes#1 <- block@4, extra_bytes#4 <- block@7) (extra_bytes#4) with extra_bytes#1 in current definition for 3 blocks
+debug: Added extra_bytes#1 to Phi node: let extra_bytes#3: uint64 = φ(extra_bytes#1 <- block@5) in block@5
+debug: Added extra_bytes#1 to Phi node: let extra_bytes#3: uint64 = φ(extra_bytes#1 <- block@5, extra_bytes#1 <- block@6) in block@6
+debug: Replacing trivial Phi node: let extra_bytes#3: uint64 = φ(extra_bytes#1 <- block@5, extra_bytes#1 <- block@6) (extra_bytes#3) with extra_bytes#1
+debug: Deleting Phi assignment: let extra_bytes#3: uint64 = φ(extra_bytes#1 <- block@5, extra_bytes#1 <- block@6)
+debug: Replaced trivial Phi node: let extra_bytes#3: uint64 = φ(extra_bytes#1 <- block@5, extra_bytes#1 <- block@6) (extra_bytes#3) with extra_bytes#1 in current definition for 1 blocks
+debug: Added extra_bytes#1 to Phi node: let extra_bytes#1: uint64 = φ(extra_bytes#0 <- block@2, extra_bytes#1 <- block@8) in block@8
+debug: Replacing trivial Phi node: let extra_bytes#1: uint64 = φ(extra_bytes#0 <- block@2, extra_bytes#1 <- block@8) (extra_bytes#1) with extra_bytes#0
+debug: Deleting Phi assignment: let extra_bytes#1: uint64 = φ(extra_bytes#0 <- block@2, extra_bytes#1 <- block@8)
+debug: Replaced trivial Phi node: let extra_bytes#1: uint64 = φ(extra_bytes#0 <- block@2, extra_bytes#1 <- block@8) (extra_bytes#1) with extra_bytes#0 in current definition for 6 blocks
+debug: Terminated block@9
+debug: Building IR for function _puya_lib.arc4._itob16
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_bit
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.r_trim
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_fixed_size
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_byte_length_head
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'head_offset' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let head_offset#1: uint64 = undefined while trying to resolve 'head_offset' in block@1
+debug: Looking for 'popped_header_offset' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let popped_header_offset#1: uint64 = undefined while trying to resolve 'popped_header_offset' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Looking for 'array' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let array#1: bytes = undefined while trying to resolve 'array' in block@1
+debug: Looking for 'updated' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let updated#1: bytes = undefined while trying to resolve 'updated' in block@1
+debug: Terminated block@2
+debug: Sealing block@1
+debug: Added head_offset#0 to Phi node: let head_offset#1: uint64 = φ(head_offset#0 <- block@0) in block@0
+debug: Added head_offset#2 to Phi node: let head_offset#1: uint64 = φ(head_offset#0 <- block@0, head_offset#2 <- block@2) in block@2
+debug: Added popped_header_offset#0 to Phi node: let popped_header_offset#1: uint64 = φ(popped_header_offset#0 <- block@0) in block@0
+debug: Added popped_header_offset#1 to Phi node: let popped_header_offset#1: uint64 = φ(popped_header_offset#0 <- block@0, popped_header_offset#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let popped_header_offset#1: uint64 = φ(popped_header_offset#0 <- block@0, popped_header_offset#1 <- block@2) (popped_header_offset#1) with popped_header_offset#0
+debug: Deleting Phi assignment: let popped_header_offset#1: uint64 = φ(popped_header_offset#0 <- block@0, popped_header_offset#1 <- block@2)
+debug: Replaced trivial Phi node: let popped_header_offset#1: uint64 = φ(popped_header_offset#0 <- block@0, popped_header_offset#1 <- block@2) (popped_header_offset#1) with popped_header_offset#0 in current definition for 2 blocks
+debug: Added array#0 to Phi node: let array#1: bytes = φ(array#0 <- block@0) in block@0
+debug: Added array#1 to Phi node: let array#1: bytes = φ(array#0 <- block@0, array#1 <- block@2) in block@2
+debug: Replacing trivial Phi node: let array#1: bytes = φ(array#0 <- block@0, array#1 <- block@2) (array#1) with array#0
+debug: Deleting Phi assignment: let array#1: bytes = φ(array#0 <- block@0, array#1 <- block@2)
+debug: Replaced trivial Phi node: let array#1: bytes = φ(array#0 <- block@0, array#1 <- block@2) (array#1) with array#0 in current definition for 2 blocks
+debug: Added updated#0 to Phi node: let updated#1: bytes = φ(updated#0 <- block@0) in block@0
+debug: Added updated#2 to Phi node: let updated#1: bytes = φ(updated#0 <- block@0, updated#2 <- block@2) in block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Building IR for function _puya_lib.arc4.dynamic_array_read_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.static_array_read_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_read_byte_length_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.static_array_read_byte_length_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_fixed
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_bits
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Sealing block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Created Phi assignment: let array_length#1: uint64 = undefined while trying to resolve 'array_length' in block@2
+debug: Added array_length#0 to Phi node: let array_length#1: uint64 = φ(array_length#0 <- block@0) in block@0
+debug: Added array_length#0 to Phi node: let array_length#1: uint64 = φ(array_length#0 <- block@0, array_length#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let array_length#1: uint64 = φ(array_length#0 <- block@0, array_length#0 <- block@1) (array_length#1) with array_length#0
+debug: Deleting Phi assignment: let array_length#1: uint64 = φ(array_length#0 <- block@0, array_length#0 <- block@1)
+debug: Replaced trivial Phi node: let array_length#1: uint64 = φ(array_length#0 <- block@0, array_length#0 <- block@1) (array_length#1) with array_length#0 in current definition for 1 blocks
+debug: Created Phi assignment: let new_items_count#1: uint64 = undefined while trying to resolve 'new_items_count' in block@2
+debug: Added new_items_count#0 to Phi node: let new_items_count#1: uint64 = φ(new_items_count#0 <- block@0) in block@0
+debug: Added new_items_count#0 to Phi node: let new_items_count#1: uint64 = φ(new_items_count#0 <- block@0, new_items_count#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let new_items_count#1: uint64 = φ(new_items_count#0 <- block@0, new_items_count#0 <- block@1) (new_items_count#1) with new_items_count#0
+debug: Deleting Phi assignment: let new_items_count#1: uint64 = φ(new_items_count#0 <- block@0, new_items_count#0 <- block@1)
+debug: Replaced trivial Phi node: let new_items_count#1: uint64 = φ(new_items_count#0 <- block@0, new_items_count#0 <- block@1) (new_items_count#1) with new_items_count#0 in current definition for 1 blocks
+debug: Terminated block@2
+debug: Looking for 'write_offset' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let write_offset#1: uint64 = undefined while trying to resolve 'write_offset' in block@3
+debug: Looking for 'write_end' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let write_end#1: uint64 = undefined while trying to resolve 'write_end' in block@3
+debug: Terminated block@3
+debug: Sealing block@4
+debug: Looking for 'result' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let result#2: bytes = undefined while trying to resolve 'result' in block@3
+debug: Looking for 'new_items_bytes' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let new_items_bytes#1: bytes = undefined while trying to resolve 'new_items_bytes' in block@3
+debug: Looking for 'read_offset' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let read_offset#1: uint64 = undefined while trying to resolve 'read_offset' in block@3
+debug: Looking for 'read_step' in an unsealed block creating an incomplete Phi: block@3
+debug: Created Phi assignment: let read_step#1: uint64 = undefined while trying to resolve 'read_step' in block@3
+debug: Terminated block@4
+debug: Sealing block@3
+debug: Added write_offset#0 to Phi node: let write_offset#1: uint64 = φ(write_offset#0 <- block@2) in block@2
+debug: Added write_offset#2 to Phi node: let write_offset#1: uint64 = φ(write_offset#0 <- block@2, write_offset#2 <- block@4) in block@4
+debug: Added write_end#0 to Phi node: let write_end#1: uint64 = φ(write_end#0 <- block@2) in block@2
+debug: Added write_end#1 to Phi node: let write_end#1: uint64 = φ(write_end#0 <- block@2, write_end#1 <- block@4) in block@4
+debug: Replacing trivial Phi node: let write_end#1: uint64 = φ(write_end#0 <- block@2, write_end#1 <- block@4) (write_end#1) with write_end#0
+debug: Deleting Phi assignment: let write_end#1: uint64 = φ(write_end#0 <- block@2, write_end#1 <- block@4)
+debug: Replaced trivial Phi node: let write_end#1: uint64 = φ(write_end#0 <- block@2, write_end#1 <- block@4) (write_end#1) with write_end#0 in current definition for 2 blocks
+debug: Created Phi assignment: let result#4: bytes = undefined while trying to resolve 'result' in block@2
+debug: Added result#0 to Phi node: let result#4: bytes = φ(result#0 <- block@0) in block@0
+debug: Added result#1 to Phi node: let result#4: bytes = φ(result#0 <- block@0, result#1 <- block@1) in block@1
+debug: Added result#4 to Phi node: let result#2: bytes = φ(result#4 <- block@2) in block@2
+debug: Added result#3 to Phi node: let result#2: bytes = φ(result#4 <- block@2, result#3 <- block@4) in block@4
+debug: Created Phi assignment: let new_items_bytes#2: bytes = undefined while trying to resolve 'new_items_bytes' in block@2
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@0) in block@0
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) (new_items_bytes#2) with new_items_bytes#0
+debug: Deleting Phi assignment: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1)
+debug: Replaced trivial Phi node: let new_items_bytes#2: bytes = φ(new_items_bytes#0 <- block@0, new_items_bytes#0 <- block@1) (new_items_bytes#2) with new_items_bytes#0 in current definition for 1 blocks
+debug: Added new_items_bytes#0 to Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#0 <- block@2) in block@2
+debug: Added new_items_bytes#1 to Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#1 <- block@4) in block@4
+debug: Replacing trivial Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#1 <- block@4) (new_items_bytes#1) with new_items_bytes#0
+debug: Deleting Phi assignment: let new_items_bytes#1: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#1 <- block@4)
+debug: Replaced trivial Phi node: let new_items_bytes#1: bytes = φ(new_items_bytes#0 <- block@2, new_items_bytes#1 <- block@4) (new_items_bytes#1) with new_items_bytes#0 in current definition for 2 blocks
+debug: Added read_offset#0 to Phi node: let read_offset#1: uint64 = φ(read_offset#0 <- block@2) in block@2
+debug: Added read_offset#2 to Phi node: let read_offset#1: uint64 = φ(read_offset#0 <- block@2, read_offset#2 <- block@4) in block@4
+debug: Created Phi assignment: let read_step#2: uint64 = undefined while trying to resolve 'read_step' in block@2
+debug: Added read_step#0 to Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@0) in block@0
+debug: Added read_step#0 to Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) in block@1
+debug: Replacing trivial Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) (read_step#2) with read_step#0
+debug: Deleting Phi assignment: let read_step#2: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1)
+debug: Replaced trivial Phi node: let read_step#2: uint64 = φ(read_step#0 <- block@0, read_step#0 <- block@1) (read_step#2) with read_step#0 in current definition for 1 blocks
+debug: Added read_step#0 to Phi node: let read_step#1: uint64 = φ(read_step#0 <- block@2) in block@2
+debug: Added read_step#1 to Phi node: let read_step#1: uint64 = φ(read_step#0 <- block@2, read_step#1 <- block@4) in block@4
+debug: Replacing trivial Phi node: let read_step#1: uint64 = φ(read_step#0 <- block@2, read_step#1 <- block@4) (read_step#1) with read_step#0
+debug: Deleting Phi assignment: let read_step#1: uint64 = φ(read_step#0 <- block@2, read_step#1 <- block@4)
+debug: Replaced trivial Phi node: let read_step#1: uint64 = φ(read_step#0 <- block@2, read_step#1 <- block@4) (read_step#1) with read_step#0 in current definition for 2 blocks
+debug: Sealing block@5
+debug: Terminated block@5
+debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_byte_length_head
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_concat_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'value_internal%0' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let value_internal%0#1: uint64 = undefined while trying to resolve 'value_internal%0' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Looking for 'array_head_and_tail' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let array_head_and_tail#1: bytes = undefined while trying to resolve 'array_head_and_tail' in block@1
+debug: Looking for 'result' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let result#1: bytes = undefined while trying to resolve 'result' in block@1
+debug: Looking for 'new_head_size' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let new_head_size#1: uint64 = undefined while trying to resolve 'new_head_size' in block@1
+debug: Terminated block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Sealing block@1
+debug: Added value_internal%0#0 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0) in block@0
+debug: Added value_internal%0#2 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0, value_internal%0#2 <- block@3) in block@3
+debug: Added array_head_and_tail#0 to Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0) in block@0
+debug: Added array_head_and_tail#1 to Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0, array_head_and_tail#1 <- block@3) in block@3
+debug: Replacing trivial Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0, array_head_and_tail#1 <- block@3) (array_head_and_tail#1) with array_head_and_tail#0
+debug: Deleting Phi assignment: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0, array_head_and_tail#1 <- block@3)
+debug: Replaced trivial Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0, array_head_and_tail#1 <- block@3) (array_head_and_tail#1) with array_head_and_tail#0 in current definition for 3 blocks
+debug: Added result#0 to Phi node: let result#1: bytes = φ(result#0 <- block@0) in block@0
+debug: Added result#2 to Phi node: let result#1: bytes = φ(result#0 <- block@0, result#2 <- block@3) in block@3
+debug: Added new_head_size#0 to Phi node: let new_head_size#1: uint64 = φ(new_head_size#0 <- block@0) in block@0
+debug: Added new_head_size#1 to Phi node: let new_head_size#1: uint64 = φ(new_head_size#0 <- block@0, new_head_size#1 <- block@3) in block@3
+debug: Replacing trivial Phi node: let new_head_size#1: uint64 = φ(new_head_size#0 <- block@0, new_head_size#1 <- block@3) (new_head_size#1) with new_head_size#0
+debug: Deleting Phi assignment: let new_head_size#1: uint64 = φ(new_head_size#0 <- block@0, new_head_size#1 <- block@3)
+debug: Replaced trivial Phi node: let new_head_size#1: uint64 = φ(new_head_size#0 <- block@0, new_head_size#1 <- block@3) (new_head_size#1) with new_head_size#0 in current definition for 3 blocks
+debug: Sealing block@4
+debug: Terminated block@4
+debug: Looking for 'value_internal%1' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let value_internal%1#1: uint64 = undefined while trying to resolve 'value_internal%1' in block@5
+debug: Terminated block@5
+debug: Sealing block@6
+debug: Looking for 'new_head_and_tail' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let new_head_and_tail#1: bytes = undefined while trying to resolve 'new_head_and_tail' in block@5
+debug: Looking for 'result' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let result#3: bytes = undefined while trying to resolve 'result' in block@5
+debug: Looking for 'head_and_tail_length' in an unsealed block creating an incomplete Phi: block@5
+debug: Created Phi assignment: let head_and_tail_length#1: uint64 = undefined while trying to resolve 'head_and_tail_length' in block@5
+debug: Terminated block@6
+debug: Sealing block@7
+debug: Terminated block@7
+debug: Sealing block@5
+debug: Added value_internal%1#0 to Phi node: let value_internal%1#1: uint64 = φ(value_internal%1#0 <- block@4) in block@4
+debug: Added value_internal%1#2 to Phi node: let value_internal%1#1: uint64 = φ(value_internal%1#0 <- block@4, value_internal%1#2 <- block@7) in block@7
+debug: Created Phi assignment: let new_head_and_tail#2: bytes = undefined while trying to resolve 'new_head_and_tail' in block@1
+debug: Added new_head_and_tail#0 to Phi node: let new_head_and_tail#2: bytes = φ(new_head_and_tail#0 <- block@0) in block@0
+debug: Added new_head_and_tail#2 to Phi node: let new_head_and_tail#2: bytes = φ(new_head_and_tail#0 <- block@0, new_head_and_tail#2 <- block@3) in block@3
+debug: Replacing trivial Phi node: let new_head_and_tail#2: bytes = φ(new_head_and_tail#0 <- block@0, new_head_and_tail#2 <- block@3) (new_head_and_tail#2) with new_head_and_tail#0
+debug: Deleting Phi assignment: let new_head_and_tail#2: bytes = φ(new_head_and_tail#0 <- block@0, new_head_and_tail#2 <- block@3)
+debug: Replaced trivial Phi node: let new_head_and_tail#2: bytes = φ(new_head_and_tail#0 <- block@0, new_head_and_tail#2 <- block@3) (new_head_and_tail#2) with new_head_and_tail#0 in current definition for 3 blocks
+debug: Added new_head_and_tail#0 to Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@4) in block@4
+debug: Added new_head_and_tail#1 to Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@4, new_head_and_tail#1 <- block@7) in block@7
+debug: Replacing trivial Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@4, new_head_and_tail#1 <- block@7) (new_head_and_tail#1) with new_head_and_tail#0
+debug: Deleting Phi assignment: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@4, new_head_and_tail#1 <- block@7)
+debug: Replaced trivial Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@4, new_head_and_tail#1 <- block@7) (new_head_and_tail#1) with new_head_and_tail#0 in current definition for 3 blocks
+debug: Added result#1 to Phi node: let result#3: bytes = φ(result#1 <- block@4) in block@4
+debug: Added result#4 to Phi node: let result#3: bytes = φ(result#1 <- block@4, result#4 <- block@7) in block@7
+debug: Added head_and_tail_length#0 to Phi node: let head_and_tail_length#1: uint64 = φ(head_and_tail_length#0 <- block@4) in block@4
+debug: Added head_and_tail_length#1 to Phi node: let head_and_tail_length#1: uint64 = φ(head_and_tail_length#0 <- block@4, head_and_tail_length#1 <- block@7) in block@7
+debug: Replacing trivial Phi node: let head_and_tail_length#1: uint64 = φ(head_and_tail_length#0 <- block@4, head_and_tail_length#1 <- block@7) (head_and_tail_length#1) with head_and_tail_length#0
+debug: Deleting Phi assignment: let head_and_tail_length#1: uint64 = φ(head_and_tail_length#0 <- block@4, head_and_tail_length#1 <- block@7)
+debug: Replaced trivial Phi node: let head_and_tail_length#1: uint64 = φ(head_and_tail_length#0 <- block@4, head_and_tail_length#1 <- block@7) (head_and_tail_length#1) with head_and_tail_length#0 in current definition for 3 blocks
+debug: Sealing block@8
+debug: Created Phi assignment: let array_head_and_tail#2: bytes = undefined while trying to resolve 'array_head_and_tail' in block@5
+debug: Added array_head_and_tail#0 to Phi node: let array_head_and_tail#2: bytes = φ(array_head_and_tail#0 <- block@4) in block@4
+debug: Added array_head_and_tail#2 to Phi node: let array_head_and_tail#2: bytes = φ(array_head_and_tail#0 <- block@4, array_head_and_tail#2 <- block@7) in block@7
+debug: Replacing trivial Phi node: let array_head_and_tail#2: bytes = φ(array_head_and_tail#0 <- block@4, array_head_and_tail#2 <- block@7) (array_head_and_tail#2) with array_head_and_tail#0
+debug: Deleting Phi assignment: let array_head_and_tail#2: bytes = φ(array_head_and_tail#0 <- block@4, array_head_and_tail#2 <- block@7)
+debug: Replaced trivial Phi node: let array_head_and_tail#2: bytes = φ(array_head_and_tail#0 <- block@4, array_head_and_tail#2 <- block@7) (array_head_and_tail#2) with array_head_and_tail#0 in current definition for 3 blocks
+debug: Created Phi assignment: let array_head_size#1: uint64 = undefined while trying to resolve 'array_head_size' in block@5
+debug: Created Phi assignment: let array_head_size#2: uint64 = undefined while trying to resolve 'array_head_size' in block@1
+debug: Added array_head_size#0 to Phi node: let array_head_size#2: uint64 = φ(array_head_size#0 <- block@0) in block@0
+debug: Added array_head_size#2 to Phi node: let array_head_size#2: uint64 = φ(array_head_size#0 <- block@0, array_head_size#2 <- block@3) in block@3
+debug: Replacing trivial Phi node: let array_head_size#2: uint64 = φ(array_head_size#0 <- block@0, array_head_size#2 <- block@3) (array_head_size#2) with array_head_size#0
+debug: Deleting Phi assignment: let array_head_size#2: uint64 = φ(array_head_size#0 <- block@0, array_head_size#2 <- block@3)
+debug: Replaced trivial Phi node: let array_head_size#2: uint64 = φ(array_head_size#0 <- block@0, array_head_size#2 <- block@3) (array_head_size#2) with array_head_size#0 in current definition for 3 blocks
+debug: Added array_head_size#0 to Phi node: let array_head_size#1: uint64 = φ(array_head_size#0 <- block@4) in block@4
+debug: Added array_head_size#1 to Phi node: let array_head_size#1: uint64 = φ(array_head_size#0 <- block@4, array_head_size#1 <- block@7) in block@7
+debug: Replacing trivial Phi node: let array_head_size#1: uint64 = φ(array_head_size#0 <- block@4, array_head_size#1 <- block@7) (array_head_size#1) with array_head_size#0
+debug: Deleting Phi assignment: let array_head_size#1: uint64 = φ(array_head_size#0 <- block@4, array_head_size#1 <- block@7)
+debug: Replaced trivial Phi node: let array_head_size#1: uint64 = φ(array_head_size#0 <- block@4, array_head_size#1 <- block@7) (array_head_size#1) with array_head_size#0 in current definition for 3 blocks
+debug: Created Phi assignment: let new_head_size#2: uint64 = undefined while trying to resolve 'new_head_size' in block@5
+debug: Added new_head_size#0 to Phi node: let new_head_size#2: uint64 = φ(new_head_size#0 <- block@4) in block@4
+debug: Added new_head_size#2 to Phi node: let new_head_size#2: uint64 = φ(new_head_size#0 <- block@4, new_head_size#2 <- block@7) in block@7
+debug: Replacing trivial Phi node: let new_head_size#2: uint64 = φ(new_head_size#0 <- block@4, new_head_size#2 <- block@7) (new_head_size#2) with new_head_size#0
+debug: Deleting Phi assignment: let new_head_size#2: uint64 = φ(new_head_size#0 <- block@4, new_head_size#2 <- block@7)
+debug: Replaced trivial Phi node: let new_head_size#2: uint64 = φ(new_head_size#0 <- block@4, new_head_size#2 <- block@7) (new_head_size#2) with new_head_size#0 in current definition for 3 blocks
+debug: Terminated block@8
+debug: Building IR for function _puya_lib.arc4.dynamic_array_replace_byte_length_head
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.dynamic_array_replace_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4.static_array_replace_dynamic_element
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'value_internal%0' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let value_internal%0#1: uint64 = undefined while trying to resolve 'value_internal%0' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Looking for 'new_head_and_tail' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let new_head_and_tail#1: bytes = undefined while trying to resolve 'new_head_and_tail' in block@1
+debug: Looking for 'new_item_length' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let new_item_length#1: uint64 = undefined while trying to resolve 'new_item_length' in block@1
+debug: Looking for 'original_item_length' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let original_item_length#1: uint64 = undefined while trying to resolve 'original_item_length' in block@1
+debug: Terminated block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Sealing block@1
+debug: Added value_internal%0#0 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0) in block@0
+debug: Added value_internal%0#2 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0, value_internal%0#2 <- block@3) in block@3
+debug: Added new_head_and_tail#0 to Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@0) in block@0
+debug: Added new_head_and_tail#2 to Phi node: let new_head_and_tail#1: bytes = φ(new_head_and_tail#0 <- block@0, new_head_and_tail#2 <- block@3) in block@3
+debug: Added new_item_length#0 to Phi node: let new_item_length#1: uint64 = φ(new_item_length#0 <- block@0) in block@0
+debug: Added new_item_length#1 to Phi node: let new_item_length#1: uint64 = φ(new_item_length#0 <- block@0, new_item_length#1 <- block@3) in block@3
+debug: Replacing trivial Phi node: let new_item_length#1: uint64 = φ(new_item_length#0 <- block@0, new_item_length#1 <- block@3) (new_item_length#1) with new_item_length#0
+debug: Deleting Phi assignment: let new_item_length#1: uint64 = φ(new_item_length#0 <- block@0, new_item_length#1 <- block@3)
+debug: Replaced trivial Phi node: let new_item_length#1: uint64 = φ(new_item_length#0 <- block@0, new_item_length#1 <- block@3) (new_item_length#1) with new_item_length#0 in current definition for 3 blocks
+debug: Added original_item_length#0 to Phi node: let original_item_length#1: uint64 = φ(original_item_length#0 <- block@0) in block@0
+debug: Added original_item_length#1 to Phi node: let original_item_length#1: uint64 = φ(original_item_length#0 <- block@0, original_item_length#1 <- block@3) in block@3
+debug: Replacing trivial Phi node: let original_item_length#1: uint64 = φ(original_item_length#0 <- block@0, original_item_length#1 <- block@3) (original_item_length#1) with original_item_length#0
+debug: Deleting Phi assignment: let original_item_length#1: uint64 = φ(original_item_length#0 <- block@0, original_item_length#1 <- block@3)
+debug: Replaced trivial Phi node: let original_item_length#1: uint64 = φ(original_item_length#0 <- block@0, original_item_length#1 <- block@3) (original_item_length#1) with original_item_length#0 in current definition for 3 blocks
+debug: Sealing block@4
+debug: Terminated block@4
+debug: Building IR for function _puya_lib.arc4.static_array_replace_byte_length_head
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function _puya_lib.arc4._recalculate_head_for_elements_with_byte_length_head
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Looking for 'value_internal%0' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let value_internal%0#1: uint64 = undefined while trying to resolve 'value_internal%0' in block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Looking for 'tail_offset' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let tail_offset#1: uint64 = undefined while trying to resolve 'tail_offset' in block@1
+debug: Looking for 'array_head_and_tail' in an unsealed block creating an incomplete Phi: block@1
+debug: Created Phi assignment: let array_head_and_tail#1: bytes = undefined while trying to resolve 'array_head_and_tail' in block@1
+debug: Terminated block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Sealing block@1
+debug: Added value_internal%0#0 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0) in block@0
+debug: Added value_internal%0#2 to Phi node: let value_internal%0#1: uint64 = φ(value_internal%0#0 <- block@0, value_internal%0#2 <- block@3) in block@3
+debug: Added tail_offset#0 to Phi node: let tail_offset#1: uint64 = φ(tail_offset#0 <- block@0) in block@0
+debug: Added tail_offset#2 to Phi node: let tail_offset#1: uint64 = φ(tail_offset#0 <- block@0, tail_offset#2 <- block@3) in block@3
+debug: Added array_head_and_tail#0 to Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0) in block@0
+debug: Added array_head_and_tail#2 to Phi node: let array_head_and_tail#1: bytes = φ(array_head_and_tail#0 <- block@0, array_head_and_tail#2 <- block@3) in block@3
+debug: Sealing block@4
+debug: Terminated block@4
+debug: Building IR for function _puya_lib.arc4.dynamic_assert_index
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Building IR for function Effects::BoxExistsAsserts.approvalProgram
+debug: Sealing block@0
+debug: Terminated block@0
+debug: Sealing block@1
+debug: Terminated block@1
+debug: Sealing block@2
+debug: Terminated block@2
+debug: Sealing block@3
+debug: Terminated block@3
+debug: Sealing block@4
+debug: Created Phi assignment: let which#1: uint64 = undefined while trying to resolve 'which' in block@4
+debug: Added which#0 to Phi node: let which#1: uint64 = φ(which#0 <- block@2) in block@2
+debug: Added which#0 to Phi node: let which#1: uint64 = φ(which#0 <- block@2, which#0 <- block@3) in block@3
+debug: Replacing trivial Phi node: let which#1: uint64 = φ(which#0 <- block@2, which#0 <- block@3) (which#1) with which#0
+debug: Deleting Phi assignment: let which#1: uint64 = φ(which#0 <- block@2, which#0 <- block@3)
+debug: Replaced trivial Phi node: let which#1: uint64 = φ(which#0 <- block@2, which#0 <- block@3) (which#1) with which#0 in current definition for 1 blocks
+debug: Terminated block@4
+debug: Sealing block@5
+debug: Terminated block@5
+debug: Sealing block@6
+debug: Created Phi assignment: let which#2: uint64 = undefined while trying to resolve 'which' in block@6
+debug: Added which#0 to Phi node: let which#2: uint64 = φ(which#0 <- block@4) in block@4
+debug: Added which#0 to Phi node: let which#2: uint64 = φ(which#0 <- block@4, which#0 <- block@5) in block@5
+debug: Replacing trivial Phi node: let which#2: uint64 = φ(which#0 <- block@4, which#0 <- block@5) (which#2) with which#0
+debug: Deleting Phi assignment: let which#2: uint64 = φ(which#0 <- block@4, which#0 <- block@5)
+debug: Replaced trivial Phi node: let which#2: uint64 = φ(which#0 <- block@4, which#0 <- block@5) (which#2) with which#0 in current definition for 1 blocks
+debug: Terminated block@6
+debug: Sealing block@7
+debug: Terminated block@7
+debug: Sealing block@8
+debug: Created Phi assignment: let which#3: uint64 = undefined while trying to resolve 'which' in block@8
+debug: Added which#0 to Phi node: let which#3: uint64 = φ(which#0 <- block@6) in block@6
+debug: Added which#0 to Phi node: let which#3: uint64 = φ(which#0 <- block@6, which#0 <- block@7) in block@7
+debug: Replacing trivial Phi node: let which#3: uint64 = φ(which#0 <- block@6, which#0 <- block@7) (which#3) with which#0
+debug: Deleting Phi assignment: let which#3: uint64 = φ(which#0 <- block@6, which#0 <- block@7)
+debug: Replaced trivial Phi node: let which#3: uint64 = φ(which#0 <- block@6, which#0 <- block@7) (which#3) with which#0 in current definition for 1 blocks
+debug: Terminated block@8
+debug: Sealing block@9
+debug: Terminated block@9
+debug: Sealing block@10
+debug: Terminated block@10
+debug: removing unused subroutine _puya_lib.util.ensure_budget
+debug: removing unused subroutine _puya_lib.bytes_.is_substring
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_pop_fixed_size
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_concat_fixed
+debug: removing unused subroutine _puya_lib.box_arc4.box_update_offset_dec
+debug: removing unused subroutine _puya_lib.box_arc4.box_update_offset_inc
+debug: removing unused subroutine _puya_lib.box_arc4._box_extract_u16
+debug: removing unused subroutine _puya_lib.box_arc4._as_uint16
+debug: removing unused subroutine _puya_lib.box_arc4._bits_to_bytes
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_concat_bits
+debug: removing unused subroutine _puya_lib.arc4._itob16
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_read_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_read_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_read_byte_length_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_read_byte_length_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_replace_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_replace_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_replace_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_replace_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4._recalculate_head_for_elements_with_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_assert_index
+debug: Building IR for function Effects::BoxExistsAsserts.clearStateProgram
+debug: Sealing block@0
+debug: Terminated block@0
+debug: removing unused subroutine _puya_lib.util.ensure_budget
+debug: removing unused subroutine _puya_lib.bytes_.is_substring
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_pop_fixed_size
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_concat_fixed
+debug: removing unused subroutine _puya_lib.box_arc4.box_update_offset_dec
+debug: removing unused subroutine _puya_lib.box_arc4.box_update_offset_inc
+debug: removing unused subroutine _puya_lib.box_arc4._box_extract_u16
+debug: removing unused subroutine _puya_lib.box_arc4._as_uint16
+debug: removing unused subroutine _puya_lib.box_arc4._bits_to_bytes
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.box_arc4.box_dynamic_array_concat_bits
+debug: removing unused subroutine _puya_lib.arc4._itob16
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_bit
+debug: removing unused subroutine _puya_lib.arc4.r_trim
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_fixed_size
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_pop_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_read_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_read_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_read_byte_length_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_read_byte_length_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_fixed
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_bits
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_concat_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_replace_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_array_replace_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_replace_dynamic_element
+debug: removing unused subroutine _puya_lib.arc4.static_array_replace_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4._recalculate_head_for_elements_with_byte_length_head
+debug: removing unused subroutine _puya_lib.arc4.dynamic_assert_index
+debug: optimizing approval program of Effects::BoxExistsAsserts at level 0
+debug: Begin optimization pass 1/100
+debug: Optimizing subroutine Effects::BoxExistsAsserts.approvalProgram
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
+debug: No optimizations performed in pass 1, ending loop
+debug: optimizing clear program of Effects::BoxExistsAsserts at level 0
+debug: Begin optimization pass 1/100
+debug: Optimizing subroutine Effects::BoxExistsAsserts.clearStateProgram
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
+debug: No optimizations performed in pass 1, ending loop
+debug: lowering array IR nodes in approval program of Effects::BoxExistsAsserts
+debug: lowering array IR nodes in clear program of Effects::BoxExistsAsserts
+debug: optimizing approval program of Effects::BoxExistsAsserts at level 0
+debug: Begin optimization pass 1/100
+debug: Optimizing subroutine Effects::BoxExistsAsserts.approvalProgram
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
+debug: No optimizations performed in pass 1, ending loop
+debug: optimizing clear program of Effects::BoxExistsAsserts at level 0
+debug: Begin optimization pass 1/100
+debug: Optimizing subroutine Effects::BoxExistsAsserts.clearStateProgram
+debug: Optimizer: Perform Subroutine Inlining
+debug: Optimizer: Split Parallel Copies
+debug: Optimizer: Constant Replacer
+debug: Optimizer: Remove Unused Variables
+debug: Optimizer: Inner Txn Field Replacer
+debug: Optimizer: Replace Compiled References
+debug: Optimizer: Merge Chained Aggregate Reads
+debug: Optimizer: Replace Aggregate Box Ops
+debug: No optimizations performed in pass 1, ending loop
+debug: removing local static slots in approval program of Effects::BoxExistsAsserts
+debug: auto reserving slots in Effects::BoxExistsAsserts.approvalProgram, []
+debug: Slot allocation not required
+debug: removing local static slots in clear program of Effects::BoxExistsAsserts
+debug: auto reserving slots in Effects::BoxExistsAsserts.clearStateProgram, []
+debug: Slot allocation not required
+debug: Performing SSA IR destructuring for Effects::BoxExistsAsserts.approvalProgram
+debug: Converting to CSSA
+debug: Removing Phi nodes
+debug: Coalescing local variables in Effects::BoxExistsAsserts.approvalProgram using strategy 'root_operand'
+debug: Coalescing existed#0 with [existed#1]
+debug: Coalescing resulted in 2 replacement/s
+debug: Sequentializing parallel copies in Effects::BoxExistsAsserts.approvalProgram
+debug: Performing post-SSA optimizations at level 0
+debug: Output IR to box_exists_asserts/out_unoptimized/BoxExistsAsserts.ir/BoxExistsAsserts.approval.400.destructured.ir
+debug: Performing SSA IR destructuring for Effects::BoxExistsAsserts.clearStateProgram
+debug: Converting to CSSA
+debug: Removing Phi nodes
+debug: Coalescing local variables in Effects::BoxExistsAsserts.clearStateProgram using strategy 'root_operand'
+debug: Coalescing resulted in 0 replacement/s
+debug: Sequentializing parallel copies in Effects::BoxExistsAsserts.clearStateProgram
+debug: Performing post-SSA optimizations at level 0
+debug: Output IR to box_exists_asserts/out_unoptimized/BoxExistsAsserts.ir/BoxExistsAsserts.clear.400.destructured.ir
+debug: Inserted main_block@0.ops[1]: 'l-store-copy tmp%0#0 0'
+debug: Replaced main_block@0.ops[3]: 'v-load tmp%0#0' with 'l-load tmp%0#0'
+debug: Inserted main_block@0.ops[6]: 'l-store-copy tmp%1#0 0'
+debug: Replaced main_block@0.ops[8]: 'v-load tmp%1#0' with 'l-load tmp%1#0'
+debug: Inserted main_after_if_else@2.ops[1]: 'l-store-copy tmp%2#0 0'
+debug: Replaced main_after_if_else@2.ops[3]: 'v-load tmp%2#0' with 'l-load tmp%2#0'
+debug: Inserted main_after_if_else@2.ops[5]: 'l-store-copy tmp%3#0 0'
+debug: Replaced main_after_if_else@2.ops[7]: 'v-load tmp%3#0' with 'l-load tmp%3#0'
+debug: Inserted main_after_if_else@2.ops[8]: 'l-store-copy which#0 0'
+debug: Replaced main_after_if_else@2.ops[10]: 'v-load which#0' with 'l-load which#0'
+debug: Inserted main_after_if_else@2.ops[13]: 'l-store-copy tmp%4#0 0'
+debug: Replaced main_after_if_else@2.ops[15]: 'v-load tmp%4#0' with 'l-load tmp%4#0'
+debug: Inserted main_if_body@3.ops[6]: 'l-store-copy tmp%6#0 1'
+debug: Replaced main_if_body@3.ops[9]: 'v-load tmp%6#0' with 'l-load tmp%6#0'
+debug: Inserted main_if_body@3.ops[18]: 'l-store-copy tmp%8#0 1'
+debug: Replaced main_if_body@3.ops[21]: 'v-load tmp%8#0' with 'l-load tmp%8#0'
+debug: Inserted main_if_body@3.ops[10]: 'l-store-copy existed#0 0'
+debug: Replaced main_if_body@3.ops[15]: 'v-load existed#0' with 'l-load existed#0'
+debug: Inserted main_after_if_else@4.ops[3]: 'l-store-copy tmp%9#0 0'
+debug: Replaced main_after_if_else@4.ops[5]: 'v-load tmp%9#0' with 'l-load tmp%9#0'
+debug: Inserted main_if_body@5.ops[2]: 'l-store-copy tmp%11#0 1'
+debug: Replaced main_if_body@5.ops[5]: 'v-load tmp%11#0' with 'l-load tmp%11#0'
+debug: Inserted main_if_body@5.ops[6]: 'l-store-copy existed#0 0'
+debug: Replaced main_if_body@5.ops[12]: 'v-load existed#0' with 'l-load existed#0'
+debug: Inserted main_after_if_else@6.ops[3]: 'l-store-copy tmp%12#0 0'
+debug: Replaced main_after_if_else@6.ops[5]: 'v-load tmp%12#0' with 'l-load tmp%12#0'
+debug: Inserted main_if_body@7.ops[8]: 'l-store-copy tmp%13#0 0'
+debug: Replaced main_if_body@7.ops[10]: 'v-load tmp%13#0' with 'l-load tmp%13#0'
+debug: Inserted main_if_body@7.ops[15]: 'l-store-copy tmp%15#0 1'
+debug: Replaced main_if_body@7.ops[18]: 'v-load tmp%15#0' with 'l-load tmp%15#0'
+debug: Inserted main_after_if_else@8.ops[3]: 'l-store-copy tmp%16#0 0'
+debug: Replaced main_after_if_else@8.ops[5]: 'v-load tmp%16#0' with 'l-load tmp%16#0'
+debug: Inserted main_if_body@9.ops[6]: 'l-store-copy tmp%18#0 1'
+debug: Replaced main_if_body@9.ops[9]: 'v-load tmp%18#0' with 'l-load tmp%18#0'
+debug: Effects::BoxExistsAsserts.approvalProgram f-stack entry: ['tmp%10#0', 'tmp%14#0', 'tmp%17#0', 'tmp%5#0', 'tmp%7#0', 'which#0']
+debug: Effects::BoxExistsAsserts.approvalProgram f-stack on first store: []
+debug: Effects::BoxExistsAsserts.clearStateProgram f-stack entry: []
+debug: Effects::BoxExistsAsserts.clearStateProgram f-stack on first store: []
+debug: optimizing TEAL subroutine ops Effects::BoxExistsAsserts.approvalProgram() -> uint64:
+debug: optimizing TEAL subroutine ops Effects::BoxExistsAsserts.clearStateProgram() -> uint64:
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.approval.teal
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.clear.teal
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.approval.bin
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.clear.bin
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.approval.stats.txt
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.clear.stats.txt
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.approval.assembly-report
+info: Writing box_exists_asserts/out_unoptimized/BoxExistsAsserts.clear.assembly-report

@@ -1,0 +1,105 @@
+#pragma version 11
+#pragma typetrack false
+
+// Effects::UnobservedWrites.approvalProgram() -> uint64:
+main:
+    intcblock 1 0 2
+    bytecblock "box" "busy" 0x01
+    pushbytes ""
+    txn ApplicationID
+    bnz main_after_if_else@2
+
+main_if_body@1:
+    intc_0 // 1
+    return
+
+main_after_if_else@2:
+    txna ApplicationArgs 0
+    btoi
+    dup
+    txna ApplicationArgs 1
+    btoi
+    bury 3
+    bnz main_after_if_else@4
+    bytec_0 // "box"
+    bytec_2 // 0x01
+    box_put
+    bytec_0 // "box"
+    pushbytes 0x0202
+    box_put
+
+main_after_if_else@4:
+    dup
+    intc_0 // 1
+    ==
+    bz main_after_if_else@6
+    dig 1
+    intc_2 // 2
+    /
+    itob
+    bytec_0 // "box"
+    swap
+    box_put
+    bytec_0 // "box"
+    box_del
+    pop
+
+main_after_if_else@6:
+    dup
+    intc_2 // 2
+    ==
+    bz main_after_if_else@8
+    global CurrentApplicationAddress
+    min_balance
+    bytec_0 // "box"
+    bytec_2 // 0x01
+    box_put
+    global CurrentApplicationAddress
+    min_balance
+    bytec_0 // "box"
+    pushbytes 0x02
+    box_put
+    <
+    assert // minimum balance follows the box
+    bytec_0 // "box"
+    box_del
+    pop
+
+main_after_if_else@8:
+    dup
+    pushint 3
+    ==
+    bz main_after_if_else@10
+    bytec_1 // "busy"
+    intc_0 // 1
+    app_global_put
+    itxn_begin
+    intc_0 // 1
+    itxn_field TypeEnum
+    txn Sender
+    itxn_field Receiver
+    itxn_submit
+    bytec_1 // "busy"
+    intc_1 // 0
+    app_global_put
+
+main_after_if_else@10:
+    dup
+    pushint 4
+    ==
+    bz main_after_if_else@12
+    bytec_1 // "busy"
+    txna ApplicationArgs 2
+    app_global_put
+    bytec_1 // "busy"
+    intc_1 // 0
+    app_global_put
+
+main_after_if_else@12:
+    pushint 5
+    ==
+    bz main_if_body@1
+    bytec_1 // "busy"
+    intc_1 // 0
+    app_global_put
+    b main_if_body@1

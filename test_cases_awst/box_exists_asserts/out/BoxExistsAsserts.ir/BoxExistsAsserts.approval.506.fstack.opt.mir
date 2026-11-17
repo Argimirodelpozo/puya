@@ -1,0 +1,103 @@
+// Op                                                Stack (out)
+// Effects::BoxExistsAsserts.approvalProgram() -> uint64:
+subroutine main:
+    main_block@0:
+        txn ApplicationID                            tmp%0#0
+        bz main_if_body@1 ; b main_after_if_else@2
+
+    main_if_body@1:
+        int 1                                        1
+        return
+
+    main_after_if_else@2:
+        txna ApplicationArgs 0                       tmp%2#0
+        btoi                                         which#0
+        l-store-copy which#0 0                       which#0,which#0
+        x-store which#0                              (𝕏) which#0 | which#0
+        l-load which#0 0                             (𝕏) which#0 | which#0
+        bz main_if_body@3 ; b main_after_if_else@4   (𝕏) which#0 |
+
+    main_if_body@3:                                  (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        int 8                                        (𝕏) which#0 | "box",8
+        box_create                                   (𝕏) which#0 | {box_create}
+        pop 1                                        (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_del                                      (𝕏) which#0 | {box_del}
+        pop 1                                        (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_len                                      (𝕏) which#0 | tmp%7#0,tmp%8#0
+        l-store tmp%8#0 1                            (𝕏) which#0 | tmp%8#0,tmp%7#0
+        pop 1                                        (𝕏) which#0 | tmp%8#0
+        l-load tmp%8#0 0                             (𝕏) which#0 | tmp%8#0
+        assert // box exists after box_del           (𝕏) which#0 |
+        b main_after_if_else@4                       (𝕏) which#0 |
+
+    main_after_if_else@4:                            (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 1                                        (𝕏) which#0 | which#0 (copy),1
+        ==                                           (𝕏) which#0 | tmp%9#0
+        bz main_after_if_else@6 ; b main_if_body@5   (𝕏) which#0 |
+
+    main_if_body@5:                                  (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_len                                      (𝕏) which#0 | tmp%10#0,existed#1
+        l-store existed#1 1                          (𝕏) which#0 | existed#1,tmp%10#0
+        pop 1                                        (𝕏) which#0 | existed#1
+        byte "box"                                   (𝕏) which#0 | existed#1,"box"
+        int 8                                        (𝕏) which#0 | existed#1,"box",8
+        box_create                                   (𝕏) which#0 | existed#1,{box_create}
+        pop 1                                        (𝕏) which#0 | existed#1
+        l-load existed#1 0                           (𝕏) which#0 | existed#1
+        assert // box existed before box_create      (𝕏) which#0 |
+        b main_after_if_else@6                       (𝕏) which#0 |
+
+    main_after_if_else@6:                            (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 2                                        (𝕏) which#0 | which#0 (copy),2
+        ==                                           (𝕏) which#0 | tmp%12#0
+        bz main_after_if_else@8 ; b main_if_body@7   (𝕏) which#0 |
+
+    main_if_body@7:                                  (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        int 8                                        (𝕏) which#0 | "box",8
+        box_create                                   (𝕏) which#0 | {box_create}
+        pop 1                                        (𝕏) which#0 |
+        itxn_begin                                   (𝕏) which#0 |
+        int 1                                        (𝕏) which#0 | 1
+        itxn_field TypeEnum                          (𝕏) which#0 |
+        txn Sender                                   (𝕏) which#0 | tmp%13#0
+        itxn_field Receiver                          (𝕏) which#0 |
+        itxn_submit                                  (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_len                                      (𝕏) which#0 | tmp%14#0,tmp%15#0
+        l-store tmp%15#0 1                           (𝕏) which#0 | tmp%15#0,tmp%14#0
+        pop 1                                        (𝕏) which#0 | tmp%15#0
+        l-load tmp%15#0 0                            (𝕏) which#0 | tmp%15#0
+        assert // box exists after inner transaction (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_del                                      (𝕏) which#0 | {box_del}
+        pop 1                                        (𝕏) which#0 |
+        b main_after_if_else@8                       (𝕏) which#0 |
+
+    main_after_if_else@8:                            (𝕏) which#0 |
+        x-load which#0                               which#0
+        int 3                                        which#0,3
+        ==                                           tmp%16#0
+        bz main_after_if_else@10 ; b main_if_body@9
+
+    main_if_body@9:
+        byte "box"                                   "box"
+        int 8                                        "box",8
+        box_create                                   {box_create}
+        pop 1
+        byte "box"                                   "box"
+        box_del                                      {box_del}
+        pop 1
+        b main_after_if_else@10
+
+    main_after_if_else@10:
+        int 1                                        1
+        return
+
+

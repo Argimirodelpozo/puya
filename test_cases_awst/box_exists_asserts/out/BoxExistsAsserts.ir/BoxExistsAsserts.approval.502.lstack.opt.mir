@@ -1,0 +1,103 @@
+// Op                                                Stack (out)
+// Effects::BoxExistsAsserts.approvalProgram() -> uint64:
+subroutine main:
+    main_block@0:
+        txn ApplicationID                            tmp%0#0
+        bz main_if_body@1 ; b main_after_if_else@2
+
+    main_if_body@1:
+        int 1                                        1
+        return
+
+    main_after_if_else@2:
+        txna ApplicationArgs 0                       tmp%2#0
+        btoi                                         which#0
+        l-store-copy which#0 0                       which#0,which#0 (copy)
+        v-store which#0                              which#0
+        l-load which#0 0                             which#0
+        bz main_if_body@3 ; b main_after_if_else@4
+
+    main_if_body@3:
+        byte "box"                                   "box"
+        int 8                                        "box",8
+        box_create                                   {box_create}
+        pop 1
+        byte "box"                                   "box"
+        box_del                                      {box_del}
+        pop 1
+        byte "box"                                   "box"
+        box_len                                      tmp%7#0,tmp%8#0
+        l-store tmp%8#0 1                            tmp%8#0,tmp%7#0
+        pop 1                                        tmp%8#0
+        l-load tmp%8#0 0                             tmp%8#0
+        assert // box exists after box_del
+        b main_after_if_else@4
+
+    main_after_if_else@4:
+        v-load which#0                               which#0
+        int 1                                        which#0,1
+        ==                                           tmp%9#0
+        bz main_after_if_else@6 ; b main_if_body@5
+
+    main_if_body@5:
+        byte "box"                                   "box"
+        box_len                                      tmp%10#0,existed#1
+        l-store existed#1 1                          existed#1,tmp%10#0
+        pop 1                                        existed#1
+        byte "box"                                   existed#1,"box"
+        int 8                                        existed#1,"box",8
+        box_create                                   existed#1,{box_create}
+        pop 1                                        existed#1
+        l-load existed#1 0                           existed#1
+        assert // box existed before box_create
+        b main_after_if_else@6
+
+    main_after_if_else@6:
+        v-load which#0                               which#0
+        int 2                                        which#0,2
+        ==                                           tmp%12#0
+        bz main_after_if_else@8 ; b main_if_body@7
+
+    main_if_body@7:
+        byte "box"                                   "box"
+        int 8                                        "box",8
+        box_create                                   {box_create}
+        pop 1
+        itxn_begin
+        int 1                                        1
+        itxn_field TypeEnum
+        txn Sender                                   tmp%13#0
+        itxn_field Receiver
+        itxn_submit
+        byte "box"                                   "box"
+        box_len                                      tmp%14#0,tmp%15#0
+        l-store tmp%15#0 1                           tmp%15#0,tmp%14#0
+        pop 1                                        tmp%15#0
+        l-load tmp%15#0 0                            tmp%15#0
+        assert // box exists after inner transaction
+        byte "box"                                   "box"
+        box_del                                      {box_del}
+        pop 1
+        b main_after_if_else@8
+
+    main_after_if_else@8:
+        v-load which#0                               which#0
+        int 3                                        which#0,3
+        ==                                           tmp%16#0
+        bz main_after_if_else@10 ; b main_if_body@9
+
+    main_if_body@9:
+        byte "box"                                   "box"
+        int 8                                        "box",8
+        box_create                                   {box_create}
+        pop 1
+        byte "box"                                   "box"
+        box_del                                      {box_del}
+        pop 1
+        b main_after_if_else@10
+
+    main_after_if_else@10:
+        int 1                                        1
+        return
+
+

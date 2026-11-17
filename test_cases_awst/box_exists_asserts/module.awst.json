@@ -1,0 +1,1647 @@
+[
+  {
+    "source_location": {
+      "file": null,
+      "line": 1,
+      "end_line": 1,
+      "comment_lines": 0,
+      "column": null,
+      "end_column": null
+    },
+    "id": "Effects::BoxExistsAsserts",
+    "name": "BoxExistsAsserts",
+    "description": null,
+    "method_resolution_order": [],
+    "approval_program": {
+      "source_location": {
+        "file": null,
+        "line": 1,
+        "end_line": 1,
+        "comment_lines": 0,
+        "column": null,
+        "end_column": null
+      },
+      "args": [],
+      "return_type": {
+        "name": "bool",
+        "immutable": true,
+        "_type": "WType"
+      },
+      "body": {
+        "source_location": {
+          "file": null,
+          "line": 1,
+          "end_line": 1,
+          "comment_lines": 0,
+          "column": null,
+          "end_column": null
+        },
+        "body": [
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "op_code": "txn",
+                "immediates": [
+                  "ApplicationID"
+                ],
+                "stack_args": [],
+                "_type": "IntrinsicCall"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 0,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "value": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "value": true,
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "_type": "BoolConstant"
+                  },
+                  "_type": "ReturnStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "target": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "name": "which",
+              "_type": "VarExpression"
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "wtype": {
+                "name": "uint64",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "op_code": "btoi",
+              "immediates": [],
+              "stack_args": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "wtype": {
+                    "length": null,
+                    "_type": "BytesWType"
+                  },
+                  "op_code": "txna",
+                  "immediates": [
+                    "ApplicationArgs",
+                    0
+                  ],
+                  "stack_args": [],
+                  "_type": "IntrinsicCall"
+                }
+              ],
+              "_type": "IntrinsicCall"
+            },
+            "_type": "AssignmentStatement"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 0,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_create",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "value": 8,
+                        "teal_alias": null,
+                        "_type": "IntegerConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "target": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "name": "existed",
+                    "_type": "VarExpression"
+                  },
+                  "value": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "base": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "types": [
+                          {
+                            "name": "uint64",
+                            "immutable": true,
+                            "_type": "WType"
+                          },
+                          {
+                            "name": "bool",
+                            "immutable": true,
+                            "_type": "WType"
+                          }
+                        ],
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "name": "tuple<uint64,bool>",
+                        "names": null,
+                        "desc": null,
+                        "_type": "WTuple"
+                      },
+                      "op_code": "box_len",
+                      "immediates": [],
+                      "stack_args": [
+                        {
+                          "source_location": {
+                            "file": null,
+                            "line": 1,
+                            "end_line": 1,
+                            "comment_lines": 0,
+                            "column": null,
+                            "end_column": null
+                          },
+                          "value": "VsCf",
+                          "wtype": {
+                            "length": null,
+                            "_type": "BytesWType"
+                          },
+                          "encoding": "utf8",
+                          "_type": "BytesConstant"
+                        }
+                      ],
+                      "_type": "IntrinsicCall"
+                    },
+                    "index": 1,
+                    "_type": "TupleItemExpression"
+                  },
+                  "_type": "AssignmentStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_del",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "condition": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "bool",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "existed",
+                      "_type": "VarExpression"
+                    },
+                    "error_message": "box existed",
+                    "explicit": true,
+                    "log_error": false,
+                    "desc": null,
+                    "_type": "AssertExpression"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "condition": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "base": {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "types": [
+                            {
+                              "name": "uint64",
+                              "immutable": true,
+                              "_type": "WType"
+                            },
+                            {
+                              "name": "bool",
+                              "immutable": true,
+                              "_type": "WType"
+                            }
+                          ],
+                          "source_location": {
+                            "file": null,
+                            "line": 1,
+                            "end_line": 1,
+                            "comment_lines": 0,
+                            "column": null,
+                            "end_column": null
+                          },
+                          "name": "tuple<uint64,bool>",
+                          "names": null,
+                          "desc": null,
+                          "_type": "WTuple"
+                        },
+                        "op_code": "box_len",
+                        "immediates": [],
+                        "stack_args": [
+                          {
+                            "source_location": {
+                              "file": null,
+                              "line": 1,
+                              "end_line": 1,
+                              "comment_lines": 0,
+                              "column": null,
+                              "end_column": null
+                            },
+                            "value": "VsCf",
+                            "wtype": {
+                              "length": null,
+                              "_type": "BytesWType"
+                            },
+                            "encoding": "utf8",
+                            "_type": "BytesConstant"
+                          }
+                        ],
+                        "_type": "IntrinsicCall"
+                      },
+                      "index": 1,
+                      "_type": "TupleItemExpression"
+                    },
+                    "error_message": "box exists after box_del",
+                    "explicit": true,
+                    "log_error": false,
+                    "desc": null,
+                    "_type": "AssertExpression"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 1,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "source_location": {
+                    "file": null,
+                    "line": 1,
+                    "end_line": 1,
+                    "comment_lines": 0,
+                    "column": null,
+                    "end_column": null
+                  },
+                  "target": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "name": "existed",
+                    "_type": "VarExpression"
+                  },
+                  "value": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "base": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "types": [
+                          {
+                            "name": "uint64",
+                            "immutable": true,
+                            "_type": "WType"
+                          },
+                          {
+                            "name": "bool",
+                            "immutable": true,
+                            "_type": "WType"
+                          }
+                        ],
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "name": "tuple<uint64,bool>",
+                        "names": null,
+                        "desc": null,
+                        "_type": "WTuple"
+                      },
+                      "op_code": "box_len",
+                      "immediates": [],
+                      "stack_args": [
+                        {
+                          "source_location": {
+                            "file": null,
+                            "line": 1,
+                            "end_line": 1,
+                            "comment_lines": 0,
+                            "column": null,
+                            "end_column": null
+                          },
+                          "value": "VsCf",
+                          "wtype": {
+                            "length": null,
+                            "_type": "BytesWType"
+                          },
+                          "encoding": "utf8",
+                          "_type": "BytesConstant"
+                        }
+                      ],
+                      "_type": "IntrinsicCall"
+                    },
+                    "index": 1,
+                    "_type": "TupleItemExpression"
+                  },
+                  "_type": "AssignmentStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_create",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "value": 8,
+                        "teal_alias": null,
+                        "_type": "IntegerConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "condition": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "wtype": {
+                        "name": "bool",
+                        "immutable": true,
+                        "_type": "WType"
+                      },
+                      "name": "existed",
+                      "_type": "VarExpression"
+                    },
+                    "error_message": "box existed before box_create",
+                    "explicit": true,
+                    "log_error": false,
+                    "desc": null,
+                    "_type": "AssertExpression"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 2,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_create",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "value": 8,
+                        "teal_alias": null,
+                        "_type": "IntegerConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "void",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "itxn_begin",
+                    "immediates": [],
+                    "stack_args": [],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "void",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "itxn_field",
+                    "immediates": [
+                      "TypeEnum"
+                    ],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "value": 1,
+                        "teal_alias": null,
+                        "_type": "IntegerConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "void",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "itxn_field",
+                    "immediates": [
+                      "Receiver"
+                    ],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "account",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "op_code": "txn",
+                        "immediates": [
+                          "Sender"
+                        ],
+                        "stack_args": [],
+                        "_type": "IntrinsicCall"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "void",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "itxn_submit",
+                    "immediates": [],
+                    "stack_args": [],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "condition": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "base": {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "types": [
+                            {
+                              "name": "uint64",
+                              "immutable": true,
+                              "_type": "WType"
+                            },
+                            {
+                              "name": "bool",
+                              "immutable": true,
+                              "_type": "WType"
+                            }
+                          ],
+                          "source_location": {
+                            "file": null,
+                            "line": 1,
+                            "end_line": 1,
+                            "comment_lines": 0,
+                            "column": null,
+                            "end_column": null
+                          },
+                          "name": "tuple<uint64,bool>",
+                          "names": null,
+                          "desc": null,
+                          "_type": "WTuple"
+                        },
+                        "op_code": "box_len",
+                        "immediates": [],
+                        "stack_args": [
+                          {
+                            "source_location": {
+                              "file": null,
+                              "line": 1,
+                              "end_line": 1,
+                              "comment_lines": 0,
+                              "column": null,
+                              "end_column": null
+                            },
+                            "value": "VsCf",
+                            "wtype": {
+                              "length": null,
+                              "_type": "BytesWType"
+                            },
+                            "encoding": "utf8",
+                            "_type": "BytesConstant"
+                          }
+                        ],
+                        "_type": "IntrinsicCall"
+                      },
+                      "index": 1,
+                      "_type": "TupleItemExpression"
+                    },
+                    "error_message": "box exists after inner transaction",
+                    "explicit": true,
+                    "log_error": false,
+                    "desc": null,
+                    "_type": "AssertExpression"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_del",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "condition": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "lhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "name": "which",
+                "_type": "VarExpression"
+              },
+              "operator": "==",
+              "rhs": {
+                "source_location": {
+                  "file": null,
+                  "line": 1,
+                  "end_line": 1,
+                  "comment_lines": 0,
+                  "column": null,
+                  "end_column": null
+                },
+                "wtype": {
+                  "name": "uint64",
+                  "immutable": true,
+                  "_type": "WType"
+                },
+                "value": 3,
+                "teal_alias": null,
+                "_type": "IntegerConstant"
+              },
+              "_type": "NumericComparisonExpression"
+            },
+            "if_branch": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "body": [
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_create",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      },
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "name": "uint64",
+                          "immutable": true,
+                          "_type": "WType"
+                        },
+                        "value": 8,
+                        "teal_alias": null,
+                        "_type": "IntegerConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "condition": {
+                      "source_location": {
+                        "file": null,
+                        "line": 1,
+                        "end_line": 1,
+                        "comment_lines": 0,
+                        "column": null,
+                        "end_column": null
+                      },
+                      "base": {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "wtype": {
+                          "types": [
+                            {
+                              "name": "uint64",
+                              "immutable": true,
+                              "_type": "WType"
+                            },
+                            {
+                              "name": "bool",
+                              "immutable": true,
+                              "_type": "WType"
+                            }
+                          ],
+                          "source_location": {
+                            "file": null,
+                            "line": 1,
+                            "end_line": 1,
+                            "comment_lines": 0,
+                            "column": null,
+                            "end_column": null
+                          },
+                          "name": "tuple<uint64,bool>",
+                          "names": null,
+                          "desc": null,
+                          "_type": "WTuple"
+                        },
+                        "op_code": "box_len",
+                        "immediates": [],
+                        "stack_args": [
+                          {
+                            "source_location": {
+                              "file": null,
+                              "line": 1,
+                              "end_line": 1,
+                              "comment_lines": 0,
+                              "column": null,
+                              "end_column": null
+                            },
+                            "value": "VsCf",
+                            "wtype": {
+                              "length": null,
+                              "_type": "BytesWType"
+                            },
+                            "encoding": "utf8",
+                            "_type": "BytesConstant"
+                          }
+                        ],
+                        "_type": "IntrinsicCall"
+                      },
+                      "index": 1,
+                      "_type": "TupleItemExpression"
+                    },
+                    "error_message": "box exists after box_create",
+                    "explicit": true,
+                    "log_error": false,
+                    "desc": null,
+                    "_type": "AssertExpression"
+                  },
+                  "_type": "ExpressionStatement"
+                },
+                {
+                  "expr": {
+                    "source_location": {
+                      "file": null,
+                      "line": 1,
+                      "end_line": 1,
+                      "comment_lines": 0,
+                      "column": null,
+                      "end_column": null
+                    },
+                    "wtype": {
+                      "name": "bool",
+                      "immutable": true,
+                      "_type": "WType"
+                    },
+                    "op_code": "box_del",
+                    "immediates": [],
+                    "stack_args": [
+                      {
+                        "source_location": {
+                          "file": null,
+                          "line": 1,
+                          "end_line": 1,
+                          "comment_lines": 0,
+                          "column": null,
+                          "end_column": null
+                        },
+                        "value": "VsCf",
+                        "wtype": {
+                          "length": null,
+                          "_type": "BytesWType"
+                        },
+                        "encoding": "utf8",
+                        "_type": "BytesConstant"
+                      }
+                    ],
+                    "_type": "IntrinsicCall"
+                  },
+                  "_type": "ExpressionStatement"
+                }
+              ],
+              "label": null,
+              "comment": null,
+              "_type": "Block"
+            },
+            "else_branch": null,
+            "_type": "IfElse"
+          },
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "value": true,
+              "wtype": {
+                "name": "bool",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "_type": "BoolConstant"
+            },
+            "_type": "ReturnStatement"
+          }
+        ],
+        "label": null,
+        "comment": null,
+        "_type": "Block"
+      },
+      "documentation": {
+        "description": null,
+        "args": {},
+        "returns": null
+      },
+      "inline": null,
+      "pure": false,
+      "cref": "Effects::BoxExistsAsserts",
+      "member_name": "approvalProgram",
+      "arc4_method_config": null
+    },
+    "clear_program": {
+      "source_location": {
+        "file": null,
+        "line": 1,
+        "end_line": 1,
+        "comment_lines": 0,
+        "column": null,
+        "end_column": null
+      },
+      "args": [],
+      "return_type": {
+        "name": "bool",
+        "immutable": true,
+        "_type": "WType"
+      },
+      "body": {
+        "source_location": {
+          "file": null,
+          "line": 1,
+          "end_line": 1,
+          "comment_lines": 0,
+          "column": null,
+          "end_column": null
+        },
+        "body": [
+          {
+            "source_location": {
+              "file": null,
+              "line": 1,
+              "end_line": 1,
+              "comment_lines": 0,
+              "column": null,
+              "end_column": null
+            },
+            "value": {
+              "source_location": {
+                "file": null,
+                "line": 1,
+                "end_line": 1,
+                "comment_lines": 0,
+                "column": null,
+                "end_column": null
+              },
+              "value": true,
+              "wtype": {
+                "name": "bool",
+                "immutable": true,
+                "_type": "WType"
+              },
+              "_type": "BoolConstant"
+            },
+            "_type": "ReturnStatement"
+          }
+        ],
+        "label": null,
+        "comment": null,
+        "_type": "Block"
+      },
+      "documentation": {
+        "description": null,
+        "args": {},
+        "returns": null
+      },
+      "inline": null,
+      "pure": false,
+      "cref": "Effects::BoxExistsAsserts",
+      "member_name": "clearStateProgram",
+      "arc4_method_config": null
+    },
+    "methods": [],
+    "app_state": [],
+    "state_totals": null,
+    "reserved_scratch_space": [],
+    "avm_version": null,
+    "autosalt": null,
+    "_type": "Contract"
+  }
+]

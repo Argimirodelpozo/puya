@@ -1,0 +1,897 @@
+{
+  "version": 3,
+  "sources": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "Effects::UnobservedWrites.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0 2"
+    },
+    "6": {
+      "op": "bytecblock \"box\" \"busy\" 0x01"
+    },
+    "19": {
+      "op": "pushbytes \"\"",
+      "stack_out": [
+        "x#0"
+      ]
+    },
+    "21": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "tmp%0#0"
+      ]
+    },
+    "23": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": [
+        "x#0"
+      ]
+    },
+    "26": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "x#0",
+        "1"
+      ]
+    },
+    "27": {
+      "op": "return",
+      "stack_out": [
+        "x#0"
+      ]
+    },
+    "28": {
+      "block": "main_after_if_else@2",
+      "stack_in": [
+        "x#0"
+      ],
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "tmp%2#0"
+      ]
+    },
+    "31": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "32": {
+      "op": "dup",
+      "defined_out": [
+        "which#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0"
+      ]
+    },
+    "33": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%4#0",
+        "which#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0",
+        "tmp%4#0"
+      ]
+    },
+    "36": {
+      "op": "btoi",
+      "defined_out": [
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "37": {
+      "op": "bury 3",
+      "defined_out": [
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0"
+      ]
+    },
+    "39": {
+      "op": "bnz main_after_if_else@4",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "42": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\"",
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "43": {
+      "op": "bytec_2 // 0x01",
+      "defined_out": [
+        "\"box\"",
+        "0x01",
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\"",
+        "0x01"
+      ]
+    },
+    "44": {
+      "op": "box_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "45": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "46": {
+      "op": "pushbytes 0x0202",
+      "defined_out": [
+        "\"box\"",
+        "0x0202",
+        "which#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\"",
+        "0x0202"
+      ]
+    },
+    "50": {
+      "op": "box_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "51": {
+      "block": "main_after_if_else@4",
+      "stack_in": [
+        "x#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "52": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)",
+        "1"
+      ]
+    },
+    "53": {
+      "op": "==",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%7#0"
+      ]
+    },
+    "54": {
+      "op": "bz main_after_if_else@6",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "57": {
+      "op": "dig 1",
+      "defined_out": [
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "x#0"
+      ]
+    },
+    "59": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "x#0",
+        "2"
+      ]
+    },
+    "60": {
+      "op": "/",
+      "defined_out": [
+        "tmp%9#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%9#0"
+      ]
+    },
+    "61": {
+      "op": "itob",
+      "defined_out": [
+        "tmp%10#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%10#0"
+      ]
+    },
+    "62": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\"",
+        "tmp%10#0",
+        "x#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%10#0",
+        "\"box\""
+      ]
+    },
+    "63": {
+      "op": "swap",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\"",
+        "tmp%10#0"
+      ]
+    },
+    "64": {
+      "op": "box_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "65": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "66": {
+      "op": "box_del",
+      "defined_out": [
+        "x#0",
+        "{box_del}"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "{box_del}"
+      ]
+    },
+    "67": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "68": {
+      "block": "main_after_if_else@6",
+      "stack_in": [
+        "x#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "69": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)",
+        "2"
+      ]
+    },
+    "70": {
+      "op": "==",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%11#0"
+      ]
+    },
+    "71": {
+      "op": "bz main_after_if_else@8",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "74": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%12#0"
+      ]
+    },
+    "76": {
+      "op": "min_balance",
+      "defined_out": [
+        "before#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0"
+      ]
+    },
+    "77": {
+      "op": "bytec_0 // \"box\"",
+      "defined_out": [
+        "\"box\"",
+        "before#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "\"box\""
+      ]
+    },
+    "78": {
+      "op": "bytec_2 // 0x01",
+      "defined_out": [
+        "\"box\"",
+        "0x01",
+        "before#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "\"box\"",
+        "0x01"
+      ]
+    },
+    "79": {
+      "op": "box_put",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0"
+      ]
+    },
+    "80": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "before#0",
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "tmp%14#0"
+      ]
+    },
+    "82": {
+      "op": "min_balance",
+      "defined_out": [
+        "after#0",
+        "before#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "after#0"
+      ]
+    },
+    "83": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "after#0",
+        "\"box\""
+      ]
+    },
+    "84": {
+      "op": "pushbytes 0x02",
+      "defined_out": [
+        "\"box\"",
+        "0x02",
+        "after#0",
+        "before#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "after#0",
+        "\"box\"",
+        "0x02"
+      ]
+    },
+    "87": {
+      "op": "box_put",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "before#0",
+        "after#0"
+      ]
+    },
+    "88": {
+      "op": "<",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%16#0"
+      ]
+    },
+    "89": {
+      "error": "minimum balance follows the box",
+      "op": "assert // minimum balance follows the box",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "90": {
+      "op": "bytec_0 // \"box\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"box\""
+      ]
+    },
+    "91": {
+      "op": "box_del",
+      "defined_out": [
+        "{box_del}"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "{box_del}"
+      ]
+    },
+    "92": {
+      "op": "pop",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "93": {
+      "block": "main_after_if_else@8",
+      "stack_in": [
+        "x#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "94": {
+      "op": "pushint 3",
+      "defined_out": [
+        "3",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)",
+        "3"
+      ]
+    },
+    "96": {
+      "op": "==",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%17#0"
+      ]
+    },
+    "97": {
+      "op": "bz main_after_if_else@10",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "100": {
+      "op": "bytec_1 // \"busy\"",
+      "defined_out": [
+        "\"busy\""
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\""
+      ]
+    },
+    "101": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "\"busy\"",
+        "1"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\"",
+        "1"
+      ]
+    },
+    "102": {
+      "op": "app_global_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "103": {
+      "op": "itxn_begin"
+    },
+    "104": {
+      "op": "intc_0 // 1",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "1"
+      ]
+    },
+    "105": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "107": {
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%18#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%18#0"
+      ]
+    },
+    "109": {
+      "op": "itxn_field Receiver",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "111": {
+      "op": "itxn_submit"
+    },
+    "112": {
+      "op": "bytec_1 // \"busy\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\""
+      ]
+    },
+    "113": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "\"busy\"",
+        "0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\"",
+        "0"
+      ]
+    },
+    "114": {
+      "op": "app_global_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "115": {
+      "block": "main_after_if_else@10",
+      "stack_in": [
+        "x#0",
+        "which#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)"
+      ]
+    },
+    "116": {
+      "op": "pushint 4",
+      "defined_out": [
+        "4",
+        "which#0 (copy)"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "which#0 (copy)",
+        "4"
+      ]
+    },
+    "118": {
+      "op": "==",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "tmp%19#0"
+      ]
+    },
+    "119": {
+      "op": "bz main_after_if_else@12",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "122": {
+      "op": "bytec_1 // \"busy\"",
+      "defined_out": [
+        "\"busy\""
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\""
+      ]
+    },
+    "123": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "\"busy\"",
+        "tmp%20#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\"",
+        "tmp%20#0"
+      ]
+    },
+    "126": {
+      "op": "app_global_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "127": {
+      "op": "bytec_1 // \"busy\"",
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\""
+      ]
+    },
+    "128": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "\"busy\"",
+        "0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "\"busy\"",
+        "0"
+      ]
+    },
+    "129": {
+      "op": "app_global_put",
+      "stack_out": [
+        "x#0",
+        "which#0"
+      ]
+    },
+    "130": {
+      "block": "main_after_if_else@12",
+      "stack_in": [
+        "x#0",
+        "which#0"
+      ],
+      "op": "pushint 5",
+      "defined_out": [
+        "5",
+        "which#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "which#0",
+        "5"
+      ]
+    },
+    "132": {
+      "op": "==",
+      "defined_out": [
+        "tmp%21#0"
+      ],
+      "stack_out": [
+        "x#0",
+        "tmp%21#0"
+      ]
+    },
+    "133": {
+      "op": "bz main_after_if_else@14",
+      "stack_out": [
+        "x#0"
+      ]
+    },
+    "136": {
+      "op": "bytec_1 // \"busy\"",
+      "defined_out": [
+        "\"busy\""
+      ],
+      "stack_out": [
+        "x#0",
+        "\"busy\""
+      ]
+    },
+    "137": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "\"busy\"",
+        "0"
+      ],
+      "stack_out": [
+        "x#0",
+        "\"busy\"",
+        "0"
+      ]
+    },
+    "138": {
+      "op": "app_global_put",
+      "stack_out": [
+        "x#0"
+      ]
+    },
+    "139": {
+      "block": "main_after_if_else@14",
+      "stack_in": [
+        "x#0"
+      ],
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "x#0",
+        "1"
+      ]
+    },
+    "140": {
+      "op": "return",
+      "stack_out": [
+        "x#0"
+      ]
+    }
+  }
+}

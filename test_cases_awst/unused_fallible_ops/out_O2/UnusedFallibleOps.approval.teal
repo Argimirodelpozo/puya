@@ -1,0 +1,100 @@
+#pragma version 11
+#pragma typetrack false
+
+// Effects::UnusedFallibleOps.approvalProgram() -> uint64:
+main:
+    txna ApplicationArgs 1
+    btoi
+    txna ApplicationArgs 2
+    btoi
+    txna ApplicationArgs 0
+    btoi
+    dup
+    bnz main_after_if_else@2
+    dig 2
+    dig 2
+    -
+    pop
+
+main_after_if_else@2:
+    dup
+    pushint 1
+    ==
+    bz main_after_if_else@4
+    dig 2
+    dig 2
+    +
+    pop
+
+main_after_if_else@4:
+    dup
+    pushint 2
+    ==
+    bz main_after_if_else@6
+    dig 2
+    dig 2
+    *
+    pop
+
+main_after_if_else@6:
+    dup
+    pushint 3
+    ==
+    bz main_after_if_else@8
+    dig 2
+    dig 2
+    exp
+    pop
+
+main_after_if_else@8:
+    dup
+    pushint 4
+    ==
+    bz main_after_if_else@10
+    dig 2
+    dig 2
+    /
+    pop
+
+main_after_if_else@10:
+    dup
+    pushint 5
+    ==
+    bz main_after_if_else@12
+    dig 2
+    dig 2
+    shl
+    pop
+
+main_after_if_else@12:
+    dup
+    pushint 6
+    ==
+    bz main_after_if_else@14
+    txna ApplicationArgs 3
+    btoi
+    pop
+
+main_after_if_else@14:
+    dup
+    pushint 7
+    ==
+    bz main_after_if_else@16
+    txna ApplicationArgs 3
+    dig 3
+    dig 3
+    extract3
+    pop
+
+main_after_if_else@16:
+    pushint 8
+    ==
+    bz main_after_if_else@18
+    txna ApplicationArgs 3
+    dup
+    b+
+    pop
+
+main_after_if_else@18:
+    pushint 1
+    return

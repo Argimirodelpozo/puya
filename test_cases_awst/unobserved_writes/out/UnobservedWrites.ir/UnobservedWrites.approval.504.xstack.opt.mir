@@ -1,0 +1,130 @@
+// Op                                                Stack (out)
+// Effects::UnobservedWrites.approvalProgram() -> uint64:
+subroutine main:
+    main_block@0:
+        txn ApplicationID                            tmp%0#0
+        bz main_if_body@1 ; b main_after_if_else@2
+
+    main_if_body@1:
+        int 1                                        1
+        return
+
+    main_after_if_else@2:
+        txna ApplicationArgs 0                       tmp%2#0
+        btoi                                         which#0
+        l-store-copy which#0 0                       which#0,which#0
+        x-store which#0                              (𝕏) which#0 | which#0
+        txna ApplicationArgs 1                       (𝕏) which#0 | which#0,tmp%4#0
+        btoi                                         (𝕏) which#0 | which#0,x#0
+        v-store x#0                                  (𝕏) which#0 | which#0
+        l-load which#0 0                             (𝕏) which#0 | which#0
+        bz main_if_body@3 ; b main_after_if_else@4   (𝕏) which#0 |
+
+    main_if_body@3:                                  (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        byte 0x01                                    (𝕏) which#0 | "box",0x01
+        box_put                                      (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        byte 0x0202                                  (𝕏) which#0 | "box",0x0202
+        box_put                                      (𝕏) which#0 |
+        b main_after_if_else@4                       (𝕏) which#0 |
+
+    main_after_if_else@4:                            (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 1                                        (𝕏) which#0 | which#0 (copy),1
+        ==                                           (𝕏) which#0 | tmp%7#0
+        bz main_after_if_else@6 ; b main_if_body@5   (𝕏) which#0 |
+
+    main_if_body@5:                                  (𝕏) which#0 |
+        v-load x#0                                   (𝕏) which#0 | x#0
+        int 2                                        (𝕏) which#0 | x#0,2
+        /                                            (𝕏) which#0 | tmp%9#0
+        itob                                         (𝕏) which#0 | tmp%10#0
+        byte "box"                                   (𝕏) which#0 | tmp%10#0,"box"
+        l-load tmp%10#0 1                            (𝕏) which#0 | "box",tmp%10#0
+        box_put                                      (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_del                                      (𝕏) which#0 | {box_del}
+        pop 1                                        (𝕏) which#0 |
+        b main_after_if_else@6                       (𝕏) which#0 |
+
+    main_after_if_else@6:                            (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 2                                        (𝕏) which#0 | which#0 (copy),2
+        ==                                           (𝕏) which#0 | tmp%11#0
+        bz main_after_if_else@8 ; b main_if_body@7   (𝕏) which#0 |
+
+    main_if_body@7:                                  (𝕏) which#0 |
+        global CurrentApplicationAddress             (𝕏) which#0 | tmp%12#0
+        min_balance                                  (𝕏) which#0 | before#0
+        byte "box"                                   (𝕏) which#0 | before#0,"box"
+        byte 0x01                                    (𝕏) which#0 | before#0,"box",0x01
+        box_put                                      (𝕏) which#0 | before#0
+        global CurrentApplicationAddress             (𝕏) which#0 | before#0,tmp%14#0
+        min_balance                                  (𝕏) which#0 | before#0,after#0
+        byte "box"                                   (𝕏) which#0 | before#0,after#0,"box"
+        byte 0x02                                    (𝕏) which#0 | before#0,after#0,"box",0x02
+        box_put                                      (𝕏) which#0 | before#0,after#0
+        l-load after#0 0                             (𝕏) which#0 | before#0,after#0
+        l-load before#0 1                            (𝕏) which#0 | after#0,before#0
+        >                                            (𝕏) which#0 | tmp%16#0
+        assert // minimum balance follows the box    (𝕏) which#0 |
+        byte "box"                                   (𝕏) which#0 | "box"
+        box_del                                      (𝕏) which#0 | {box_del}
+        pop 1                                        (𝕏) which#0 |
+        b main_after_if_else@8                       (𝕏) which#0 |
+
+    main_after_if_else@8:                            (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 3                                        (𝕏) which#0 | which#0 (copy),3
+        ==                                           (𝕏) which#0 | tmp%17#0
+        bz main_after_if_else@10 ; b main_if_body@9  (𝕏) which#0 |
+
+    main_if_body@9:                                  (𝕏) which#0 |
+        byte "busy"                                  (𝕏) which#0 | "busy"
+        int 1                                        (𝕏) which#0 | "busy",1
+        app_global_put                               (𝕏) which#0 |
+        itxn_begin                                   (𝕏) which#0 |
+        int 1                                        (𝕏) which#0 | 1
+        itxn_field TypeEnum                          (𝕏) which#0 |
+        txn Sender                                   (𝕏) which#0 | tmp%18#0
+        itxn_field Receiver                          (𝕏) which#0 |
+        itxn_submit                                  (𝕏) which#0 |
+        byte "busy"                                  (𝕏) which#0 | "busy"
+        int 0                                        (𝕏) which#0 | "busy",0
+        app_global_put                               (𝕏) which#0 |
+        b main_after_if_else@10                      (𝕏) which#0 |
+
+    main_after_if_else@10:                           (𝕏) which#0 |
+        x-load-copy which#0                          (𝕏) which#0 | which#0 (copy)
+        int 4                                        (𝕏) which#0 | which#0 (copy),4
+        ==                                           (𝕏) which#0 | tmp%19#0
+        bz main_after_if_else@12 ; b main_if_body@11 (𝕏) which#0 |
+
+    main_if_body@11:                                 (𝕏) which#0 |
+        txna ApplicationArgs 2                       (𝕏) which#0 | tmp%20#0
+        byte "busy"                                  (𝕏) which#0 | tmp%20#0,"busy"
+        l-load tmp%20#0 1                            (𝕏) which#0 | "busy",tmp%20#0
+        app_global_put                               (𝕏) which#0 |
+        byte "busy"                                  (𝕏) which#0 | "busy"
+        int 0                                        (𝕏) which#0 | "busy",0
+        app_global_put                               (𝕏) which#0 |
+        b main_after_if_else@12                      (𝕏) which#0 |
+
+    main_after_if_else@12:                           (𝕏) which#0 |
+        x-load which#0                               which#0
+        int 5                                        which#0,5
+        ==                                           tmp%21#0
+        bz main_after_if_else@14 ; b main_if_body@13
+
+    main_if_body@13:
+        byte "busy"                                  "busy"
+        int 0                                        "busy",0
+        app_global_put
+        b main_after_if_else@14
+
+    main_after_if_else@14:
+        int 1                                        1
+        return
+
+

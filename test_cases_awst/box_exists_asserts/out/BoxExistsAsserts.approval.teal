@@ -1,0 +1,81 @@
+#pragma version 11
+#pragma typetrack false
+
+// Effects::BoxExistsAsserts.approvalProgram() -> uint64:
+main:
+    intcblock 1 8
+    bytecblock "box"
+    txn ApplicationID
+    bnz main_after_if_else@2
+    intc_0 // 1
+    return
+
+main_after_if_else@2:
+    txna ApplicationArgs 0
+    btoi
+    dup
+    bnz main_after_if_else@4
+    bytec_0 // "box"
+    intc_1 // 8
+    box_create
+    pop
+    bytec_0 // "box"
+    box_del
+    pop
+    bytec_0 // "box"
+    box_len
+    bury 1
+    assert // box exists after box_del
+
+main_after_if_else@4:
+    dup
+    intc_0 // 1
+    ==
+    bz main_after_if_else@6
+    bytec_0 // "box"
+    box_len
+    bury 1
+    bytec_0 // "box"
+    intc_1 // 8
+    box_create
+    pop
+    assert // box existed before box_create
+
+main_after_if_else@6:
+    dup
+    pushint 2
+    ==
+    bz main_after_if_else@8
+    bytec_0 // "box"
+    intc_1 // 8
+    box_create
+    pop
+    itxn_begin
+    intc_0 // 1
+    itxn_field TypeEnum
+    txn Sender
+    itxn_field Receiver
+    itxn_submit
+    bytec_0 // "box"
+    box_len
+    bury 1
+    assert // box exists after inner transaction
+    bytec_0 // "box"
+    box_del
+    pop
+
+main_after_if_else@8:
+    pushint 3
+    ==
+    bz main_after_if_else@10
+    bytec_0 // "box"
+    intc_1 // 8
+    box_create
+    pop
+    bytec_0 // "box"
+    box_del
+    pop
+
+main_after_if_else@10:
+    intc_0 // 1
+    return

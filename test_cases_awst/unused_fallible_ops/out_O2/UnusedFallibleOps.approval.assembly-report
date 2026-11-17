@@ -1,0 +1,90 @@
+|  PC | TEAL Bytes              | TEAL                         | Source | Location                                                |
+|---: | :-----------------------| :----------------------------| :------| :-------------------------------------------------------|
+|   0 | 0b                      | #pragma version 11           |        |                                                         |
+|     | # main                  | main:                        |        | Effects::UnusedFallibleOps.approvalProgram() -> uint64: |
+|   1 | 36 1a 01                |     txna ApplicationArgs 1   |        | INTERNAL:1                                              |
+|   4 | 17                      |     btoi                     |        | INTERNAL:1                                              |
+|   5 | 36 1a 02                |     txna ApplicationArgs 2   |        | INTERNAL:1                                              |
+|   8 | 17                      |     btoi                     |        | INTERNAL:1                                              |
+|   9 | 36 1a 00                |     txna ApplicationArgs 0   |        | INTERNAL:1                                              |
+|  12 | 17                      |     btoi                     |        | INTERNAL:1                                              |
+|  13 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  14 | 40 00 06                |     bnz main_after_if_else@2 |        | INTERNAL:1                                              |
+|  17 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  19 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  21 | 09                      |     -                        |        | INTERNAL:1                                              |
+|  22 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@2  | main_after_if_else@2:        |        |                                                         |
+|  23 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  24 | 81 01                   |     pushint 1                |        | INTERNAL:1                                              |
+|  26 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  27 | 41 00 06                |     bz main_after_if_else@4  |        | INTERNAL:1                                              |
+|  30 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  32 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  34 | 08                      |     +                        |        | INTERNAL:1                                              |
+|  35 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@4  | main_after_if_else@4:        |        |                                                         |
+|  36 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  37 | 81 02                   |     pushint 2                |        | INTERNAL:1                                              |
+|  39 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  40 | 41 00 06                |     bz main_after_if_else@6  |        | INTERNAL:1                                              |
+|  43 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  45 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  47 | 0b                      |     *                        |        | INTERNAL:1                                              |
+|  48 | 48                      |     pop                      |        | INTERNAL:1                                              |
+|     | # main_after_if_else@6  | main_after_if_else@6:        |        |                                                         |
+|  49 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  50 | 81 03                   |     pushint 3                |        | INTERNAL:1                                              |
+|  52 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  53 | 41 00 06                |     bz main_after_if_else@8  |        | INTERNAL:1                                              |
+|  56 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  58 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  60 | 94                      |     exp                      |        | INTERNAL:1                                              |
+|  61 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@8  | main_after_if_else@8:        |        |                                                         |
+|  62 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  63 | 81 04                   |     pushint 4                |        | INTERNAL:1                                              |
+|  65 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  66 | 41 00 06                |     bz main_after_if_else@10 |        | INTERNAL:1                                              |
+|  69 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  71 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  73 | 0a                      |     /                        |        | INTERNAL:1                                              |
+|  74 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@10 | main_after_if_else@10:       |        |                                                         |
+|  75 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  76 | 81 05                   |     pushint 5                |        | INTERNAL:1                                              |
+|  78 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  79 | 41 00 06                |     bz main_after_if_else@12 |        | INTERNAL:1                                              |
+|  82 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  84 | 4b 02                   |     dig 2                    |        | INTERNAL:1                                              |
+|  86 | 90                      |     shl                      |        | INTERNAL:1                                              |
+|  87 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@12 | main_after_if_else@12:       |        |                                                         |
+|  88 | 49                      |     dup                      |        | INTERNAL:1                                              |
+|  89 | 81 06                   |     pushint 6                |        | INTERNAL:1                                              |
+|  91 | 12                      |     ==                       |        | INTERNAL:1                                              |
+|  92 | 41 00 05                |     bz main_after_if_else@14 |        | INTERNAL:1                                              |
+|  95 | 36 1a 03                |     txna ApplicationArgs 3   |        | INTERNAL:1                                              |
+|  98 | 17                      |     btoi                     |        | INTERNAL:1                                              |
+|  99 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@14 | main_after_if_else@14:       |        |                                                         |
+| 100 | 49                      |     dup                      |        | INTERNAL:1                                              |
+| 101 | 81 07                   |     pushint 7                |        | INTERNAL:1                                              |
+| 103 | 12                      |     ==                       |        | INTERNAL:1                                              |
+| 104 | 41 00 09                |     bz main_after_if_else@16 |        | INTERNAL:1                                              |
+| 107 | 36 1a 03                |     txna ApplicationArgs 3   |        | INTERNAL:1                                              |
+| 110 | 4b 03                   |     dig 3                    |        | INTERNAL:1                                              |
+| 112 | 4b 03                   |     dig 3                    |        | INTERNAL:1                                              |
+| 114 | 58                      |     extract3                 |        | INTERNAL:1                                              |
+| 115 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@16 | main_after_if_else@16:       |        |                                                         |
+| 116 | 81 08                   |     pushint 8                |        | INTERNAL:1                                              |
+| 118 | 12                      |     ==                       |        | INTERNAL:1                                              |
+| 119 | 41 00 06                |     bz main_after_if_else@18 |        | INTERNAL:1                                              |
+| 122 | 36 1a 03                |     txna ApplicationArgs 3   |        | INTERNAL:1                                              |
+| 125 | 49                      |     dup                      |        | INTERNAL:1                                              |
+| 126 | a0                      |     b+                       |        | INTERNAL:1                                              |
+| 127 | 48                      |     pop                      |        |                                                         |
+|     | # main_after_if_else@18 | main_after_if_else@18:       |        |                                                         |
+| 128 | 81 01                   |     pushint 1                |        | INTERNAL:1                                              |
+| 130 | 43                      |     return                   |        | INTERNAL:1                                              |
