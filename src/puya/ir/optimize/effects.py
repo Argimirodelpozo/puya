@@ -527,7 +527,7 @@ def _extract(op: models.Intrinsic, bounds: ValueBounds) -> bool:
 
 def _extract3(op: models.Intrinsic, bounds: ValueBounds) -> bool:
     a, b, c = op.args
-    return bounds.uint64(b)[1] + bounds.uint64(c)[1] > bounds.length(a)[0]
+    return not bounds.sum_within(b, c, a)
 
 
 def _substring(op: models.Intrinsic, bounds: ValueBounds) -> bool:

@@ -43,6 +43,25 @@ _MAX_DEPTH: typing.Final = 48
 # how many definitions deep a condition is taken apart
 _MAX_CONDITION_DEPTH: typing.Final = 8
 
+# Ops without operands that read what is fixed while a program runs: with the same immediates,
+# each gives the same value every time. `global OpcodeBudget` is the exception.
+_FIXED_READS: typing.Final = frozenset(
+    (
+        AVMOp.txn,
+        AVMOp.txna,
+        AVMOp.gtxn,
+        AVMOp.gtxna,
+        AVMOp.global_,
+        AVMOp.arg,
+        AVMOp.arg_0,
+        AVMOp.arg_1,
+        AVMOp.arg_2,
+        AVMOp.arg_3,
+        AVMOp.gaid,
+        AVMOp.gload,
+    )
+)
+
 _NEGATED: typing.Final = {
     AVMOp.eq: AVMOp.neq,
     AVMOp.neq: AVMOp.eq,
@@ -70,6 +89,8 @@ class ValueBounds:
     _given_ordered: set[tuple[models.Value, models.Value]] = attrs.field(factory=set, init=False)
     # the bounds without those conditions
     _unconditional: "ValueBounds | None" = attrs.field(default=None, init=False)
+    # registers that hold the same value as an earlier register, with that register
+    _same: Mapping[models.Register, models.Register] = attrs.field(factory=dict, init=False)
 
     @classmethod
     def of(cls, subroutine: models.Subroutine) -> "ValueBounds":
@@ -81,7 +102,9 @@ class ValueBounds:
                 if isinstance(op, models.Assignment):
                     for index, target in enumerate(op.targets):
                         definitions[target] = (op.source, index)
-        return cls(definitions)
+        result = cls(definitions)
+        result._same = _same_values(definitions)  # noqa: SLF001
+        return result
 
     def given(
         self,
@@ -101,6 +124,7 @@ class ValueBounds:
         """
         result = ValueBounds(self._definitions)
         result._unconditional = self._unconditional or self  # noqa: SLF001
+        result._same = self._same  # noqa: SLF001
         conditions = [(c, True) for c in non_zero] + [(c, False) for c in zero]
         completed = list(completed)
         # twice, so that each can build on what a later one says
@@ -127,7 +151,7 @@ class ValueBounds:
                     self._narrow_length(a, (end, MAX_BYTES_LENGTH))
             case AVMOp.substring3, [a, b, c]:
                 self._narrow_length(a, (self.uint64(c)[0], MAX_BYTES_LENGTH))
-                self._given_ordered.add((b, c))
+                self._ordered(b, c)
             case AVMOp.extract_uint16, [a, b]:
                 self._narrow_length(a, (self.uint64(b)[0] + 2, MAX_BYTES_LENGTH))
             case AVMOp.extract_uint32, [a, b]:
@@ -178,11 +202,15 @@ class ValueBounds:
             case AVMOp.sub, [a, b]:
                 self._narrow(a, (self.uint64(b)[0], MAX_UINT64))
                 self._narrow(b, (0, self.uint64(a)[1]))
-                self._given_ordered.add((b, a))
+                self._ordered(b, a)
             case ((AVMOp.loads | AVMOp.stores), [a, *_]):
                 self._narrow(a, (0, 255))
 
+    def _ordered(self, low: models.Value, high: models.Value) -> None:
+        self._given_ordered.add((self.same_value(low), self.same_value(high)))
+
     def _narrow_length(self, value: models.Value, bounds: Bounds) -> None:
+        value = self.same_value(value)
         if not isinstance(value, models.Register):
             return
         self._given_length[value] = _intersection(
@@ -224,50 +252,88 @@ class ValueBounds:
                 both = max(a_low, b_low), min(a_high, b_high)
                 self._narrow(a, both)
                 self._narrow(b, both)
-                self._given_ordered |= {(a, b), (b, a)}
+                self._ordered(a, b)
+                self._ordered(b, a)
             case AVMOp.lt:
                 self._narrow(a, (0, b_high - 1))
                 self._narrow(b, (a_low + 1, MAX_UINT64))
-                self._given_ordered.add((a, b))
+                self._ordered(a, b)
             case AVMOp.lte:
                 self._narrow(a, (0, b_high))
                 self._narrow(b, (a_low, MAX_UINT64))
-                self._given_ordered.add((a, b))
+                self._ordered(a, b)
             case AVMOp.gt:
                 self._narrow(a, (b_low + 1, MAX_UINT64))
                 self._narrow(b, (0, a_high - 1))
-                self._given_ordered.add((b, a))
+                self._ordered(b, a)
             case AVMOp.gte:
                 self._narrow(a, (b_low, MAX_UINT64))
                 self._narrow(b, (0, a_high))
-                self._given_ordered.add((b, a))
+                self._ordered(b, a)
 
     def _narrow(self, value: models.Value, bounds: Bounds) -> None:
+        value = self.same_value(value)
         if not isinstance(value, models.Register):
             return
         self._given_uint64[value] = _intersection(
             self._given_uint64.get(value, ANY_UINT64), bounds
         )
         # a bound on the length of a byte array is a bound on the byte array
-        match self._definitions.get(value):
-            case (models.Intrinsic(op=AVMOp.len_, args=[array]), _):
+        match self._intrinsic(value):
+            case models.Intrinsic(op=AVMOp.len_, args=[array]):
                 self._narrow_length(array, (bounds[0], min(bounds[1], MAX_BYTES_LENGTH)))
         # what was derived so far may be narrower now
         self._uint64.clear()
         self._length.clear()
 
-    def operands_of_definition(self, register: models.Register) -> Iterable[models.Register]:
-        """The registers that the value of a register is computed from, if it is the result
-        of an AVM op."""
-        match self._definitions.get(register):
-            case (models.Intrinsic(args=args), _):
-                return [arg for arg in args if isinstance(arg, models.Register)]
-            case _:
-                return ()
+    def operands_of_definition(self, value: models.Value) -> Iterable[models.Register]:
+        """The registers that a value is computed from, if it is the result of an AVM op."""
+        op = self._intrinsic(value)
+        if op is None:
+            return ()
+        return [arg for arg in op.args if isinstance(arg, models.Register)]
+
+    def same_value(self, value: models.Value) -> models.Value:
+        """The first register that is known to hold the same value as the given one, which
+        stands for all of them."""
+        if isinstance(value, models.Register):
+            return self._same.get(value, value)
+        return value
+
+    def is_fixed_read(self, register: models.Register) -> bool:
+        """True if the register holds something that is fixed while the program runs, read by
+        an op that gives the same outcome every time."""
+        return register in self._same
 
     def not_above(self, a: models.Value, b: models.Value) -> bool:
         """True if the uint64 value `a` is known to be at most the uint64 value `b`."""
+        a = self.same_value(a)
+        b = self.same_value(b)
         return a == b or (a, b) in self._given_ordered or self.uint64(a)[1] <= self.uint64(b)[0]
+
+    def sum_within(self, a: models.Value, b: models.Value, array: models.Value) -> bool:
+        """True if the sum of the uint64 values `a` and `b` is known to be at most the length
+        of a byte array."""
+        if self.uint64(a)[1] + self.uint64(b)[1] <= self.length(array)[0]:
+            return True
+        array = self.same_value(array)
+        # a register that holds the sum, and is not above one that holds the length
+        for total, length in self._given_ordered:
+            match self._intrinsic(total), self._intrinsic(length):
+                case (
+                    models.Intrinsic(op=AVMOp.add, args=[x, y]),
+                    models.Intrinsic(op=AVMOp.len_, args=[measured]),
+                ) if (x, y) in ((a, b), (b, a)) and self.same_value(measured) == array:
+                    return True
+        return False
+
+    def _intrinsic(self, value: models.Value) -> models.Intrinsic | None:
+        """The AVM op that a value is the result of."""
+        if isinstance(value, models.Register):
+            match self._definitions.get(value):
+                case (models.Intrinsic() as op, _):
+                    return op
+        return None
 
     def uint64(self, value: models.Value) -> Bounds:
         """The range of a uint64 value."""
@@ -275,7 +341,7 @@ class ValueBounds:
             return value.value, value.value
         if not isinstance(value, models.Register):
             return ANY_UINT64
-        given = self._given_uint64.get(value, ANY_UINT64)
+        given = self._given_uint64.get(self._same.get(value, value), ANY_UINT64)
         if value not in self._definitions:
             return given
         try:
@@ -297,7 +363,7 @@ class ValueBounds:
             return len(constant), len(constant)
         if not isinstance(value, models.Register):
             return ANY_LENGTH
-        given = self._given_length.get(value, ANY_LENGTH)
+        given = self._given_length.get(self._same.get(value, value), ANY_LENGTH)
         if value not in self._definitions:
             return given
         try:
@@ -510,6 +576,20 @@ def _union(bounds: typing.Iterable[Bounds]) -> Bounds:
         # nothing to choose from, so nothing is claimed: wider than any value
         return 0, 2**512
     return min(lows), max(highs)
+
+
+def _same_values(
+    definitions: Mapping[models.Register, _Definition],
+) -> Mapping[models.Register, models.Register]:
+    same = dict[models.Register, models.Register]()
+    first = dict[object, models.Register]()
+    for register, (source, _) in definitions.items():
+        match source:
+            case models.Intrinsic(op=op, immediates=immediates, args=[]) if (
+                op in _FIXED_READS and immediates != ["OpcodeBudget"] and len(source.types) == 1
+            ):
+                same[register] = first.setdefault((op, tuple(immediates)), register)
+    return same
 
 
 def _intersection(a: Bounds, b: Bounds) -> Bounds:

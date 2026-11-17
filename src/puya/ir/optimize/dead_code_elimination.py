@@ -151,6 +151,8 @@ def remove_unused_variables(context: IROptimizationContext, subroutine: models.S
             if non_zero or zero or completed:
                 given = bounds().given(non_zero=non_zero, zero=zero, completed=completed)
                 lost = effects_of(ass.source, bounds=given) & OBSERVABLE
+            if lost and _is_read_again(context.effects, bounds(), block, ass):
+                lost = Effect.none
         elif lost == Effect.fails and isinstance(ass.source, _REMOVED_ALTHOUGH_FALLIBLE):
             lost = Effect.none
         if not lost:
@@ -202,6 +204,36 @@ def _conditions_established(
     return non_zero, zero
 
 
+def _is_read_again(
+    summaries: EffectSummaries | None,
+    bounds: ValueBounds,
+    block: models.BasicBlock,
+    op: models.Assignment,
+) -> bool:
+    """True for a read of something that is fixed while the program runs, if the same read
+    has completed when the unused one runs, or is certain to run after it: the read fails
+    every time or not at all."""
+    try:
+        (target,) = op.targets
+    except ValueError:
+        return False
+    if not bounds.is_fixed_read(target):
+        return False
+    value = bounds.same_value(target)
+    after = False
+    for other in block.ops:
+        if other is op:
+            after = True
+        elif isinstance(other, models.Assignment):
+            if any(bounds.same_value(t) == value for t in other.targets):
+                return True
+            if after and Effect.exits in effects_of(other.source, summaries=summaries):
+                return False
+        elif after and Effect.exits in effects_of(other, summaries=summaries):
+            return False
+    return False
+
+
 def _related_operations(
     summaries: EffectSummaries | None,
     bounds: ValueBounds,
@@ -216,10 +248,12 @@ def _related_operations(
     with or without it: an operation that follows it in its block runs unless the program has
     failed by then, as long as nothing in between can end the program in another way.
     """
-    operands = {arg for arg in intrinsic.args if isinstance(arg, models.Register)}
+    operands = {
+        bounds.same_value(arg) for arg in intrinsic.args if isinstance(arg, models.Register)
+    }
     # and what the operands are computed from, as in (a + 1) + 1 next to a + 2
     for operand in list(operands):
-        operands.update(bounds.operands_of_definition(operand))
+        operands.update(map(bounds.same_value, bounds.operands_of_definition(operand)))
     if not operands:
         return []
     related = list[models.Intrinsic]()
@@ -230,7 +264,7 @@ def _related_operations(
             continue
         source = other.source if isinstance(other, models.Assignment) else other
         if isinstance(source, models.Intrinsic):
-            if not operands.isdisjoint(source.args):
+            if not operands.isdisjoint(map(bounds.same_value, source.args)):
                 related.append(source)
         elif after and Effect.exits in effects_of(source, summaries=summaries):
             break

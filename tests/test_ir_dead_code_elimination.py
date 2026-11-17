@@ -141,6 +141,70 @@ def test_unused_operation_is_removed_if_operation_on_what_it_is_computed_from_fa
     ]
 
 
+def _argument(name: str, index: int = 1) -> models.Assignment:
+    return assign(
+        register(name, PrimitiveIRType.bytes),
+        intrinsic(AVMOp.txna, immediates=["ApplicationArgs", index]),
+    )
+
+
+def test_unused_read_of_transaction_is_removed_if_it_is_read_again() -> None:
+    first = _argument("first")
+    second = _argument("second")
+    other = _argument("other", 2)
+    use = intrinsic(AVMOp.log, second.targets[0])
+    assert optimize_block(remove_unused_variables, [first, second, other, use]) == [
+        str(second),
+        # there may be no such argument, and nothing else tells
+        str(other),
+        str(use),
+    ]
+    # of two unused reads, one stays
+    assert optimize_block(remove_unused_variables, [_argument("first"), _argument("second")]) == [
+        str(second)
+    ]
+
+
+def test_unused_operations_on_one_value_read_twice() -> None:
+    # two words and a part of variable size of one argument, none of which is used
+    start = assign(register("start"), intrinsic(AVMOp.add, _a, uint64(32)))
+    end = assign(register("end"), intrinsic(AVMOp.add, start.targets[0], _b))
+    argument = _argument("argument")
+    length = assign(register("length"), intrinsic(AVMOp.len_, argument.targets[0]))
+    fits = _is("fits", AVMOp.lte, end.targets[0], length.targets[0])
+    check = models.Assert(
+        condition=fits.targets[0], message="in bounds", explicit=True, source_location=None
+    )
+    first = _argument("first")
+    first_word = assign(
+        register("first_word", PrimitiveIRType.bytes),
+        intrinsic(AVMOp.extract, first.targets[0], immediates=[64, 32]),
+    )
+    second = _argument("second")
+    second_word = assign(
+        register("second_word", PrimitiveIRType.bytes),
+        intrinsic(AVMOp.extract, second.targets[0], immediates=[96, 32]),
+    )
+    third = _argument("third")
+    part = assign(
+        register("part", PrimitiveIRType.bytes),
+        intrinsic(AVMOp.extract3, third.targets[0], start.targets[0], _b),
+    )
+    ops = [
+        *(start, end, argument, length, fits, check),
+        *(first, first_word, second, second_word, third, part),
+    ]
+    main = subroutine("main", [block(0, ops, return_())], parameters=_parameters)
+    context = Mock(effects=None)
+    while remove_unused_variables(context, main):
+        pass
+    # the second word is beyond what the assert says about the length, and reaches further
+    # than the first. The part is what the assert is about
+    assert [str(op) for op in main.body[0].ops] == [
+        str(op) for op in (start, end, argument, length, fits, check, second, second_word)
+    ]
+
+
 def test_only_one_of_two_unused_operations_that_fail_together_is_removed() -> None:
     first = assign(register("first"), intrinsic(AVMOp.btoi, _data))
     second = assign(register("second"), intrinsic(AVMOp.btoi, _data))

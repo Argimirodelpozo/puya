@@ -64,12 +64,24 @@ _FALLIBLE_OPS = [
 _COMPARISONS = [spec for spec in REFERENCE_OPS if spec.op in (AVMOp.lt, AVMOp.gte, AVMOp.eq)]
 
 
+def _spec(op: AVMOp) -> ReferenceOp:
+    (spec,) = (spec for spec in REFERENCE_OPS if spec.op == op and "b" not in spec.operands[1:])
+    return spec
+
+
+_Inputs = Mapping[models.Value | int, Operand | None]
+
+
 @attrs.define
 class _Block:
-    """A block of ops on few values, so that what one op says about a value matters to others."""
+    """A block of ops on few values, so that what one op says about a value matters to others.
+
+    The values are a uint64 parameter and two arguments of the transaction, which are read
+    time and again, and the second of which may not be there.
+    """
 
     rng: random.Random
-    parameters: list[models.Parameter] = attrs.field(factory=list)
+    number: models.Parameter = attrs.field(factory=lambda: parameter("number"))
     uint64s: list[models.Value] = attrs.field(factory=list)
     byte_arrays: list[models.Value] = attrs.field(factory=list)
     results: list[models.Register] = attrs.field(factory=list)
@@ -78,26 +90,17 @@ class _Block:
     specs: dict[models.Intrinsic, ReferenceOp] = attrs.field(factory=dict)
 
     def __attrs_post_init__(self) -> None:
-        number = parameter("number")
-        data = parameter("data", PrimitiveIRType.bytes)
-        self.parameters += [number, data]
-        self.uint64s.append(number)
-        self.byte_arrays.append(data)
-        (length,) = (spec for spec in REFERENCE_OPS if spec.op == AVMOp.len_)
-        self._add_op(length)
+        self.uint64s.append(self.number)
+        self.byte_arrays.append(self._read_argument(1))
+        self._add_op(_spec(AVMOp.len_))
         for _ in range(self.rng.randint(3, 12)):
             choice = self.rng.random()
             if choice < 0.15:
                 self._add_op(self.rng.choice(_COMPARISONS), is_condition=True)
             elif choice < 0.3 and self.conditions:
-                self.ops.append(
-                    models.Assert(
-                        condition=self.rng.choice(self.conditions),
-                        message=None,
-                        explicit=True,
-                        source_location=None,
-                    )
-                )
+                self._add_assert(self.rng.choice(self.conditions))
+            elif choice < 0.4:
+                self._add_checked_part()
             elif choice < 0.9:
                 self._add_op(self.rng.choice(_FALLIBLE_OPS))
             else:
@@ -107,19 +110,32 @@ class _Block:
             if self.rng.random() < 0.3:
                 self.ops.append(intrinsic(AVMOp.app_global_put, _KEY, result))
 
+    def _read_argument(self, index: int) -> models.Register:
+        result = register(f"result{len(self.results)}", PrimitiveIRType.bytes)
+        self.results.append(result)
+        self.ops.append(
+            assign(result, intrinsic(AVMOp.txna, immediates=["ApplicationArgs", index]))
+        )
+        return result
+
     def _operand(self, kind: str) -> models.Value:
+        choice = self.rng.random()
         if kind == "u":
-            if self.rng.random() < 0.4:
+            if choice < 0.4:
                 return uint64(self.rng.choice(_UINT64_CONSTANTS))
             return self.rng.choice(self.uint64s[:4])
-        if self.rng.random() < 0.1:
+        if choice < 0.1:
             return bytes_(self.rng.choice(_BYTES_CONSTANTS))
+        if choice < 0.35:
+            return self._read_argument(self.rng.choice([1, 1, 2]))
         return self.rng.choice(self.byte_arrays[:3])
 
-    def _add_op(self, spec: ReferenceOp, *, is_condition: bool = False) -> None:
+    def _add_op(
+        self, spec: ReferenceOp, *operands: models.Value, is_condition: bool = False
+    ) -> models.Register:
         op = intrinsic(
             spec.op,
-            *(self._operand(kind) for kind in spec.operands),
+            *(operands or [self._operand(kind) for kind in spec.operands]),
             immediates=spec.immediates(self.rng),
             types=[spec.result],
         )
@@ -133,30 +149,51 @@ class _Block:
             self.uint64s.append(result)
         else:
             self.byte_arrays.append(result)
+        return result
 
-    def random_inputs(self) -> dict[models.Value, Operand]:
-        number, data = self.parameters
-        # mostly around the constants that the ops use, where they start to fail
-        length = self.rng.choice(
-            [self.rng.randrange(70), self.rng.randrange(70), self.rng.randrange(4000, 4097)]
+    def _add_assert(self, condition: models.Value) -> None:
+        self.ops.append(
+            models.Assert(condition=condition, message=None, explicit=True, source_location=None)
         )
-        inputs: dict[models.Value, Operand] = {
-            data: bytes([self.rng.choice([0, 0, 1, 255])]) * length
-        }
-        inputs[number] = self.rng.choice(
+
+    def _add_checked_part(self) -> None:
+        """A part of an argument, taken after an assert that it is within the argument, or
+        of something close to that."""
+        start = self._operand("u")
+        size = self._operand("u")
+        end = self._add_op(_spec(AVMOp.add), start, size)
+        length = self._add_op(_spec(AVMOp.len_), self._read_argument(1))
+        fits = self._add_op(_spec(AVMOp.gte), length, end, is_condition=True)
+        if self.rng.random() < 0.8:
+            self._add_assert(fits)
+        if self.rng.random() < 0.3:
+            size = self._operand("u")
+        self._add_op(
+            _spec(AVMOp.extract3), self._read_argument(self.rng.choice([1, 1, 1, 2])), start, size
+        )
+
+    def random_inputs(self) -> _Inputs:
+        # mostly around the constants that the ops use, where they start to fail
+        lengths = [
+            self.rng.choice(
+                [self.rng.randrange(70), self.rng.randrange(70), self.rng.randrange(4000, 4097)]
+            )
+            for _ in range(2)
+        ]
+        first, second = (bytes([self.rng.choice([0, 0, 1, 255])]) * length for length in lengths)
+        number = self.rng.choice(
             [
                 self.rng.randrange(70),
                 self.rng.randrange(70),
-                max(length - self.rng.randrange(10), 0),
+                max(lengths[0] - self.rng.randrange(10), 0),
                 2**64 - 1 - self.rng.randrange(70),
                 random_uint64(self.rng),
             ]
         )
-        return inputs
+        # the second argument may not be there
+        return {self.number: number, 1: first, 2: second if self.rng.random() < 0.8 else None}
 
-    def run(
-        self, ops: Sequence[models.Op], inputs: Mapping[models.Value, Operand]
-    ) -> list[Operand] | None:
+    def run(self, ops: Sequence[models.Op], inputs: _Inputs) -> list[Operand] | None:
         """The values that the block puts in global state, or None if the block fails."""
         values = dict(inputs)
 
@@ -167,11 +204,21 @@ class _Block:
                 case models.BytesConstant(value=data):
                     return data
                 case _:
-                    return values[value]
+                    result = values[value]
+                    assert result is not None
+                    return result
 
         used = list[Operand]()
         for op in ops:
             match op:
+                case models.Assignment(
+                    targets=[target],
+                    source=models.Intrinsic(op=AVMOp.txna, immediates=[_, int(index)]),
+                ):
+                    result = values[index]
+                    if result is None:
+                        return None
+                    values[target] = result
                 case models.Assignment(targets=[target], source=models.Intrinsic() as source):
                     result = self.specs[source].run(
                         [int(i) for i in source.immediates], [value_of(a) for a in source.args]
@@ -190,7 +237,7 @@ class _Block:
 
 
 def _describe(
-    inputs: Mapping[models.Value, Operand],
+    inputs: _Inputs,
     original: Sequence[models.Op],
     optimized: Sequence[models.Op],
 ) -> str:
@@ -212,7 +259,7 @@ def test_dead_code_elimination_agrees_with_reference() -> None:
     for _ in range(1500):
         case = _Block(rng)
         original = list(case.ops)
-        sub = subroutine("main", [block(0, case.ops, return_())], parameters=case.parameters)
+        sub = subroutine("main", [block(0, case.ops, return_())], parameters=[case.number])
         context = Mock(effects=None)
         while remove_unused_variables(context, sub):
             pass

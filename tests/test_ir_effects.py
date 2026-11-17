@@ -442,6 +442,74 @@ def test_bounds_given_completed_operations() -> None:
         assert Effect.fails not in effects_of(op, bounds=given(op)), str(op)
 
 
+def test_reads_of_what_is_fixed_give_the_same_value() -> None:
+    first = register("first", PrimitiveIRType.bytes)
+    second = register("second", PrimitiveIRType.bytes)
+    other = register("other", PrimitiveIRType.bytes)
+    budget = register("budget")
+    budget_again = register("budget_again")
+    length = register("length")
+    is_long = register("is_long", PrimitiveIRType.bool)
+    ops = [
+        assign(first, intrinsic(AVMOp.txna, immediates=["ApplicationArgs", 1])),
+        assign(second, intrinsic(AVMOp.txna, immediates=["ApplicationArgs", 1])),
+        assign(other, intrinsic(AVMOp.txna, immediates=["ApplicationArgs", 2])),
+        assign(budget, intrinsic(AVMOp.global_, immediates=["OpcodeBudget"])),
+        assign(budget_again, intrinsic(AVMOp.global_, immediates=["OpcodeBudget"])),
+        assign(length, intrinsic(AVMOp.len_, first)),
+        assign(is_long, intrinsic(AVMOp.gte, length, uint64(64))),
+    ]
+    bounds = ValueBounds.of(subroutine("s", [block(0, ops, return_())]))
+    assert bounds.same_value(second) == bounds.same_value(first)
+    assert bounds.same_value(other) != bounds.same_value(first)
+    # the opcode budget is different each time
+    assert bounds.same_value(budget_again) != bounds.same_value(budget)
+
+    # what is known about one read holds for the other
+    given = bounds.given(non_zero=[is_long])
+    assert given.length(first) == (64, 4096)
+    assert given.length(second) == (64, 4096)
+    assert given.length(other) == ANY_LENGTH
+    given = bounds.given(completed=[intrinsic(AVMOp.extract, second, immediates=[32, 32])])
+    assert Effect.fails not in effects_of(
+        intrinsic(AVMOp.extract, first, immediates=[0, 64]), bounds=given
+    )
+
+
+def test_sum_within_length() -> None:
+    start = parameter("start")
+    size = parameter("size")
+    data = parameter("data", PrimitiveIRType.bytes)
+    other = parameter("other", PrimitiveIRType.bytes)
+    end = register("end")
+    length = register("length")
+    fits = register("fits", PrimitiveIRType.bool)
+    ops = [
+        assign(end, intrinsic(AVMOp.add, start, size)),
+        assign(length, intrinsic(AVMOp.len_, data)),
+        assign(fits, intrinsic(AVMOp.lte, end, length)),
+    ]
+    bounds = ValueBounds.of(
+        subroutine("s", [block(0, ops, return_())], parameters=[start, size, data, other])
+    )
+    part = intrinsic(AVMOp.extract3, data, start, size)
+    assert Effect.fails in effects_of(part, bounds=bounds)
+    given = bounds.given(non_zero=[fits])
+    assert given.sum_within(start, size, data)
+    assert given.sum_within(size, start, data)
+    assert Effect.fails not in effects_of(part, bounds=given)
+    # it is this sum and this byte array that the condition is about
+    assert not given.sum_within(start, start, data)
+    assert not given.sum_within(start, size, other)
+    assert Effect.fails in effects_of(intrinsic(AVMOp.extract3, other, start, size), bounds=given)
+    assert Effect.fails in effects_of(intrinsic(AVMOp.extract3, data, size, size), bounds=given)
+    # and it has to hold
+    assert not bounds.given(zero=[fits]).sum_within(start, size, data)
+    # bounds on the operands are enough as well
+    assert bounds.sum_within(uint64(2), uint64(2), bytes_(b"1234"))
+    assert not bounds.sum_within(uint64(2), uint64(3), bytes_(b"1234"))
+
+
 def test_bounds_given_conditions_do_not_reach_through_phi() -> None:
     # previous#1 = phi(0, current#0), where current#0 is read anew each time around the loop
     start = register("start")
