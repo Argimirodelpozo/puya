@@ -14,6 +14,10 @@ subroutine:
 * with `LinearMemory` declared (see `puya.options`), a word read takes the value an earlier word
   write put at the same address, and survives writes to other words at a known distance.
 
+With `fresh_allocations` promised, an allocation whose pointer never leaves the subroutine is a
+local object: nothing but a word write through that pointer can change it, so what is known about
+it survives calls and writes to other objects.
+
 What is known at the start of a block is what every predecessor agrees on; a block reached by a
 back edge starts with nothing.
 """
@@ -21,6 +25,8 @@ back edge starts with nothing.
 import functools
 import json
 import os
+import pathlib
+import re
 import typing
 from collections.abc import Iterator, Mapping, Sequence
 
@@ -31,6 +37,7 @@ from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext, ScratchEffects
 from puya.ir.optimize.dead_code_elimination import PURE_AVM_OPS
+from puya.ir.register_read_collector import RegisterReadCollector
 from puya.options import LinearMemory
 
 logger = log.get_logger(__name__)
@@ -41,6 +48,14 @@ _ZERO_WORD = b"\x00" * _WORD
 
 def keep_declared_accessors(context: IROptimizationContext, program: models.Program) -> None:
     """A declared word accessor has to stay a call for its calls to be recognised."""
+    declared = context.linear_memory = _declaration_for(context, program)
+    if declared is not None:
+        names = {declared.read_word, declared.read_word_uint64, declared.write_word}
+        if declared.fresh_allocations:
+            names.add(declared.alloc)
+        for sub in program.subroutines:
+            if sub.id in names and sub.inline is None:
+                sub.inline = False
     # experiment switch: subroutines to inline at every call (ids, or prefixes ending in *)
     forced = [n for n in os.environ.get("PUYA_INLINE_SUBROUTINES", "").split(",") if n]
     for sub in program.subroutines:
@@ -48,15 +63,6 @@ def keep_declared_accessors(context: IROptimizationContext, program: models.Prog
             sub.id.startswith(n[:-1]) if n.endswith("*") else sub.id == n for n in forced
         ):
             sub.inline = True
-    declared = _declared_memory(context.options.linear_memory)
-    if declared is None:
-        return
-    names = {declared.read_word, declared.read_word_uint64, declared.write_word}
-    if declared.fresh_allocations:
-        names.add(declared.alloc)
-    for sub in program.subroutines:
-        if sub.id in names and sub.inline is None:
-            sub.inline = False
 
 
 def analyse_scratch_effects(context: IROptimizationContext, program: models.Program) -> None:
@@ -131,7 +137,8 @@ def repeated_scratch_reads_elimination(
         for op in block.ops:
             if isinstance(op, models.Assignment) and len(op.targets) == 1:
                 definitions[op.targets[0]] = op.source
-    memory = _Memory(_declared_memory(context.options.linear_memory), definitions)
+    memory = _Memory(context.linear_memory, definitions)
+    memory.local = local_objects(subroutine, memory)
     known_at_end = dict[models.BasicBlock, _Known]()
     modified = False
     for block in _reverse_post_order(subroutine.entry):
@@ -147,10 +154,111 @@ def repeated_scratch_reads_elimination(
     return modified
 
 
-def _declared_memory(option: LinearMemory | None) -> LinearMemory | None:
-    # PUYA_LINEAR_MEMORY (the option as JSON) stands in for the option while a frontend cannot
-    # write it yet
-    return option or _memory_from_environment(os.environ.get("PUYA_LINEAR_MEMORY"))
+def local_objects(subroutine: models.Subroutine, memory: "_Memory") -> frozenset[models.Value]:
+    """The allocations of a subroutine whose pointer is only ever the address of a word access
+    inside the allocation.
+
+    Any other use lets the pointer leave: an argument, a stored value, a phi, a result, a
+    comparison, arithmetic other than adding or subtracting a constant. An access outside the
+    allocation reaches something else, so it counts as leaving too.
+    """
+    declared = memory.declared
+    if declared is None or not declared.fresh_allocations:
+        return frozenset()
+    fresh = dict[models.Value, int]()  # the allocation and its extent
+    for register, source in memory.definitions.items():
+        match source:
+            case models.InvokeSubroutine(target=target, args=[models.UInt64Constant(value=size)]):
+                if memory.role(target) == "alloc":
+                    fresh[register] = (size + _WORD - 1) // _WORD * _WORD
+    if not fresh:
+        return frozenset()
+    left = set[models.Value]()
+
+    def leave(values: typing.Iterable[models.Value]) -> None:
+        for value in values:
+            if isinstance(value, models.Register):
+                base = memory.address(value).base
+                if base in fresh:
+                    left.add(base)
+
+    def reads(node: models.IRVisitable) -> typing.Iterable[models.Value]:
+        collector = RegisterReadCollector()
+        node.accept(collector)
+        return collector.used_registers
+
+    accessors = ("read", "read64", "write", "write_range")
+    for block in subroutine.body:
+        for phi in block.phis:
+            leave(argument.value for argument in phi.args)
+        for op in block.ops:
+            node = op.source if isinstance(op, models.Assignment) else op
+            match node:
+                case models.Register():
+                    pass  # a copy: the uses of the copy decide
+                case models.Intrinsic(op=AVMOp.add, args=[models.UInt64Constant(), _]) | (
+                    models.Intrinsic(op=(AVMOp.add | AVMOp.sub), args=[_, models.UInt64Constant()])
+                ):
+                    pass  # an address at a constant distance: its uses decide
+                case models.InvokeSubroutine(target=target, args=[at, *others]) if (
+                    memory.role(target) in accessors
+                ):
+                    leave(others)
+                    address = memory.address(at)
+                    extent = fresh.get(address.base) if address.base is not None else None
+                    if extent is not None:
+                        count: int | None = 1
+                        if memory.role(target) == "write_range":
+                            words = memory.words(others[0])
+                            count = None if words is None else len(words)
+                        if (
+                            count is None
+                            or address.offset < 0
+                            or address.offset + _WORD * count > extent
+                        ):
+                            leave([at])  # outside the allocation: it reaches something else
+                case _:
+                    leave(reads(node))
+        if block.terminator is not None:
+            leave(reads(block.terminator))
+    return frozenset(fresh.keys() - left)
+
+
+def _declaration_for(
+    context: IROptimizationContext, program: models.Program
+) -> LinearMemory | None:
+    """The option, with two stand-ins for a frontend that cannot write it yet:
+    PUYA_LINEAR_MEMORY is the option as JSON, and PUYA_LINEAR_MEMORY_PROMISES_UNLESS is a pattern:
+    a program gets both promises unless one of its source files matches it (the frontend would
+    know which programs have code that computes memory addresses; this guesses it from the text).
+    """
+    declared = context.options.linear_memory or _memory_from_environment(
+        os.environ.get("PUYA_LINEAR_MEMORY")
+    )
+    pattern = os.environ.get("PUYA_LINEAR_MEMORY_PROMISES_UNLESS")
+    if declared is None or not pattern:
+        return declared
+    files = {
+        op.source_location.file
+        for sub in program.all_subroutines
+        for block in sub.body
+        for op in block.ops
+        if op.source_location is not None and op.source_location.file is not None
+    }
+    if not files or any(_source_matches(str(file), pattern) for file in files):
+        return declared
+    return attrs.evolve(declared, fresh_allocations=True, removable_allocations=True)
+
+
+@functools.cache
+def _source_matches(path: str, pattern: str) -> bool:
+    try:
+        text = pathlib.Path(path).read_text(errors="replace")
+    except OSError:
+        return True
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    text = re.sub(r"//[^\n]*", "", text)
+    return re.search(pattern, text) is not None
 
 
 @functools.cache
@@ -191,6 +299,8 @@ class _Memory:
 
     declared: LinearMemory | None
     definitions: Mapping[models.Register, models.ValueProvider]
+    local: frozenset[models.Value] = frozenset()
+    """allocations whose pointer never leaves the subroutine"""
 
     def role(self, callee: models.Subroutine) -> str | None:
         declared = self.declared
@@ -210,10 +320,12 @@ class _Memory:
 
     def address(self, value: models.Value) -> _Address:
         offset = 0
-        for _ in range(64):
+        while True:
+            value = self._copied(value)
             if isinstance(value, models.UInt64Constant):
                 return _Address(base=None, offset=offset + value.value)
-            match self._definition(value):
+            source = self.definitions.get(value) if isinstance(value, models.Register) else None
+            match source:
                 case models.Intrinsic(
                     op=AVMOp.add, args=[models.UInt64Constant(value=n), rest]
                 ) | (models.Intrinsic(op=AVMOp.add, args=[rest, models.UInt64Constant(value=n)])):
@@ -223,8 +335,16 @@ class _Memory:
                     offset -= n
                     value = rest
                 case _:
-                    break
-        return _Address(base=value, offset=offset)
+                    return _Address(base=value, offset=offset)
+
+    def _copied(self, value: models.Value) -> models.Value:
+        """What a register is a copy of; definitions hold no phi, so the chain ends."""
+        while isinstance(value, models.Register):
+            source = self.definitions.get(value)
+            if not isinstance(source, models.Value):
+                break
+            value = source
+        return value
 
     def is_word(self, value: models.Value) -> bool:
         """True if the value is what a word write stores for it: itself, unpadded."""
@@ -287,14 +407,8 @@ class _Memory:
         return None
 
     def _definition(self, value: models.Value) -> models.ValueProvider | None:
-        for _ in range(8):
-            if not isinstance(value, models.Register):
-                return None
-            source = self.definitions.get(value)
-            if not isinstance(source, models.Register):
-                return source
-            value = source
-        return None
+        value = self._copied(value)
+        return self.definitions.get(value) if isinstance(value, models.Register) else None
 
     def _is_zero_word(self, value: models.Value) -> bool:
         return self._zero_length(value) == _WORD
@@ -361,7 +475,7 @@ class _BlockVisitor:
             elif isinstance(op, models.Intrinsic):
                 self._statement(op)
             elif isinstance(op, models.WriteSlot):
-                self.known.clear()
+                self._scratch_written()
         return self.modified
 
     def _assignment(self, ass: models.Assignment) -> None:
@@ -376,7 +490,7 @@ class _BlockVisitor:
                 if stored is not None:
                     self._replace(ass, stored)
             case models.NewSlot():
-                self.known.clear()
+                self._scratch_written()
 
     def _statement(self, op: models.Intrinsic) -> None:
         match op:
@@ -387,13 +501,12 @@ class _BlockVisitor:
             ):
                 self._stored(slot, value)
             case models.Intrinsic(op=AVMOp.stores):
-                self.known.clear()
+                self._scratch_written()
 
     def _stored(self, slot: int, value: models.Value) -> None:
         # a store through a computed slot number might have been to this slot, and a subroutine
         # or a word might have read it
-        for key in [k for k in self.known if k[0] != "load" or k[1] == slot]:
-            del self.known[key]
+        self._forget(lambda key: self._is_local(key) or (key[0] == "load" and key[1] != slot))
         if isinstance(value, models.Constant):
             self.known["load", slot] = (value,)
 
@@ -416,7 +529,8 @@ class _BlockVisitor:
             address_value, value = call.args
             words = self.memory.words(value)
             if words is None:
-                self.known.clear()
+                target = self.memory.address(address_value).base
+                self._forget(lambda key: self._is_local(key) and key[1] != target)
             else:
                 self._words_written(self.memory.address(address_value), words)
         elif role == "alloc" and self.memory.declared and self.memory.declared.fresh_allocations:
@@ -425,7 +539,7 @@ class _BlockVisitor:
         else:
             effects = self.effects[call.target.id]
             if effects.writes:
-                self.known.clear()
+                self._scratch_written()
             elif effects.repeatable:
                 self._read(op, ("call", call.target.id, *call.args), targets=targets)
 
@@ -455,7 +569,10 @@ class _BlockVisitor:
                 return False
             _, base, offset, _ = key
             assert isinstance(offset, int)
-            return base == address.base and (offset + _WORD <= address.offset or offset >= end)
+            if base == address.base:
+                return offset + _WORD <= address.offset or offset >= end
+            # another object: a local one is not reachable through any other pointer
+            return base in self.memory.local or address.base in self.memory.local
 
         self._forget(survives)
         for index, word in enumerate(words):
@@ -463,6 +580,13 @@ class _BlockVisitor:
                 self.known["word", address.base, address.offset + _WORD * index, "written"] = (
                     word,
                 )
+
+    def _is_local(self, key: _Key) -> bool:
+        return key[0] == "word" and key[1] in self.memory.local
+
+    def _scratch_written(self) -> None:
+        """Something wrote scratch space that is not a word write through a known pointer."""
+        self._forget(self._is_local)
 
     def _forget(self, survives: typing.Callable[[_Key], bool]) -> None:
         for key in [k for k in self.known if not survives(k)]:

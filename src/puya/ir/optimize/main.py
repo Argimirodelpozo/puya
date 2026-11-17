@@ -34,7 +34,7 @@ from puya.ir.optimize.scratch_reads import (
     keep_declared_accessors,
     repeated_scratch_reads_elimination,
 )
-from puya.ir.optimize.scratch_writes import merge_word_writes
+from puya.ir.optimize.scratch_writes import merge_word_writes, remove_unread_word_writes
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
@@ -100,6 +100,7 @@ def get_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
         SubroutineOptimization.from_function(remove_unreachable_blocks),
         SubroutineOptimization.from_function(repeated_expression_elimination),
         SubroutineOptimization.from_function(repeated_scratch_reads_elimination),
+        SubroutineOptimization.from_function(remove_unread_word_writes),
         SubroutineOptimization.from_function(merge_word_writes),
         SubroutineOptimization.from_function(encode_decode_pair_elimination),
         SubroutineOptimization.from_function(merge_chained_aggregate_reads, min_level=0),

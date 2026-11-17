@@ -26,8 +26,17 @@ class LinearMemory:
     * `write_range(address, value)`: puts the bytes of `value` at `address`
     * `alloc(size) -> uint64`: moves the free-memory pointer and returns its earlier value
 
-    `fresh_allocations` promises that the free-memory pointer is not a word the program reaches
-    through a computed address, so `alloc` leaves what is known about such words alone.
+    `fresh_allocations` promises that `alloc` returns memory that only its result leads to: the
+    free-memory pointer is not a word the program reaches through a computed address, and two
+    allocations do not overlap. An allocation whose pointer never leaves a subroutine is then known
+    to change only through word writes to that pointer.
+
+    Both promises are the frontend's to give, program by program. They are false for a program
+    whose own code can compute a memory address or look at the free-memory pointer (inline
+    assembly): the optimizer cannot tell such code from the frontend's own accesses.
+
+    `removable_allocations` promises that nothing observes where an object is, so an allocation
+    whose pointer is not used can be dropped.
     """
 
     read_word: str | None = None
@@ -36,6 +45,7 @@ class LinearMemory:
     write_range: str | None = None
     alloc: str | None = None
     fresh_allocations: bool = False
+    removable_allocations: bool = False
 
 
 @attrs.frozen(kw_only=True)

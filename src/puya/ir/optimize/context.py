@@ -5,6 +5,7 @@ import attrs
 from puya.context import ArtifactCompileContext
 from puya.ir import models
 from puya.ir._puya_lib import PuyaLibIR
+from puya.options import LinearMemory
 
 
 @attrs.frozen
@@ -28,3 +29,5 @@ class IROptimizationContext(ArtifactCompileContext):
     """by subroutine id; None until analysed"""
     program_subroutines: Mapping[str, models.Subroutine] | None = None
     """by subroutine id; None until analysed"""
+    linear_memory: LinearMemory | None = None
+    """the declaration in force for the program being optimized"""

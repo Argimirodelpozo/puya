@@ -18,7 +18,8 @@ from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.dead_code_elimination import PURE_AVM_OPS
-from puya.ir.optimize.scratch_reads import _WORD, _Address, _declared_memory, _Memory
+from puya.ir.optimize.scratch_reads import _WORD, _Address, _Memory, local_objects
+from puya.ir.register_read_collector import RegisterReadCollector
 
 logger = log.get_logger(__name__)
 
@@ -40,7 +41,7 @@ _PURE_SOURCES = (
 
 
 def merge_word_writes(context: IROptimizationContext, subroutine: models.Subroutine) -> bool:
-    declared = _declared_memory(context.options.linear_memory)
+    declared = context.linear_memory
     subroutines = context.program_subroutines
     if declared is None or subroutines is None or declared.write_range is None:
         return False
@@ -62,6 +63,76 @@ def merge_word_writes(context: IROptimizationContext, subroutine: models.Subrout
     for block in subroutine.body:
         modified |= merger.merge(block)
     return modified
+
+
+def remove_unread_word_writes(
+    context: IROptimizationContext, subroutine: models.Subroutine
+) -> bool:
+    """A word of a local object (see `scratch_reads`) that no read in the subroutine can see does
+    not need its writes, and an allocation whose pointer is not used does not need to happen.
+    """
+    declared = context.linear_memory
+    if declared is None or not declared.fresh_allocations:
+        return False
+    memory = _Memory(declared, _definitions(subroutine))
+    local = local_objects(subroutine, memory)
+    if not local:
+        return False
+    read = dict[models.Value, list[int]]()
+    for block in subroutine.body:
+        for op in block.ops:
+            node = op.source if isinstance(op, models.Assignment) else op
+            if isinstance(node, models.InvokeSubroutine) and memory.role(node.target) in (
+                "read",
+                "read64",
+            ):
+                address = memory.address(node.args[0])
+                read.setdefault(address.base, []).append(address.offset)
+    modified = False
+    for block in subroutine.body:
+        for op in block.ops.copy():
+            if not isinstance(op, models.InvokeSubroutine) or len(op.args) != 2:
+                continue
+            role = memory.role(op.target)
+            if role == "write":
+                length = _WORD
+            elif role == "write_range" and (words := memory.words(op.args[1])) is not None:
+                length = _WORD * len(words)
+            else:
+                continue
+            address = memory.address(op.args[0])
+            if address.base in local and not any(
+                at < address.offset + length and address.offset < at + _WORD
+                for at in read.get(address.base, ())
+            ):
+                logger.debug(f"removing unread write {op}", location=op.source_location)
+                block.ops.remove(op)
+                modified = True
+    if declared.removable_allocations:
+        collector = RegisterReadCollector()
+        collector.visit_all_blocks(subroutine.body)
+        used = set(collector.used_registers)
+        for block in subroutine.body:
+            for op in block.ops.copy():
+                if (
+                    isinstance(op, models.Assignment)
+                    and isinstance(op.source, models.InvokeSubroutine)
+                    and memory.role(op.source.target) == "alloc"
+                    and not any(target in used for target in op.targets)
+                ):
+                    logger.debug(f"removing unused allocation {op}", location=op.source_location)
+                    block.ops.remove(op)
+                    modified = True
+    return modified
+
+
+def _definitions(subroutine: models.Subroutine) -> dict[models.Register, models.ValueProvider]:
+    definitions = dict[models.Register, models.ValueProvider]()
+    for block in subroutine.body:
+        for op in block.ops:
+            if isinstance(op, models.Assignment) and len(op.targets) == 1:
+                definitions[op.targets[0]] = op.source
+    return definitions
 
 
 def _next_versions(subroutine: models.Subroutine) -> dict[str, int]:
