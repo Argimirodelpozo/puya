@@ -9,7 +9,7 @@ from puya.context import CompileContext
 from puya.errors import InternalError
 from puya.ir import models
 from puya.ir.optimize.assignments import copy_propagation
-from puya.ir.optimize.dead_code_elimination import PURE_AVM_OPS
+from puya.ir.optimize.effects import DETERMINISTIC, effects_of
 from puya.ir.visitor import NoOpIRVisitor
 
 logger = log.get_logger(__name__)
@@ -95,7 +95,11 @@ class RCEVisitor(NoOpIRVisitor[None]):
     def visit_intrinsic_op(self, intrinsic: models.Intrinsic) -> None:
         # only consider ops with stack args because they're much more likely to
         # produce extra stack manipulations
-        if self._assignment is not None and intrinsic.args and intrinsic.op.code in PURE_AVM_OPS:
+        if (
+            self._assignment is not None
+            and intrinsic.args
+            and not (effects_of(intrinsic) & ~DETERMINISTIC)
+        ):
             # can't use .freeze() as we want to exclude error_message for the key,
             # and evolving the intrinsic to remove the message is slow
             key = (

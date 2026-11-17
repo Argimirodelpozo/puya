@@ -1,123 +1,27 @@
 import itertools
-import typing
 
-from puya import algo_constants, log
+from puya import log
 from puya.context import CompileContext
 from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize._utils import SSAReadTracker
+from puya.ir.optimize.effects import Effect, effects_of
 
 logger = log.get_logger(__name__)
-
-
-# "conservative" sets of fields that can't fail/change
-# and are therefore safely movable by this pass
-_MOVABLE_TXN_FIELDS: typing.Final = frozenset(
-    {
-        # excluded:
-        # - FirstValidTime: fails if negative (technically can't fail in mainnet)
-        # - NumLogs, LastLog, CreatedAssetID, CreatedApplicationID:
-        #   reading these effects from the current transaction always fails
-        "Sender",
-        "Fee",
-        "FirstValid",
-        "LastValid",
-        "Note",
-        "Lease",
-        "Receiver",
-        "Amount",
-        "CloseRemainderTo",
-        "VotePK",
-        "SelectionPK",
-        "VoteFirst",
-        "VoteLast",
-        "VoteKeyDilution",
-        "Type",
-        "TypeEnum",
-        "XferAsset",
-        "AssetAmount",
-        "AssetSender",
-        "AssetReceiver",
-        "AssetCloseTo",
-        "GroupIndex",
-        "TxID",
-        "ApplicationID",
-        "OnCompletion",
-        "NumAppArgs",
-        "NumAccounts",
-        "ApprovalProgram",
-        "ClearStateProgram",
-        "RekeyTo",
-        "ConfigAsset",
-        "ConfigAssetTotal",
-        "ConfigAssetDecimals",
-        "ConfigAssetDefaultFrozen",
-        "ConfigAssetUnitName",
-        "ConfigAssetName",
-        "ConfigAssetURL",
-        "ConfigAssetMetadataHash",
-        "ConfigAssetManager",
-        "ConfigAssetReserve",
-        "ConfigAssetFreeze",
-        "ConfigAssetClawback",
-        "FreezeAsset",
-        "FreezeAssetAccount",
-        "FreezeAssetFrozen",
-        "NumAssets",
-        "NumApplications",
-        "GlobalNumUint",
-        "GlobalNumByteSlice",
-        "LocalNumUint",
-        "LocalNumByteSlice",
-        "ExtraProgramPages",
-        "Nonparticipation",
-        "StateProofPK",
-        "NumApprovalProgramPages",
-        "NumClearStateProgramPages",
-        "RejectVersion",
-    }
-)
-_MOVABLE_GLOBAL_FIELDS: typing.Final = frozenset(
-    {
-        # excluded:
-        # - OpcodeBudget: value depends on position
-        # - LatestTimestamp: fails if negative
-        "MinTxnFee",
-        "MinBalance",
-        "MaxTxnLife",
-        "ZeroAddress",
-        "GroupSize",
-        "LogicSigVersion",
-        "Round",
-        "CurrentApplicationID",
-        "CreatorAddress",
-        "CurrentApplicationAddress",
-        "GroupID",
-        "CallerApplicationID",
-        "CallerApplicationAddress",
-        "AssetCreateMinBalance",
-        "AssetOptInMinBalance",
-        "GenesisHash",
-        "PayoutsEnabled",
-        "PayoutsGoOnlineFee",
-        "PayoutsPercent",
-        "PayoutsMinBalance",
-        "PayoutsMaxBalance",
-    }
-)
 
 
 def _is_unconditionally_movable(intrinsic: models.Intrinsic) -> bool:
     # reads no registers, has no side effects and cannot fail, so may be moved anywhere
     match intrinsic:
-        case models.Intrinsic(op=AVMOp.bzero, args=[models.UInt64Constant(value=size)]):
-            return size <= algo_constants.MAX_BYTES_LENGTH
-        case models.Intrinsic(op=AVMOp.itob, args=[models.Constant()]):
-            return True
-        case models.Intrinsic(op=AVMOp.txn, immediates=[field]):
-            return field in _MOVABLE_TXN_FIELDS
-        case models.Intrinsic(op=AVMOp.global_, immediates=[field]):
-            return field in _MOVABLE_GLOBAL_FIELDS
+        case (
+            models.Intrinsic(op=AVMOp.bzero, args=[models.UInt64Constant()])
+            | models.Intrinsic(op=AVMOp.itob, args=[models.Constant()])
+            | models.Intrinsic(op=(AVMOp.txn | AVMOp.global_))
+        ):
+            # a transaction or global field that is fixed while the program runs is all it
+            # may depend on: this leaves out fields that can fail, and the opcode budget,
+            # whose value depends on where it is read
+            return not (effects_of(intrinsic) & ~Effect.reads_txn)
         case _:
             return False
 

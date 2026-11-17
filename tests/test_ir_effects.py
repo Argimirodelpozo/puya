@@ -12,6 +12,7 @@ from puya.ir.optimize.effects import (
     effects_of,
     observers_of,
 )
+from puya.ir.optimize.sink_single_use_intrinsics import _is_unconditionally_movable
 from puya.ir.optimize.value_bounds import ANY_LENGTH, ANY_UINT64, ValueBounds
 from puya.ir.types_ import PrimitiveIRType, SizedBytesType, SlotType
 from tests.utils.ir import (
@@ -665,3 +666,25 @@ def test_summary_of_recursion_and_loops() -> None:
     # as does a loop that does not end
     assert summaries.of(looping) == Effect.fails
     assert summaries.of(caller) == Effect.writes_scratch | Effect.fails
+
+
+def test_movable_intrinsics_cannot_fail() -> None:
+    movable = [
+        intrinsic(AVMOp.bzero, uint64(32)),
+        intrinsic(AVMOp.itob, uint64(1)),
+        intrinsic(AVMOp.txn, immediates=["Sender"]),
+        intrinsic(AVMOp.global_, immediates=["CurrentApplicationAddress"]),
+    ]
+    not_movable = [
+        intrinsic(AVMOp.bzero, uint64(4097)),
+        intrinsic(AVMOp.bzero, _a),
+        intrinsic(AVMOp.txn, immediates=["FirstValidTime"]),
+        intrinsic(AVMOp.txn, immediates=["CreatedApplicationID"]),
+        intrinsic(AVMOp.global_, immediates=["LatestTimestamp"]),
+        intrinsic(AVMOp.global_, immediates=["OpcodeBudget"]),
+    ]
+    for op in movable:
+        assert _is_unconditionally_movable(op), str(op)
+        assert not effects_of(op) & OBSERVABLE, str(op)
+    for op in not_movable:
+        assert not _is_unconditionally_movable(op), str(op)
