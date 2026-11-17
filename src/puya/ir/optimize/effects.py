@@ -803,12 +803,16 @@ class BoxChanges:
     shrinks: bool = False
     """True if one of its writes of words may delete a box or make one shorter: a write
     that is not a word write of a page"""
+    boxes: frozenset[bytes] = frozenset()
+    """the boxes with a constant name that it may change with a box op, in any way: it may
+    change no other box, unless `words` or `other` say so"""
 
     def __or__(self, other: "BoxChanges") -> "BoxChanges":
         return BoxChanges(
             words=self.words | other.words,
             other=self.other or other.other,
             shrinks=self.shrinks or other.shrinks,
+            boxes=self.boxes | other.boxes,
         )
 
 
@@ -1027,9 +1031,7 @@ def analyse_subroutine_effects(
         component_effects[component] = effects
         for member in members:
             summaries[member] = effects
-    if storage is None:
-        return EffectSummaries(summaries)
-    declared = _declared_storage(storage, program, summaries)
+    declared = None if storage is None else _declared_storage(storage, program, summaries)
     changes, reads = _box_changes_and_reads(program, declared, summaries)
     return EffectSummaries(summaries, changes, reads, declared)
 
@@ -1065,7 +1067,7 @@ def _declared_storage(
 
 
 def _box_changes_and_reads(
-    program: models.Program, storage: DeclaredStorage, summaries: Mapping[str, Effect]
+    program: models.Program, storage: DeclaredStorage | None, summaries: Mapping[str, Effect]
 ) -> tuple[dict[str, BoxChanges], dict[str, BoxReads]]:
     """What each subroutine may change in boxes and what it may read of them: itself, and
     through the subroutines it calls."""
@@ -1073,6 +1075,9 @@ def _box_changes_and_reads(
     reads = dict[str, BoxReads]()
     callees = dict[str, set[str]]()
     uses_boxes = BOX_CHANGES | _READS_BOXES
+    if not any(effects & uses_boxes for effects in summaries.values()):
+        # what the effects of each subroutine say is all there is to say
+        return changes, reads
     for subroutine in program.all_subroutines:
         if summaries.get(subroutine.id, EVERYTHING) & uses_boxes:
             changes[subroutine.id], reads[subroutine.id], callees[subroutine.id] = _local_box_use(
@@ -1097,18 +1102,36 @@ def _box_changes_and_reads(
     return changes, reads
 
 
+# the ops that change the box that their first operand names, and no other
+_CHANGE_NAMED_BOX: typing.Final = frozenset(
+    (
+        AVMOp.box_create,
+        AVMOp.box_put,
+        AVMOp.box_replace,
+        AVMOp.box_splice,
+        AVMOp.box_resize,
+        AVMOp.box_del,
+    )
+)
+
+
 def _local_box_use(
-    subroutine: models.Subroutine, storage: DeclaredStorage, summaries: Mapping[str, Effect]
+    subroutine: models.Subroutine,
+    storage: DeclaredStorage | None,
+    summaries: Mapping[str, Effect],
 ) -> tuple[BoxChanges, BoxReads, set[str]]:
     """What the operations of a subroutine may change in boxes and read of them, and the
     subroutines it calls that use boxes in ways that are theirs to tell."""
-    values = SlotValues.of(subroutine, storage.roles)
+    roles = storage.roles if storage is not None else {}
+    pages_are_boxes = storage is not None and storage.pages_are_boxes
+    values = SlotValues.of(subroutine, roles)
     changes = NO_BOX_CHANGE
     reads = NO_BOX_READ
     callees = set[str]()
     for block in subroutine.body:
         written = set[SlotWrite]()
         read = set[SlotWrite]()
+        boxes = set[bytes]()
         other_change = other_read = shrinks = False
         block_callees = set[str]()
         may_exit = False
@@ -1118,7 +1141,7 @@ def _local_box_use(
                 target = node.target.id
                 effects = summaries.get(target, EVERYTHING)
                 may_exit = may_exit or Effect.exits in effects
-                role = storage.roles.get(target)
+                role = roles.get(target)
                 if role in WRITE_ROLES:
                     # a write through a declared subroutine changes the words it names and
                     # no others, whatever the subroutine does to boxes to get there, and
@@ -1134,12 +1157,15 @@ def _local_box_use(
             else:
                 effects = effects_of(node)
                 if effects & BOX_CHANGES:
-                    replaced = values.page_word_replaced(node) if storage.pages_are_boxes else None
-                    if replaced is None:
-                        other_change = True
-                    else:
+                    replaced = values.page_word_replaced(node) if pages_are_boxes else None
+                    name = _changed_box(node)
+                    if replaced is not None:
                         slot, _ = replaced
                         written.add(values.kind(slot, 1))
+                    elif name is not None:
+                        boxes.add(name)
+                    else:
+                        other_change = True
                 if effects & _READS_BOXES:
                     # this includes every op that changes a box: each fails or not by the
                     # size of the box
@@ -1147,10 +1173,25 @@ def _local_box_use(
         if isinstance(block.terminator, models.Fail) and not may_exit:
             # everything a failing program did is undone, and nothing it read is of use
             continue
-        changes |= BoxChanges(words=frozenset(written), other=other_change, shrinks=shrinks)
+        changes |= BoxChanges(
+            words=frozenset(written),
+            other=other_change,
+            shrinks=shrinks,
+            boxes=frozenset(boxes),
+        )
         reads |= BoxReads(words=frozenset(read), other=other_read)
         callees |= block_callees
     return changes, reads, callees
+
+
+def _changed_box(node: models.IRVisitable) -> bytes | None:
+    """The name of the one box that an op may change, if that is a constant."""
+    match node:
+        case models.Intrinsic(op=op, args=[models.Constant() as name, *_]) if (
+            op in _CHANGE_NAMED_BOX
+        ):
+            return get_bytes_constant(name)
+    return None
 
 
 def _local_effects(subroutine: models.Subroutine) -> tuple[Effect, set[str]]:

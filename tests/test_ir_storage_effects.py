@@ -197,17 +197,20 @@ def test_summary_says_which_words_a_subroutine_may_write() -> None:
     )
     slot_five = SlotWrite(constant=5)
 
-    def writes(*words: SlotWrite, other: bool = False) -> BoxChanges:
+    def writes(*words: SlotWrite) -> BoxChanges:
         # a write that is not a word write of a page may delete a box or make one shorter
-        return BoxChanges(words=frozenset(words), other=other, shrinks=True)
+        return BoxChanges(words=frozenset(words), shrinks=True)
 
     assert summaries.box_changes(constant_writer) == writes(slot_five)
     assert summaries.box_changes(unknown_writer) == writes(ANY_SLOT)
     assert summaries.box_changes(hashed_writer) == writes(SlotWrite(ending=b"balances"))
-    assert summaries.box_changes(box_writer) == ANY_BOX_CHANGE
+    # a box op changes the box that it names
+    assert summaries.box_changes(box_writer) == BoxChanges(boxes=frozenset({b"key"}))
     assert summaries.box_changes(reader) == NO_BOX_CHANGE
     assert summaries.box_changes(indirect_writer) == writes(slot_five)
-    assert summaries.box_changes(both) == writes(slot_five, other=True)
+    assert summaries.box_changes(both) == BoxChanges(
+        words=frozenset({slot_five}), shrinks=True, boxes=frozenset({b"key"})
+    )
     assert summaries.box_changes(failing_writer) == NO_BOX_CHANGE
     # what each of them may read of boxes
     assert summaries.box_reads(reader) == BoxReads(words=frozenset({slot_five}))

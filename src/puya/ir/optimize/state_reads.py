@@ -12,8 +12,14 @@ may do, and `changed_by` says which of those effects change what a subroutine re
   constant against another constant, one base at another distance, and whatever the declaration
   promises to be apart. Which words a call may write is in the summary of its target.
 
-A read that is removed could not have failed: the same slot, or the same call, succeeded earlier
-on every path, and nothing since could have taken its box away.
+* a repeated `box_len`, `box_get` or `box_extract` takes the earlier result, and a
+  `box_extract` of bytes that a `box_replace` put there takes those bytes. A box op forgets
+  only what it can change: nothing of a box with another constant name, not the length of a
+  box if it only replaces bytes, and not the bytes of another part of the same box. A call
+  forgets what the summary of its target says it may change.
+
+A read that is removed could not have failed: the same slot, the same call or the same box op
+succeeded earlier on every path, and nothing since could have taken its box away.
 
 `replaced_word_writes_elimination` removes a word write that another write to the same slot
 replaces before anything can tell that it happened, where the later write fails whenever the
@@ -37,6 +43,7 @@ from puya import log
 from puya.avm import AVMType
 from puya.errors import InternalError
 from puya.ir import models
+from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.effects import (
@@ -97,6 +104,20 @@ class _Word:
 
 
 _CallKey = tuple[str, tuple[models.Value, ...]]
+_BoxRead = tuple[AVMOp, tuple[object, ...]]
+"""A box op that reads, and its operands: the bytes or the number of a constant, or the
+value"""
+_BOX_READS: typing.Final = frozenset((AVMOp.box_len, AVMOp.box_get, AVMOp.box_extract))
+_BOX_WRITES: typing.Final = frozenset(
+    (
+        AVMOp.box_create,
+        AVMOp.box_put,
+        AVMOp.box_replace,
+        AVMOp.box_splice,
+        AVMOp.box_resize,
+        AVMOp.box_del,
+    )
+)
 
 
 @attrs.frozen
@@ -116,6 +137,8 @@ class _Known:
     pages: dict[bytes, _Page] = attrs.field(factory=dict)
     covered: dict[bytes, int] = attrs.field(factory=dict)
     """by page: a number of bytes its box is at least long"""
+    boxes: dict[_BoxRead, tuple[models.Value, ...]] = attrs.field(factory=dict)
+    """by box op that reads, with its operands: what it gave, or would give now"""
 
     @classmethod
     def agreed(cls, states: Sequence["_Known"]) -> "_Known":
@@ -135,10 +158,10 @@ class _Known:
                 pages[key] = _Page(reader=page.reader, written=written)
         words = dict[Slot, _Word]()
         for slot, word in first.words.items():
-            others = [o.words.get(slot) for o in rest]
-            if all(o is not None and (o.value, o.form) == (word.value, word.form) for o in others):
+            same = [o.words.get(slot) for o in rest]
+            if all(w is not None and (w.value, w.form) == (word.value, word.form) for w in same):
                 outside_zero = word.outside_zero
-                for other in others:
+                for other in same:
                     if outside_zero is None or other is None or other.outside_zero is None:
                         outside_zero = None
                     else:
@@ -147,6 +170,7 @@ class _Known:
         return cls(
             words=words,
             calls={k: v for k, v in first.calls.items() if all(o.calls.get(k) == v for o in rest)},
+            boxes={k: v for k, v in first.boxes.items() if all(o.boxes.get(k) == v for o in rest)},
             pages=pages,
             covered=covered,
         )
@@ -220,6 +244,8 @@ def _has_reads(subroutine: models.Subroutine, summaries: EffectSummaries) -> boo
             if isinstance(node, models.InvokeSubroutine) and is_repeatable(
                 summaries.of(node.target)
             ):
+                return True
+            if isinstance(node, models.Intrinsic) and node.op in _BOX_READS:
                 return True
     return False
 
@@ -592,10 +618,99 @@ class _Follower:
         if isinstance(node, models.Value):
             return None
         effects = self.effects_of(node)
+        replacement = None
+        if isinstance(node, models.Intrinsic) and node.op in _BOX_READS:
+            replacement = self._box_read(op, node, known)
+        elif isinstance(node, models.Intrinsic) and node.op in _BOX_WRITES:
+            self._box_written(node, known)
+        elif effects & BOX_CHANGES:
+            known.boxes.clear()
         if effects & BOX_CHANGES and not self._page_word_replaced(node, known):
             self._boxes_changed(effects, known)
         self._forget_calls(effects, known)
-        return None
+        return replacement
+
+    def _box_read(
+        self, op: models.Op, read: models.Intrinsic, known: _Known
+    ) -> Sequence[models.Op] | None:
+        """A box op that reads takes what the same op gave before, or what a write left."""
+        if not isinstance(op, models.Assignment):
+            return None
+        key = (read.op, tuple(map(self._plain, read.args)))
+        targets = tuple(op.targets)
+        earlier = known.boxes.get(key)
+        if (
+            earlier is None
+            or len(earlier) != len(targets)
+            or any(
+                target.ir_type.maybe_avm_type != value.ir_type.maybe_avm_type
+                for target, value in zip(targets, earlier, strict=True)
+            )
+        ):
+            known.boxes[key] = targets
+            return None
+        self._log(f"replacing {op} with what is known of the box", op)
+        return [
+            models.Assignment(targets=[target], source=value, source_location=op.source_location)
+            for target, value in zip(targets, earlier, strict=True)
+        ]
+
+    def _box_written(self, write: models.Intrinsic, known: _Known) -> None:
+        """A box op that changes the box that it names: what is known of a box that is
+        certainly another one stays, and of the same box, what the op cannot change."""
+        name, *operands = map(self._plain, write.args)
+        location = write.source_location
+        # where a `box_replace` puts its bytes
+        start = stop = None
+        if write.op is AVMOp.box_replace:
+            length = self.values.exact_length(write.args[2])
+            if isinstance(operands[0], int) and length is not None:
+                start, stop = operands[0], operands[0] + length
+        for read in list(known.boxes):
+            op, (other, *at) = read
+            if isinstance(name, bytes) and isinstance(other, bytes) and name != other:
+                continue  # another box
+            if write.op is AVMOp.box_replace:
+                if op is AVMOp.box_len:
+                    continue  # no box is created, deleted or resized
+                if (
+                    op is AVMOp.box_extract
+                    and other == name
+                    and start is not None
+                    and stop is not None
+                    and isinstance(at[0], int)
+                    and isinstance(at[1], int)
+                    and (at[0] + at[1] <= start or stop <= at[0])
+                ):
+                    continue  # another part of the box
+            del known.boxes[read]
+        # what the op leaves
+        true = models.UInt64Constant(value=1, ir_type=PrimitiveIRType.bool, source_location=None)
+        match write.op:
+            case AVMOp.box_replace if start is not None and stop is not None:
+                extract = (AVMOp.box_extract, (name, start, stop - start))
+                known.boxes[extract] = (write.args[2],)
+            case AVMOp.box_put:
+                value = write.args[1]
+                known.boxes[AVMOp.box_get, (name,)] = (value, true)
+                length = self.values.exact_length(value)
+                if length is not None:
+                    known.boxes[AVMOp.box_len, (name,)] = (_uint64(length, location), true)
+            case AVMOp.box_create | AVMOp.box_resize:
+                # the box is there with that size, or the op has failed
+                known.boxes[AVMOp.box_len, (name,)] = (write.args[1], true)
+
+    def _plain(self, value: models.Value) -> object:
+        """An operand of a box op, such that two operands that are certainly the same are
+        equal."""
+        value = self.values.copied(value)
+        if isinstance(value, models.UInt64Constant):
+            return value.value
+        if isinstance(value, models.Constant):
+            constant = get_bytes_constant(value)
+            if constant is not None:
+                return constant
+        return value
 
     def effects_of(self, node: models.IRVisitable) -> Effect:
         """What an operation that is not a call may do, other than fail."""
@@ -679,7 +794,15 @@ class _Follower:
         written = None
         if effects & BOX_CHANGES:
             changes = self.summaries.box_changes(call.target)
-            if changes.other:
+            if changes.other or changes.words:
+                # a word is kept in a box that only its subroutines know
+                known.boxes.clear()
+            else:
+                for read in [
+                    r for r in known.boxes if not self._other_box(r[1][0], changes.boxes)
+                ]:
+                    del known.boxes[read]
+            if changes.other or changes.boxes:
                 self._boxes_changed(effects, known)
             else:
                 written = changes.words
@@ -715,6 +838,11 @@ class _Follower:
             models.Assignment(targets=[target], source=value, source_location=op.source_location)
             for target, value in zip(targets, earlier, strict=True)
         ]
+
+    @staticmethod
+    def _other_box(name: object, boxes: Iterable[bytes]) -> bool:
+        """True if a box is certainly none of the given ones."""
+        return isinstance(name, bytes) and name not in boxes
 
     def _log(self, message: str, op: models.Op) -> None:
         if self.mode == "rewrite":
@@ -810,6 +938,8 @@ class _Follower:
     ) -> Sequence[models.Op] | None:
         written = self.values.written(role, call)
         effects = self.summaries.of(call.target)
+        # a word is kept in a box that only its subroutines know
+        known.boxes.clear()
         if written is None:
             self._forget_calls(effects, known, [ANY_SLOT])
             known.words.clear()
