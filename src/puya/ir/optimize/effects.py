@@ -88,6 +88,9 @@ class Effect(enum.Flag):
     arguments, block headers and the global fields other than the opcode budget"""
     reads_ledger = enum.auto()
     """reads accounts, assets or other applications, including their state and boxes"""
+    reads_balance = enum.auto()
+    """reads the balance or the minimum balance of an account, or what else an account is
+    charged for: the minimum balance of the application account follows its boxes"""
     writes_ledger = enum.auto()
     """changes accounts, assets or other applications, or the parameters of this one"""
     reads_budget = enum.auto()
@@ -110,6 +113,7 @@ READS: typing.Final = (
     | Effect.reads_box_size
     | Effect.reads_txn
     | Effect.reads_ledger
+    | Effect.reads_balance
     | Effect.reads_budget
     | Effect.reads_itxn
 )
@@ -135,7 +139,8 @@ _CHANGED_BY: typing.Final[Mapping[Effect, Effect]] = {
     Effect.reads_box: Effect.writes_box | _BOX_ALLOCATION,
     Effect.reads_box_size: _BOX_ALLOCATION,
     Effect.reads_txn: Effect.none,
-    Effect.reads_ledger: Effect.writes_ledger | _BOX_ALLOCATION,
+    Effect.reads_ledger: Effect.writes_ledger,
+    Effect.reads_balance: Effect.writes_ledger | _BOX_ALLOCATION,
     Effect.reads_budget: EVERYTHING,
     Effect.reads_itxn: Effect.submits_itxn,
 }
@@ -183,6 +188,7 @@ _INNER_TRANSACTIONS: typing.Final = (
     | Effect.reads_box
     | Effect.reads_box_size
     | Effect.reads_ledger
+    | Effect.reads_balance
     | Effect.writes_ledger
     | Effect.writes_box
     | _BOX_ALLOCATION
@@ -317,9 +323,6 @@ _INTRINSIC_EFFECTS: typing.Final[Mapping[AVMOp, Effect]] = {
     ),
     **dict.fromkeys(
         (
-            AVMOp.balance,
-            AVMOp.min_balance,
-            AVMOp.acct_params_get,
             AVMOp.app_params_get,
             AVMOp.asset_params_get,
             AVMOp.asset_holding_get,
@@ -328,6 +331,15 @@ _INTRINSIC_EFFECTS: typing.Final[Mapping[AVMOp, Effect]] = {
             AVMOp.voter_params_get,
         ),
         Effect.reads_ledger,
+    ),
+    # an account is charged for the boxes of its application, so these change with them
+    **dict.fromkeys(
+        (
+            AVMOp.balance,
+            AVMOp.min_balance,
+            AVMOp.acct_params_get,
+        ),
+        Effect.reads_ledger | Effect.reads_balance,
     ),
     AVMOp.app_params_set: Effect.writes_ledger,
     # scratch space

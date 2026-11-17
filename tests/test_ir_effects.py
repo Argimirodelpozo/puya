@@ -134,7 +134,10 @@ _key = bytes_(b"key")
             Effect.reads_box_size | Effect.deletes_box | Effect.fails,
         ),
         # the ledger
-        (intrinsic(AVMOp.min_balance, _a), Effect.reads_ledger | Effect.fails),
+        (
+            intrinsic(AVMOp.min_balance, _a),
+            Effect.reads_ledger | Effect.reads_balance | Effect.fails,
+        ),
         # logs
         (intrinsic(AVMOp.log, _data), Effect.logs | Effect.fails),
         # inner transactions
@@ -626,14 +629,24 @@ def test_which_writes_change_which_reads() -> None:
     assert not changed_by(Effect.reads_box_size) & Effect.writes_box
     assert changed_by(Effect.reads_box) & Effect.writes_box
     # creating, resizing or deleting a box moves the minimum balance of the application account
-    assert changed_by(Effect.reads_ledger) & Effect.allocates_box
-    assert changed_by(Effect.reads_ledger) & Effect.deletes_box
+    assert changed_by(Effect.reads_balance) & Effect.allocates_box
+    assert changed_by(Effect.reads_balance) & Effect.deletes_box
+    # and nothing else that is read from the ledger
+    assert changed_by(Effect.reads_ledger) == Effect.writes_ledger
+    assert Effect.reads_balance in effects_of(intrinsic(AVMOp.balance, _a))
+    assert Effect.reads_balance not in effects_of(intrinsic(AVMOp.app_opted_in, _a, _b))
     assert observers_of(Effect.allocates_box) == (
-        Effect.reads_box | Effect.reads_box_size | Effect.reads_ledger
+        Effect.reads_box | Effect.reads_box_size | Effect.reads_balance
     )
     assert observers_of(Effect.writes_global) == Effect.reads_global
     # nothing an operation reads is lost when it is removed
-    for read in (Effect.reads_scratch, Effect.reads_box, Effect.reads_ledger, Effect.reads_txn):
+    for read in (
+        Effect.reads_scratch,
+        Effect.reads_box,
+        Effect.reads_ledger,
+        Effect.reads_balance,
+        Effect.reads_txn,
+    ):
         assert not read & OBSERVABLE
     assert Effect.fails & OBSERVABLE
     assert Effect.exits & OBSERVABLE

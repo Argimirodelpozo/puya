@@ -58,8 +58,8 @@ class SlotStorage:
     `overwritten_writes_removable` promises that the program does not depend on a write that
     is replaced before anything can tell. A write through one of these subroutines, followed
     by a write through the same subroutine to the same slot, may be left out if no operation
-    between the two reads a box or the ledger (a balance or a minimum balance, which follows
-    the sizes of the boxes), submits an inner transaction or can end the program. This is a
+    between the two reads a box, a balance or a minimum balance (which follows the sizes of
+    the boxes), submits an inner transaction or can end the program. This is a
     promise about more than the words: either the later write fails wherever the earlier one
     would have and the two leave the boxes as the later one alone does, whatever the values
     are, or the program does not depend on the difference. For a word of a page with

@@ -72,8 +72,8 @@ logger = log.get_logger(__name__)
 _CHANGES_BOX_SIZE: typing.Final = Effect.allocates_box | Effect.deletes_box
 # the effects that change something a subroutine may read
 _CHANGES_STATE: typing.Final = changed_by(READS & ~Effect.reads_budget)
-# the effects of an operation that can tell whether a box has changed: it reads a box, or the
-# ledger, where the minimum balance of the application account follows the sizes of its boxes
+# the effects of an operation that can tell whether a box has changed: it reads a box, or a
+# balance, where the minimum balance of the application account follows the sizes of its boxes
 _TELLS_BOX_CHANGES: typing.Final = observers_of(BOX_CHANGES)
 # all that a subroutine may do if a call to it is to be removed as a write that is replaced
 _ONLY_WRITES_BOXES: typing.Final = ~OBSERVABLE | Effect.fails | BOX_CHANGES
@@ -212,7 +212,7 @@ def replaced_word_writes_elimination(
     it did, or a write through the same subroutine to the same slot comes before any of
 
     * a read of that word, or of a word that may be the same one;
-    * any other operation that reads a box, or the ledger: the minimum balance of the
+    * any other operation that reads a box, or a balance: the minimum balance of the
       application account follows the sizes of its boxes;
     * an inner transaction, in which another program may read either;
     * a call to a subroutine that may do one of these, or that may end the program;
