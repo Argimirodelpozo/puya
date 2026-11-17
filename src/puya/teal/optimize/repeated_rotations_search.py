@@ -91,38 +91,41 @@ ROTATION_SIMPLIFY_OPS = frozenset(
 
 
 def repeated_rotation_ops_search(block: models.TealBlock) -> None:
-    maybe_remove_rotations = list[models.TealOpUInt8]()
-    result = list[models.TealOp]()
-    for teal_op in block.ops:
-        if teal_op.op_code in ROTATION_SIMPLIFY_OPS:
-            maybe_remove_rotations.append(typing.cast(models.TealOpUInt8, teal_op))
-        else:
-            maybe_simplified = _maybe_simplified(maybe_remove_rotations)
-            maybe_remove_rotations = []
-            result.extend(maybe_simplified)
-            result.append(teal_op)
-    result.extend(_maybe_simplified(maybe_remove_rotations))
-    block.ops[:] = result
+    ops = block.ops
+    index = 0
+    while index < len(ops):
+        if ops[index].op_code not in ROTATION_SIMPLIFY_OPS:
+            index += 1
+            continue
+        stop = index + 1
+        while stop < len(ops) and ops[stop].op_code in ROTATION_SIMPLIFY_OPS:
+            stop += 1
+        index = stop - _simplify_run(ops, index, stop)
 
 
-def _maybe_simplified(
-    maybe_remove_rotations: list[models.TealOpUInt8], window_size: int = 5
-) -> Sequence[models.TealOpUInt8]:
-    if len(maybe_remove_rotations) < 2:
-        return maybe_remove_rotations
+def _simplify_run(ops: list[models.TealOp], start: int, stop: int, window_size: int = 5) -> int:
+    """Replaces the first window of a run of rotation ops that has a shorter equivalent,
+    and returns by how many ops the run got shorter.
 
-    for start_idx in range(len(maybe_remove_rotations) - 1):
-        window_slice = slice(start_idx, start_idx + window_size + 1)
-        window = maybe_remove_rotations[window_slice]
-        simplified = simplify_rotation_ops(tuple(window))
-        if simplified is not None:
-            logger.debug(
-                f"Replaced '{'; '.join(op.teal() for op in maybe_remove_rotations)}'"
-                f" with '{'; '.join(op.teal() for op in simplified)}',"
-                f" reducing by {len(maybe_remove_rotations) - len(simplified)} ops by search"
-            )
-            result_ = maybe_remove_rotations.copy()
-            preserve_stack_manipulations(result_, window_slice, simplified)
-            assert result_ != maybe_remove_rotations
-            return result_
-    return maybe_remove_rotations
+    The window is replaced in the ops of the block and not in a copy of the run: the stack
+    manipulations of a window that cancels out go to the op before it, or to the op after
+    it, and for a whole run that cancels out that op is outside the run.
+    """
+    for window_start in range(start, stop - 1):
+        window = slice(window_start, min(window_start + window_size + 1, stop))
+        simplified = simplify_rotation_ops(typing.cast(TealOpSequence, tuple(ops[window])))
+        if simplified is None:
+            continue
+        if not simplified and window.start == 0 and window.stop == len(ops):
+            # the block is nothing but this window: no op is left to take its stack
+            # manipulations
+            continue
+        logger.debug(
+            f"Replaced '{'; '.join(op.teal() for op in ops[start:stop])}'"
+            f" with '{'; '.join(op.teal() for op in simplified)}',"
+            f" reducing by {window.stop - window.start - len(simplified)} ops by search"
+        )
+        num_ops = len(ops)
+        preserve_stack_manipulations(ops, window, simplified)
+        return num_ops - len(ops)
+    return 0
