@@ -83,3 +83,9 @@ def _apply_stack_manipulations(
 
 def is_stack_swap(op: models.TealOp) -> bool:
     return op.op_code == "swap" or (op.op_code in ("cover", "uncover") and op.immediates[0] == 1)
+
+
+def reads_opcode_budget(op: models.TealOp) -> bool:
+    """`global OpcodeBudget` gives a lower value each time it runs, so it is not a load that
+    another op can be moved past, or that `dup` can repeat."""
+    return op.op_code == "global" and op.immediates == ("OpcodeBudget",)

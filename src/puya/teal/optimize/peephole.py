@@ -1,7 +1,7 @@
 import attrs
 
 from puya.teal import models
-from puya.teal._util import is_stack_swap, preserve_stack_manipulations
+from puya.teal._util import is_stack_swap, preserve_stack_manipulations, reads_opcode_budget
 from puya.teal.optimize._data import (
     COMMUTATIVE_OPS,
     LOAD_OP_CODES,
@@ -174,6 +174,7 @@ def _optimize_triplet(
         and (c.op_code == "uncover" and c.immediates[0] == 2)
         and (
             b.op_code in LOAD_OP_CODES_INCL_OFFSET
+            and not reads_opcode_budget(b)
             # only count digs if they go below the swap
             and (b.op_code != "dig" or int(b.immediates[0]) >= 2)
         )
@@ -185,6 +186,7 @@ def _optimize_triplet(
         is_stack_swap(c)
         and a.op_code in LOAD_OP_CODES_INCL_OFFSET
         and b.op_code in LOAD_OP_CODES_INCL_OFFSET
+        and not (reads_opcode_budget(a) or reads_opcode_budget(b))
         # cant swap dig 0, which will become a dup anyway
         and (not isinstance(b, models.Dig) or b.n)
     ):
@@ -281,7 +283,7 @@ def _optimize_quadruplet(
     if (
         is_stack_swap(a)
         and (
-            b.op_code in LOAD_OP_CODES
+            (b.op_code in LOAD_OP_CODES and not reads_opcode_budget(b))
             or (b.op_code in ("dig", "uncover") and int(b.immediates[0]) >= 2)
             or (b.op_code == "frame_dig" and int(b.immediates[0]) < 0)
         )

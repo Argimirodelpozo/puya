@@ -7,7 +7,11 @@ from puya import log
 from puya.errors import InternalError
 from puya.parse import sequential_source_locations_merge
 from puya.teal import models
-from puya.teal._util import is_stack_swap, preserve_stack_manipulations
+from puya.teal._util import (
+    is_stack_swap,
+    preserve_stack_manipulations,
+    reads_opcode_budget,
+)
 from puya.teal.optimize._data import LOAD_OP_CODES, PASSABLE_OPS
 
 logger = log.get_logger(__name__)
@@ -212,7 +216,7 @@ def _find_previous_movable_op(ops: Sequence[models.TealOp], *, end_idx: int) -> 
         op_code = ops[idx].op_code
         if op_code in _PURE_TRANSFORM_OPS:
             continue
-        if op_code in _MOVABLE_OPS:
+        if op_code in _MOVABLE_OPS and not reads_opcode_budget(ops[idx]):
             return idx
         break
     return None

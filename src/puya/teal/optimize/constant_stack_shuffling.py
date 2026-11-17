@@ -2,7 +2,7 @@ import attrs
 
 from puya.parse import sequential_source_locations_merge
 from puya.teal import models
-from puya.teal._util import preserve_stack_manipulations
+from puya.teal._util import preserve_stack_manipulations, reads_opcode_budget
 from puya.teal.optimize._data import LOAD_OP_CODES
 
 
@@ -120,4 +120,6 @@ def _collapse_loads(loads: list[models.TealOp]) -> bool:
 
 
 def _is_constant_load(op: models.TealOp) -> bool:
+    if reads_opcode_budget(op):
+        return False
     return op.op_code in LOAD_OP_CODES or (isinstance(op, models.FrameDig) and op.n < 0)
