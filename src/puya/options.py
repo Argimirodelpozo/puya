@@ -41,11 +41,12 @@ class SlotStorage:
       inner transactions that the optimizer can see.
 
     `pages_are_boxes` promises that the words the page subroutines reach are the bytes of the
-    box named `page`, 32 for each word from byte 0, that a word past the end of the box or of a
-    box that does not exist is zero, that such a box is at most 2048 bytes long, and that no
-    write through these subroutines makes it shorter. Word reads of one page can then share one
-    read of its box, and a word write can replace the bytes in the box itself where the box is
-    known to hold the word.
+    box named `page` of the application itself, 32 for each word from byte 0, that a word past
+    the end of the box or of a box that does not exist is zero, that such a box is at most 2048
+    bytes long, and that no write through these subroutines makes it shorter. Word reads of one
+    page can then share one read of its box, and a word write can replace the bytes in the box
+    itself where the box is known to hold the word. It is ignored for a program whose page
+    subroutines call another subroutine or use the boxes of another application.
 
     Two requests trade program size for fewer operations run. `inline_page_reads` asks for a
     word read of a page to read the box itself even where no other read shares it.
@@ -55,8 +56,8 @@ class SlotStorage:
 
     `hashed_slots_apart` promises that the program does not depend on two slots being the same
     when they are derived differently: the result of a hash op, plus a number below 2**64, is
-    the slot of no constant number, and is not the result of hashing bytes with another constant
-    ending, plus a number below 2**64.
+    no slot below 2**64, and is not the result of hashing bytes with another constant ending,
+    plus a number below 2**64.
     """
 
     read_page_word: str | None = None

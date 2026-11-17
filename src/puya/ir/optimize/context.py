@@ -49,3 +49,5 @@ class IROptimizationContext(ArtifactCompileContext):
     """by subroutine id; None until analysed"""
     storage_roles: Mapping[str, str] = attrs.field(factory=dict)
     """subroutine id -> its role in declared slot storage"""
+    pages_are_boxes: bool = False
+    """whether the pages of declared slot storage are boxes of the program itself"""

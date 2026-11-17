@@ -199,6 +199,27 @@ def analyse_state_effects(context: IROptimizationContext, program: models.Progra
     )
     context.state_effects = effects if boxes else None
     context.storage_roles = roles
+    # the page subroutines of a program that keeps its words in the boxes of another
+    # application are declared like any others, but those pages are not boxes of this program
+    context.pages_are_boxes = (
+        storage is not None
+        and storage.pages_are_boxes
+        and all(
+            _uses_own_boxes(sub) for sub in program.subroutines if roles.get(sub.id) in _PAGE_ROLES
+        )
+    )
+
+
+def _uses_own_boxes(sub: models.Subroutine) -> bool:
+    """True if the subroutine calls no other and uses no box of another application."""
+    for block in sub.body:
+        for op in block.ops:
+            node = op.source if isinstance(op, models.Assignment) else op
+            if isinstance(node, models.InvokeSubroutine) or (
+                isinstance(node, models.Intrinsic) and node.op.code.startswith("app_box_")
+            ):
+                return False
+    return True
 
 
 def _local_effects(sub: models.Subroutine, values: "_Values") -> tuple[StateEffects, set[str]]:
@@ -548,8 +569,7 @@ def page_reads_merge(context: IROptimizationContext, subroutine: models.Subrouti
     bytes in place, which is all the write subroutine does in that case; otherwise it calls the
     subroutine as before.
     """
-    storage = declared_storage(context.options.slot_storage)
-    if storage is None or not storage.pages_are_boxes:
+    if not context.pages_are_boxes:
         return False
     return _eliminate(context, subroutine, pages=True)
 
@@ -567,7 +587,7 @@ def _eliminate(
         effects=effects,
         values=_Values.of(subroutine, context.storage_roles),
         hashed_apart=storage is not None and storage.hashed_slots_apart,
-        page_boxes=storage is not None and storage.pages_are_boxes,
+        page_boxes=context.pages_are_boxes,
         pages=pages,
         inline_reads=pages and storage is not None and storage.inline_page_reads,
         inline_writes=pages and storage is not None and storage.inline_page_writes,
@@ -1124,11 +1144,16 @@ class _Follower:
         if not self.hashed_apart:
             return False
         if written.constant is not None:
-            return slot.offset < _SMALL and self.values.hashed(slot.base) is not None
+            return (
+                written.constant + written.count <= _SMALL
+                and slot.offset < _SMALL
+                and self.values.hashed(slot.base) is not None
+            )
         if written.ending is None:
             return False
         if slot.base is None:
-            return True
+            # a larger constant can be a hash worked out ahead
+            return slot.offset < _SMALL
         ending = self.values.hashed(slot.base)
         if ending is None or slot.offset >= _SMALL:
             return False
