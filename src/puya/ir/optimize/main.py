@@ -19,6 +19,7 @@ from puya.ir.optimize.dead_code_elimination import (
     remove_unused_subroutines,
     remove_unused_variables,
 )
+from puya.ir.optimize.effects import analyse_subroutine_effects
 from puya.ir.optimize.eliminate_box_asserts import minimize_box_exist_asserts
 from puya.ir.optimize.inlining import analyse_subroutines_for_inlining, perform_subroutine_inlining
 from puya.ir.optimize.inner_txn import inner_txn_field_replacer
@@ -153,6 +154,11 @@ def optimize_program_ir(
         program_modified = False
         logger.debug(f"Begin optimization pass {pass_num}/{MAX_PASSES}")
         analyse_subroutines_for_inlining(opt_context, program)
+        # Summarised once per pass and not updated while the pass rewrites subroutines.
+        # A summary that is out of date still holds: optimizations do not add behaviour to a
+        # subroutine, so it can only claim more than the subroutine now does. A pass that
+        # misses something for that reason modifies the program, which starts another pass.
+        opt_context.effects = analyse_subroutine_effects(program)
         for subroutine in program.all_subroutines:
             logger.debug(f"Optimizing subroutine {subroutine.id}")
             for optimizer in pipeline:

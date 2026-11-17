@@ -5,6 +5,7 @@ import attrs
 from puya.context import ArtifactCompileContext
 from puya.ir import models
 from puya.ir._puya_lib import PuyaLibIR
+from puya.ir.optimize.effects import EffectSummaries
 
 
 @attrs.define(kw_only=True)
@@ -15,3 +16,6 @@ class IROptimizationContext(ArtifactCompileContext):
     """src -> dst pairs that can/should be inlined"""
     constant_with_constant_args: dict[str, bool] = attrs.field(factory=dict)
     embedded_funcs: Mapping[PuyaLibIR, models.Subroutine]
+    effects: EffectSummaries | None = None
+    """what a call to each subroutine may do, as of the start of the current optimization pass.
+    None until analysed, in which case a call may do everything"""
