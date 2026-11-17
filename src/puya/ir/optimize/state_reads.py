@@ -25,9 +25,6 @@ What is known at the start of a block is what every predecessor agrees on. A pro
 nothing in boxes, and declares nothing, is left as it is.
 """
 
-import functools
-import json
-import os
 import typing
 from collections.abc import Iterator, Mapping, Sequence
 
@@ -38,23 +35,28 @@ from puya.avm import AVMType
 from puya.errors import InternalError
 from puya.ir import models
 from puya.ir.avm_ops import AVMOp
-from puya.ir.optimize.context import (
-    IROptimizationContext,
-    SlotWrite,
-    StateEffects,
-)
+from puya.ir.optimize.context import IROptimizationContext, StateEffects
 from puya.ir.optimize.effects import DETERMINISTIC, effects_of
+from puya.ir.optimize.slot_storage import (
+    ANY_SLOT,
+    PAGE_ROLES,
+    PAGE_WORDS,
+    READ_ROLES,
+    SLOTS,
+    SMALL,
+    WORD,
+    WRITE_ROLES,
+    Slot,
+    SlotValues,
+    SlotWrite,
+    declared_storage,
+    storage_roles,
+)
 from puya.ir.types_ import IRType, PrimitiveIRType
-from puya.options import SlotStorage
 from puya.parse import SourceLocation
 from puya.utils import not_none
 
 logger = log.get_logger(__name__)
-
-_WORD = 32
-_SLOTS = 2**256
-_SMALL = 2**64
-_PAGE_WORDS = 64
 
 # kinds of state
 _BOX = "box"
@@ -112,9 +114,6 @@ _STATE_WRITES: typing.Final[Mapping[str, frozenset[str]]] = {
     # an inner transaction can run any program
     AVMOp.itxn_submit.code: _ALL,
 }
-_HASHES = frozenset(
-    (AVMOp.keccak256.code, AVMOp.sha256.code, AVMOp.sha512_256.code, AVMOp.sha3_256.code)
-)
 _PURE_SOURCES = (
     models.Value,
     models.ValueTuple,
@@ -127,53 +126,23 @@ _PURE_SOURCES = (
     models.ArrayConcat,
 )
 
-_READ_ROLES = frozenset(("read_page_word", "read_word", "read_slot"))
-_WRITE_ROLES = frozenset(("write_page_word", "write_words", "write_slot"))
-_PAGE_ROLES = frozenset(("read_page_word", "write_page_word"))
-_ANY_SLOT = SlotWrite()
 # a subroutine nothing is known about
 _UNKNOWN = StateEffects(writes=_ALL, repeatable=False)
 
 
-def declared_storage(option: SlotStorage | None) -> SlotStorage | None:
-    # PUYA_SLOT_STORAGE (the option as JSON) stands in for the option while a frontend cannot
-    # write it yet
-    return option or _storage_from_environment(os.environ.get("PUYA_SLOT_STORAGE"))
-
-
-@functools.cache
-def _storage_from_environment(declaration: str | None) -> SlotStorage | None:
-    return SlotStorage(**json.loads(declaration)) if declaration else None
-
-
-def storage_roles(storage: SlotStorage | None, program: models.Program) -> Mapping[str, str]:
-    """subroutine id -> the declared role of that subroutine"""
-    if storage is None:
-        return {}
-    roles = dict[str, str]()
-    for role in (*_READ_ROLES, *_WRITE_ROLES, "slot_add"):
-        name = getattr(storage, role)
-        if name is not None:
-            for sub in program.subroutines:
-                # a program that holds several copies of a subroutine qualifies their ids
-                if sub.id == name or sub.id.startswith(f"{name}."):
-                    roles[sub.id] = role
-    return roles
-
-
 def analyse_state_effects(context: IROptimizationContext, program: models.Program) -> None:
     storage = declared_storage(context.options.slot_storage)
-    roles = storage_roles(storage, program)
+    roles = storage_roles(storage, program) if storage is not None else {}
     local = dict[str, StateEffects]()
     callees = dict[str, set[str]]()
     for sub in program.all_subroutines:
         role = roles.get(sub.id)
         if role is None:
-            local[sub.id], callees[sub.id] = _local_effects(sub, _Values.of(sub, roles))
-        elif role in _READ_ROLES:
+            local[sub.id], callees[sub.id] = _local_effects(sub, SlotValues.of(sub, roles))
+        elif role in READ_ROLES:
             local[sub.id] = StateEffects(reads=frozenset((_BOX,)))
-        elif role in _WRITE_ROLES:
-            local[sub.id] = StateEffects(slot_writes=frozenset((_ANY_SLOT,)), repeatable=False)
+        elif role in WRITE_ROLES:
+            local[sub.id] = StateEffects(slot_writes=frozenset((ANY_SLOT,)), repeatable=False)
         else:
             local[sub.id] = StateEffects()
     effects = dict(local)
@@ -205,7 +174,7 @@ def analyse_state_effects(context: IROptimizationContext, program: models.Progra
         storage is not None
         and storage.pages_are_boxes
         and all(
-            _uses_own_boxes(sub) for sub in program.subroutines if roles.get(sub.id) in _PAGE_ROLES
+            _uses_own_boxes(sub) for sub in program.subroutines if roles.get(sub.id) in PAGE_ROLES
         )
     )
 
@@ -222,7 +191,7 @@ def _uses_own_boxes(sub: models.Subroutine) -> bool:
     return True
 
 
-def _local_effects(sub: models.Subroutine, values: "_Values") -> tuple[StateEffects, set[str]]:
+def _local_effects(sub: models.Subroutine, values: "SlotValues") -> tuple[StateEffects, set[str]]:
     reads = set[str]()
     writes = set[str]()
     slot_writes = set[SlotWrite]()
@@ -235,11 +204,11 @@ def _local_effects(sub: models.Subroutine, values: "_Values") -> tuple[StateEffe
             node: object = op.source if isinstance(op, models.Assignment) else op
             if isinstance(node, models.InvokeSubroutine):
                 role = values.roles.get(node.target.id)
-                if role in _WRITE_ROLES:
+                if role in WRITE_ROLES:
                     written = values.written(role, node)
-                    slot_writes.add(_ANY_SLOT if written is None else values.kind(*written))
+                    slot_writes.add(ANY_SLOT if written is None else values.kind(*written))
                     repeatable = False
-                elif role in _READ_ROLES:
+                elif role in READ_ROLES:
                     reads.add(_BOX)
                 elif role is None:
                     callees.add(node.target.id)
@@ -276,230 +245,11 @@ def _is_pure(op: models.Intrinsic) -> bool:
 
 
 @attrs.frozen
-class _Slot:
-    base: models.Value | None
-    """None for a slot that is a constant number"""
-    offset: int
-    """modulo 2**256"""
-
-
-@attrs.frozen
 class _Word:
     value: models.Value
     form: str
     """how the 32 bytes of the word follow from the value: it is them ("word"), it is them once
     left-padded with zero bytes ("pad"), or they are its first 32 bytes ("head")"""
-
-
-@attrs.frozen
-class _Values:
-    """The declared roles, and what the definitions in a subroutine say about a value."""
-
-    roles: Mapping[str, str]
-    definitions: Mapping[models.Register, models.ValueProvider]
-    pages: frozenset[bytes]
-    """the constant pages the subroutine reads or writes words of"""
-    versions: dict[str, int]
-    """the highest version assigned of each register name"""
-
-    @classmethod
-    def of(cls, subroutine: models.Subroutine, roles: Mapping[str, str]) -> "_Values":
-        definitions = dict[models.Register, models.ValueProvider]()
-        pages = set[bytes]()
-        versions = dict[str, int]()
-        for block in subroutine.body:
-            for register in block.get_assigned_registers():
-                versions[register.name] = max(versions.get(register.name, 0), register.version)
-            for op in block.ops:
-                if isinstance(op, models.Assignment) and len(op.targets) == 1:
-                    definitions[op.targets[0]] = op.source
-                node = op.source if isinstance(op, models.Assignment) else op
-                match node:
-                    case models.InvokeSubroutine(
-                        target=target, args=[models.BytesConstant(value=page), *_]
-                    ) if roles.get(target.id) in _PAGE_ROLES and len(page) == _WORD:
-                        pages.add(page)
-        return cls(roles=roles, definitions=definitions, pages=frozenset(pages), versions=versions)
-
-    def fresh(
-        self, name: str, ir_type: IRType, location: SourceLocation | None
-    ) -> models.Register:
-        """A register no assignment of the subroutine has as its target."""
-        version = self.versions[name] = self.versions.get(name, -1) + 1
-        return models.Register(
-            name=name, version=version, ir_type=ir_type, source_location=location
-        )
-
-    def page_position(self, slot: _Slot) -> tuple[bytes, int] | None:
-        """The page a constant slot is in, of those the subroutine names, and its byte
-        position there."""
-        if slot.base is None:
-            for page in self.pages:
-                distance = (slot.offset - int.from_bytes(page)) % _SLOTS
-                if distance < _PAGE_WORDS:
-                    return page, distance * _WORD
-        return None
-
-    def is_zero(self, value: models.Value) -> bool:
-        """True if the value is certainly the number zero."""
-        value = self.copied(value)
-        number = _number(value)
-        if number is not None:
-            return number == 0
-        match self.definition(value):
-            case models.Intrinsic(op=AVMOp.itob, args=[models.UInt64Constant(value=n)]):
-                return n == 0
-            case models.Intrinsic(op=AVMOp.bzero):
-                return True
-        return False
-
-    def is_nonzero(self, value: models.Value, *, depth: int = 4) -> bool:
-        """True if the value certainly has a byte that is not zero."""
-        value = self.copied(value)
-        number = _number(value)
-        if number is not None:
-            return number != 0
-        if not depth:
-            return False
-        match self.definition(value):
-            case models.Intrinsic(op=AVMOp.itob, args=[models.UInt64Constant(value=n)]):
-                return n != 0
-            case models.Intrinsic(op=AVMOp.bitwise_or_bytes, args=[a, b]):
-                return self.is_nonzero(a, depth=depth - 1) or self.is_nonzero(b, depth=depth - 1)
-        return False
-
-    def copied(self, value: models.Value) -> models.Value:
-        """What a register is a copy of; definitions hold no phi, so the chain ends."""
-        while isinstance(value, models.Register):
-            source = self.definitions.get(value)
-            if not isinstance(source, models.Value):
-                break
-            value = source
-        return value
-
-    def definition(self, value: models.Value) -> models.ValueProvider | None:
-        value = self.copied(value)
-        return self.definitions.get(value) if isinstance(value, models.Register) else None
-
-    def slot(self, value: models.Value) -> _Slot | None:
-        """The slot a value names, as a base and a distance from it; None if the value is not
-        one that is the same wherever it is used."""
-        offset = 0
-        while True:
-            value = self.copied(value)
-            number = _number(value)
-            if number is not None:
-                return _Slot(base=None, offset=(number + offset) % _SLOTS)
-            match self.definition(value):
-                case models.Intrinsic(op=AVMOp.add_bytes, args=[a, b]):
-                    a_number = _number(self.copied(a))
-                    b_number = _number(self.copied(b))
-                    if a_number is not None:
-                        offset += a_number
-                        value = b
-                    elif b_number is not None:
-                        offset += b_number
-                        value = a
-                    else:
-                        break
-                case models.InvokeSubroutine(
-                    target=target, args=[base, models.UInt64Constant(value=distance)]
-                ) if self.roles.get(target.id) == "slot_add":
-                    offset += distance
-                    value = base
-                case _:
-                    break
-        if not isinstance(value, models.Register):
-            return None
-        return _Slot(base=value, offset=offset % _SLOTS)
-
-    def accessed(self, role: str, call: models.InvokeSubroutine) -> _Slot | None:
-        """The slot a declared read or write is of, None if it cannot be told."""
-        if role not in _PAGE_ROLES:
-            return self.slot(call.args[0])
-        match call.args:
-            case [models.BytesConstant(value=page), models.UInt64Constant(value=at), *_] if (
-                len(page) == _WORD and at % _WORD == 0
-            ):
-                return _Slot(base=None, offset=(int.from_bytes(page) + at // _WORD) % _SLOTS)
-        return None
-
-    def written(self, role: str, call: models.InvokeSubroutine) -> tuple[_Slot, int] | None:
-        """The first slot a declared write is to, and how many slots it may reach."""
-        slot = self.accessed(role, call)
-        if slot is None:
-            return None
-        if role == "write_words" and not self.is_word(call.args[1]):
-            return slot, _PAGE_WORDS
-        return slot, 1
-
-    def kind(self, slot: _Slot, count: int) -> SlotWrite:
-        """A write as other subroutines see it: without the values of this one."""
-        if slot.base is None:
-            return SlotWrite(constant=slot.offset, count=count)
-        ending = self.hashed(slot.base)
-        if ending is None or slot.offset + count > _SMALL:
-            return _ANY_SLOT
-        return SlotWrite(ending=ending)
-
-    def hashed(self, base: models.Value) -> bytes | None:
-        """For the result of a hash op, the constant ending of the bytes hashed."""
-        match self.definition(base):
-            case models.Intrinsic(op=op, args=[hashed]) if op.code in _HASHES:
-                return self._ending(hashed, depth=8)[0]
-        return None
-
-    def _ending(self, value: models.Value, *, depth: int) -> tuple[bytes, bool]:
-        """The constant bytes a value ends in, and whether they are the whole value."""
-        value = self.copied(value)
-        if isinstance(value, models.BytesConstant):
-            return value.value, True
-        match self.definition(value):
-            case models.Intrinsic(op=AVMOp.concat, args=[a, b]) if depth:
-                b_ending, b_whole = self._ending(b, depth=depth - 1)
-                if not b_whole:
-                    return b_ending, False
-                a_ending, a_whole = self._ending(a, depth=depth - 1)
-                return a_ending + b_ending, a_whole
-        return b"", False
-
-    def is_word(self, value: models.Value, *, depth: int = 8) -> bool:
-        """True if the value is certainly 32 bytes long."""
-        value = self.copied(value)
-        if isinstance(value, models.BytesConstant):
-            return len(value.value) == _WORD
-        if not depth:
-            return False
-        match self.definition(value):
-            case models.InvokeSubroutine(target=target):
-                return self.roles.get(target.id) in (*_READ_ROLES, "slot_add")
-            case models.Intrinsic(op=op) if op.code in _HASHES:
-                return True
-            case models.Intrinsic(op=AVMOp.bzero, args=[models.UInt64Constant(value=n)]):
-                return n == _WORD
-            case models.Intrinsic(op=AVMOp.extract3, args=[_, _, models.UInt64Constant(value=n)]):
-                return n == _WORD
-            case models.Intrinsic(op=AVMOp.extract, immediates=[_, int(n)]):
-                return n == _WORD
-            case models.Intrinsic(
-                op=(AVMOp.replace2 | AVMOp.replace3 | AVMOp.setbyte | AVMOp.setbit),
-                args=[target, *_],
-            ):
-                return self.is_word(target, depth=depth - 1)
-            case models.Intrinsic(
-                op=(AVMOp.bitwise_or_bytes | AVMOp.bitwise_and_bytes | AVMOp.bitwise_xor_bytes),
-                args=[a, b],
-            ):
-                return self.is_word(a, depth=depth - 1) and self.is_word(b, depth=depth - 1)
-        return False
-
-
-def _number(value: models.Value) -> int | None:
-    if isinstance(value, models.BigUIntConstant):
-        return value.value
-    if isinstance(value, models.BytesConstant):
-        return int.from_bytes(value.value)
-    return None
 
 
 _CallKey = tuple[str, tuple[models.Value, ...]]
@@ -517,7 +267,7 @@ class _Page:
 
 @attrs.define
 class _Known:
-    words: dict[_Slot, _Word] = attrs.field(factory=dict)
+    words: dict[Slot, _Word] = attrs.field(factory=dict)
     calls: dict[_CallKey, tuple[models.Register, ...]] = attrs.field(factory=dict)
     pages: dict[bytes, _Page] = attrs.field(factory=dict)
     covered: dict[bytes, int] = attrs.field(factory=dict)
@@ -582,7 +332,7 @@ def _eliminate(
         return False
     follower = _Follower(
         effects=effects,
-        values=_Values.of(subroutine, context.storage_roles),
+        values=SlotValues.of(subroutine, context.storage_roles),
         hashed_apart=storage is not None and storage.hashed_slots_apart,
         page_boxes=context.pages_are_boxes,
         pages=pages,
@@ -705,7 +455,7 @@ def _reverse_post_order(entry: models.BasicBlock) -> Sequence[models.BasicBlock]
 @attrs.define
 class _Follower:
     effects: Mapping[str, StateEffects]
-    values: _Values
+    values: SlotValues
     hashed_apart: bool
     page_boxes: bool
     """whether the words of a page are the bytes of its box"""
@@ -821,7 +571,7 @@ class _Follower:
                 position = self.values.page_position(slot)
                 if position is not None:
                     page, at = position
-                    covered[page] = max(covered.get(page, 0), at + _WORD)
+                    covered[page] = max(covered.get(page, 0), at + WORD)
         if not depth:
             return
         match self.values.definition(value):
@@ -856,11 +606,11 @@ class _Follower:
         if isinstance(node, models.InvokeSubroutine):
             targets = tuple(op.targets) if isinstance(op, models.Assignment) else ()
             role = self.values.roles.get(node.target.id)
-            if role in _READ_ROLES and len(targets) == 1:
+            if role in READ_ROLES and len(targets) == 1:
                 slot = self.values.accessed(role, node)
                 if slot is not None:
                     return self._word_read(op, node, targets[0], slot, role, known)
-            elif role in _WRITE_ROLES:
+            elif role in WRITE_ROLES:
                 return self._word_write(role, node, known, statement=op is node)
             return self._call(op, node, targets, known)
         if isinstance(node, models.Intrinsic):
@@ -875,21 +625,12 @@ class _Follower:
 
     def _page_word_replaced(self, op: models.Intrinsic, known: _Known) -> bool:
         """A `box_replace` of 32 bytes at a word of a page box is a write of that word."""
-        if not self.page_boxes:
+        replaced = self.values.page_word_replaced(op) if self.page_boxes else None
+        if replaced is None:
             return False
-        match op:
-            case models.Intrinsic(
-                op=AVMOp.box_replace,
-                args=[
-                    models.BytesConstant(value=page),
-                    models.UInt64Constant(value=at),
-                    value,
-                ],
-            ) if len(page) == _WORD and at % _WORD == 0 and self.values.is_word(value):
-                slot = _Slot(base=None, offset=(int.from_bytes(page) + at // _WORD) % _SLOTS)
-                self._slot_written(slot, 1, _Word(value=value, form="word"), known)
-                return True
-        return False
+        slot, value = replaced
+        self._slot_written(slot, 1, _Word(value=value, form="word"), known)
+        return True
 
     def _changed(self, kinds: frozenset[str], known: _Known) -> None:
         """Something changed state of these kinds, and not through a declared write."""
@@ -952,7 +693,7 @@ class _Follower:
         op: models.Op,
         call: models.InvokeSubroutine,
         target: models.Register,
-        slot: _Slot,
+        slot: Slot,
         role: str,
         known: _Known,
     ) -> Sequence[models.Op] | None:
@@ -961,7 +702,7 @@ class _Follower:
             word = None
         if word is None:
             known.words[slot] = _Word(value=target, form="word")
-            if self.pages and role in _PAGE_ROLES:
+            if self.pages and role in PAGE_ROLES:
                 return self._page_read(op, call, target, known)
             return None
         location = op.source_location
@@ -974,14 +715,14 @@ class _Follower:
         if word.form == "head":
             first = models.Intrinsic(
                 op=AVMOp.extract,
-                immediates=[0, _WORD],
+                immediates=[0, WORD],
                 args=[word.value],
                 source_location=location,
             )
             return [models.Assignment(targets=[target], source=first, source_location=location)]
         zeros = _derived(target, "zeros", PrimitiveIRType.bytes)
         return [
-            _assign(zeros, AVMOp.bzero, _uint64(_WORD, location)),
+            _assign(zeros, AVMOp.bzero, _uint64(WORD, location)),
             _assign(target, AVMOp.bitwise_or_bytes, zeros, word.value),
         ]
 
@@ -1018,9 +759,9 @@ class _Follower:
                     source_location=location,
                 ),
                 # a word past the end of the box is zero
-                _assign(zeros, AVMOp.bzero, _uint64(max(positions) + _WORD, location)),
+                _assign(zeros, AVMOp.bzero, _uint64(max(positions) + WORD, location)),
                 _assign(words, AVMOp.concat, box, zeros),
-                _assign(target, AVMOp.extract3, words, call.args[1], _uint64(_WORD, location)),
+                _assign(target, AVMOp.extract3, words, call.args[1], _uint64(WORD, location)),
             ]
         if at in page.written:
             return None
@@ -1030,7 +771,7 @@ class _Follower:
             return None
         self._log(f"taking the word of {op} from the page read earlier", op)
         words = _derived(page.reader, "page", PrimitiveIRType.bytes)
-        return [_assign(target, AVMOp.extract3, words, call.args[1], _uint64(_WORD, location))]
+        return [_assign(target, AVMOp.extract3, words, call.args[1], _uint64(WORD, location))]
 
     def _word_write(
         self, role: str, call: models.InvokeSubroutine, known: _Known, *, statement: bool
@@ -1054,7 +795,7 @@ class _Follower:
         replacement = None
         if self.pages and statement and role == "write_page_word":
             page, at = _page_and_position(call)
-            if known.covered.get(page, 0) >= at + _WORD:
+            if known.covered.get(page, 0) >= at + WORD:
                 replacement = self._replace_word(call)
             elif self.inline_writes:
                 self._page_write(call, known)
@@ -1074,7 +815,7 @@ class _Follower:
             zeros = self.values.fresh("page_word%zeros", PrimitiveIRType.bytes, location)
             word = self.values.fresh("page_word%padded", PrimitiveIRType.bytes, location)
             ops += [
-                _assign(zeros, AVMOp.bzero, _uint64(_WORD, location)),
+                _assign(zeros, AVMOp.bzero, _uint64(WORD, location)),
                 _assign(word, AVMOp.bitwise_or_bytes, zeros, value),
             ]
             value = word
@@ -1098,14 +839,14 @@ class _Follower:
                 _WriteInPlace(call=call, reader=page.reader, number=len(self.writes_in_place))
             )
 
-    def _slot_written(self, slot: _Slot, count: int, word: _Word, known: _Known) -> None:
+    def _slot_written(self, slot: Slot, count: int, word: _Word, known: _Known) -> None:
         self._forget_calls(_STATE_WRITES[AVMOp.box_put.code], known)
         kind = self.values.kind(slot, count)
         for other in [
             s
             for s in known.words
             if not (
-                (s.offset - slot.offset) % _SLOTS >= count
+                (s.offset - slot.offset) % SLOTS >= count
                 if s.base == slot.base
                 else self._apart(s, kind)
             )
@@ -1118,41 +859,41 @@ class _Follower:
             position = self.values.page_position(slot)
             if position is not None and self.values.is_nonzero(word.value):
                 page, at = position
-                known.covered[page] = max(known.covered.get(page, 0), at + _WORD)
+                known.covered[page] = max(known.covered.get(page, 0), at + WORD)
 
     def _pages_written(self, write: SlotWrite, known: _Known) -> None:
         for key, page in list(known.pages.items()):
             first = int.from_bytes(key)
             if write.constant is not None:
                 positions = {
-                    distance * _WORD
+                    distance * WORD
                     for n in range(write.count)
-                    if (distance := (write.constant + n - first) % _SLOTS) < _PAGE_WORDS
+                    if (distance := (write.constant + n - first) % SLOTS) < PAGE_WORDS
                 }
                 if positions:
                     known.pages[key] = _Page(reader=page.reader, written=page.written | positions)
-            elif not self._apart(_Slot(base=None, offset=first), write):
+            elif not self._apart(Slot(base=None, offset=first), write):
                 del known.pages[key]
 
-    def _apart(self, slot: _Slot, written: SlotWrite) -> bool:
+    def _apart(self, slot: Slot, written: SlotWrite) -> bool:
         """True if the word of a slot is certainly not one such a write changes."""
         if slot.base is None and written.constant is not None:
-            return (slot.offset - written.constant) % _SLOTS >= written.count
+            return (slot.offset - written.constant) % SLOTS >= written.count
         if not self.hashed_apart:
             return False
         if written.constant is not None:
             return (
-                written.constant + written.count <= _SMALL
-                and slot.offset < _SMALL
+                written.constant + written.count <= SMALL
+                and slot.offset < SMALL
                 and self.values.hashed(slot.base) is not None
             )
         if written.ending is None:
             return False
         if slot.base is None:
             # a larger constant can be a hash worked out ahead
-            return slot.offset < _SMALL
+            return slot.offset < SMALL
         ending = self.values.hashed(slot.base)
-        if ending is None or slot.offset >= _SMALL:
+        if ending is None or slot.offset >= SMALL:
             return False
         shared = min(len(ending), len(written.ending))
         return shared > 0 and ending[-shared:] != written.ending[-shared:]
@@ -1196,7 +937,9 @@ class _WriteInPlace:
     number: int
 
 
-def _write_in_place(subroutine: models.Subroutine, write: _WriteInPlace, values: _Values) -> None:
+def _write_in_place(
+    subroutine: models.Subroutine, write: _WriteInPlace, values: SlotValues
+) -> None:
     """Splits the block of a page word write in two around it: where the page box read earlier
     is long enough to hold the word, its bytes are replaced in place; otherwise the write is the
     call it was."""
@@ -1231,7 +974,7 @@ def _write_in_place(subroutine: models.Subroutine, write: _WriteInPlace, values:
         zeros = named("zeros", PrimitiveIRType.bytes)
         word = named("word", PrimitiveIRType.bytes)
         in_place += [
-            _assign(zeros, AVMOp.bzero, _uint64(_WORD, location)),
+            _assign(zeros, AVMOp.bzero, _uint64(WORD, location)),
             _assign(word, AVMOp.bitwise_or_bytes, zeros, value),
         ]
     in_place.append(
@@ -1255,7 +998,7 @@ def _write_in_place(subroutine: models.Subroutine, write: _WriteInPlace, values:
     holds = named("holds", PrimitiveIRType.bool)
     block.ops += [
         _assign(size, AVMOp.len_, _derived(write.reader, "box", PrimitiveIRType.bytes)),
-        _assign(holds, AVMOp.gte, size, _uint64(at.value + _WORD, location)),
+        _assign(holds, AVMOp.gte, size, _uint64(at.value + WORD, location)),
     ]
     block.terminator = models.ConditionalBranch(
         condition=holds, non_zero=replace, zero=grow, source_location=location

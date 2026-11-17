@@ -6,21 +6,7 @@ from puya.context import ArtifactCompileContext
 from puya.ir import models
 from puya.ir._puya_lib import PuyaLibIR
 from puya.ir.optimize.effects import EffectSummaries
-
-
-@attrs.frozen(kw_only=True)
-class SlotWrite:
-    """A write to declared slot storage (see `puya.options.SlotStorage`), as far as it can be
-    described without the values of the subroutine it is in. With neither `constant` nor
-    `ending`, it can be to any slot."""
-
-    constant: int | None = None
-    """the slot, if it is a constant number"""
-    count: int = 1
-    """how many slots from a constant one on it can reach"""
-    ending: bytes | None = None
-    """for a slot that is the result of a hash op plus a number below 2**64: the constant bytes
-    the hashed bytes end in"""
+from puya.ir.optimize.slot_storage import SlotWrite
 
 
 @attrs.frozen(kw_only=True)
