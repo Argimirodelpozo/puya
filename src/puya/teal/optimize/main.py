@@ -1,5 +1,5 @@
 import itertools
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 import attrs
 
@@ -24,9 +24,15 @@ logger = log.get_logger(__name__)
 
 def optimize_teal_program(
     context: ArtifactCompileContext, teal_program: models.TealProgram
-) -> None:
+) -> Counter[tuple[str, models.Assert | models.Err]]:
+    """Optimizes the program in place.
+
+    Returns the explicit checks that were removed because they could not be reached,
+    counted by the signature of their subroutine: these were not lost.
+    """
     # Note: at optimization level O0, this function still applies the minimal
     # transformations required to ensure the program is valid and functional
+    unreachable_explicit_checks = Counter[tuple[str, models.Assert | models.Err]]()
 
     # O0 will still remove some redundant ops to ensure a feasible program size
     for teal_sub in teal_program.all_subroutines:
@@ -41,7 +47,14 @@ def optimize_teal_program(
         }
 
         for teal_sub in teal_program.all_subroutines:
-            _optimize_subroutine_blocks(context, teal_sub, branchable_subroutine_entry_blocks)
+            unreachable_ops = _optimize_subroutine_blocks(
+                context, teal_sub, branchable_subroutine_entry_blocks
+            )
+            unreachable_explicit_checks.update(
+                (str(teal_sub.signature), op)
+                for op in unreachable_ops
+                if isinstance(op, models.Assert | models.Err) and op.explicit
+            )
         maybe_output_intermediate_teal(context, teal_program, qualifier="block")
 
     # O0 still needs to gather template vars into constant blocks
@@ -49,6 +62,7 @@ def optimize_teal_program(
     gather_program_constants(teal_program)
     if context.options.optimization_level > 0:
         combine_pushes(teal_program)
+    return unreachable_explicit_checks
 
 
 def _optimize_subroutine_ops(context: CompileContext, teal_sub: models.TealSubroutine) -> None:
@@ -62,7 +76,8 @@ def _optimize_subroutine_ops(context: CompileContext, teal_sub: models.TealSubro
 
 def _optimize_subroutine_blocks(
     context: CompileContext, teal_sub: models.TealSubroutine, branchable_subroutines: set[str]
-) -> None:
+) -> list[models.TealOp]:
+    """Returns the ops that were removed because they followed a call that never returns."""
     logger.debug(
         f"optimizing TEAL subroutine blocks {teal_sub.signature}",
         location=teal_sub.source_location,
@@ -80,10 +95,12 @@ def _optimize_subroutine_blocks(
     # thus this still maintains the "almost basic" structure as outlined above.
     _inline_single_op_blocks(teal_sub)
     _inline_singly_referenced_blocks(teal_sub, level=context.options.optimization_level)
+    unreachable_ops = list[models.TealOp]()
     if branchable_subroutines:
-        _replace_callsubs_with_branch(teal_sub, branchable_subroutines)
+        unreachable_ops = _replace_callsubs_with_branch(teal_sub, branchable_subroutines)
     _inline_jump_chains(teal_sub)
     _remove_jump_fallthroughs(teal_sub)
+    return unreachable_ops
 
 
 def _is_branchable_subroutine(sub: models.TealSubroutine) -> bool:
@@ -96,18 +113,23 @@ def _is_branchable_subroutine(sub: models.TealSubroutine) -> bool:
 
 def _replace_callsubs_with_branch(
     teal_sub: models.TealSubroutine, branchable_subroutines: set[str]
-) -> None:
+) -> list[models.TealOp]:
+    """Returns the ops that were discarded: control only reaches them by returning from a
+    subroutine that never returns."""
+    discarded = list[models.TealOp]()
     for block in teal_sub.blocks:
         for op_idx, op in enumerate(block.ops):
             match op:
                 case models.CallSub(target=sub_id) as callsub if sub_id in branchable_subroutines:
                     # branchable subroutines are terminal, so discard any remaining ops
+                    discarded.extend(block.ops[op_idx + 1 :])
                     block.ops[op_idx:] = [
                         models.Branch(
                             target=callsub.target, source_location=callsub.source_location
                         )
                     ]
                     break
+    return discarded
 
 
 def _optimize_block(block: models.TealBlock, *, level: int) -> None:
