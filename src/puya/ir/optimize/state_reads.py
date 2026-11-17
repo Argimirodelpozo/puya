@@ -15,6 +15,11 @@ may do, and `changed_by` says which of those effects change what a subroutine re
 A read that is removed could not have failed: the same slot, or the same call, succeeded earlier
 on every path, and nothing since could have taken its box away.
 
+`replaced_word_writes_elimination` removes a word write that another write to the same slot
+replaces before anything can tell that it happened, where the later write fails whenever the
+removed one would have and leaves the same boxes behind. Together with the above, a chain that
+reads a word, changes it and writes it back several times is left with one read and one write.
+
 `page_reads_merge` runs once the other optimizations are done, for a declaration with
 `pages_are_boxes`: word reads of one page share one read of the page box, and a word write of a
 page whose box is known to hold the word replaces its bytes in place.
@@ -24,7 +29,7 @@ nothing in boxes, and declares nothing, is left as it is.
 """
 
 import typing
-from collections.abc import Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterator, Mapping, Sequence
 
 import attrs
 
@@ -36,12 +41,14 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.effects import (
     BOX_CHANGES,
+    OBSERVABLE,
     READS,
     Effect,
     EffectSummaries,
     changed_by,
     effects_of,
     is_repeatable,
+    observers_of,
 )
 from puya.ir.optimize.slot_storage import (
     PAGE_ROLES,
@@ -65,6 +72,11 @@ logger = log.get_logger(__name__)
 _CHANGES_BOX_SIZE: typing.Final = Effect.allocates_box | Effect.deletes_box
 # the effects that change something a subroutine may read
 _CHANGES_STATE: typing.Final = changed_by(READS & ~Effect.reads_budget)
+# the effects of an operation that can tell whether a box has changed: it reads a box, or the
+# ledger, where the minimum balance of the application account follows the sizes of its boxes
+_TELLS_BOX_CHANGES: typing.Final = observers_of(BOX_CHANGES)
+# all that a subroutine may do if a call to it is to be removed as a write that is replaced
+_ONLY_WRITES_BOXES: typing.Final = ~OBSERVABLE | Effect.fails | BOX_CHANGES
 
 
 @attrs.frozen
@@ -192,6 +204,91 @@ def _has_reads(subroutine: models.Subroutine, summaries: EffectSummaries) -> boo
     return False
 
 
+def replaced_word_writes_elimination(
+    context: IROptimizationContext, subroutine: models.Subroutine
+) -> bool:
+    """With `SlotStorage` declared, removes a word write that is replaced before anything can
+    tell that it happened: on every way on from it, either the program fails, which undoes all
+    it did, or a write through the same subroutine to the same slot comes before any of
+
+    * a read of that word, or of a word that may be the same one;
+    * any other operation that reads a box, or the ledger: the minimum balance of the
+      application account follows the sizes of its boxes;
+    * an inner transaction, in which another program may read either;
+    * a call to a subroutine that may do one of these, or that may end the program;
+    * the end of the subroutine, or of the program.
+
+    Other operations cannot tell: computing, asserting, logging, scratch space and application
+    state do not depend on a box, and a write to another word does not read this one.
+
+    The later write must also fail whenever the removed one would have, and leave the boxes
+    as both would have. That is proven for a word of a page, with `pages_are_boxes`, where what
+    a write does is declared, in three cases:
+
+    * the box is known to hold the word when the removed write runs, so that it only replaces
+      32 bytes, which the later write then does;
+    * the removed write is of a word that is zero, which changes nothing where the box does
+      not hold the word;
+    * the later write is of a word that is not zero, so that it makes the box as long as the
+      removed write would have.
+
+    In each of them the later write is the first to count the box against what the
+    transaction may write where the removed one would have been, and it counts no less: no
+    box gets shorter in between, since anything that can delete or resize a box reads a box,
+    and a write to another kind of slot in between keeps the write.
+
+    Where that is not proven, the write is removed only if the declaration promises that the
+    program does not depend on it (`overwritten_writes_removable`). For a word of a page,
+    the promise is not enough if a `box_replace` can be reached from the write: an earlier
+    run of `page_reads_merge` may have put it in place of a word write because the box was
+    known to hold the word, and that can rest on this write having made the box that long.
+
+    Without that promise and without `pages_are_boxes`, every write stays.
+    """
+    summaries = context.effects
+    if summaries is None or summaries.storage is None:
+        return False
+    storage = summaries.storage
+    promised = storage.declaration.overwritten_writes_removable
+    if not (promised or storage.pages_are_boxes):
+        return False
+    follower = _Follower.of(summaries, subroutine)
+    if not _has_word_writes(subroutine, follower.values, promised=promised):
+        return False
+    if storage.pages_are_boxes:
+        # which page word writes find their word in the box
+        order = _reverse_post_order(subroutine.body[0])
+        at_end = _known_at_block_ends(follower, order)
+        follower.mode = "note"
+        for block in order:
+            follower.follow(block, _known_at_start(block, order[0], at_end, follower))
+    removable = _ReplacedWrites(follower=follower, promised=promised).find(subroutine)
+    if not removable:
+        return False
+    for block in subroutine.body:
+        ops = [op for op in block.ops if op not in removable]
+        if len(ops) != len(block.ops):
+            for op in block.ops:
+                if op in removable:
+                    logger.debug(
+                        f"removing {op}, which a later write replaces",
+                        location=op.source_location,
+                    )
+            block.ops = ops
+    return True
+
+
+def _has_word_writes(subroutine: models.Subroutine, values: SlotValues, *, promised: bool) -> bool:
+    """True if the subroutine has a write that could be removed as replaced."""
+    for block in subroutine.body:
+        for op in block.ops:
+            if isinstance(op, models.InvokeSubroutine):
+                role = values.roles.get(op.target.id)
+                if role == "write_page_word" or (promised and role in WRITE_ROLES):
+                    return True
+    return False
+
+
 def _known_at_block_ends(
     follower: "_Follower", order: Sequence[models.BasicBlock]
 ) -> dict[models.BasicBlock, _Known]:
@@ -287,8 +384,11 @@ class _Follower:
     inline_writes: bool
     """whether a word write of a page read whole is to replace its bytes in place"""
     mode: str = "follow"
-    """"follow" only updates what is known; "count" also notes which page reads would share;
-    "rewrite" replaces ops"""
+    """"follow" only updates what is known; "note" also notes which page word writes find
+    their word in the box; "count" also notes which page reads would share; "rewrite"
+    replaces ops"""
+    held: set[models.InvokeSubroutine] = attrs.field(factory=set)
+    """the word writes of a page whose box is known to hold the word when they run"""
     page_reads: dict[models.Register, list[int]] = attrs.field(factory=dict)
     """by the target of the first word read of a page: the byte positions of the words that
     it and the reads sharing with it take"""
@@ -652,11 +752,14 @@ class _Follower:
         else:
             form = "pad"
         replacement = None
-        if self.pages and statement and role == "write_page_word":
+        if self.page_boxes and statement and role == "write_page_word":
             page, at = _page_and_position(call)
             if known.covered.get(page, 0) >= at + WORD:
-                replacement = self._replace_word(call)
-            elif self.inline_writes:
+                if self.mode == "note":
+                    self.held.add(call)
+                elif self.pages:
+                    replacement = self._replace_word(call)
+            elif self.pages and self.inline_writes:
                 self._page_write(call, known)
         self._slot_written(slot, count, _Word(value=value, form=form), known)
         return replacement
@@ -732,6 +835,12 @@ class _Follower:
                     known.pages[key] = _Page(reader=page.reader, written=page.written | positions)
             elif not self._apart(Slot(base=None, offset=first), write):
                 del known.pages[key]
+
+    def slots_apart(self, slot: Slot, other: Slot) -> bool:
+        """True if two slots are certainly not the same."""
+        if slot.base == other.base:
+            return slot.offset != other.offset
+        return self._apart(slot, self.values.kind(other, 1))
 
     def _apart(self, slot: Slot, written: SlotWrite) -> bool:
         """True if the word of a slot is certainly not one such a write changes."""
@@ -866,3 +975,231 @@ def _write_in_place(
         after.add_predecessor(branch)
     position = subroutine.body.index(block) + 1
     subroutine.body[position:position] = [replace, grow, after]
+
+
+@attrs.frozen
+class _Replacing:
+    """What is known of the word of a slot at a point of a subroutine: on every way on from
+    there, either the program fails, or a write through `writer` to that slot comes before
+    anything that can tell which word the slot holds."""
+
+    writer: str
+    """the id of the subroutine that the write goes through"""
+    nonzero: bool
+    """the word it writes is certainly not zero"""
+    shrinks: bool
+    """a box may get shorter, or be deleted, before it runs"""
+
+
+_Replaced = dict[Slot, _Replacing] | None
+"""by slot; None where the program fails on every way on, so that nothing can ever tell"""
+
+
+@attrs.define
+class _ReplacedWrites:
+    follower: _Follower
+    """what is known going forward, with the slots and values of the subroutine"""
+    promised: bool
+    """whether the declaration promises that a replaced write can be removed"""
+    removable: set[models.Op] = attrs.field(factory=set)
+    _reach_in_place: set[models.BasicBlock] = attrs.field(factory=set)
+    """the blocks from whose start a `box_replace` can be reached"""
+    _in_place_follows: bool = False
+    """whether a `box_replace` can be reached from the op that is being looked at"""
+
+    def find(self, subroutine: models.Subroutine) -> set[models.Op]:
+        """The word writes of a subroutine that can be removed as replaced.
+
+        What is known where a block starts follows from what is known where its successors
+        start, so the blocks are walked from the last one back, until nothing changes. A
+        successor that was not walked yet (a back edge) is taken to agree with the others.
+        """
+        order = list(reversed(_reverse_post_order(subroutine.body[0])))
+        self._reach_in_place = _blocks_reaching(order, _is_box_replace)
+        at_start = dict[models.BasicBlock, _Replaced]()
+        for _ in range(_MAX_WALKS):
+            changed = False
+            self.removable.clear()
+            for block in order:
+                state = self._at_start(block, at_start)
+                if block not in at_start or at_start[block] != state:
+                    at_start[block] = state
+                    changed = True
+            if not changed:
+                return self.removable
+        # no agreement reached: every write stays
+        return set()
+
+    def _at_start(
+        self, block: models.BasicBlock, at_start: Mapping[models.BasicBlock, _Replaced]
+    ) -> _Replaced:
+        state = self._at_end(block, at_start)
+        self._in_place_follows = any(s in self._reach_in_place for s in block.successors)
+        for op in reversed(block.ops):
+            state = self._before(op, state)
+            self._in_place_follows = self._in_place_follows or _is_box_replace(op)
+        if state and block.phis:
+            # a phi gives its register another value each time the block is entered
+            state = _without_slots_of([phi.register for phi in block.phis], state)
+        return state
+
+    def _at_end(
+        self, block: models.BasicBlock, at_start: Mapping[models.BasicBlock, _Replaced]
+    ) -> _Replaced:
+        """What the successors of a block agree on."""
+        match block.terminator:
+            case models.Fail():
+                return None
+            case models.SubroutineReturn() | models.ProgramExit() | None:
+                # whoever called may read anything, and what is written stays as the program
+                # ends
+                return {}
+        states = [
+            state
+            for successor in block.successors
+            if (state := at_start.get(successor)) is not None
+        ]
+        if not states:
+            return None
+        first, *rest = states
+        agreed = dict[Slot, _Replacing]()
+        for slot, replacing in first.items():
+            others = [state.get(slot) for state in rest]
+            if all(other is not None and other.writer == replacing.writer for other in others):
+                agreed[slot] = _Replacing(
+                    writer=replacing.writer,
+                    nonzero=replacing.nonzero and all(o.nonzero for o in others if o),
+                    shrinks=replacing.shrinks or any(o.shrinks for o in others if o),
+                )
+        return agreed
+
+    def _before(self, op: models.Op, state: _Replaced) -> _Replaced:
+        """Takes what is known after an op to before it."""
+        node: models.IRVisitable = op.source if isinstance(op, models.Assignment) else op
+        if isinstance(node, models.InvokeSubroutine):
+            state = self._before_call(op, node, state)
+        elif (
+            state
+            and not isinstance(node, models.Value | models.Assert)
+            and self.follower.effects_of(node) & _TELLS_BOX_CHANGES
+        ):
+            state = {}
+        if state and isinstance(op, models.Assignment):
+            # a register has its value from here on: what is known of a slot that it names
+            # is not known of the slot that an earlier value of it named
+            state = _without_slots_of(op.targets, state)
+        return state
+
+    def _before_call(
+        self, op: models.Op, call: models.InvokeSubroutine, state: _Replaced
+    ) -> _Replaced:
+        follower = self.follower
+        effects = follower.summaries.of(call.target)
+        if Effect.exits in effects:
+            # the program may end in the call, with every write so far in place
+            state = {}
+        role = follower.values.roles.get(call.target.id)
+        if role in WRITE_ROLES:
+            return self._before_write(op, call, role, effects, state)
+        if not state:
+            return state
+        if role in READ_ROLES:
+            read = follower.values.accessed(role, call)
+            if read is not None:
+                return {
+                    slot: replacing
+                    for slot, replacing in state.items()
+                    if follower.slots_apart(slot, read)
+                }
+        if effects & _TELLS_BOX_CHANGES:
+            return {}
+        return state
+
+    def _before_write(
+        self,
+        op: models.Op,
+        call: models.InvokeSubroutine,
+        role: str,
+        effects: Effect,
+        state: _Replaced,
+    ) -> _Replaced:
+        values = self.follower.values
+        written = values.written(role, call)
+        if state and role != "write_page_word":
+            # it may delete a box, or make one shorter; a word write of a page does neither
+            state = {slot: attrs.evolve(known, shrinks=True) for slot, known in state.items()}
+        if written is None or written[1] != 1 or op is not call:
+            # it replaces no word for certain, and it reads none
+            return state
+        slot, _ = written
+        value = call.args[-1]
+        later = state.get(slot) if state else None
+        if (
+            later is not None
+            and later.writer == call.target.id
+            and not effects & ~_ONLY_WRITES_BOXES
+            and self._unneeded(call, role, slot, value, later)
+        ):
+            self.removable.add(op)
+            # what replaces it is what replaces the words before it
+            return state
+        if state is None:
+            return None
+        state = dict(state)
+        state[slot] = _Replacing(
+            writer=call.target.id, nonzero=values.is_nonzero(value), shrinks=False
+        )
+        return state
+
+    def _unneeded(
+        self,
+        call: models.InvokeSubroutine,
+        role: str,
+        slot: Slot,
+        value: models.Value,
+        later: _Replacing,
+    ) -> bool:
+        """True if a write that a later write to the same slot replaces can go: the later
+        write fails whenever this one would, and leaves the same boxes behind."""
+        follower = self.follower
+        if not follower.page_boxes or follower.values.page_position(slot) is None:
+            # nothing is known of what the write does to its box, other than what the
+            # declaration promises
+            return self.promised
+        # a word of a page, where what a write does to the box is declared
+        if (
+            role == "write_page_word"
+            and not later.shrinks
+            and (call in follower.held or follower.values.is_zero(value) or later.nonzero)
+        ):
+            return True
+        # Otherwise the box could end up shorter without this write. A `box_replace` that
+        # is there because a page box was known to hold a word can rest on this write
+        # having made the box that long, so that the promise is not enough before one.
+        return self.promised and not self._in_place_follows
+
+
+def _is_box_replace(op: models.Op) -> bool:
+    return isinstance(op, models.Intrinsic) and op.op is AVMOp.box_replace
+
+
+def _blocks_reaching(
+    post_order: Sequence[models.BasicBlock], wanted: Callable[[models.Op], bool]
+) -> set[models.BasicBlock]:
+    """The blocks from whose start an op of the wanted kind can be reached."""
+    reaching = {block for block in post_order if any(map(wanted, block.ops))}
+    pending = list(reaching)
+    while pending:
+        for predecessor in pending.pop().predecessors:
+            if predecessor not in reaching:
+                reaching.add(predecessor)
+                pending.append(predecessor)
+    return reaching
+
+
+def _without_slots_of(
+    registers: Sequence[models.Register], state: dict[Slot, _Replacing]
+) -> dict[Slot, _Replacing]:
+    if any(slot.base in registers for slot in state):
+        return {slot: known for slot, known in state.items() if slot.base not in registers}
+    return state

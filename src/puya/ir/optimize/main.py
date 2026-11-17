@@ -32,7 +32,11 @@ from puya.ir.optimize.repeated_loads_elimination import (
 )
 from puya.ir.optimize.sink_single_use_intrinsics import sink_single_use_intrinsics
 from puya.ir.optimize.slot_storage import declared_storage
-from puya.ir.optimize.state_reads import page_reads_merge, repeated_state_reads_elimination
+from puya.ir.optimize.state_reads import (
+    page_reads_merge,
+    repeated_state_reads_elimination,
+    replaced_word_writes_elimination,
+)
 from puya.ir.to_text_visitor import render_program
 from puya.options import PuyaOptions
 from puya.utils import attrs_extend
@@ -97,6 +101,7 @@ def get_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
         SubroutineOptimization.from_function(remove_unreachable_blocks),
         SubroutineOptimization.from_function(repeated_expression_elimination),
         SubroutineOptimization.from_function(repeated_state_reads_elimination),
+        SubroutineOptimization.from_function(replaced_word_writes_elimination),
         SubroutineOptimization.from_function(encode_decode_pair_elimination),
         SubroutineOptimization.from_function(merge_chained_aggregate_reads, min_level=0),
         SubroutineOptimization.from_function(replace_aggregate_box_ops, min_level=0),

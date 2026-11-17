@@ -32,8 +32,9 @@ class SlotStorage:
 
     Declaring them promises that:
 
-    * a read returns the 32 bytes last written to its slot by any of the writers, where a
-      `value` is at most 32 bytes long and is stored left-padded with zero bytes;
+    * a `value` that is passed to a write is at most 32 bytes long, and a read returns the 32
+      bytes last written to its slot by any of the writers, where a `value` is stored
+      left-padded with zero bytes;
     * a write changes the word of no other slot;
     * a read has no effect, and does not fail once a read or a write of the same slot has
       succeeded in the same transaction;
@@ -43,10 +44,27 @@ class SlotStorage:
     `pages_are_boxes` promises that the words the page subroutines reach are the bytes of the
     box named `page` of the application itself, 32 for each word from byte 0, that a word past
     the end of the box or of a box that does not exist is zero, that such a box is at most 2048
-    bytes long, and that no write through these subroutines makes it shorter. Word reads of one
-    page can then share one read of its box, and a word write can replace the bytes in the box
-    itself where the box is known to hold the word. It is ignored for a program whose page
-    subroutines call another subroutine or use the boxes of another application.
+    bytes long, and that no write through any of the declared subroutines makes it shorter. It
+    also promises what a word write of a page does. Where the box holds the word, it replaces
+    its 32 bytes. Where it does not, a word that is zero changes nothing, and any other word
+    first makes the box just long enough to hold it, creating the box if there is none. It
+    fails only where one of these box operations does. Word reads of one page can then share
+    one read of its box, a word write can replace the bytes in the box itself where the box is
+    known to hold the word, and a word write that a later write of the same word replaces can
+    be left out where the later one alone does the same to the box. It is ignored for a
+    program whose page subroutines use the boxes of another application, read the ledger or
+    submit inner transactions.
+
+    `overwritten_writes_removable` promises that the program does not depend on a write that
+    is replaced before anything can tell. A write through one of these subroutines, followed
+    by a write through the same subroutine to the same slot, may be left out if no operation
+    between the two reads a box or the ledger (a balance or a minimum balance, which follows
+    the sizes of the boxes), submits an inner transaction or can end the program. This is a
+    promise about more than the words: either the later write fails wherever the earlier one
+    would have and the two leave the boxes as the later one alone does, whatever the values
+    are, or the program does not depend on the difference. For a word of a page with
+    `pages_are_boxes`, where what a write does is known, it is used only where the later write
+    is not known to do the same to the box.
 
     Two requests trade program size for fewer operations run. `inline_page_reads` asks for a
     word read of a page to read the box itself even where no other read shares it.
@@ -71,6 +89,7 @@ class SlotStorage:
     inline_page_reads: bool = False
     inline_page_writes: bool = False
     hashed_slots_apart: bool = False
+    overwritten_writes_removable: bool = False
 
 
 @attrs.frozen(kw_only=True)
