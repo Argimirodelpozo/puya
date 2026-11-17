@@ -26,6 +26,11 @@ def _check(condition: bool) -> None:  # noqa: FBT001
         raise OpFailsError
 
 
+def _only_if[T](condition: bool, value: T) -> T:  # noqa: FBT001
+    _check(condition)
+    return value
+
+
 def _fit(value: int, limit: int = MAX_UINT64) -> int:
     _check(0 <= value <= limit)
     return value
@@ -124,11 +129,11 @@ REFERENCE_OPS = [
     ReferenceOp(AVMOp.add, "uu", lambda a, b: _fit(a + b)),
     ReferenceOp(AVMOp.sub, "uu", lambda a, b: _fit(a - b)),
     ReferenceOp(AVMOp.mul, "uu", lambda a, b: _fit(a * b)),
-    ReferenceOp(AVMOp.div_floor, "uu", lambda a, b: (_check(b != 0), a // max(b, 1))[1]),
-    ReferenceOp(AVMOp.mod, "uu", lambda a, b: (_check(b != 0), a % max(b, 1))[1]),
+    ReferenceOp(AVMOp.div_floor, "uu", lambda a, b: _only_if(b != 0, a // max(b, 1))),
+    ReferenceOp(AVMOp.mod, "uu", lambda a, b: _only_if(b != 0, a % max(b, 1))),
     ReferenceOp(AVMOp.exp, "uu", lambda a, b: _exp(a, b, MAX_UINT64)),
-    ReferenceOp(AVMOp.shl, "uu", lambda a, b: (_check(b <= 63), (a << min(b, 63)) % 2**64)[1]),
-    ReferenceOp(AVMOp.shr, "uu", lambda a, b: (_check(b <= 63), a >> min(b, 63))[1]),
+    ReferenceOp(AVMOp.shl, "uu", lambda a, b: _only_if(b <= 63, (a << min(b, 63)) % 2**64)),
+    ReferenceOp(AVMOp.shr, "uu", lambda a, b: _only_if(b <= 63, a >> min(b, 63))),
     ReferenceOp(AVMOp.sqrt, "u", math.isqrt),
     ReferenceOp(AVMOp.bitlen, "u", lambda a: a.bit_length()),
     ReferenceOp(AVMOp.bitlen, "b", lambda a: int.from_bytes(a, "big").bit_length()),
@@ -144,18 +149,18 @@ REFERENCE_OPS = [
     ReferenceOp(
         AVMOp.divw,
         "uuu",
-        lambda a, b, c: (_check(c != 0 and a < c), ((a << 64) | b) // max(c, 1))[1],
+        lambda a, b, c: _only_if(c != 0 and a < c, ((a << 64) | b) // max(c, 1)),
     ),
     ReferenceOp(AVMOp.select, "uuu", lambda a, b, c: b if c else a),
     ReferenceOp(AVMOp.select, "bbu", lambda a, b, c: b if c else a, result=_bytes),
     ReferenceOp(AVMOp.itob, "u", lambda a: a.to_bytes(8, "big"), result=_bytes),
-    ReferenceOp(AVMOp.btoi, "b", lambda a: (_check(len(a) <= 8), int.from_bytes(a[:8], "big"))[1]),
+    ReferenceOp(AVMOp.btoi, "b", lambda a: _only_if(len(a) <= 8, int.from_bytes(a[:8], "big"))),
     ReferenceOp(AVMOp.len_, "b", len),
     ReferenceOp(AVMOp.concat, "bb", lambda a, b: _data(a + b), result=_bytes),
     ReferenceOp(
         AVMOp.bzero,
         "u",
-        lambda a: (_check(a <= MAX_BYTES), bytes(min(a, MAX_BYTES)))[1],
+        lambda a: _only_if(a <= MAX_BYTES, bytes(min(a, MAX_BYTES))),
         result=_bytes,
     ),
     ReferenceOp(
@@ -171,14 +176,14 @@ REFERENCE_OPS = [
     ReferenceOp(
         AVMOp.substring,
         "b",
-        lambda start, end, a: (_check(start <= end), _extract(a, start, max(end - start, 0)))[1],
+        lambda start, end, a: _only_if(start <= end, _extract(a, start, max(end - start, 0))),
         immediates=lambda rng: (_small(rng), _small(rng)),
         result=_bytes,
     ),
     ReferenceOp(
         AVMOp.substring3,
         "buu",
-        lambda a, b, c: (_check(b <= c), _extract(a, b, max(c - b, 0)))[1],
+        lambda a, b, c: _only_if(b <= c, _extract(a, b, max(c - b, 0))),
         result=_bytes,
     ),
     ReferenceOp(AVMOp.extract_uint16, "bu", lambda a, b: int.from_bytes(_extract(a, b, 2), "big")),
@@ -188,7 +193,7 @@ REFERENCE_OPS = [
     ReferenceOp(
         AVMOp.setbyte,
         "buu",
-        lambda a, b, c: (_check(c <= 255), _replace(a, b, bytes([min(c, 255)])))[1],
+        lambda a, b, c: _only_if(c <= 255, _replace(a, b, bytes([min(c, 255)]))),
         result=_bytes,
     ),
     ReferenceOp(AVMOp.getbit, "uu", _bit),
@@ -219,14 +224,14 @@ REFERENCE_OPS = [
     ReferenceOp(
         AVMOp.div_floor_bytes,
         "bb",
-        lambda a, b: (_check(_number(b) != 0), _digits(_number(a) // max(_number(b), 1)))[1],
+        lambda a, b: _only_if(_number(b) != 0, _digits(_number(a) // max(_number(b), 1))),
         result=_bytes,
         decided_by_bounds=False,
     ),
     ReferenceOp(
         AVMOp.mod_bytes,
         "bb",
-        lambda a, b: (_check(_number(b) != 0), _digits(_number(a) % max(_number(b), 1)))[1],
+        lambda a, b: _only_if(_number(b) != 0, _digits(_number(a) % max(_number(b), 1))),
         result=_bytes,
         decided_by_bounds=False,
     ),
@@ -247,7 +252,7 @@ REFERENCE_OPS = [
     ReferenceOp(AVMOp.sha512, "b", lambda _: bytes(64), result=_bytes),
 ]
 
-_UINT64_VALUES = [
+_UINT64_VALUES: list[int] = [
     *range(10),
     *(31, 32, 33, 62, 63, 64, 65, 127, 128, 255, 256, 257, 4095, 4096, 4097),
     *(2**16 - 1, 2**16, 2**32 - 1, 2**32, 2**32 + 1, 2**63 - 1, 2**63),
@@ -263,6 +268,7 @@ def random_uint64(rng: random.Random, earlier: Sequence[Operand] = ()) -> int:
     if earlier and choice < 0.5:
         # around where an op on this and an earlier operand starts to fail
         operand = rng.choice(earlier)
+        value: int
         if isinstance(operand, bytes):
             value = len(operand) + rng.choice([-9, -8, -7, -5, -4, -3, -2, -1, 0, 0, 1, 2])
         else:

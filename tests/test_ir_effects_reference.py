@@ -71,16 +71,17 @@ class _Case:
     def __attrs_post_init__(self) -> None:
         for index, kind in enumerate(self.spec.operands):
             if kind == "u":
-                value: Operand = random_uint64(self.rng, self.values)
+                number = random_uint64(self.rng, self.values)
                 param = parameter(f"p{index}")
-                self._bound(param, value, MAX_UINT64)
+                self._bound(param, number, MAX_UINT64)
+                self.values.append(number)
             else:
-                value = random_bytes(self.rng, self.values)
+                data = random_bytes(self.rng, self.values)
                 param = parameter(f"p{index}", PrimitiveIRType.bytes)
                 length = register(f"length{index}")
                 self.ops.append(assign(length, intrinsic(AVMOp.len_, param)))
-                self._bound(length, len(value), MAX_BYTES)
-            self.values.append(value)
+                self._bound(length, len(data), MAX_BYTES)
+                self.values.append(data)
             self.parameters.append(param)
         self.immediates = self.spec.immediates(self.rng)
         self.op = intrinsic(
