@@ -3,7 +3,7 @@
 The ranges are those of `puya.ir.optimize.value_bounds`, for the point of each operation: what
 the definitions say, the conditions of the asserts and branches that dominate the point, and
 what it took for the operations before it to complete. `range_rewrites` is the optimization,
-which goes through a subroutine once. It has two groups of rewrites, each of which can be
+which goes through a subroutine once. It has three groups of rewrites, each of which can be
 switched off by its name like an optimization:
 
 `range_constant_outcomes`
@@ -16,6 +16,12 @@ switched off by its name like an optimization:
     An operation that gives back one of its operands is replaced by that operand: `%` and `b%`
     of a value below the modulus, `&` and `b&` with a mask that covers the value, `b|` and
     `b^` with zeros, and taking all of a byte array.
+
+`range_cheaper_forms`
+    The same value at a lower cost: `b-` for a subtraction that wraps around a modulus when
+    it cannot go below zero, uint64 ops for byte math and comparisons of converted uint64
+    values, and one op that reads the last bytes of a byte array for a modulo and a
+    conversion.
 
 Two things are required of every rewrite, besides the result being the same value:
 
@@ -41,7 +47,12 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize._utils import SSAReadTracker
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.effects import Effect, effects_of
-from puya.ir.optimize.value_bounds import MAX_BIGUINT_BYTES, BoundsAtPoints, ValueBounds
+from puya.ir.optimize.value_bounds import (
+    MAX_BIGUINT_BYTES,
+    MAX_UINT64,
+    BoundsAtPoints,
+    ValueBounds,
+)
 
 logger = log.get_logger(__name__)
 
@@ -49,6 +60,7 @@ logger = log.get_logger(__name__)
 class _Group(enum.Enum):
     constant_outcomes = "range_constant_outcomes"
     operand_results = "range_operand_results"
+    cheaper_forms = "range_cheaper_forms"
 
 
 def range_rewrites(context: IROptimizationContext, subroutine: models.Subroutine) -> bool:
@@ -71,6 +83,12 @@ def range_operand_results(_context: IROptimizationContext, subroutine: models.Su
     return _Rewriter(subroutine, {_Group.operand_results}).rewrite()
 
 
+def range_cheaper_forms(_context: IROptimizationContext, subroutine: models.Subroutine) -> bool:
+    """Replaces operations by cheaper ones that the ranges of their operands show to give
+    the same value."""
+    return _Rewriter(subroutine, {_Group.cheaper_forms}).rewrite()
+
+
 _NUMBER_COMPARISONS: typing.Final[Mapping[AVMOp, AVMOp]] = {
     AVMOp.eq_bytes: AVMOp.eq,
     AVMOp.neq_bytes: AVMOp.neq,
@@ -78,6 +96,13 @@ _NUMBER_COMPARISONS: typing.Final[Mapping[AVMOp, AVMOp]] = {
     AVMOp.lte_bytes: AVMOp.lte,
     AVMOp.gt_bytes: AVMOp.gt,
     AVMOp.gte_bytes: AVMOp.gte,
+}
+_BYTE_MATH: typing.Final[Mapping[AVMOp, AVMOp]] = {
+    AVMOp.add_bytes: AVMOp.add,
+    AVMOp.sub_bytes: AVMOp.sub,
+    AVMOp.mul_bytes: AVMOp.mul,
+    AVMOp.div_floor_bytes: AVMOp.div_floor,
+    AVMOp.mod_bytes: AVMOp.mod,
 }
 _DECIDABLE: typing.Final = frozenset(
     (
@@ -96,17 +121,15 @@ _DECIDABLE: typing.Final = frozenset(
 # ops that read a byte array as a number: its leading zero bytes make no difference to the
 # result, and neither does its length as long as byte math takes it
 _READS_NUMBER: typing.Final = frozenset(
-    (
-        AVMOp.add_bytes,
-        AVMOp.sub_bytes,
-        AVMOp.mul_bytes,
-        AVMOp.div_floor_bytes,
-        AVMOp.mod_bytes,
-        AVMOp.bsqrt,
-        *_NUMBER_COMPARISONS,
-        AVMOp.bitlen,
-    )
+    (*_BYTE_MATH, AVMOp.bsqrt, *_NUMBER_COMPARISONS, AVMOp.bitlen)
 )
+# the ops that read the last bytes of a byte array as a uint64, by the number of bytes
+_READS_LAST_BYTES: typing.Final[Mapping[int, AVMOp]] = {
+    1: AVMOp.getbyte,
+    2: AVMOp.extract_uint16,
+    4: AVMOp.extract_uint32,
+    8: AVMOp.extract_uint64,
+}
 
 _Replacement = tuple[str, models.ValueProvider]
 
@@ -117,12 +140,19 @@ class _Rewriter:
     groups: Container[_Group]
     modified: int = attrs.field(default=0, init=False)
     _points: BoundsAtPoints = attrs.field(init=False)
+    # the AVM op that each register is the only result of, kept up to date
+    _intrinsics: dict[models.Value, models.Intrinsic] = attrs.field(factory=dict, init=False)
     _reads: SSAReadTracker | None = attrs.field(default=None, init=False)
     # registers that are another byte array than when the bounds were derived
     _other_bytes: set[models.Value] = attrs.field(factory=set, init=False)
 
     def rewrite(self) -> bool:
         self._points = BoundsAtPoints.of(self.subroutine)
+        for block in self.subroutine.body:
+            for op in block.ops:
+                match op:
+                    case models.Assignment(targets=[target], source=models.Intrinsic() as source):
+                        self._intrinsics[target] = source
         outcomes = _Group.constant_outcomes in self.groups
         for block in self.subroutine.body:
             for op, bounds in self._points.before_ops(block):
@@ -134,7 +164,7 @@ class _Rewriter:
                             self.modified += 1
                     case models.Assignment(targets=[_], source=models.Intrinsic() as source):
                         if not self._other_bytes or self._other_bytes.isdisjoint(source.args):
-                            self._intrinsic(op, source, bounds)
+                            self._intrinsic(block, op, source, bounds)
             if outcomes:
                 self._branch(block)
         return self.modified > 0
@@ -151,6 +181,7 @@ class _Rewriter:
 
     def _intrinsic(
         self,
+        block: models.BasicBlock,
         assignment: models.Assignment,
         source: models.Intrinsic,
         bounds: typing.Callable[[], ValueBounds],
@@ -160,17 +191,24 @@ class _Rewriter:
             replacement = _outcome(source, bounds())
         if replacement is None and _Group.operand_results in self.groups:
             replacement = self._operand_result(assignment, source, bounds)
+        if replacement is None and _Group.cheaper_forms in self.groups:
+            replacement = self._cheaper_form(block, assignment, source, bounds)
         if replacement is not None:
             rule, new_source = replacement
             logger.debug(f"range rewrite ({rule}): {source} -> {new_source}")
             self._replace(assignment, new_source)
 
     def _replace(self, assignment: models.Assignment, source: models.ValueProvider) -> None:
+        (target,) = assignment.targets
         if self._reads is None:
             assignment.source = source
         else:
             with self._reads.update(assignment):
                 assignment.source = source
+        if isinstance(source, models.Intrinsic):
+            self._intrinsics[target] = source
+        else:
+            self._intrinsics.pop(target, None)
         self.modified += 1
 
     def _tracked_reads(self) -> SSAReadTracker:
@@ -181,11 +219,14 @@ class _Rewriter:
                     self._reads.add(op)
         return self._reads
 
-    def _only_read_as_number(self, register: models.Register) -> bool:
-        """True if everything that reads a register reads it as a number."""
+    def _only_read_as_number(self, register: models.Register, *, or_converted: bool) -> bool:
+        """True if everything that reads a register reads it as a number. With `or_converted`
+        a `btoi` counts as well, which takes at most 8 bytes."""
         for read in self._tracked_reads().get(register):
             source = read.source if isinstance(read, models.Assignment) else read
-            if not isinstance(source, models.Intrinsic) or source.op not in _READS_NUMBER:
+            if not isinstance(source, models.Intrinsic):
+                return False
+            if source.op not in _READS_NUMBER and not (or_converted and source.op is AVMOp.btoi):
                 return False
         return True
 
@@ -262,7 +303,7 @@ class _Rewriter:
         if same_bytes:
             return rule, value
         (target,) = assignment.targets
-        if not self._only_read_as_number(target):
+        if not self._only_read_as_number(target, or_converted=False):
             return None
         if other is not None:
             # the result is as long as the longer operand, and byte math fails on a long one
@@ -271,6 +312,170 @@ class _Rewriter:
                 return None
         self._other_bytes.add(target)
         return f"{rule}, as a number", value
+
+    # cheaper forms
+
+    def _cheaper_form(
+        self,
+        block: models.BasicBlock,
+        assignment: models.Assignment,
+        source: models.Intrinsic,
+        at: typing.Callable[[], ValueBounds],
+    ) -> _Replacement | None:
+        match source.op, source.args:
+            case AVMOp.mod_bytes, [wrapped, modulus]:
+                replacement = self._without_wrapping(source, wrapped, modulus, at())
+                if replacement is not None:
+                    return replacement
+            case AVMOp.btoi, [converted]:
+                return self._last_bytes(source, converted, at)
+        match source.op, source.args:
+            case comparison, [a, b] if comparison in _NUMBER_COMPARISONS:
+                operands = self._converted_operands(a, b)
+                if operands is not None:
+                    return "uint64 comparison", models.Intrinsic(
+                        op=_NUMBER_COMPARISONS[comparison],
+                        args=[value for value, _ in operands],
+                        source_location=source.source_location,
+                    )
+            case math, [a, b] if math in _BYTE_MATH:
+                return self._uint64_math(block, assignment, source, a, b, at)
+        return None
+
+    def _without_wrapping(
+        self,
+        source: models.Intrinsic,
+        wrapped: models.Value,
+        modulus: models.Value,
+        bounds: ValueBounds,
+    ) -> _Replacement | None:
+        """`(a + m - b) % m` as `a - b`, where `b <= a < m`."""
+        low, high = bounds.number(modulus)
+        if low != high:
+            return None
+        match self._intrinsics.get(wrapped):
+            case models.Intrinsic(op=AVMOp.sub_bytes, args=[raised, b]):
+                match self._intrinsics.get(raised):
+                    case models.Intrinsic(op=AVMOp.add_bytes, args=[x, y]):
+                        for a, added in ((x, y), (y, x)):
+                            if (
+                                bounds.number(added) == (low, low)
+                                and bounds.number(a)[1] < low
+                                and bounds.not_above(b, a)
+                            ):
+                                # fails for an operand that is too long, as the addition and
+                                # the subtraction that have completed would have
+                                return "subtraction without wrapping", models.Intrinsic(
+                                    op=AVMOp.sub_bytes,
+                                    args=[a, b],
+                                    source_location=source.source_location,
+                                )
+        return None
+
+    def _last_bytes(
+        self,
+        source: models.Intrinsic,
+        converted: models.Value,
+        at: typing.Callable[[], ValueBounds],
+    ) -> _Replacement | None:
+        """`btoi(x % 256^n)` as the op that reads the last n bytes of `x`, where the length
+        of `x` is known."""
+        match self._intrinsics.get(converted):
+            case models.Intrinsic(op=AVMOp.mod_bytes, args=[whole, modulus]) if (
+                whole not in self._other_bytes
+            ):
+                bounds = at()
+                length, longest = bounds.length(whole)
+                low, high = bounds.number(modulus)
+                for size, op in _READS_LAST_BYTES.items():
+                    if (low, high) == (256**size, 256**size) and (
+                        size <= length == longest <= MAX_BIGUINT_BYTES
+                    ):
+                        position = models.UInt64Constant(value=length - size, source_location=None)
+                        return "last bytes", models.Intrinsic(
+                            op=op, args=[whole, position], source_location=source.source_location
+                        )
+        return None
+
+    def _uint64_math(
+        self,
+        block: models.BasicBlock,
+        assignment: models.Assignment,
+        source: models.Intrinsic,
+        a: models.Value,
+        b: models.Value,
+        at: typing.Callable[[], ValueBounds],
+    ) -> _Replacement | None:
+        """Byte math on the bytes of uint64 values as the uint64 op and a conversion, where
+        the result is a uint64 and is only read as a number."""
+        operands = self._converted_operands(a, b)
+        if operands is None:
+            return None
+        (target,) = assignment.targets
+        # not larger: one of the conversions is for this operation alone
+        reads = self._tracked_reads()
+        if not any(
+            register is not None and reads.count(register) == 1 for _, register in operands
+        ):
+            return None
+        loc = source.source_location
+        uint64_math = models.Intrinsic(
+            op=_BYTE_MATH[source.op], args=[value for value, _ in operands], source_location=loc
+        )
+        # subtraction, division and modulo fail for the same operands either way, and their
+        # results are not above the first operand
+        if source.op in (AVMOp.add_bytes, AVMOp.mul_bytes) and _may_fail(uint64_math, at()):
+            return None
+        # the result is 8 bytes where it was as many as it took
+        if not self._only_read_as_number(target, or_converted=True):
+            return None
+        result = models.Register(
+            name=f"uint64%{target.name}",
+            version=target.version,
+            ir_type=uint64_math.types[0],
+            source_location=target.source_location,
+        )
+        if any(result in b.get_assigned_registers() for b in self.subroutine.body):
+            return None
+        computed = models.Assignment(targets=[result], source=uint64_math, source_location=loc)
+        block.ops.insert(block.ops.index(assignment), computed)
+        self._intrinsics[result] = uint64_math
+        reads.add(computed)
+        self._other_bytes.add(target)
+        return "uint64 math", models.Intrinsic(op=AVMOp.itob, args=[result], source_location=loc)
+
+    def _converted_operands(
+        self, a: models.Value, b: models.Value
+    ) -> list[tuple[models.Value, models.Register | None]] | None:
+        """The uint64 values that two byte arrays are, if one is the result of `itob` and the
+        other is that or a constant: each with the register that holds the bytes, if any."""
+        operands = list[tuple[models.Value, models.Register | None]]()
+        for value in (a, b):
+            match value:
+                case models.Register():
+                    match self._intrinsics.get(value):
+                        case models.Intrinsic(op=AVMOp.itob, args=[number]):
+                            operands.append((number, value))
+                        case _:
+                            return None
+                case models.Constant():
+                    low, high = _CONSTANTS.number(value)
+                    # byte math does not take a constant that is too long
+                    if (
+                        low != high
+                        or low > MAX_UINT64
+                        or _CONSTANTS.length(value)[1] > MAX_BIGUINT_BYTES
+                    ):
+                        return None
+                    operands.append((models.UInt64Constant(value=low, source_location=None), None))
+                case _:
+                    return None
+        if all(register is None for _, register in operands):
+            return None
+        return operands
+
+
+_CONSTANTS: typing.Final = ValueBounds()
 
 
 def _outcome(source: models.Intrinsic, bounds: ValueBounds) -> _Replacement | None:

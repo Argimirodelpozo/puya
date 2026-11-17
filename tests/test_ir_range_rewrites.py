@@ -5,7 +5,12 @@ from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.context import IROptimizationContext
 from puya.ir.optimize.main import SubroutineOptimization
-from puya.ir.optimize.range_rewrites import range_constant_outcomes, range_operand_results
+from puya.ir.optimize.range_rewrites import (
+    range_cheaper_forms,
+    range_constant_outcomes,
+    range_operand_results,
+    range_rewrites,
+)
 from puya.ir.types_ import PrimitiveIRType
 from tests.utils.ir import (
     assert_,
@@ -55,6 +60,10 @@ def _constant_outcomes(ops: Sequence[models.Op]) -> list[str]:
 
 def _operand_results(ops: Sequence[models.Op]) -> list[str]:
     return optimize_block(range_operand_results, ops, parameters=_PARAMETERS)
+
+
+def _cheaper_forms(ops: Sequence[models.Op]) -> list[str]:
+    return optimize_block(range_cheaper_forms, ops, parameters=_PARAMETERS)
 
 
 def _unchanged(ops: Sequence[models.Op]) -> list[str]:
@@ -417,6 +426,193 @@ def test_parts_that_are_the_whole() -> None:
         "let sized#0: bytes = a_word#0",
         str(ops[7]),
     ]
+
+
+def _wrapping_subtraction(
+    a: models.Value, b: models.Value, before: Sequence[models.Op]
+) -> list[models.Op]:
+    raised = _bytes("raised")
+    lowered = _bytes("lowered")
+    result = _bytes("result")
+    return [
+        *_WORDS,
+        *before,
+        assign(raised, intrinsic(AVMOp.add_bytes, a, biguint(_WORD))),
+        assign(lowered, intrinsic(AVMOp.sub_bytes, raised, b)),
+        assign(result, intrinsic(AVMOp.mod_bytes, lowered, biguint(_WORD))),
+        *_use(result),
+    ]
+
+
+def test_subtraction_that_does_not_wrap() -> None:
+    b_at_most_a = _condition("b_at_most_a")
+    known = [
+        assign(b_at_most_a, intrinsic(AVMOp.lte_bytes, _b_word, _a_word)),
+        assert_(b_at_most_a),
+    ]
+    # (a + 2^256 - b) % 2^256 where b <= a < 2^256
+    ops = _wrapping_subtraction(_a_word, _b_word, known)
+    result = _cheaper_forms(ops)
+    assert result[-2] == "let result#0: bytes = (b- a_word#0 b_word#0)"
+    # what is left over is for dead code elimination
+    assert result[:-2] == _unchanged(ops)[:-2]
+
+    # which of the two is larger is not known
+    ops = _wrapping_subtraction(_a_word, _b_word, [])
+    assert _cheaper_forms(ops) == _unchanged(ops)
+    # the other one is
+    ops = _wrapping_subtraction(_b_word, _a_word, known)
+    assert _cheaper_forms(ops) == _unchanged(ops)
+    # the first operand may be 2^256 or more, which the modulo takes off again
+    known = [assign(b_at_most_a, intrinsic(AVMOp.lte_bytes, _b_word, _data)), assert_(b_at_most_a)]
+    ops = _wrapping_subtraction(_data, _b_word, known)
+    assert _cheaper_forms(ops) == _unchanged(ops)
+
+
+def test_comparison_of_converted_uint64_values() -> None:
+    below = _condition("below")
+    at_least_ten = _condition("at_least_ten")
+    huge = _condition("huge")
+    mixed = _condition("mixed")
+    ops = [
+        *_WORDS,
+        *_CONVERTED,
+        assign(below, intrinsic(AVMOp.lt_bytes, _a_bytes, _b_bytes)),
+        assign(at_least_ten, intrinsic(AVMOp.gte_bytes, _a_bytes, biguint(10))),
+        # not a uint64
+        assign(huge, intrinsic(AVMOp.lt_bytes, _a_bytes, biguint(2**64))),
+        assign(mixed, intrinsic(AVMOp.lt_bytes, _a_bytes, _b_word)),
+        *_use(below, at_least_ten, huge, mixed),
+    ]
+    result = _cheaper_forms(ops)
+    assert result[4:8] == [
+        "let below#0: bool = (< a#0 b#0)",
+        "let at_least_ten#0: bool = (>= a#0 10u)",
+        str(ops[6]),
+        str(ops[7]),
+    ]
+
+
+def test_byte_math_on_converted_uint64_values() -> None:
+    small_a = register("small_a")
+    small_b = register("small_b")
+    total = _bytes("total")
+    is_big = _condition("is_big")
+    back = register("back")
+
+    def math(op: AVMOp, x: models.Value, y: models.Value, uses: Sequence[models.Op]) -> list[str]:
+        return _cheaper_forms(
+            [
+                assign(small_a, intrinsic(AVMOp.mod, _a, uint64(1000))),
+                assign(small_b, intrinsic(AVMOp.mod, _b, uint64(1000))),
+                assign(_a_bytes, intrinsic(AVMOp.itob, x)),
+                assign(_b_bytes, intrinsic(AVMOp.itob, y)),
+                assign(total, intrinsic(op, _a_bytes, _b_bytes)),
+                *uses,
+            ]
+        )
+
+    as_number: list[models.Op] = [
+        assign(is_big, intrinsic(AVMOp.gt_bytes, total, _data)),
+        assign(back, intrinsic(AVMOp.btoi, total)),
+        *_use(is_big, back),
+    ]
+    unchanged = "let total#0: bytes = (b+ a_bytes#0 b_bytes#0)"
+    # the sum of two small numbers is a uint64, and its bytes are only read as a number
+    assert math(AVMOp.add_bytes, small_a, small_b, as_number)[4:6] == [
+        "let uint64%total#0: uint64 = (+ small_a#0 small_b#0)",
+        "let total#0: bytes = (itob uint64%total#0)",
+    ]
+    # the sum of any two uint64 values may not be one
+    assert math(AVMOp.add_bytes, _a, _b, as_number)[4] == unchanged
+    # the result has 8 bytes then, which shows where its bytes are read
+    assert math(AVMOp.add_bytes, small_a, small_b, _use(total))[4] == unchanged
+    # not worth it where both conversions are needed anyway
+    assert (
+        math(AVMOp.add_bytes, small_a, small_b, [*as_number, *_use(_a_bytes, _b_bytes)])[4]
+        == unchanged
+    )
+    # subtraction, division and modulo fail for the same operands either way
+    assert math(AVMOp.sub_bytes, _a, _b, as_number)[4] == (
+        "let uint64%total#0: uint64 = (- a#0 b#0)"
+    )
+    assert math(AVMOp.div_floor_bytes, _a, _b, as_number)[4] == (
+        "let uint64%total#0: uint64 = (/ a#0 b#0)"
+    )
+    assert math(AVMOp.mod_bytes, _a, _b, as_number)[4] == (
+        "let uint64%total#0: uint64 = (% a#0 b#0)"
+    )
+    assert math(AVMOp.mul_bytes, small_a, small_b, as_number)[4] == (
+        "let uint64%total#0: uint64 = (* small_a#0 small_b#0)"
+    )
+    assert math(AVMOp.mul_bytes, _a, small_b, as_number)[4] == (
+        "let total#0: bytes = (b* a_bytes#0 b_bytes#0)"
+    )
+
+
+def test_last_bytes_as_uint64() -> None:
+    low = _bytes("low")
+    number = register("number")
+
+    def last_bytes(whole: models.Value, modulus: int) -> str:
+        return _cheaper_forms(
+            [
+                *_WORDS,
+                assign(low, intrinsic(AVMOp.mod_bytes, whole, biguint(modulus))),
+                assign(number, intrinsic(AVMOp.btoi, low)),
+                *_use(number),
+            ]
+        )[3]
+
+    assert last_bytes(_a_word, 2**64) == "let number#0: uint64 = (extract_uint64 a_word#0 24u)"
+    assert last_bytes(_a_word, 2**32) == "let number#0: uint64 = (extract_uint32 a_word#0 28u)"
+    assert last_bytes(_a_word, 2**16) == "let number#0: uint64 = (extract_uint16 a_word#0 30u)"
+    assert last_bytes(_a_word, 2**8) == "let number#0: uint64 = (getbyte a_word#0 31u)"
+    # no op for 3 bytes, and no position for the last bytes of a byte array of unknown length
+    unchanged = "let number#0: uint64 = (btoi low#0)"
+    assert last_bytes(_a_word, 2**24) == unchanged
+    assert last_bytes(_data, 2**64) == unchanged
+
+
+def test_groups_of_rewrites() -> None:
+    small = register("small")
+    is_small = _condition("is_small")
+    again = register("again")
+    below = _condition("below")
+    ops = [
+        *_CONVERTED,
+        assign(small, intrinsic(AVMOp.mod, _a, uint64(100))),
+        assign(is_small, intrinsic(AVMOp.lt, small, uint64(100))),
+        assign(again, intrinsic(AVMOp.mod, small, uint64(256))),
+        assign(below, intrinsic(AVMOp.lt_bytes, _a_bytes, _b_bytes)),
+        *_use(is_small, again, below),
+    ]
+    rewritten = {
+        "range_constant_outcomes": (3, "let is_small#0: bool = 1u"),
+        "range_operand_results": (4, "let again#0: uint64 = small#0"),
+        "range_cheaper_forms": (5, "let below#0: bool = (< a#0 b#0)"),
+    }
+
+    def rewrite(**switches: bool) -> list[str]:
+        def with_switches(_: IROptimizationContext, subroutine: models.Subroutine) -> bool:
+            context = Mock()
+            context.options.optimizations_override = switches
+            return range_rewrites(context, subroutine)
+
+        return optimize_block(with_switches, list(ops), parameters=_PARAMETERS)
+
+    # one pass over the subroutine does the rewrites of all groups
+    expected = _unchanged(ops)
+    for index, replacement in rewritten.values():
+        expected[index] = replacement
+    assert rewrite() == expected
+    # each group is switched off by its name
+    for group in rewritten:
+        expected = _unchanged(ops)
+        for index, replacement in (rewritten[other] for other in rewritten if other != group):
+            expected[index] = replacement
+        assert rewrite(**{group: False}) == expected
+    assert rewrite(**dict.fromkeys(rewritten, False)) == _unchanged(ops)
 
 
 def test_optimization_that_depends_on_the_subroutine_alone() -> None:
