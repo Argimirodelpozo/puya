@@ -25,6 +25,7 @@ from puya.ir.optimize.inlining import analyse_subroutines_for_inlining, perform_
 from puya.ir.optimize.inner_txn import inner_txn_field_replacer
 from puya.ir.optimize.intrinsic_simplification import intrinsic_simplifier
 from puya.ir.optimize.itxn_field_elision import elide_itxn_field_calls
+from puya.ir.optimize.range_rewrites import range_rewrites
 from puya.ir.optimize.repeated_aggregate_reads_merge import merge_chained_aggregate_reads
 from puya.ir.optimize.repeated_code_elimination import repeated_expression_elimination
 from puya.ir.optimize.repeated_loads_elimination import (
@@ -47,6 +48,10 @@ class SubroutineOptimization:
     _optimize: SubroutineOptimizerCallable
     loop: bool
     min_level: int
+    local: bool = False
+    """True if what the optimization does depends on nothing but the subroutine: it is not
+    run again on a subroutine that no optimization has modified since it left it as it was"""
+    _left_as_was: dict[str, int] = attrs.field(factory=dict, init=False)
 
     def can_optimize(self, options: PuyaOptions) -> bool:
         try:
@@ -61,18 +66,30 @@ class SubroutineOptimization:
         *,
         loop: bool = False,
         min_level: int = 1,
+        local: bool = False,
     ) -> "SubroutineOptimization":
         func_name = func.__name__
         func_desc = func_name.replace("_", " ").title().strip()
         return SubroutineOptimization(
-            id=func_name, desc=func_desc, optimize=func, loop=loop, min_level=min_level
+            id=func_name,
+            desc=func_desc,
+            optimize=func,
+            loop=loop,
+            min_level=min_level,
+            local=local,
         )
 
     def optimize(self, context: IROptimizationContext, ir: models.Subroutine) -> bool:
+        modifications = context.modifications.get(ir.id, 0)
+        if self.local and self._left_as_was.get(ir.id) == modifications:
+            return False
         did_modify = self._optimize(context, ir)
         if did_modify:
             while self.loop and self._optimize(context, ir):
                 pass
+            context.modifications[ir.id] = modifications + 1
+        elif self.local:
+            self._left_as_was[ir.id] = modifications
         return did_modify
 
 
@@ -86,6 +103,7 @@ def get_subroutine_optimizations() -> Iterable[SubroutineOptimization]:
         # TODO: improve this algorithm instead of looping
         SubroutineOptimization.from_function(remove_unused_variables, loop=True, min_level=0),
         SubroutineOptimization.from_function(intrinsic_simplifier),
+        SubroutineOptimization.from_function(range_rewrites, local=True),
         SubroutineOptimization.from_function(inner_txn_field_replacer, min_level=0),
         SubroutineOptimization.from_function(replace_compiled_references, min_level=0),
         SubroutineOptimization.from_function(simplify_control_ops, loop=True),
