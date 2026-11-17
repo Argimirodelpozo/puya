@@ -569,6 +569,7 @@ def _eliminate(
         hashed_apart=storage is not None and storage.hashed_slots_apart,
         page_boxes=storage is not None and storage.pages_are_boxes,
         pages=pages,
+        inline_reads=pages and storage is not None and storage.inline_page_reads,
         inline_writes=pages and storage is not None and storage.inline_page_writes,
     )
     order = _reverse_post_order(subroutine.body[0])
@@ -662,8 +663,6 @@ def _known_at_start(
 
 
 _MAX_WALKS = 12
-# a read of the page box is worth it from this many further word reads taking their word from it
-_MIN_PAGE_READS = int(os.environ.get("PUYA_MIN_PAGE_READS", "1"))
 
 
 def _reverse_post_order(entry: models.BasicBlock) -> Sequence[models.BasicBlock]:
@@ -695,6 +694,8 @@ class _Follower:
     """whether the words of a page are the bytes of its box"""
     pages: bool
     """whether word reads of one page are to share a read of the page box"""
+    inline_reads: bool
+    """whether a word read that shares with no other is to read the page box itself too"""
     inline_writes: bool
     """whether a word write of a page read whole is to replace its bytes in place"""
     mode: str = "follow"
@@ -829,7 +830,7 @@ class _Follower:
         self.page_reads = {
             reader: positions
             for reader, positions in self.page_reads.items()
-            if len(positions) > _MIN_PAGE_READS or reader in self.page_writes
+            if len(positions) > 1 or self.inline_reads or reader in self.page_writes
         }
 
     def _op(self, op: models.Op, known: _Known) -> Sequence[models.Op] | None:

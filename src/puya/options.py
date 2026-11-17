@@ -47,9 +47,11 @@ class SlotStorage:
     read of its box, and a word write can replace the bytes in the box itself where the box is
     known to hold the word.
 
-    `inline_page_writes` asks, at the cost of program size, for a word write of a page whose
-    box was read to compare the length read with the position of the word, and to replace the
-    bytes in place where the box holds it.
+    Two requests trade program size for fewer operations run. `inline_page_reads` asks for a
+    word read of a page to read the box itself even where no other read shares it.
+    `inline_page_writes` asks for a word write of a page whose box was read to compare the
+    length read with the position of the word, and to replace the bytes in place where the box
+    holds it.
 
     `hashed_slots_apart` promises that the program does not depend on two slots being the same
     when they are derived differently: the result of a hash op, plus a number below 2**64, is
@@ -65,6 +67,7 @@ class SlotStorage:
     write_slot: str | None = None
     slot_add: str | None = None
     pages_are_boxes: bool = False
+    inline_page_reads: bool = False
     inline_page_writes: bool = False
     hashed_slots_apart: bool = False
 
