@@ -85,6 +85,11 @@ class _Word:
     form: str
     """how the 32 bytes of the word follow from the value: it is them ("word"), it is them once
     left-padded with zero bytes ("pad"), or they are its first 32 bytes ("head")"""
+    outside_zero: int | None = None
+    """For a word of a page: a number with bit n set for byte n, such that every other byte of
+    the word is zero whenever the box of the page does not reach the word. A word that was read
+    is all zero then, and a word that is written without making the box longer is one that was
+    read with some bytes changed. None if nothing of the kind is known."""
 
 
 _CallKey = tuple[str, tuple[models.Value, ...]]
@@ -124,8 +129,19 @@ class _Known:
             if all(o is not None and o.reader == page.reader for o in others):
                 written = page.written.union(*(o.written for o in others if o is not None))
                 pages[key] = _Page(reader=page.reader, written=written)
+        words = dict[Slot, _Word]()
+        for slot, word in first.words.items():
+            others = [o.words.get(slot) for o in rest]
+            if all(o is not None and (o.value, o.form) == (word.value, word.form) for o in others):
+                outside_zero = word.outside_zero
+                for other in others:
+                    if outside_zero is None or other is None or other.outside_zero is None:
+                        outside_zero = None
+                    else:
+                        outside_zero |= other.outside_zero
+                words[slot] = attrs.evolve(word, outside_zero=outside_zero)
         return cls(
-            words={k: v for k, v in first.words.items() if all(o.words.get(k) == v for o in rest)},
+            words=words,
             calls={k: v for k, v in first.calls.items() if all(o.calls.get(k) == v for o in rest)},
             pages=pages,
             covered=covered,
@@ -389,6 +405,13 @@ class _Follower:
     replaces ops"""
     held: set[models.InvokeSubroutine] = attrs.field(factory=set)
     """the word writes of a page whose box is known to hold the word when they run"""
+    changes: dict[models.InvokeSubroutine, tuple[int | None, int | None]] = attrs.field(
+        factory=dict
+    )
+    """by word write: the bytes outside which the word written is zero if its box does not
+    reach it (`_Word.outside_zero`), and the bytes in which it may be zero where the word that
+    the slot held before it is not, each as a number with bit n set for byte n; None where
+    that is not known"""
     page_reads: dict[models.Register, list[int]] = attrs.field(factory=dict)
     """by the target of the first word read of a page: the byte positions of the words that
     it and the reads sharing with it take"""
@@ -660,7 +683,7 @@ class _Follower:
         if word is not None and word.value.ir_type.maybe_avm_type != AVMType.bytes:
             word = None
         if word is None:
-            known.words[slot] = _Word(value=target, form="word")
+            known.words[slot] = _Word(value=target, form="word", outside_zero=0)
             if self.pages and role in PAGE_ROLES:
                 return self._page_read(op, call, target, known)
             return None
@@ -751,6 +774,20 @@ class _Follower:
             form = "head"
         else:
             form = "pad"
+        # what is known of the word if its box does not reach it, see `_Word.outside_zero`
+        outside_zero = zeroed = None
+        if form == "word":
+            earlier = known.words.get(slot)
+            if earlier is not None and earlier.form == "word":
+                changes = self.values.changed_from(value, earlier.value)
+                if changes is not None:
+                    zeroed, changed = changes
+                    if earlier.outside_zero is not None:
+                        outside_zero = earlier.outside_zero | changed
+            if self.values.is_zero(value):
+                outside_zero = 0
+        if self.mode == "note":
+            self.changes[call] = (outside_zero, zeroed)
         replacement = None
         if self.page_boxes and statement and role == "write_page_word":
             page, at = _page_and_position(call)
@@ -761,7 +798,8 @@ class _Follower:
                     replacement = self._replace_word(call)
             elif self.pages and self.inline_writes:
                 self._page_write(call, known)
-        self._slot_written(slot, count, _Word(value=value, form=form), known)
+        word = _Word(value=value, form=form, outside_zero=outside_zero)
+        self._slot_written(slot, count, word, known)
         return replacement
 
     def _replace_word(self, call: models.InvokeSubroutine) -> Sequence[models.Op] | None:
@@ -989,6 +1027,10 @@ class _Replacing:
     """the word it writes is certainly not zero"""
     shrinks: bool
     """a box may get shorter, or be deleted, before it runs"""
+    zeroed: int | None = None
+    """the bytes in which the word it writes may be zero where the word that the slot holds
+    here is not, as a number with bit n set for byte n; None if the two are not known to be
+    that close"""
 
 
 _Replaced = dict[Slot, _Replacing] | None
@@ -1066,10 +1108,17 @@ class _ReplacedWrites:
         for slot, replacing in first.items():
             others = [state.get(slot) for state in rest]
             if all(other is not None and other.writer == replacing.writer for other in others):
+                zeroed = replacing.zeroed
+                for other in others:
+                    if zeroed is None or other is None or other.zeroed is None:
+                        zeroed = None
+                    else:
+                        zeroed |= other.zeroed
                 agreed[slot] = _Replacing(
                     writer=replacing.writer,
                     nonzero=replacing.nonzero and all(o.nonzero for o in others if o),
                     shrinks=replacing.shrinks or any(o.shrinks for o in others if o),
+                    zeroed=zeroed,
                 )
         return agreed
 
@@ -1133,6 +1182,7 @@ class _ReplacedWrites:
             return state
         slot, _ = written
         value = call.args[-1]
+        _, own_zeroed = self.follower.changes.get(call, (None, None))
         later = state.get(slot) if state else None
         if (
             later is not None
@@ -1141,13 +1191,21 @@ class _ReplacedWrites:
             and self._unneeded(call, role, slot, value, later)
         ):
             self.removable.add(op)
-            # what replaces it is what replaces the words before it
-            return state
+            # What replaces it is what replaces the words before it. The word that the slot
+            # holds before this write is one step further from the word that replaces it.
+            assert state is not None
+            zeroed = (
+                None if later.zeroed is None or own_zeroed is None else later.zeroed | own_zeroed
+            )
+            return {**state, slot: attrs.evolve(later, zeroed=zeroed)}
         if state is None:
             return None
         state = dict(state)
         state[slot] = _Replacing(
-            writer=call.target.id, nonzero=values.is_nonzero(value), shrinks=False
+            writer=call.target.id,
+            nonzero=values.is_nonzero(value),
+            shrinks=False,
+            zeroed=own_zeroed,
         )
         return state
 
@@ -1167,12 +1225,20 @@ class _ReplacedWrites:
             # declaration promises
             return self.promised
         # a word of a page, where what a write does to the box is declared
-        if (
-            role == "write_page_word"
-            and not later.shrinks
-            and (call in follower.held or follower.values.is_zero(value) or later.nonzero)
-        ):
-            return True
+        if role == "write_page_word" and not later.shrinks:
+            if call in follower.held or follower.values.is_zero(value) or later.nonzero:
+                return True
+            # Where the box does not reach the word, this write makes it longer only if a
+            # byte of its word is not zero, and that is one of the bytes in `outside_zero`.
+            # If the word that replaces it has that byte unchanged, or with more bits set,
+            # the later write makes the box as long.
+            outside_zero, _ = follower.changes.get(call, (None, None))
+            if (
+                outside_zero is not None
+                and later.zeroed is not None
+                and not later.zeroed & outside_zero
+            ):
+                return True
         # Otherwise the box could end up shorter without this write. A `box_replace` that
         # is there because a page box was known to hold a word can rest on this write
         # having made the box that long, so that the promise is not enough before one.

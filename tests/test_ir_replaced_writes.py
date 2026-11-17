@@ -396,3 +396,87 @@ def test_chain_of_read_change_write_is_left_with_one_read_and_one_write() -> Non
         str(ops[8]),
         "let read_4#0: bytes = changed_3#0",
     ]
+
+
+def _with_byte(name: str, word_: models.Value, position: int) -> models.Assignment:
+    """A word with one of its bytes replaced."""
+    return assign(
+        _bytes(name),
+        intrinsic(AVMOp.replace2, word_, bytes_(b"\x01"), immediates=[position]),
+    )
+
+
+def _page_word_chain(*words: models.Assignment) -> list[models.Op]:
+    """Reads the word of slot 1 of the page into `read`, and writes each of the given words to
+    that slot once it is computed."""
+    ops: list[models.Op] = [assign(_bytes("read"), call(_read_page, PAGE, _AT))]
+    for computed in words:
+        ops += [computed, call(_write_page, PAGE, _AT, computed.targets[0])]
+    return ops
+
+
+def test_chain_of_page_word_writes_is_left_with_the_last_one_on_proof() -> None:
+    # Each word is the one before it with another byte replaced, starting from the word that
+    # was read. Where the box does not reach the word, the word read is zero, so a write of
+    # the chain makes the box longer only if one of the bytes replaced so far is not zero,
+    # and then the last write does as well.
+    first = _with_byte("first", _bytes("read"), 31)
+    second = _with_byte("second", first.targets[0], 30)
+    third = _with_byte("third", second.targets[0], 29)
+    ops = _page_word_chain(first, second, third)
+    assert _optimized(ops, storage=_PAGES) == [
+        str(ops[0]),
+        str(first),
+        str(second),
+        str(third),
+        str(ops[-1]),
+    ]
+
+
+def test_page_word_write_is_removed_if_later_word_keeps_what_it_set() -> None:
+    read = _bytes("read")
+    # bits of a constant set, then another byte replaced: the bits stay set
+    first = assign(_bytes("first"), intrinsic(AVMOp.bitwise_or_bytes, read, word(1)))
+    ops = _page_word_chain(first, _with_byte("second", first.targets[0], 30))
+    assert _optimized(ops, storage=_PAGES) == [str(ops[0]), str(ops[1]), *map(str, ops[3:])]
+    # a byte set, then a bit of another byte
+    first = assign(_bytes("first"), intrinsic(AVMOp.setbyte, read, uint64(5), _flag))
+    second = assign(
+        _bytes("second"),
+        intrinsic(
+            AVMOp.setbit, first.targets[0], uint64(48), _flag, types=[PrimitiveIRType.bytes]
+        ),
+    )
+    ops = _page_word_chain(first, second)
+    assert _optimized(ops, storage=_PAGES) == [str(ops[0]), str(ops[1]), *map(str, ops[3:])]
+
+
+def test_page_word_write_is_kept_if_later_word_may_be_zero_where_it_is_not() -> None:
+    def is_kept(first: models.Assignment, second: models.Assignment) -> bool:
+        ops = _page_word_chain(first, second)
+        left = _optimized(ops, storage=_PAGES)
+        if left == [str(op) for op in ops]:
+            return True
+        assert left == [str(ops[0]), str(ops[1]), *map(str, ops[3:])]
+        return False
+
+    read = _bytes("read")
+    first = _with_byte("first", read, 31)
+    assert not is_kept(first, _with_byte("second", first.targets[0], 30))
+    # the later word has the same byte replaced, by what may be zero
+    assert is_kept(
+        first,
+        assign(
+            _bytes("second"),
+            intrinsic(AVMOp.replace2, first.targets[0], _value, immediates=[31]),
+        ),
+    )
+    # the later word is not known to keep any byte
+    assert is_kept(
+        first,
+        assign(_bytes("second"), intrinsic(AVMOp.bitwise_and_bytes, first.targets[0], word(1))),
+    )
+    # The earlier word is not made from the word that the slot holds: where the box does
+    # not reach the word, any of its bytes may be what makes the box longer.
+    other = _with_byte("first", word(0x0100), 31)
+    assert is_kept(other, _with_byte("second", other.targets[0], 30))

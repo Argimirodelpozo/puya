@@ -15,6 +15,7 @@ from collections.abc import Mapping
 
 import attrs
 
+from puya.avm import AVMType
 from puya.ir import models
 from puya.ir._utils import get_bytes_constant
 from puya.ir.avm_ops import AVMOp
@@ -36,6 +37,8 @@ SLOT_ADD: typing.Final = "slot_add"
 _HASHES: typing.Final = frozenset(
     (AVMOp.keccak256.code, AVMOp.sha256.code, AVMOp.sha512_256.code, AVMOp.sha3_256.code)
 )
+# how many ops deep a word is followed back to the word that it was made from
+_MAX_CHANGES: typing.Final = 64
 # ops whose result is a number without leading zero bytes
 _BYTE_MATH: typing.Final = frozenset(
     (
@@ -349,6 +352,82 @@ class SlotValues:
                 )
         return False
 
+    def changed_from(self, value: models.Value, base: models.Value) -> tuple[int, int] | None:
+        """For a word that is the word `base` with bytes or bits replaced, or with the bits of
+        a constant set: the bytes in which a byte of `base` that is not zero may have become
+        zero, and the bytes in which the word may differ from `base` at all. Each is a number
+        with bit n set for byte n of the word. None if `value` is not known to be made from
+        `base` in one of these ways.
+        """
+        base = self.copied(base)
+        zeroed = changed = 0
+        for _ in range(_MAX_CHANGES):
+            value = self.copied(value)
+            if value == base:
+                return zeroed, changed
+            keeps_set_bits = False
+            match self.definition(value):
+                case models.Intrinsic(
+                    op=AVMOp.replace2, immediates=[int(start)], args=[target, part]
+                ):
+                    mask = _byte_mask(start, self.exact_length(part))
+                case models.Intrinsic(
+                    op=AVMOp.replace3,
+                    args=[target, models.UInt64Constant(value=start), part],
+                ):
+                    mask = _byte_mask(start, self.exact_length(part))
+                case models.Intrinsic(
+                    op=AVMOp.setbyte, args=[target, models.UInt64Constant(value=start), _]
+                ):
+                    mask = _byte_mask(start, 1)
+                case models.Intrinsic(
+                    op=AVMOp.setbit, args=[target, models.UInt64Constant(value=bit), _]
+                ) if target.atype == AVMType.bytes:
+                    mask = _byte_mask(bit // 8, 1)
+                case models.Intrinsic(op=AVMOp.bitwise_or_bytes, args=[a, b]):
+                    # a bit that is set stays set, and the constant is right-aligned in the word
+                    a_constant = self._constant(a)
+                    constant, target = (
+                        (self._constant(b), a) if a_constant is None else (a_constant, b)
+                    )
+                    if constant is None or len(constant) > WORD:
+                        return None
+                    mask = sum(
+                        1 << (WORD - len(constant) + at)
+                        for at, byte in enumerate(constant)
+                        if byte
+                    )
+                    keeps_set_bits = True
+                case _:
+                    return None
+            if mask is None:
+                return None
+            changed |= mask
+            if not keeps_set_bits:
+                zeroed |= mask
+            value = target
+        return None
+
+    def exact_length(self, value: models.Value) -> int | None:
+        """The number of bytes that a value certainly has, if it is known."""
+        constant = self._constant(value)
+        if constant is not None:
+            return len(constant)
+        match self.definition(value):
+            case models.Intrinsic(op=AVMOp.itob):
+                return 8
+            case models.Intrinsic(op=AVMOp.bzero, args=[models.UInt64Constant(value=n)]):
+                return n
+            case models.Intrinsic(op=AVMOp.extract3, args=[_, _, models.UInt64Constant(value=n)]):
+                return n
+            case models.Intrinsic(op=AVMOp.extract, immediates=[_, int(n)]) if n:
+                return n
+        return WORD if self.is_word(value) else None
+
+    def _constant(self, value: models.Value) -> bytes | None:
+        value = self.copied(value)
+        return get_bytes_constant(value) if isinstance(value, models.Constant) else None
+
     def fits_word(self, value: models.Value, *, depth: int = 8) -> bool:
         """True if the value is certainly at most 32 bytes long."""
         value = self.copied(value)
@@ -399,6 +478,13 @@ class SlotValues:
             case models.Intrinsic(op=AVMOp.extract, immediates=[_, int(n)]):
                 return 0 < n <= WORD
         return False
+
+
+def _byte_mask(start: int, length: int | None) -> int | None:
+    """A number with a bit set for each of `length` bytes of a word from byte `start` on."""
+    if length is None or start + length > WORD:
+        return None
+    return ((1 << length) - 1) << start
 
 
 def _checked_to_fit_a_word(
