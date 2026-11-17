@@ -17,7 +17,8 @@ from puya.ir.avm_ops import AVMOp
 from puya.ir.models import Intrinsic, UInt64Constant
 from puya.ir.optimize._utils import SSAReadTracker
 from puya.ir.optimize.context import IROptimizationContext
-from puya.ir.optimize.effects import EffectSummaries, lost_if_removed
+from puya.ir.optimize.dead_code_elimination import lost_if_unused_removed
+from puya.ir.optimize.effects import EffectSummaries
 from puya.ir.optimize.value_bounds import ValueBounds
 from puya.ir.types_ import AVMBytesEncoding, PrimitiveIRType
 from puya.ir.visitor_mutator import IRMutator
@@ -314,24 +315,23 @@ def _simplify_non_returning_intrinsics(
 
     modified = 0
     for block in subroutine.body:
-        ops = list[models.Op]()
         result: models.Op | None
-        for op in block.ops:
+        # iterate over a copy, as each op is replaced or removed before the next one is looked
+        # at: an op whose results are ignored may only be removable because of another one
+        for op in block.ops.copy():
             if isinstance(op, models.Intrinsic):
-                result = _visit_intrinsic_op(op, summaries, bounds)
-                if result is not op:
-                    modified += 1
-                if result is not None:
-                    ops.append(result)
+                result = _visit_intrinsic_op(op, summaries, bounds, subroutine, block)
             elif isinstance(op, models.Assert):
                 result = _simplify_assert(op, register_intrinsics)
-                if result is not op:
-                    modified += 1
-                if result is not None:
-                    ops.append(result)
             else:
-                ops.append(op)
-        block.ops[:] = ops
+                continue
+            if result is not op:
+                modified += 1
+                index = block.ops.index(op)
+                if result is None:
+                    del block.ops[index]
+                else:
+                    block.ops[index] = result
     return modified
 
 
@@ -357,7 +357,11 @@ def _simplify_assert(
 
 
 def _visit_intrinsic_op(
-    intrinsic: Intrinsic, summaries: EffectSummaries | None, bounds: Callable[[], ValueBounds]
+    intrinsic: Intrinsic,
+    summaries: EffectSummaries | None,
+    bounds: Callable[[], ValueBounds],
+    subroutine: models.Subroutine,
+    block: models.BasicBlock,
 ) -> Intrinsic | None:
     # if we get here, it means either the intrinsic doesn't have a return or it's ignored,
     # in either case, the result has to be either an Op or None (ie delete),
@@ -369,7 +373,7 @@ def _visit_intrinsic_op(
             if isinstance(page_value, models.BytesConstant) and page_value.value == b"":
                 return None
         return intrinsic
-    elif not lost_if_removed(intrinsic, summaries=summaries, bounds=bounds):
+    elif not lost_if_unused_removed(summaries, bounds, subroutine, block, intrinsic):
         logger.debug(f"Removing unused op {intrinsic}")
         return None
     elif intrinsic.args:

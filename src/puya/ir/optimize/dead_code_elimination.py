@@ -1,6 +1,6 @@
 import functools
 import typing
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 
 import attrs
 
@@ -143,18 +143,7 @@ def remove_unused_variables(context: IROptimizationContext, subroutine: models.S
     for (block, ass), registers in assignments.items():
         if registers.symmetric_difference(ass.targets):
             continue  # some registers still used
-        lost = lost_if_removed(ass.source, summaries=context.effects, bounds=bounds)
-        if lost == Effect.fails and isinstance(ass.source, models.Intrinsic):
-            # what is known to hold whenever the operation runs may rule the failure out
-            non_zero, zero = _conditions_established(subroutine, block, ass)
-            completed = _related_operations(context.effects, bounds(), block, ass, ass.source)
-            if non_zero or zero or completed:
-                given = bounds().given(non_zero=non_zero, zero=zero, completed=completed)
-                lost = effects_of(ass.source, bounds=given) & OBSERVABLE
-            if lost and _is_read_again(context.effects, bounds(), block, ass):
-                lost = Effect.none
-        elif lost == Effect.fails and isinstance(ass.source, _REMOVED_ALTHOUGH_FALLIBLE):
-            lost = Effect.none
+        lost = lost_if_unused_removed(context.effects, bounds, subroutine, block, ass)
         if not lost:
             for reg in sorted(registers, key=lambda r: r.local_id):
                 logger.debug(f"Removing unused variable {reg.local_id}")
@@ -166,6 +155,40 @@ def remove_unused_variables(context: IROptimizationContext, subroutine: models.S
                 f" ({lost.name}): {ass}"
             )
     return modified > 0
+
+
+def lost_if_unused_removed(
+    summaries: EffectSummaries | None,
+    bounds: Callable[[], ValueBounds],
+    subroutine: models.Subroutine,
+    block: models.BasicBlock,
+    op: models.Op,
+) -> Effect:
+    """What a program would lose if an operation of a block were removed whose results are
+    not used: an assignment to registers that nothing reads, or an AVM op whose results are
+    not assigned.
+
+    An operation that this allows to remove has to be removed from the block before the next
+    one is looked at, since one of two operations may only be removable because of the other.
+    """
+    source = op.source if isinstance(op, models.Assignment) else op
+    lost = lost_if_removed(source, summaries=summaries, bounds=bounds)
+    if lost == Effect.fails and isinstance(source, models.Intrinsic):
+        # what is known to hold whenever the operation runs may rule the failure out
+        non_zero, zero = _conditions_established(subroutine, block, op)
+        completed = _related_operations(summaries, bounds(), block, op, source)
+        if non_zero or zero or completed:
+            given = bounds().given(non_zero=non_zero, zero=zero, completed=completed)
+            lost = effects_of(source, bounds=given) & OBSERVABLE
+        if (
+            lost
+            and isinstance(op, models.Assignment)
+            and _is_read_again(summaries, bounds(), block, op)
+        ):
+            lost = Effect.none
+    elif lost == Effect.fails and isinstance(source, _REMOVED_ALTHOUGH_FALLIBLE):
+        lost = Effect.none
+    return lost
 
 
 # how many blocks back the conditions that hold for an operation are collected from

@@ -380,3 +380,28 @@ def test_intrinsic_with_ignored_results_is_kept_if_it_can_fail() -> None:
     )
     intrinsic_simplifier(Mock(effects=None, expand_all_bytes=False), main)
     assert [str(op) for op in main.body[0].ops] == [str(op) for op in (small, *kept)]
+
+
+def test_one_of_two_intrinsics_with_ignored_results_that_fail_together_is_kept() -> None:
+    first = intrinsic(AVMOp.add, _a, uint64(32))
+    second = intrinsic(AVMOp.add, _a, uint64(32))
+    more = intrinsic(AVMOp.add, _a, uint64(64))
+    most = assign(register("most"), intrinsic(AVMOp.add, _a, uint64(96)))
+    use = intrinsic(AVMOp.app_global_put, _key, most.targets[0])
+
+    def simplified(*ops: models.Op) -> list[str]:
+        main = subroutine("main", [block(0, ops, return_())], parameters=_parameters)
+        intrinsic_simplifier(Mock(effects=None, expand_all_bytes=False), main)
+        return [str(op) for op in main.body[0].ops]
+
+    # each of the two fails exactly when the other one does
+    assert simplified(first, second) == [str(second)]
+    # an addition of more fails whenever they do
+    assert simplified(first, second, more) == [str(more)]
+    assert simplified(first, more, most, use) == [str(most), str(use)]
+    # but not the other way round
+    assert simplified(most, use, intrinsic(AVMOp.add, _a, uint64(97))) == [
+        str(most),
+        str(use),
+        "(+ a#0 97u)",
+    ]
