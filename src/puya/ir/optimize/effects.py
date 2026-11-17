@@ -896,7 +896,8 @@ def analyse_subroutine_effects(program: models.Program) -> EffectSummaries:
 
 
 def _local_effects(subroutine: models.Subroutine) -> tuple[Effect, set[str]]:
-    bounds = ValueBounds.of(subroutine)
+    # every operation of every subroutine is looked at: not worth the bounds around loops
+    bounds = ValueBounds.of(subroutine, loops=False)
     effects = Effect.none
     callees = set[str]()
     for block in subroutine.body:

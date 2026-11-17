@@ -3,15 +3,25 @@ import math
 from puya.ir import models
 from puya.ir.avm_ops import AVMOp
 from puya.ir.optimize.effects import Effect, effects_of
-from puya.ir.optimize.value_bounds import ANY_LENGTH, ANY_NUMBER, ANY_UINT64, ValueBounds
+from puya.ir.optimize.value_bounds import (
+    ANY_LENGTH,
+    ANY_NUMBER,
+    ANY_UINT64,
+    BoundsAtPoints,
+    ValueBounds,
+)
 from puya.ir.types_ import PrimitiveIRType
 from tests.utils.ir import (
+    assert_,
     assign,
     biguint,
     block,
+    branch,
     bytes_,
+    goto,
     intrinsic,
     parameter,
+    phi,
     register,
     return_,
     subroutine,
@@ -422,3 +432,329 @@ def test_outcomes_that_bounds_fix() -> None:
     bounds = ValueBounds.of(subroutine("s", [block(0, ops, return_())], parameters=[number, data]))
     assert bounds.uint64(always) == (1, 1)
     assert bounds.uint64(is_small) == (0, 1)
+
+
+def test_bounds_at_points() -> None:
+    #     entry: assert a < 100; branch on a < b
+    #     then:  (a < b)                else: (a >= b)
+    #     merge: nothing is known of a and b; shifted = a << b
+    a = parameter("a")
+    b = parameter("b")
+    a_small = _condition("a_small")
+    a_below_b = _condition("a_below_b")
+    difference = register("difference")
+    other_difference = register("other_difference")
+    shifted = register("shifted")
+    entry = block(
+        0,
+        [
+            assign(a_small, intrinsic(AVMOp.lt, a, uint64(100))),
+            assert_(a_small),
+            assign(a_below_b, intrinsic(AVMOp.lt, a, b)),
+        ],
+        return_(),
+    )
+    then = block(1, [assign(difference, intrinsic(AVMOp.sub, b, a))], return_())
+    otherwise = block(2, [assign(other_difference, intrinsic(AVMOp.sub, a, b))], return_())
+    merge = block(3, [assign(shifted, intrinsic(AVMOp.shl, a, b))], return_())
+    branch(entry, a_below_b, non_zero=then, zero=otherwise)
+    goto(then, merge)
+    goto(otherwise, merge)
+    sub = subroutine("s", [entry, then, otherwise, merge], parameters=[a, b])
+    points = BoundsAtPoints.of(sub)
+
+    # before the assert nothing is known, after it its condition holds
+    before = [bounds().given() for _, bounds in points.before_ops(entry)]
+    assert [bounds.uint64(a) for bounds in before] == [ANY_UINT64, ANY_UINT64, (0, 99)]
+    assert points.at_end(entry).uint64(a) == (0, 99)
+    # the condition of the branch holds on one side, and the opposite on the other
+    assert points.at_start(then).not_above(a, b)
+    assert points.at_start(then).uint64(b) == (1, _MAX_UINT64)
+    assert not _may_fail(intrinsic(AVMOp.sub, b, a), points.at_start(then))
+    assert points.at_start(otherwise).not_above(b, a)
+    assert points.at_start(otherwise).uint64(b) == (0, 99)
+    assert not _may_fail(intrinsic(AVMOp.sub, a, b), points.at_start(otherwise))
+    # where both sides meet, only what held before the branch is left
+    at_merge = points.at_start(merge)
+    assert at_merge.uint64(a) == (0, 99)
+    assert at_merge.uint64(b) == ANY_UINT64
+    assert not at_merge.not_above(a, b)
+    assert not at_merge.not_above(b, a)
+    assert at_merge.outcome(intrinsic(AVMOp.lt, a, b)) is None
+    # an operation that has completed says something to what follows it
+    assert points.at_end(merge).uint64(b) == (0, 63)
+
+
+def test_bounds_of_counter() -> None:
+    #     entry:  limit = number % 100
+    #     header: i = phi(start, next); branch on i < limit
+    #     body:   next = i + 1
+    #     after:
+    number = parameter("number")
+    limit = register("limit")
+    start = register("start")
+    i = register("i")
+    following = register("next")
+    in_range = _condition("in_range")
+    entry = block(
+        0,
+        [assign(limit, intrinsic(AVMOp.mod, number, uint64(100))), assign(start, uint64(0))],
+        return_(),
+    )
+    header = block(1, [assign(in_range, intrinsic(AVMOp.lt, i, limit))], return_())
+    body = block(2, [assign(following, intrinsic(AVMOp.add, i, uint64(1)))], return_())
+    after = block(3, [], return_())
+    goto(entry, header)
+    branch(header, in_range, non_zero=body, zero=after)
+    goto(body, header)
+    header.phis.append(phi(i, (start, entry), (following, body)))
+    sub = subroutine("s", [entry, header, body, after], parameters=[number])
+    bounds = ValueBounds.of(sub)
+    # the counter is below the limit whenever it is stepped, so it never passes the limit
+    assert bounds.uint64(i) == (0, 99)
+    assert bounds.uint64(following) == (1, 100)
+    points = BoundsAtPoints.of(sub)
+    assert points.at_start(body).uint64(i) == (0, 98)
+    assert points.at_end(body).uint64(following) == (1, 99)
+    assert points.at_start(after).uint64(i) == (0, 99)
+
+
+def test_bounds_of_counter_with_unknown_limit() -> None:
+    limit = parameter("limit")
+    start = register("start")
+    i = register("i")
+    following = register("next")
+    in_range = _condition("in_range")
+    entry = block(0, [assign(start, uint64(0))], return_())
+    header = block(1, [assign(in_range, intrinsic(AVMOp.lt, i, limit))], return_())
+    step = intrinsic(AVMOp.add, i, uint64(1))
+    body = block(2, [assign(following, step)], return_())
+    after = block(3, [], return_())
+    goto(entry, header)
+    branch(header, in_range, non_zero=body, zero=after)
+    goto(body, header)
+    header.phis.append(phi(i, (start, entry), (following, body)))
+    sub = subroutine("s", [entry, header, body, after], parameters=[limit])
+    # the counter can be anything, but where it is stepped it is below some uint64
+    assert ValueBounds.of(sub).uint64(i) == ANY_UINT64
+    points = BoundsAtPoints.of(sub)
+    assert points.at_start(body).uint64(i) == (0, _MAX_UINT64 - 1)
+    assert not _may_fail(step, points.at_start(body))
+    assert _may_fail(step, points.at_start(header))
+
+
+def test_bounds_of_counter_in_bytes() -> None:
+    #     header: i = phi(start, next); branch on i b< limit
+    #     body:   next = i b+ 1; assert bitlen(next) <= 256
+    data = parameter("data", _BYTES)
+    limit = _bytes("limit")
+    start = _bytes("start")
+    i = _bytes("i")
+    following = _bytes("next")
+    bits = register("bits")
+    in_range = _condition("in_range")
+    fits = _condition("fits")
+    entry = block(
+        0,
+        [
+            assign(limit, intrinsic(AVMOp.extract, data, immediates=[0, 32])),
+            assign(start, intrinsic(AVMOp.itob, uint64(0))),
+        ],
+        return_(),
+    )
+    header = block(1, [assign(in_range, intrinsic(AVMOp.lt_bytes, i, limit))], return_())
+    check = intrinsic(AVMOp.lte, bits, uint64(256))
+    body = block(
+        2,
+        [
+            assign(following, intrinsic(AVMOp.add_bytes, i, biguint(1))),
+            assign(bits, intrinsic(AVMOp.bitlen, following)),
+            assign(fits, check),
+            assert_(fits),
+        ],
+        return_(),
+    )
+    after = block(3, [], return_())
+    goto(entry, header)
+    branch(header, in_range, non_zero=body, zero=after)
+    goto(body, header)
+    header.phis.append(phi(i, (start, entry), (following, body)))
+    sub = subroutine("s", [entry, header, body, after], parameters=[data])
+    bounds = ValueBounds.of(sub)
+    # the first value has 8 bytes, the others as many as it takes
+    assert bounds.length(i) == (1, 32)
+    assert not bounds.is_minimal(i)
+    # the limit is a word, so the counter never passes the largest word
+    assert bounds.number(i) == (0, _WORD - 1)
+    points = BoundsAtPoints.of(sub)
+    before_check = [at().given() for _, at in points.before_ops(body)][2]
+    assert before_check.number(following) == (1, _WORD - 1)
+    assert before_check.outcome(check) is True
+    # in the first block of the loop the comparison has not been made
+    assert points.at_start(header).number(i) == (0, _WORD - 1)
+
+
+def test_bounds_of_counter_that_the_loop_changes_again() -> None:
+    #     header: i = phi(start, changed); branch on i < limit
+    #     body:   next = i + 1; changed = next * factor
+    number = parameter("number")
+    factor = parameter("factor")
+    limit = register("limit")
+    start = register("start")
+    i = register("i")
+    following = register("next")
+    changed = register("changed")
+    in_range = _condition("in_range")
+
+    def loop(multiplier: models.Value) -> models.Subroutine:
+        entry = block(
+            0,
+            [assign(limit, intrinsic(AVMOp.mod, number, uint64(100))), assign(start, uint64(0))],
+            return_(),
+        )
+        header = block(1, [assign(in_range, intrinsic(AVMOp.lt, i, limit))], return_())
+        body = block(
+            2,
+            [
+                assign(following, intrinsic(AVMOp.add, i, uint64(1))),
+                assign(changed, intrinsic(AVMOp.mul, following, multiplier)),
+            ],
+            return_(),
+        )
+        after = block(3, [], return_())
+        goto(entry, header)
+        branch(header, in_range, non_zero=body, zero=after)
+        goto(body, header)
+        header.phis.append(phi(i, (start, entry), (changed, body)))
+        return subroutine("s", [entry, header, body, after], parameters=[number, factor])
+
+    # the counter is below the limit where it is compared, and what it is changed to is not
+    sub = loop(uint64(3))
+    bounds = ValueBounds.of(sub)
+    assert bounds.uint64(i) == (0, 297)
+    points = BoundsAtPoints.of(sub)
+    assert points.at_start(sub.body[2]).uint64(i) == (0, 98)
+    assert points.at_end(sub.body[2]).uint64(changed) == (3, 297)
+    # and if it is changed by something unknown, it can be anything
+    sub = loop(factor)
+    bounds = ValueBounds.of(sub)
+    assert bounds.uint64(i) == ANY_UINT64
+    assert _may_fail(
+        intrinsic(AVMOp.mul, following, factor), BoundsAtPoints.of(sub).at_start(sub.body[2])
+    )
+
+
+def test_bounds_of_counter_going_down() -> None:
+    number = parameter("number")
+    start = register("start")
+    i = register("i")
+    following = register("next")
+    not_done = _condition("not_done")
+    entry = block(0, [assign(start, intrinsic(AVMOp.mod, number, uint64(50)))], return_())
+    header = block(1, [assign(not_done, intrinsic(AVMOp.gt, i, uint64(0)))], return_())
+    step = intrinsic(AVMOp.sub, i, uint64(1))
+    body = block(2, [assign(following, step)], return_())
+    after = block(3, [], return_())
+    goto(entry, header)
+    branch(header, not_done, non_zero=body, zero=after)
+    goto(body, header)
+    header.phis.append(phi(i, (start, entry), (following, body)))
+    sub = subroutine("s", [entry, header, body, after], parameters=[number])
+    assert ValueBounds.of(sub).uint64(i) == (0, 49)
+    points = BoundsAtPoints.of(sub)
+    assert not _may_fail(step, points.at_start(body))
+    assert points.at_start(after).uint64(i) == (0, 0)
+
+
+def test_bounds_of_values_that_settle() -> None:
+    #     seen = phi(no, yes), where yes = seen | 1
+    number = parameter("number")
+    no = register("no")
+    seen = register("seen")
+    yes = register("yes")
+    entry = block(0, [assign(no, uint64(0))], return_())
+    loop = block(1, [assign(yes, intrinsic(AVMOp.bitwise_or, seen, uint64(1)))], return_())
+    goto(entry, loop)
+    goto(loop, loop)
+    loop.phis.append(phi(seen, (no, entry), (yes, loop)))
+    bounds = ValueBounds.of(subroutine("s", [entry, loop], parameters=[number]))
+    assert bounds.uint64(seen) == (0, 1)
+    assert bounds.uint64(yes) == (1, 1)
+
+
+def test_bounds_of_condition_on_one_way_around_a_loop() -> None:
+    #     header: i = phi(start, stepped, reset); branch on i < 10
+    #     body:   branch on number
+    #     step:   stepped = i + 1                   (i < 10)
+    #     again:  reset = number                    (anything)
+    number = parameter("number")
+    start = register("start")
+    i = register("i")
+    stepped = register("stepped")
+    reset = register("reset")
+    in_range = _condition("in_range")
+    entry = block(0, [assign(start, uint64(0))], return_())
+    header = block(1, [assign(in_range, intrinsic(AVMOp.lt, i, uint64(10)))], return_())
+    body = block(2, [], return_())
+    step = block(3, [assign(stepped, intrinsic(AVMOp.add, i, uint64(1)))], return_())
+    again = block(4, [assign(reset, number)], return_())
+    after = block(5, [], return_())
+    goto(entry, header)
+    branch(header, in_range, non_zero=body, zero=after)
+    branch(body, number, non_zero=step, zero=again)
+    goto(step, header)
+    goto(again, header)
+    header.phis.append(phi(i, (start, entry), (stepped, step), (reset, again)))
+    sub = subroutine("s", [entry, header, body, step, again, after], parameters=[number])
+    # one way around the loop keeps the counter small, the other does not
+    assert ValueBounds.of(sub).uint64(i) == ANY_UINT64
+    points = BoundsAtPoints.of(sub)
+    assert points.at_start(step).uint64(i) == (0, 9)
+    assert points.at_start(header).outcome(intrinsic(AVMOp.lte, i, uint64(10))) is None
+
+    # with both ways around the loop bounded, so is the counter
+    again.ops[:] = [assign(reset, intrinsic(AVMOp.mod, number, uint64(5)))]
+    assert ValueBounds.of(sub).uint64(i) == (0, 10)
+
+
+def test_bounds_of_loops_inside_loops() -> None:
+    #     outer:  i = phi(zero, i_next); branch on i < 10
+    #     inner:  j = phi(i, j_next); branch on j < 20
+    #     inner_body: j_next = j + 1
+    #     outer_end: i_next = i + 1
+    zero = register("zero")
+    i = register("i")
+    j = register("j")
+    i_next = register("i_next")
+    j_next = register("j_next")
+    i_in_range = _condition("i_in_range")
+    j_in_range = _condition("j_in_range")
+    entry = block(0, [assign(zero, uint64(0))], return_())
+    outer = block(1, [assign(i_in_range, intrinsic(AVMOp.lt, i, uint64(10)))], return_())
+    inner = block(2, [assign(j_in_range, intrinsic(AVMOp.lt, j, uint64(20)))], return_())
+    inner_body = block(3, [assign(j_next, intrinsic(AVMOp.add, j, uint64(1)))], return_())
+    outer_end = block(4, [assign(i_next, intrinsic(AVMOp.add, i, uint64(1)))], return_())
+    after = block(5, [], return_())
+    goto(entry, outer)
+    branch(outer, i_in_range, non_zero=inner, zero=after)
+    branch(inner, j_in_range, non_zero=inner_body, zero=outer_end)
+    goto(inner_body, inner)
+    goto(outer_end, outer)
+    outer.phis.append(phi(i, (zero, entry), (i_next, outer_end)))
+    inner.phis.append(phi(j, (i, outer), (j_next, inner_body)))
+    sub = subroutine("s", [entry, outer, inner, inner_body, outer_end, after])
+    bounds = ValueBounds.of(sub)
+    assert bounds.uint64(i) == (0, 10)
+    assert bounds.uint64(j) == (0, 20)
+    # asked for the other way around
+    bounds = ValueBounds.of(sub)
+    assert bounds.uint64(j) == (0, 20)
+    assert bounds.uint64(i) == (0, 10)
+
+
+def test_bounds_of_phi_without_arguments() -> None:
+    orphan = register("orphan")
+    entry = block(0, [], return_())
+    entry.phis.append(phi(orphan))
+    bounds = ValueBounds.of(subroutine("s", [entry]))
+    assert bounds.uint64(orphan) == ANY_UINT64

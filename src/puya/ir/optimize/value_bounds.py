@@ -20,14 +20,64 @@ Two such values that are the same number are the same bytes.
 
 `ValueBounds.given` adds what is known at one point of the subroutine only: what the
 conditions of the asserts and branches before it say, and what it takes for the operations
-around it to complete.
+around it to complete. `BoundsAtPoints` does that for every point of a subroutine.
+
+Which run of a definition a fact is about
+-----------------------------------------
+A register is defined once in the text of a subroutine, and each time control passes its
+definition while the subroutine runs. A fact that is learned at a point A, such as the
+condition of an assert, is about the values that the registers hold when A runs: for each
+register the value of the last run of its definition. Such a fact is used at a point P only if
+A dominates P, and it mentions only registers whose definitions dominate A. Between a run of A
+and the arrival at P none of these definitions can run again: a way from the definition to P
+that does not pass A again would, after a way from the start of the subroutine to the
+definition, be a way to P around A. So at P the registers still hold the values that the fact
+is about, and so does every register that is computed from them and can be used at P.
+
+A phi is the exception. It takes the value that its argument holds when control passes from a
+predecessor to the block of the phi, and the argument may be defined again before the phi is
+read. So what is known at a point about the argument of a phi says nothing about the phi.
+
+Values defined around a loop
+----------------------------
+A phi with an argument that is computed from the phi itself gets its bounds by induction over
+the runs of the phi. Suppose that a range R holds every value the phi had so far. When control
+passes from a predecessor to the phi, the argument for that predecessor is within the bounds
+that follow from R and from facts that hold at the end of the predecessor: the condition of
+the branch that leads from it to the phi, and the asserts, branches and completed operations
+of the blocks of the loop that dominate it, from the block of the phi on. If for every
+predecessor those bounds are within R, then R holds the next value of the phi as well, and by
+induction all of them.
+
+R starts as the bounds of the arguments that do not depend on the phi. It is extended by what
+passes around the loop a fixed number of times; if it has not settled by then, each side that
+moved is widened to the limit of its type. Whatever the candidate, it is only used if the
+check above holds for it, and is otherwise given up, so that it does not matter for the
+result being right how the candidate was found. After widening, the range that the check
+itself arrives at is tried as a narrower candidate.
+
+While a candidate is being checked, everything that is derived from it is kept apart from what
+is known for good and discarded afterwards. This is refused, in favour of the bounds that hold
+whatever came around the loop:
+- a phi whose arguments all depend on it
+- a phi that is reached while the candidate of another phi is being checked, for that check
+- more than a fixed number of checks for one subroutine, so that the time this takes is
+  bounded however many loops there are
+And these facts are not used for a phi, though they hold on the way into it:
+- what was established before the loop. At each point of the loop it is known all the same,
+  see `BoundsAtPoints`
+- the facts of more than a fixed number of blocks of the loop, of which the block of the phi
+  and the blocks closest to the predecessor are the ones that are used
+- the condition of a branch into a block that can be entered another way as well, other
+  than from a block that it dominates itself
 """
 
 import math
 import typing
-from collections.abc import Iterable, Mapping
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 
 import attrs
+import networkx as nx  # type: ignore[import-untyped]
 
 from puya import algo_constants
 from puya.avm import AVMType
@@ -55,8 +105,26 @@ _MAX_BITS: typing.Final = 8 * MAX_BYTES_LENGTH
 _MAX_DEPTH: typing.Final = 48
 # how many definitions deep a condition is taken apart
 _MAX_CONDITION_DEPTH: typing.Final = 8
+# how many blocks of a loop the facts that hold on the way into a phi are taken from
+_MAX_EDGE_BLOCKS: typing.Final = 8
+# how many times candidate bounds for the phis of one subroutine are checked
+_MAX_LOOP_CHECKS: typing.Final = 256
+# how many times the bounds of a value defined around a loop are extended before widening
+_LOOP_ROUNDS: typing.Final = 2
+# how many candidates for the bounds of such values are checked inside each other
+_MAX_NESTED_LOOPS: typing.Final = 1
 # how many ordered pairs, and how many parts taken of byte arrays, are kept for one point
 _MAX_RELATIONS: typing.Final = 64
+# how many derived bounds are discarded altogether when one of them may have changed, rather
+# than only the ones that were derived from it
+_FEW_DERIVED: typing.Final = 24
+
+_Fact = typing.Literal["uint64", "length", "number"]
+_UNKNOWN: typing.Final[Mapping[_Fact, Bounds]] = {
+    "uint64": ANY_UINT64,
+    "length": ANY_LENGTH,
+    "number": ANY_NUMBER,
+}
 
 # Ops without operands that read what is fixed while a program runs: with the same immediates,
 # each gives the same value every time. `global OpcodeBudget` is the exception.
@@ -105,6 +173,34 @@ _BYTE_MATH: typing.Final = frozenset(
         AVMOp.bsqrt,
     )
 )
+# the ops that `ValueBounds.given` learns from when they have completed
+_TEACHES_WHEN_COMPLETED: typing.Final = frozenset(
+    (
+        AVMOp.extract,
+        AVMOp.extract3,
+        AVMOp.substring,
+        AVMOp.substring3,
+        AVMOp.extract_uint16,
+        AVMOp.extract_uint32,
+        AVMOp.extract_uint64,
+        AVMOp.getbyte,
+        AVMOp.setbyte,
+        AVMOp.btoi,
+        AVMOp.concat,
+        *_BYTE_MATH,
+        *_NUMBER_COMPARISONS,
+        AVMOp.bzero,
+        AVMOp.shl,
+        AVMOp.shr,
+        AVMOp.div_floor,
+        AVMOp.mod,
+        AVMOp.add,
+        AVMOp.mul,
+        AVMOp.sub,
+        AVMOp.loads,
+        AVMOp.stores,
+    )
+)
 
 _Definition = tuple[models.ValueProvider | models.Phi, int]
 
@@ -135,19 +231,62 @@ class ValueBounds:
     _unconditional: "ValueBounds | None" = attrs.field(default=None, init=False)
     # registers that hold the same value as an earlier register, with that register
     _same: Mapping[models.Register, models.Register] = attrs.field(factory=dict, init=False)
+    # the blocks of the subroutine, and for each phi the block it is in
+    _blocks: Sequence[models.BasicBlock] = attrs.field(default=(), init=False)
+    _phi_blocks: Mapping[models.Register, models.BasicBlock] = attrs.field(
+        factory=dict, init=False
+    )
+    _dominators: Mapping[models.BasicBlock, models.BasicBlock] | None = attrs.field(
+        default=None, init=False
+    )
+    _edge_facts: dict[
+        tuple[models.BasicBlock, models.BasicBlock],
+        tuple[list[models.Value], list[models.Value], list[models.Intrinsic]],
+    ] = attrs.field(factory=dict, init=False)
+    # While the bounds of a phi are being derived (see the module docstring):
+    # the phis whose arguments are being looked at, with whether the phi was read meanwhile
+    _watching: dict[tuple[_Fact, models.Register], bool] = attrs.field(factory=dict, init=False)
+    # what was derived meanwhile and has to go when the candidate bounds of the phi do
+    _provisional: list[tuple[dict[models.Register, Bounds], models.Register]] = attrs.field(
+        factory=list, init=False
+    )
+    _recording: int = attrs.field(default=0, init=False)
+    # how many candidates for phis are being checked inside each other
+    _nested_loops: int = attrs.field(default=0, init=False)
+    # how many more candidates may be checked
+    _loop_checks: int = attrs.field(default=0, init=False)
+    # the registers whose bounds are being derived, innermost last, with where the result goes
+    _deriving: list[tuple[dict[models.Register, Bounds], models.Register]] = attrs.field(
+        factory=list, init=False
+    )
+    # how many comparisons the conditions that are being learned have come down to
+    _comparisons_learned: int = attrs.field(default=0, init=False)
+    # for each register the registers that are defined in terms of it
+    _users: Mapping[models.Register, Sequence[models.Register]] | None = attrs.field(
+        default=None, init=False
+    )
 
     @classmethod
-    def of(cls, subroutine: models.Subroutine) -> "ValueBounds":
+    def of(cls, subroutine: models.Subroutine, *, loops: bool = True) -> "ValueBounds":
+        """The bounds of the values of a subroutine. Without `loops`, a value that is defined
+        around a loop only gets the bounds that hold whatever came around the loop, which
+        takes less time to work out."""
         definitions = dict[models.Register, _Definition]()
+        phi_blocks = dict[models.Register, models.BasicBlock]()
         for block in subroutine.body:
             for phi in block.phis:
                 definitions[phi.register] = (phi, 0)
+                phi_blocks[phi.register] = block
             for op in block.ops:
                 if isinstance(op, models.Assignment):
                     for index, target in enumerate(op.targets):
                         definitions[target] = (op.source, index)
         result = cls(definitions)
         result._same = _same_values(definitions)  # noqa: SLF001
+        result._blocks = subroutine.body  # noqa: SLF001
+        result._phi_blocks = phi_blocks  # noqa: SLF001
+        if loops:
+            result._loop_checks = _MAX_LOOP_CHECKS  # noqa: SLF001
         return result
 
     def given(
@@ -167,6 +306,12 @@ class ValueBounds:
         A register that is assigned in a loop held other values before, and those are what a
         phi may pick up, so the bounds of a phi do not use it.
         """
+        result = self._extended()
+        result._learn_all(non_zero, zero, completed)  # noqa: SLF001
+        return result
+
+    def _extended(self) -> "ValueBounds":
+        """Bounds that are given what these are, to be given more."""
         result = ValueBounds(self._definitions)
         result._unconditional = self._unconditional or self  # noqa: SLF001
         result._same = self._same  # noqa: SLF001
@@ -176,15 +321,27 @@ class ValueBounds:
         result._given_number = dict(self._given_number)  # noqa: SLF001
         result._given_ordered = set(self._given_ordered)  # noqa: SLF001
         result._given_within = set(self._given_within)  # noqa: SLF001
+        return result
+
+    def _learn_all(
+        self,
+        non_zero: Iterable[models.Value],
+        zero: Iterable[models.Value],
+        completed: Iterable[models.Intrinsic],
+    ) -> None:
         conditions = [(c, True) for c in non_zero] + [(c, False) for c in zero]
         completed = list(completed)
-        # twice, so that each can build on what a later one says
-        for _ in range(2):
+        self._comparisons_learned = 0
+        for condition, holds in conditions:
+            self._learn(condition, holds=holds, depth=0)
+        for op in completed:
+            self._learn_completed(op)
+        if self._comparisons_learned + len(completed) > 1:
+            # once more, so that each can build on what a later one says
             for condition, holds in conditions:
-                result._learn(condition, holds=holds, depth=0)  # noqa: SLF001
+                self._learn(condition, holds=holds, depth=0)
             for op in completed:
-                result._learn_completed(op)  # noqa: SLF001
-        return result
+                self._learn_completed(op)
 
     def _learn_completed(self, op: models.Intrinsic) -> None:
         """Narrows the bounds of the operands of an operation to what it takes for the
@@ -259,7 +416,9 @@ class ValueBounds:
         if len(self._given_ordered) < _MAX_RELATIONS and pair not in self._given_ordered:
             self._given_ordered.add(pair)
             # the outcome of a comparison of the two may be fixed now
-            self._forget_derived()
+            for value in pair:
+                if isinstance(value, models.Register):
+                    self._forget_derived(value)
 
     def _within(self, array: models.Value, start: models.Value, size: models.Value | int) -> None:
         if len(self._given_within) < _MAX_RELATIONS:
@@ -282,11 +441,33 @@ class ValueBounds:
         size_high = size if isinstance(size, int) else self.uint64(size)[1]
         return known_low >= size_high
 
-    def _forget_derived(self) -> None:
-        # what was derived so far may be narrower now
-        self._uint64.clear()
-        self._length.clear()
-        self._number.clear()
+    def _forget_derived(self, register: models.Register) -> None:
+        """Discards the bounds that were derived from what was known about a register, which
+        may be narrower now."""
+        memos = (self._uint64, self._length, self._number)
+        if len(self._uint64) + len(self._length) + len(self._number) <= _FEW_DERIVED:
+            for memo in memos:
+                memo.clear()
+            return
+        unconditional = self._unconditional or self
+        users = unconditional._users  # noqa: SLF001
+        if users is None:
+            users = unconditional._users = _users_of_registers(  # noqa: SLF001
+                self._definitions, self._same
+            )
+        # Whatever is derived from a register is derived after the register itself, and kept
+        # with it. So a register that nothing is kept for has nothing kept that depends on it,
+        # unless it is the register that was narrowed, which may have no definition
+        pending = [register]
+        seen = {register}
+        while pending:
+            current = pending.pop()
+            for memo in memos:
+                memo.pop(current, None)
+            for user in users.get(current, ()):
+                if user not in seen and any(user in memo for memo in memos):
+                    seen.add(user)
+                    pending.append(user)
 
     def _narrow_length(self, value: models.Value, bounds: Bounds) -> None:
         value = self.same_value(value)
@@ -296,7 +477,7 @@ class ValueBounds:
         narrowed = _intersection(known, bounds)
         if narrowed != known:
             self._given_length[value] = narrowed
-            self._forget_derived()
+            self._forget_derived(value)
 
     def _narrow_number(self, value: models.Value, bounds: Bounds) -> None:
         value = self.same_value(value)
@@ -311,7 +492,7 @@ class ValueBounds:
         match self._intrinsic(value):
             case models.Intrinsic(op=AVMOp.itob, args=[number]):
                 self._narrow(number, (bounds[0], min(bounds[1], MAX_UINT64)))
-        self._forget_derived()
+        self._forget_derived(value)
 
     def _narrow_range(self, value: models.Value, bounds: Bounds) -> None:
         if _is_bytes(value):
@@ -362,6 +543,7 @@ class ValueBounds:
     def _learn_comparison(self, comparison: AVMOp, a: models.Value, b: models.Value) -> None:
         """Narrows two uint64 values, or two byte arrays read as numbers, to what it takes for
         a comparison of them to hold."""
+        self._comparisons_learned += 1
         a_low, a_high = self._range(a)
         b_low, b_high = self._range(b)
         top = ANY_NUMBER[1] if _is_bytes(a) else MAX_UINT64
@@ -410,7 +592,7 @@ class ValueBounds:
                 low = 1 << (bounds[0] - 1) if 0 < bounds[0] <= _MAX_BITS else 0
                 high = (1 << bounds[1]) - 1 if bounds[1] < _MAX_BITS else ANY_NUMBER[1]
                 self._narrow_range(operand, (low, high))
-        self._forget_derived()
+        self._forget_derived(value)
 
     def operands_of_definition(self, value: models.Value) -> Iterable[models.Register]:
         """The registers that a value is computed from, if it is the result of an AVM op."""
@@ -559,14 +741,17 @@ class ValueBounds:
         except KeyError:
             pass
         else:
+            if self._watching:
+                self._read("uint64", value)
             return result
         given = self._given_uint64.get(self._same.get(value, value), ANY_UINT64)
         if value not in self._definitions:
             return given
         # until this definition is resolved, a definition that depends on itself sees no bound
-        self._uint64[value] = given
+        self._derived(self._uint64, value, given)
         result = self._bounded(value, ANY_UINT64, self._uint64_of_definition)
         result = self._uint64[value] = _intersection(result, given)
+        self._deriving.pop()
         return result
 
     def length(self, value: models.Value) -> Bounds:
@@ -583,11 +768,13 @@ class ValueBounds:
         except KeyError:
             pass
         else:
+            if self._watching:
+                self._read("length", value)
             return result
         given = self._given_length.get(self._same.get(value, value), ANY_LENGTH)
         if value not in self._definitions:
             return given
-        self._length[value] = given
+        self._derived(self._length, value, given)
         result = self._bounded(value, ANY_LENGTH, self._length_of_definition)
         result = _intersection(result, given)
         if self.is_minimal(value):
@@ -595,6 +782,7 @@ class ValueBounds:
             low, high = self.number(value)
             result = _intersection(result, (_num_bytes(low), _num_bytes(high)))
         self._length[value] = result
+        self._deriving.pop()
         return result
 
     def number(self, value: models.Value) -> Bounds:
@@ -614,6 +802,8 @@ class ValueBounds:
         except KeyError:
             pass
         else:
+            if self._watching:
+                self._read("number", value)
             return result
         same = self._same.get(value, value)
         if self.is_minimal(value):
@@ -626,9 +816,10 @@ class ValueBounds:
         )
         if value not in self._definitions:
             return given
-        self._number[value] = given
+        self._derived(self._number, value, given)
         result = self._bounded(value, ANY_NUMBER, self._number_of_definition)
         result = self._number[value] = _intersection(result, given)
+        self._deriving.pop()
         return result
 
     def is_minimal(self, value: models.Value) -> bool:
@@ -667,6 +858,42 @@ class ValueBounds:
         self._minimal[value] = result
         return result
 
+    def _fact(self, fact: _Fact, value: models.Value) -> Bounds:
+        match fact:
+            case "uint64":
+                return self.uint64(value)
+            case "length":
+                return self.length(value)
+            case "number":
+                return self.number(value)
+
+    def _memo(self, fact: _Fact) -> dict[models.Register, Bounds]:
+        match fact:
+            case "uint64":
+                return self._uint64
+            case "length":
+                return self._length
+            case "number":
+                return self._number
+
+    def _read(self, fact: _Fact, register: models.Register) -> None:
+        key = (fact, register)
+        if key in self._watching:
+            self._watching[key] = True
+
+    def _derived(
+        self, memo: dict[models.Register, Bounds], register: models.Register, bounds: Bounds
+    ) -> None:
+        memo[register] = bounds
+        self._deriving.append((memo, register))
+        if self._recording:
+            self._provisional.append((memo, register))
+
+    def _discard_provisional(self, since: int) -> None:
+        while len(self._provisional) > since:
+            memo, register = self._provisional.pop()
+            memo.pop(register, None)
+
     def _bounded(
         self,
         register: models.Register,
@@ -688,6 +915,209 @@ class ValueBounds:
             return unknown
         return low, high
 
+    def _of_phi(self, phi: models.Phi, fact: _Fact) -> Bounds:
+        unconditional = self._unconditional
+        if unconditional is None:
+            return self._around_loop(phi, fact)
+        # what holds for a phi whenever it is defined does not depend on conditions. The
+        # definitions that were followed to get here count towards the limit there as well
+        depth = unconditional._depth  # noqa: SLF001
+        unconditional._depth = max(depth, self._depth)  # noqa: SLF001
+        try:
+            return unconditional._fact(fact, phi.register)  # noqa: SLF001
+        finally:
+            unconditional._depth = depth  # noqa: SLF001
+
+    def _around_loop(self, phi: models.Phi, fact: _Fact) -> Bounds:
+        """The bounds of a phi. If some of its arguments are computed from the phi, they are
+        found by induction as the module docstring describes."""
+        if not self._loop_checks:
+            # the phi itself has no bound at this point
+            return _union(self._fact(fact, arg.value) for arg in phi.args)
+        register = phi.register
+        if fact == "length":
+            # the length of a byte array without leading zero bytes follows from its number,
+            # so that comes first
+            self.number(register)
+        key = (fact, register)
+        # Which arguments are computed from the phi: the ones that read it when definitions
+        # are followed and nothing else is, as without the bounds around loops
+        dependent = list[models.PhiArgument]()
+        independent = list[models.PhiArgument]()
+        loose = list[Bounds]()
+        checks = self._loop_checks
+        since = len(self._provisional)
+        self._loop_checks = 0
+        self._recording += 1
+        try:
+            for arg in phi.args:
+                self._watching[key] = False
+                loose.append(self._fact(fact, arg.value))
+                (dependent if self._watching[key] else independent).append(arg)
+        finally:
+            # not there for a phi without arguments
+            self._watching.pop(key, None)
+            self._recording -= 1
+            self._loop_checks = checks
+            # derived without the bounds around loops, which are what is wanted
+            self._discard_provisional(since)
+        block = self._phi_blocks.get(register)
+        if (
+            not dependent
+            or not independent
+            or block is None
+            or self._nested_loops >= _MAX_NESTED_LOOPS
+        ):
+            # the phi itself has no bound at this point
+            return _union(self._fact(fact, arg.value) for arg in phi.args)
+        # what holds without knowing anything about the values that came around the loop
+        result = _union(loose)
+        unknown = _UNKNOWN[fact]
+        start = _union(self._fact(fact, arg.value) for arg in independent)
+        candidate = start
+        for _ in range(_LOOP_ROUNDS):
+            around = self._through_loop(phi, dependent, block, fact, candidate)
+            if _contains(candidate, around):
+                return _intersection(result, candidate)
+            candidate = _union((candidate, around))
+        # not settled: each side that moved goes as far as it can
+        candidate = (
+            unknown[0] if candidate[0] < start[0] else start[0],
+            unknown[1] if candidate[1] > start[1] else start[1],
+        )
+        around = self._through_loop(phi, dependent, block, fact, candidate)
+        if not _contains(candidate, around):
+            return result
+        # what came around is a narrower candidate, to be confirmed like any other
+        narrower = _union((start, around))
+        if narrower != candidate and _contains(
+            narrower, self._through_loop(phi, dependent, block, fact, narrower)
+        ):
+            candidate = narrower
+        return _intersection(result, candidate)
+
+    def _through_loop(
+        self,
+        phi: models.Phi,
+        arguments: Sequence[models.PhiArgument],
+        block: models.BasicBlock,
+        fact: _Fact,
+        candidate: Bounds,
+    ) -> Bounds:
+        """The bounds of the values that reach a phi through the given arguments, if the
+        candidate bounds hold for every value the phi had before."""
+        if not self._loop_checks:
+            # as much as any value: the candidate is not confirmed
+            return 0, ANY_NUMBER[1]
+        self._loop_checks -= 1
+        memo = self._memo(fact)
+        memo[phi.register] = candidate
+        since = len(self._provisional)
+        self._recording += 1
+        self._nested_loops += 1
+        try:
+            return _union(
+                self._on_edge(arg.through, block)._fact(fact, arg.value)  # noqa: SLF001
+                for arg in arguments
+            )
+        finally:
+            self._nested_loops -= 1
+            self._recording -= 1
+            # all of it was derived from the candidate
+            self._discard_provisional(since)
+
+    def _on_edge(self, predecessor: models.BasicBlock, block: models.BasicBlock) -> "ValueBounds":
+        """The bounds that hold when control passes from a block of a loop to the block that
+        the loop starts with, given what the blocks of the loop establish."""
+        try:
+            non_zero, zero, completed = self._edge_facts[predecessor, block]
+        except KeyError:
+            non_zero, zero, completed = [], [], []
+            # the blocks of the loop that dominate the predecessor, from the last one up
+            dominating = [predecessor]
+            while dominating[-1] is not block:
+                dominator = self.immediate_dominator(dominating[-1])
+                if dominator is None:
+                    # the block of the phi does not dominate the predecessor: no facts
+                    dominating.clear()
+                    break
+                dominating.append(dominator)
+            # the first block of the loop, and the ones closest to the predecessor
+            kept = set(dominating[: _MAX_EDGE_BLOCKS - 1])
+            kept.add(block)
+            # in the order of the program
+            for index in reversed(range(len(dominating))):
+                current = dominating[index]
+                if current not in kept:
+                    continue
+                asserted, ran = facts_of_ops(current.ops)
+                non_zero.extend(asserted)
+                completed.extend(ran)
+                # the branch that leads on: to the next block if that block is only entered
+                # from this one, and from the predecessor to the block of the phi
+                if index:
+                    successor = dominating[index - 1]
+                    if not self.only_entered_from_dominator(successor):
+                        continue
+                else:
+                    successor = block
+                match branch_condition(current, successor):
+                    case condition, True:
+                        non_zero.append(condition)
+                    case condition, False:
+                        zero.append(condition)
+            self._edge_facts[predecessor, block] = non_zero, zero, completed
+        if not (non_zero or zero or completed):
+            return self
+        result = self._extended()
+        # What has been derived holds on the way into the phi as well, so it is taken along,
+        # with the candidates for phis. Not what is still being derived, which depends on
+        # the phi and is to be derived from the candidate
+        result._uint64 = dict(self._uint64)  # noqa: SLF001
+        result._length = dict(self._length)  # noqa: SLF001
+        result._number = dict(self._number)  # noqa: SLF001
+        for memo, register in self._deriving:
+            if register not in self._phi_blocks:
+                if memo is self._uint64:
+                    result._uint64.pop(register, None)  # noqa: SLF001
+                elif memo is self._length:
+                    result._length.pop(register, None)  # noqa: SLF001
+                else:
+                    result._number.pop(register, None)  # noqa: SLF001
+        result._depth = self._depth  # noqa: SLF001
+        result._learn_all(non_zero, zero, completed)  # noqa: SLF001
+        return result
+
+    def immediate_dominator(self, block: models.BasicBlock) -> models.BasicBlock | None:
+        """The closest block that every way from the start of the subroutine to the given
+        block leads through. None for the first block, for a block that cannot be reached, and
+        for bounds that were built without a subroutine."""
+        unconditional = self._unconditional or self
+        dominators = unconditional._dominators  # noqa: SLF001
+        if dominators is None:
+            dominators = unconditional._dominators = _immediate_dominators(  # noqa: SLF001
+                unconditional._blocks  # noqa: SLF001
+            )
+        return dominators.get(block)
+
+    def only_entered_from_dominator(self, block: models.BasicBlock) -> bool:
+        """True if control only gets into a block from its immediate dominator: any other
+        predecessor is a block that it dominates, which is reached through the block itself.
+        What holds when control passes from the dominator to the block then holds in the
+        block, whichever way it was reached."""
+        dominator = self.immediate_dominator(block)
+        if dominator is None:
+            return False
+        for predecessor in block.predecessors:
+            if predecessor is dominator:
+                continue
+            current: models.BasicBlock | None = predecessor
+            while current is not None and current is not block:
+                current = self.immediate_dominator(current)
+            if current is None:
+                return False
+        return True
+
     def _uint64_of_definition(
         self, source: models.ValueProvider | models.Phi, index: int
     ) -> Bounds:
@@ -696,9 +1126,8 @@ class ValueBounds:
                 return self.uint64(source)
             case models.ValueTuple(values=values):
                 return self.uint64(values[index])
-            case models.Phi(args=args):
-                unconditional = self._unconditional or self
-                return _union(unconditional.uint64(arg.value) for arg in args)
+            case models.Phi():
+                return self._of_phi(source, "uint64")
             case models.Intrinsic() if len(source.types) == 1:
                 return self._uint64_of_intrinsic(source)
             case _:
@@ -712,9 +1141,8 @@ class ValueBounds:
                 return self.length(source)
             case models.ValueTuple(values=values):
                 return self.length(values[index])
-            case models.Phi(args=args):
-                unconditional = self._unconditional or self
-                return _union(unconditional.length(arg.value) for arg in args)
+            case models.Phi():
+                return self._of_phi(source, "length")
             case models.Intrinsic() if len(source.types) == 1:
                 return self._length_of_intrinsic(source)
             case _:
@@ -728,9 +1156,8 @@ class ValueBounds:
                 return self.number(source)
             case models.ValueTuple(values=values):
                 return self.number(values[index])
-            case models.Phi(args=args):
-                unconditional = self._unconditional or self
-                return _union(unconditional.number(arg.value) for arg in args)
+            case models.Phi():
+                return self._of_phi(source, "number")
             case models.Intrinsic() if len(source.types) == 1:
                 return self._number_of_intrinsic(source)
             case _:
@@ -998,6 +1425,165 @@ class ValueBounds:
         return min(self.length(value)[1], MAX_BIGUINT_BYTES)
 
 
+@attrs.define
+class BoundsAtPoints:
+    """The bounds that hold at each point of a subroutine: at the start of a block what the
+    blocks that dominate it establish, with the condition of the branch into it if it is only
+    entered that way, and before each op of a block also what the ops before it establish.
+
+    The bounds are derived from the subroutine as it was when this was built. An op that is
+    replaced by another that gives the same values, or removed because it cannot fail, leaves
+    them valid; `ValueBounds.is_minimal` and the lengths of a register whose bytes change do
+    not stay valid.
+    """
+
+    _bounds: ValueBounds
+    _at_end: dict[models.BasicBlock, ValueBounds] = attrs.field(factory=dict, init=False)
+
+    @classmethod
+    def of(cls, subroutine: models.Subroutine) -> "BoundsAtPoints":
+        return cls(ValueBounds.of(subroutine))
+
+    def at_start(self, block: models.BasicBlock) -> ValueBounds:
+        """The bounds that hold before the first op of a block."""
+        dominator = self._bounds.immediate_dominator(block)
+        if dominator is None:
+            return self._bounds
+        result = self.at_end(dominator)
+        if self._bounds.only_entered_from_dominator(block):
+            match branch_condition(dominator, block):
+                case condition, True:
+                    result = result.given(non_zero=[condition])
+                case condition, False:
+                    result = result.given(zero=[condition])
+        return result
+
+    def at_end(self, block: models.BasicBlock) -> ValueBounds:
+        """The bounds that hold after the last op of a block."""
+        # dominators first, without recursion: one block may be dominated by a long chain
+        missing = list[models.BasicBlock]()
+        current: models.BasicBlock | None = block
+        while current is not None and current not in self._at_end:
+            missing.append(current)
+            current = self._bounds.immediate_dominator(current)
+        for current in reversed(missing):
+            result = self.at_start(current)
+            asserted, ran = facts_of_ops(current.ops)
+            if asserted or ran:
+                result = result.given(non_zero=asserted, completed=ran)
+            self._at_end[current] = result
+        return self._at_end[block]
+
+    def before_ops(
+        self, block: models.BasicBlock
+    ) -> Iterator[tuple[models.Op, Callable[[], ValueBounds]]]:
+        """Each op of a block, with the bounds that hold before it. The bounds are worked out
+        when asked for. They are one object for all the ops of the block, which is given more
+        as the ops are passed: what it says holds for an op until the next op is asked for,
+        and `given()` of it is a copy that stays as it is. An op may be replaced or removed
+        before the next one is asked for."""
+        current: ValueBounds | None = None
+        asserted = list[models.Value]()
+        ran = list[models.Intrinsic]()
+
+        def bounds() -> ValueBounds:
+            nonlocal current
+            if current is None:
+                # what holds at the start of the block may be shared with other blocks
+                current = self.at_start(block)._extended()  # noqa: SLF001
+            if asserted or ran:
+                current._learn_all(asserted, (), ran)  # noqa: SLF001
+                asserted.clear()
+                ran.clear()
+            return current
+
+        for op in block.ops.copy():
+            yield op, bounds
+            # as the op is now
+            new_asserted, new_ran = facts_of_ops([op])
+            asserted.extend(new_asserted)
+            ran.extend(new_ran)
+        if current is not None and block not in self._at_end:
+            self._at_end[block] = bounds()
+
+
+def facts_of_ops(ops: Iterable[models.Op]) -> tuple[list[models.Value], list[models.Intrinsic]]:
+    """What a sequence of ops establishes for what follows it: the conditions of its asserts,
+    which are not 0, and its AVM ops that say something about their operands by having
+    completed."""
+    asserted = list[models.Value]()
+    ran = list[models.Intrinsic]()
+    for op in ops:
+        if isinstance(op, models.Assert):
+            asserted.append(op.condition)
+            continue
+        source = op.source if isinstance(op, models.Assignment) else op
+        if isinstance(source, models.Intrinsic) and source.op in _TEACHES_WHEN_COMPLETED:
+            ran.append(source)
+    return asserted, ran
+
+
+def branch_condition(
+    block: models.BasicBlock, successor: models.BasicBlock
+) -> tuple[models.Value, bool] | None:
+    """The condition that a block branches on, and whether it is not 0 when the branch leads
+    to the given successor. None if the block does not end in such a branch, or if it leads
+    to the successor either way."""
+    match block.terminator:
+        case models.ConditionalBranch(condition=condition, non_zero=taken, zero=other) if (
+            taken is successor and other is not successor
+        ):
+            return condition, True
+        case models.ConditionalBranch(condition=condition, non_zero=other, zero=taken) if (
+            taken is successor and other is not successor
+        ):
+            return condition, False
+    return None
+
+
+def _immediate_dominators(
+    blocks: Sequence[models.BasicBlock],
+) -> Mapping[models.BasicBlock, models.BasicBlock]:
+    if not blocks:
+        return {}
+    graph = nx.DiGraph()
+    for block in blocks:
+        graph.add_node(block)
+        for successor in block.successors:
+            graph.add_edge(block, successor)
+    entry = blocks[0]
+    dominators: dict[models.BasicBlock, models.BasicBlock] = nx.immediate_dominators(graph, entry)
+    # the first block has no dominator, however it is reported
+    dominators.pop(entry, None)
+    return dominators
+
+
+def _users_of_registers(
+    definitions: Mapping[models.Register, _Definition],
+    same: Mapping[models.Register, models.Register],
+) -> Mapping[models.Register, Sequence[models.Register]]:
+    """For each register, the registers whose bounds can depend on its bounds: the ones that
+    are defined in terms of it, and the ones that hold the same value."""
+    users = dict[models.Register, list[models.Register]]()
+    for register, (source, _) in definitions.items():
+        match source:
+            case models.Register():
+                operands: Iterable[models.Value] = (source,)
+            case models.ValueTuple(values=operands) | models.Intrinsic(args=operands):
+                pass
+            case models.Phi(args=args):
+                operands = [arg.value for arg in args]
+            case _:
+                operands = ()
+        for operand in operands:
+            if isinstance(operand, models.Register):
+                users.setdefault(operand, []).append(register)
+    for register, first in same.items():
+        if register != first:
+            users.setdefault(first, []).append(register)
+    return users
+
+
 def _union(bounds: typing.Iterable[Bounds]) -> Bounds:
     lows, highs = list[int](), list[int]()
     for low, high in bounds:
@@ -1030,6 +1616,10 @@ def _intersection(a: Bounds, b: Bounds) -> Bounds:
         # no value is in both: the program does not get to where both hold, so either will do
         return a
     return low, high
+
+
+def _contains(outer: Bounds, inner: Bounds) -> bool:
+    return outer[0] <= inner[0] and inner[1] <= outer[1]
 
 
 def _apart(a: Bounds, b: Bounds) -> bool:

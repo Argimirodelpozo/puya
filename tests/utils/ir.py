@@ -58,6 +58,10 @@ def assign(target: models.Register, source: models.ValueProvider) -> models.Assi
     return models.Assignment(targets=[target], source=source, source_location=None)
 
 
+def assert_(condition: models.Value) -> models.Assert:
+    return models.Assert(condition=condition, message=None, explicit=True, source_location=None)
+
+
 def block(
     block_id: int, ops: Sequence[models.Op], terminator: models.ControlOp
 ) -> models.BasicBlock:
@@ -73,6 +77,30 @@ def return_(*values: models.Value) -> models.SubroutineReturn:
 def goto(block: models.BasicBlock, target: models.BasicBlock) -> None:
     block.terminator = models.Goto(target=target, source_location=None)
     target.add_predecessor(block)
+
+
+def branch(
+    block: models.BasicBlock,
+    condition: models.Value,
+    *,
+    non_zero: models.BasicBlock,
+    zero: models.BasicBlock,
+) -> None:
+    block.terminator = models.ConditionalBranch(
+        condition=condition, non_zero=non_zero, zero=zero, source_location=None
+    )
+    non_zero.add_predecessor(block)
+    zero.add_predecessor(block)
+
+
+def phi(
+    target: models.Register, *arguments: tuple[models.Register, models.BasicBlock]
+) -> models.Phi:
+    """A phi that takes each of the given registers when control comes through its block."""
+    return models.Phi(
+        register=target,
+        args=[models.PhiArgument(value=value, through=through) for value, through in arguments],
+    )
 
 
 def subroutine(
