@@ -181,13 +181,23 @@ def _selector_switch_cases(contract: ir.Contract) -> set[bytes]:
 
 
 def _cut_selector_cases(contract: ir.Contract, keep: typing.Callable[[bytes], bool]) -> None:
-    for sub, block, switch in _selector_switches(contract):
-        loc = switch.source_location
+    switches = _selector_switches(contract)
+    # the forwarding arm sits in one selector Switch (puya-sol emits it in the router's first Switch), while
+    # a router can split its functions over two (the non-payable ones hoisted into their own Switch): every
+    # Switch of the same subroutine forwards its unowned selectors to that one arm
+    forwards: dict[int, ir.BasicBlock] = {}
+    for sub, block, switch in switches:
         forward_case = next(
             (c for c in switch.cases if c.value == SPLIT_FORWARD_SELECTOR),  # type: ignore[attr-defined]
             None,
         )
-        forward = switch.cases.pop(forward_case) if forward_case is not None else None
+        if forward_case is not None:
+            forwards[id(sub)] = switch.cases.pop(forward_case)
+            if forwards[id(sub)] not in switch.targets():
+                forwards[id(sub)].remove_predecessor(block)
+    for sub, block, switch in switches:
+        loc = switch.source_location
+        forward = forwards.get(id(sub))
         if forward is not None:
             # unowned selectors run through the forwarding arm (a routed delegate copy of the app's own code)
             fail = forward
@@ -216,8 +226,8 @@ def _cut_selector_cases(contract: ir.Contract, keep: typing.Callable[[bytes], bo
             if target not in switch.targets():
                 target.remove_predecessor(block)
         if forward is not None:
-            if forward not in switch.targets():
-                forward.remove_predecessor(block)
+            if forward in switch.targets():
+                forward.add_predecessor(block)
         elif cut:
             fail.add_predecessor(block)
             sub.body.append(fail)
